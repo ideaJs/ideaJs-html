@@ -5,10 +5,23 @@ import App from './App'
 import router from './router'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
-import VueResource from 'vue-resource'
+import VueResource from 'vue-resource' // http请求插件
 
-Vue.use(VueResource)
 Vue.use(ElementUI, { size: 'small', zIndex: 3000 })
+Vue.use(VueResource)
+/*
+POST请求：post(url, [body], [options]) 注意：{emulateJSON: true}为必须
+this.$http.post("http://abc", {name: "abc"}, {emulateJSON: true}).then(
+  (res) => {
+    // 处理成功的结果
+    console.log(res)
+  }, (res) => {
+    // 处理失败的结果
+    console.log(res)
+  }
+)
+*/
+
 router.beforeEach((to, from, next) => { // 在页面跳转之前处理事件：to即将进入的路由页面，from当前即将离开的路由页面
   if (to !== from) {
     document.title = to.meta.title
