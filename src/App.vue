@@ -1,23 +1,30 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <router-view/>
+    <!--非可刷新页面-->
+    <transition :name="'slide-' + ($route.meta.direction === 'forward' ? 'in' : 'out')">
+      <keep-alive>
+        <router-view v-if="!$route.meta.isReload && $route.meta.keepAlive" class="router-view"></router-view>
+      </keep-alive>
+    </transition>
+
+    <!--可刷新页面-->
+    <transition :name="'slide-' + ($route.meta.direction === 'forward' ? 'in' : 'out')">
+      <router-view v-if="!$route.meta.isReload && !$route.meta.keepAlive" class="router-view"></router-view>
+    </transition>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'App'
+  name: 'App',
+  data () {
+    return {
+
+    }
+  }
 }
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+
 </style>
