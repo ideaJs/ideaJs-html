@@ -1,5 +1,5 @@
 /*重置全局样式*/
-html,body
+html, body
   width: 100%
   height: 100vh
   overflow-x: hidden
@@ -7,43 +7,58 @@ html,body
   background: #fff
   font: normal 62.5% "PingFangSC Regular", "HiraginoSansGB", "Helvetica", "Arial", "Microsoft YaHei", sans-serif
   color: #666
-
 body
   font-size: 1rem
   -webkit-overflow-scrolling: touch /* HTML5网页内都有快速滚动和回弹的效果*/
   -webkit-tap-highlight-color: rgba(0,0,0,0) /* 取消Safari浏览器中的高亮颜色*/
-
 *
-  -webkit-touch-callout:none  /*系统默认菜单被禁用*/
-  -webkit-user-select:none /*webkit浏览器*/
-  -moz-user-select:none/*火狐*/
-  -ms-user-select:none /*IE10*/
-  user-select:none/*禁止选中文本*/
+  -webkit-touch-callout: none  /*系统默认菜单被禁用*/
+  -webkit-user-select: none /*webkit浏览器*/
+  -moz-user-select: none/*火狐*/
+  -ms-user-select: none /*IE10*/
+  user-select: none/*禁止选中文本*/
   margin: 0
   padding: 0
   border: none /*取消边框默认样式*/
   outline: none
+  border-radius: none
+  font-size: 1rem
+  color: #666
+  font-weight: normal
+  text-decoration: none
   word-wrap: break-word /*设置长单词换行*/
   word-break: break-all /*设置长单词换行*/
-  text-decoration: none
-  box-sizing:border-box  /*盒模型*/
-  -moz-box-sizing:border-box /* 盒模型Firefox */
-  -webkit-box-sizing:border-box /* 盒模型Safari */
-ul, li
+  box-sizing: border-box  /*盒模型*/
+  -moz-box-sizing: border-box /* 盒模型Firefox */
+  -webkit-box-sizing: border-box /* 盒模型Safari */
+  appearance: none /*取消默认样式*/
+  -moz-appearance: none
+  -webkit-appearance: none
+ol, ul, li
   list-style: none!important
-input,textarea
+input, textarea
   -webkit-user-select: auto /*webkit浏览器*/
   -moz-user-select: auto/*火狐*/
   -ms-user-select: auto /*IE10*/
   user-select: auto
-  appearance: none /*取消默认样式*/
-  -moz-appearance: none
-  -webkit-appearance: none
   border: none /*取消输入框默认样式*/
   outline: none
-select
-  border: none /*取消选择框默认样式*/
+  margin: 0
+  padding: 0
+button, a, input, select, img
+button:hover, a:hover, input:hover, select:hover, img:hover,
+button:focus, a:focus, input:focus, select:focus, img:focus,
+button:active, a:active, input:active, select:active, img:active,
+button:visited, a:visited, input:visited, select:visited, img:visited,
+a:link
+  border: none
   outline: none
+  margin: 0
+  padding: 0
+  text-decoration: none
+table
+  border-collapse: collapse
+  border-spacing: 0
 
 /*重置element-message样式*/
 .el-message
