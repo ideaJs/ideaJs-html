@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import StartPage from '@/components/startPage'
-Vue.use(Router)
 
 export default new Router({
   routes: [
@@ -19,3 +18,5 @@ export default new Router({
     }
   ]
 })
+
+Vue.use(Router)

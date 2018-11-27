@@ -5,16 +5,31 @@
 </template>
 
 <script>
+import {Loading} from 'element-ui'
 export default {
   name: 'HelloWorld',
   data () {
     return {
       msg: 'Welcome'
     }
+  },
+  mounted () {
+    this.getMsg()
+  },
+  methods: {
+    getMsg () {
+      this.$post('', {}, {}, (res) => {
+        console.log(res)
+      }, (res) => {
+        console.log(res)
+      })
+    }
+  },
+  components: {
+    Loading
   }
 }
 </script>
-
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
   .hello {
