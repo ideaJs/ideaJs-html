@@ -7,7 +7,7 @@
 <script>
 import {Loading} from 'element-ui'
 export default {
-  name: 'HelloWorld',
+  name: 'Welcome',
   data () {
     return {
       msg: 'Welcome'
@@ -18,9 +18,7 @@ export default {
   },
   methods: {
     getMsg () {
-      this.$post('', {}, {}, (res) => {
-        console.log(res)
-      }, (res) => {
+      this.$post('', {name: 'ideajs-html/welcome'}, {}, (res) => {
         console.log(res)
       })
     }

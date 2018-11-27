@@ -6,7 +6,7 @@ import router from './router'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import VueResource from 'vue-resource' // http请求插件
-import {HTTP_POST} from './common/js/isPost'
+import {HTTP_POST, HTTP_GET} from './common/js/isPost'
 
 Vue.use(ElementUI, { size: 'small', zIndex: 3000 })
 Vue.use(VueResource)
@@ -46,6 +46,7 @@ router.afterEach((to, from, next) => { // 在页面跳转之后处理事件
 
 Vue.config.productionTip = false
 Vue.prototype.$post = HTTP_POST
+Vue.prototype.$get = HTTP_GET
 
 /* eslint-disable no-new */
 new Vue({
