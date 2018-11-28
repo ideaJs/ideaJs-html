@@ -49,13 +49,13 @@ export function HTTP_GET (url, body, success, fail, load) {
     setTimeout(() => {
       loading.close()
     }, 100)
-    success(res)
+    success && success(res)
   }, (res) => {
     setTimeout(() => {
       loading.close()
     }, 100)
     Message.closeAll()
     Message({type: 'error', message: '网络错误，请稍后重试！', duration: 2000})
-    fail(res)
+    fail && fail(res)
   })
 }
