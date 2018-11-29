@@ -18,9 +18,17 @@ export default {
   },
   methods: {
     getMsg () {
-      this.$post('', {name: 'ideajs-html/welcome'}, {}, (res) => {
+      this.$post('welcome', {name: 'welcome'}, {}, (res) => {
         console.log(res)
       })
+      setTimeout(() => {
+        this.$router.push({
+          path: '/login',
+          query: {
+            type: '3'
+          }
+        })
+      }, 99999999)
     }
   },
   components: {
