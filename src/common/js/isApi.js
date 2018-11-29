@@ -37,7 +37,7 @@ export function formatNumDel (num, str, dot) {
   str = str || ''
   dot = dot || 2
   if (num !== null && num !== '' && !isNaN(num)) {
-    return (parseInt(parseFloat(num) * 10000) * 0.01).toFixed(dot) + str
+    return (parseInt(parseFloat(num) * Math.pow(10, dot)) * Math.pow(0.1, dot)).toFixed(dot) + str
   } else {
     return (0).toFixed(dot) + str
   }
@@ -48,7 +48,7 @@ export function numToThousands (num, str, dot) {
   str = str || ''
   dot = dot || 2
   if (num !== null && num !== '' && !isNaN(num)) {
-    return (parseInt(parseFloat(num) * 10000) * 0.01).toFixed(dot).replace(/(\d)(?=(\d{3})+\.)/g, '$1,') + str
+    return parseFloat(num).toFixed(dot).replace(/(\d)(?=(\d{3})+\.)/g, '$1,') + str
   } else {
     return (0).toFixed(dot).replace(/(\d)(?=(\d{3})+\.)/g, '$1,') + str
   }
@@ -56,7 +56,7 @@ export function numToThousands (num, str, dot) {
 
 // 8位日期格式化+单位符
 export function formatDate (date, str) {
-  if (date.length === 8) {
+  if (date && date.length === 8) {
     if (str) {
       return date.replace(/^(\d{4})(\d{2})(\d{2})$/, '$1' + str + '$2' + str + '$3')
     } else {
@@ -81,7 +81,8 @@ export function getNowDate (date, str) {
 // 获取时分秒并格式化6位
 export function getHours (date, str) {
   date = date || new Date()
-  return date.getHours() + '' + ((date.getMinutes() + 1) > 9 ? (date.getMinutes() + 1) : '0' + (date.getMinutes() + 1)) + '' + (date.getSeconds() > 9 ? date.getSeconds() : '0' + date.getSeconds())
+  str = str || ':'
+  return date.getHours() + str + (date.getMinutes() > 9 ? date.getMinutes() : '0' + date.getMinutes()) + str + (date.getSeconds() > 9 ? date.getSeconds() : '0' + date.getSeconds())
 }
 
 // url参数转对象 + 获取某个参数值(注：第一个字符非?)
