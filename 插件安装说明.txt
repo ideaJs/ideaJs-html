@@ -1,0 +1,18 @@
+插件安装说明
+
+vue.js项目安装插件列表：
+
+1. ElementUi
+ HTML5前端插件库
+
+2. vue-resource
+ http请求方法：post/get及跨域请求支持
+
+3. stylus
+ css样式预处理器
+
+4. base64 + md5
+ js数据加密
+
+5. Echarts图表
+ canvas绘制图表
