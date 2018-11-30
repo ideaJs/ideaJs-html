@@ -5,6 +5,12 @@ import {IS_URL} from '../../common/js/isUrl'
 import {IS_PARAM} from '../../common/js/isParam'
 import Vue from 'vue'
 import {Loading, Message} from 'element-ui'
+// import md5 from 'js-md5'
+let Base64 = require('js-base64').Base64
+
+// console.log(md5('123')) // md5加密
+// console.log(Base64.encode('123')) // base64加密
+// console.log(Base64.decode('MTIz')) // base64解密
 
 // 封装vue-resource 的post请求
 export function HTTP_POST (url, param, http, success, fail, load) {
@@ -14,7 +20,7 @@ export function HTTP_POST (url, param, http, success, fail, load) {
   url = url === '' ? IS_URL.XML : url
   let _param = IS_PARAM().param
   let _http = IS_PARAM().http
-  param = JSON.stringify(Object.assign(param, _param))
+  param = Base64.encode(JSON.stringify(Object.assign(param, _param)))
   Vue.http.options = Object.assign(Vue.http.options, _http, http)
   Vue.http.post(url, {param: param}).then((res) => {
     loading.close()

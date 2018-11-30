@@ -45,10 +45,10 @@ module.exports = {
 
   build: {
     // Template for index.html
-    index: path.resolve(__dirname, '../dist/index.html'),
+    index: path.resolve(__dirname, '../html/index.html'), // build打包项目文件目录名：html
 
     // Paths
-    assetsRoot: path.resolve(__dirname, '../dist'),
+    assetsRoot: path.resolve(__dirname, '../html'), // build打包项目文件目录名：html
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
 
