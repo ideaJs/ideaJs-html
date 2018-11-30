@@ -11,9 +11,17 @@ let Base64 = require('js-base64').Base64
 // console.log(md5('123')) // md5加密
 // console.log(Base64.encode('123')) // base64加密
 // console.log(Base64.decode('MTIz')) // base64解密
-
+/*
+ url,        服务地址
+ param,      服务入参
+ http,       服务配置
+ success,    成功函数
+ fail,       失败函数
+ load,       是否禁用loading动画：是true,否false
+ error       报错提示
+*/
 // 封装vue-resource 的post请求
-export function HTTP_POST (url, param, http, success, fail, load) {
+export function HTTP_POST (url, param, http, success, fail, load, error) {
   if (!load) { // 是否禁用loading动画：是true,否false
     var loading = Loading.service({background: 'rgba(0,0,0,0.6)'}) // 开启loading动画
   }
@@ -28,13 +36,13 @@ export function HTTP_POST (url, param, http, success, fail, load) {
   }, (res) => {
     loading.close()
     Message.closeAll()
-    Message({type: 'error', message: '网络错误，请稍后重试！', duration: 2000})
+    Message({type: 'error', message: error || '网络错误，请稍后重试！', duration: 2000})
     fail && fail(res)
   })
 }
 
 // 封装vue-resource 的get请求
-export function HTTP_GET (url, http, success, fail, load) {
+export function HTTP_GET (url, http, success, fail, load, error) {
   if (!load) { // 是否禁用loading动画：是true,否false
     var loading = Loading.service({background: 'rgba(0,0,0,0.6)'}) // 开启loading动画
   }
@@ -47,7 +55,7 @@ export function HTTP_GET (url, http, success, fail, load) {
   }, (res) => {
     loading.close()
     Message.closeAll()
-    Message({type: 'error', message: '网络错误，请稍后重试！', duration: 2000})
+    Message({type: 'error', message: error || '网络错误，请稍后重试！', duration: 2000})
     fail && fail(res)
   })
 }
