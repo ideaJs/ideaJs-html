@@ -1,3 +1,4 @@
+<!--启动页 Created by macmzon on 2018/11/2-->
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
