@@ -2,17 +2,22 @@
 
 vue.js项目安装插件列表：
 
-1. ElementUi
- HTML5前端插件库
+1. ElementUi：HTML5前端插件库
+  npm install --save element-ui
 
-2. vue-resource
- http请求方法：post/get及跨域请求支持
+2. vue-resource：http请求方法：post/get及跨域请求支持
+  npm install --save vue-resource
 
-3. stylus
- css样式预处理器
+3. stylus：css样式预处理器
+  npm install stylus --save-dev
 
-4. base64 + md5
- js数据加密
+4. base64 + md5：数据加密
+  npm install --save js-base64
+  npm install --save js-md5
 
-5. Echarts图表
- canvas绘制图表
+5. Echarts图表：
+  npm install echarts -S
+
+6. PDF文档阅读：
+  npm isntall --save pdfjs-dist
+

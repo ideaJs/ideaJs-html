@@ -3,6 +3,7 @@
 |  px  |       rem        | px单位值对应rem单位值转换
 ---------------------------
 |  12  | 12/16 = 0.75     |
+|  13  | 13/16 = 0.8125     |
 |  14  | 14/16 = 0.875    |
 |  15  | 15/16 = 0.9375   |
 |  16  | 16/16 = 1        |
@@ -75,15 +76,9 @@ button:focus, a:focus, input:focus, select:focus, img:focus, textarea:focus, *:f
 button:active, a:active, input:active, select:active, img:active, textarea:active, *:active
 button:visited, a:visited, input:visited, select:visited, img:visited, textarea:visited, *:visited
 a:link
-  border: none
-  outline: none
-  margin: 0
-  padding: 0
+  outline: none!important
   text-decoration: none
-  border-radius: none
   font-family: "PingFangSC Regular", "HiraginoSansGB", "Helvetica", "Arial", "Microsoft YaHei", sans-serif
-  font-size: 1rem
-  color: #666
   font-weight: normal
 table
   border-collapse: collapse
@@ -92,13 +87,12 @@ table
 /*重置element-message样式*/
 .el-message
   width: 70%!important
-  min-width: 70%!important
+  min-width: 250px!important
+  max-width: 500px!important
   word-wrap: break-word
   break-word: break-all
 
 .el-message__content
   word-wrap: break-word
   word-break: break-all
-  max-height: 50vh
-  overflow-y: auto
-
+  font-size: 0.8125rem
