@@ -23,7 +23,7 @@
           console.log(res)
         })
         setTimeout(() => {
-          this.$router.push({
+          this.$push({
             path: '/login',
             query: {
               type: '3'
@@ -39,11 +39,6 @@
 </script>
 <style lang="stylus" scoped>
   .hello
-    font-family: 'Avenir', Helvetica, Arial, sans-serif
-    -webkit-font-smoothing: antialiased
-    -moz-osx-font-smoothing: grayscale
-    text-align: center
-    color: #2c3e50
-    margin-top: 60px
+    background: #fff
 
 </style>

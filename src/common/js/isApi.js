@@ -3,7 +3,10 @@
  */
 // 公共方法库
 
-// 页面跳转方法
+let Base64 = require('js-base64').Base64
+import router from '../../router'
+
+// 项目外页面跳转方法
 export function goURL (url) {
   let app = window.navigator.appVersion.toLocaleLowerCase()
   try {
@@ -19,6 +22,14 @@ export function goURL (url) {
   } catch (e) {
     window.location.href = url
   }
+}
+// 项目内页面跳转方法：push
+export function goPush (param) {
+  router.push(param)
+}
+// 项目内页面跳转方法：replace
+export function goReplace (param) {
+  router.push(param)
 }
 
 // 数字四舍五入格式化2位小数+单位（元）

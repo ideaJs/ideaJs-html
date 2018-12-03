@@ -4,6 +4,11 @@ import StartPage from '@/components/startPage'
 import Login from '@/components/config/login'
 import News from '@/components/news/news'
 
+// post请求：this.$post(url, param, success, fail, load, error, http)
+// get请求：this.$get(url, success, fail, load, error, http)
+// 项目外页面跳转：this.$goURL(url)
+// 项目内页面跳转push：this.$push(param)
+// 项目内页面跳转replace：this.$replace(param)
 export default new Router({
   routes: [
     {

@@ -7,11 +7,10 @@ import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import VueResource from 'vue-resource' // http请求插件
 import {HTTP_POST, HTTP_GET} from './common/js/isPost'
-import {goURL} from './common/js/isApi'
+import {goURL, goPush, goReplace} from './common/js/isApi'
 
 Vue.use(ElementUI, { size: 'small', zIndex: 3000 })
 Vue.use(VueResource)
-
 // 视图切换动画逻辑
 function routerTransition (to, from) {
   let direction = sessionStorage.getItem('direction')
@@ -50,9 +49,11 @@ router.afterEach((to, from, next) => { // 在页面跳转之后处理事件
   }
 })
 Vue.config.productionTip = false
-Vue.prototype.$post = HTTP_POST
-Vue.prototype.$get = HTTP_GET
-Vue.prototype.$goURL = goURL
+Vue.prototype.$post = HTTP_POST // post请求：this.$post(url, param, success, fail, load, error, http)
+Vue.prototype.$get = HTTP_GET // get请求：this.$get(url, success, fail, load, error, http)
+Vue.prototype.$goURL = goURL // 项目外页面跳转：this.$goURL(url)
+Vue.prototype.$push = goPush // 项目内页面跳转push：this.$push(param)
+Vue.prototype.$replace = goReplace // 项目内页面跳转replace：this.$replace(param)
 
 /* eslint-disable no-new */
 new Vue({
