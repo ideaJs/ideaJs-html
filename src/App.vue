@@ -1,5 +1,8 @@
 <template>
   <div class="app">
+    <div>
+      <HeaderLine></HeaderLine>
+    </div>
     <!--非可刷新页面-->
     <transition :name="$route.meta.direction">
       <keep-alive>
@@ -15,6 +18,7 @@
 </template>
 
 <script>
+  import HeaderLine from'@/components/config/headerLine.vue'
 export default {
   name: 'App',
   data () {
@@ -29,6 +33,7 @@ export default {
     }
   },
   components: {
+    HeaderLine
   }
 }
 </script>

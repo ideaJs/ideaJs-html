@@ -2,7 +2,11 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import StartPage from '@/components/startPage'
 import Login from '@/components/config/login'
+import AppIndex from '@/components/appIndex'
 import News from '@/components/news/news'
+import HeaderLine from '@/components/config/headerLine'
+import Bottom from '@/components/config/bottom'
+import Menu from '@/components/config/menu'
 
 // post请求：this.$post(url, param, success, fail, load, error, http)
 // get请求：this.$get(url, success, fail, load, error, http)
@@ -17,8 +21,21 @@ export default new Router({
       component: StartPage,
       meta: {
         title: '欢迎', // 标题名称
+        header: 'StartPage',
         keepAlive: false, // 是否缓存页面
         scrollToTop: true, // 是否滚动到顶部
+        isReload: false // 控制是否刷新页面
+      }
+    },
+    {
+      path: '/appIndex',
+      name: 'AppIndex', // 首页
+      component: AppIndex,
+      meta: {
+        title: '首页', // 标题名称
+        header: 'AppIndex',
+        keepAlive: true, // 是否缓存页面
+        scrollToTop: false, // 是否滚动到顶部
         isReload: false // 控制是否刷新页面
       }
     },
@@ -39,6 +56,33 @@ export default new Router({
       component: News,
       meta: {
         title: '新闻', // 标题名称
+        keepAlive: false, // 是否缓存页面
+        scrollToTop: true, // 是否滚动到顶部
+        isReload: false // 控制是否刷新页面
+      }
+    },
+    {
+      path: '/headerLine',
+      name: 'HeaderLine', // 新闻页
+      component: HeaderLine,
+      meta: {
+        title: '首页' // 标题名称
+      }
+    },
+    {
+      path: '/bottom',
+      name: 'Bottom', // 新闻页
+      component: Bottom,
+      meta: {
+        title: '底部导航' // 标题名称
+      }
+    },
+    {
+      path: '/menu',
+      name: 'Menu', // 导航页
+      component: Menu,
+      meta: {
+        title: '导航', // 标题名称
         keepAlive: false, // 是否缓存页面
         scrollToTop: true, // 是否滚动到顶部
         isReload: false // 控制是否刷新页面

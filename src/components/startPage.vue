@@ -1,6 +1,6 @@
 <!--启动页 Created by macmzon on 2018/11/2-->
 <template>
-  <div class="hello">
+  <div class="startPage">
     <h1>{{ msg }}</h1>
   </div>
 </template>
@@ -8,28 +8,28 @@
 <script>
 import {Loading} from 'element-ui'
 export default {
-  name: 'Welcome',
+  name: 'startPage',
   data () {
     return {
-      msg: 'Welcome'
+      msg: 'startPage'
     }
   },
   mounted () {
-    this.start()
+//    this.start()
   },
   methods: {
     start () {
-//      this.$post('welcome', {name: 'welcome'}, {}, (res) => {
+//      this.$post('welcome', {name: 'welcome'}, (res) => {
 //        console.log(res)
 //      })
       setTimeout(() => {
-        this.$router.push({
+        this.$push({
           path: '/login',
           query: {
             type: '3'
           }
         })
-      }, 3000)
+      }, 300000)
     }
   },
   components: {
@@ -37,8 +37,6 @@ export default {
   }
 }
 </script>
-<style lang="stylus" scoped>
-  .hello
-    background: #fff
-
+<style lang="stylus">
+  @import "stylus/startPage.styl"
 </style>
