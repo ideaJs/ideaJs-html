@@ -15,13 +15,13 @@ export default {
     }
   },
   mounted () {
-    this.getMsg()
+    this.start()
   },
   methods: {
-    getMsg () {
-      this.$post('welcome', {name: 'welcome'}, {}, (res) => {
-        console.log(res)
-      })
+    start () {
+//      this.$post('welcome', {name: 'welcome'}, {}, (res) => {
+//        console.log(res)
+//      })
       setTimeout(() => {
         this.$router.push({
           path: '/login',
@@ -29,7 +29,7 @@ export default {
             type: '3'
           }
         })
-      }, 99999999)
+      }, 3000)
     }
   },
   components: {
@@ -37,7 +37,6 @@ export default {
   }
 }
 </script>
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="stylus" scoped>
   .hello
     font-family: 'Avenir', Helvetica, Arial, sans-serif

@@ -12,27 +12,43 @@ import {goURL} from './common/js/isApi'
 Vue.use(ElementUI, { size: 'small', zIndex: 3000 })
 Vue.use(VueResource)
 
-router.beforeEach((to, from, next) => { // 在页面跳转之前处理事件：to即将进入的路由页面，from当前即将离开的路由页面
-  if (to !== from) {
-    document.title = to.meta.title
-    to.meta.direction = to.meta.direction === 'forward' ? 'goback' : 'forward'
-    from.meta.direction = to.meta.direction === 'forward' ? 'goback' : 'forward'
-    setTimeout(() => {
-      to.meta.direction = 'goback'
-      from.meta.direction = 'forward'
-    }, 300)
+// 视图切换动画逻辑
+function routerTransition (to, from) {
+  let direction = sessionStorage.getItem('direction')
+  if (!direction) {
+    direction = 'slide-forward'
+  } else {
+    let directionFrom = sessionStorage.getItem('directionFrom')
+    let directionTo = sessionStorage.getItem('directionTo')
+    if (directionFrom === to.path && direction === 'slide-forward') {
+      direction = 'slide-back'
+    } else {
+      direction = 'slide-forward'
+    }
   }
+  sessionStorage.setItem('direction', direction)
+  sessionStorage.setItem('directionFrom', from.path)
+  sessionStorage.setItem('directionTo', to.path)
+  return direction
+}
+router.beforeEach((to, from, next) => { // 在页面跳转之前处理事件：to即将进入的路由页面，from当前即将离开的路由页面
+  if (to) {
+    document.title = to.meta.title
+  }
+  to.meta.direction = routerTransition(to, from)
   next()
 })
 
 router.afterEach((to, from, next) => { // 在页面跳转之后处理事件
+  if (to) {
+    document.title = to.meta.title
+  }
   if (to !== from) {
     if (to.meta.scrollToTop) {
       window.scrollTo(0, 0)
     }
   }
 })
-
 Vue.config.productionTip = false
 Vue.prototype.$post = HTTP_POST
 Vue.prototype.$get = HTTP_GET
@@ -45,3 +61,4 @@ new Vue({
   components: { App },
   template: '<App/>'
 })
+
