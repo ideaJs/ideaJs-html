@@ -4,9 +4,9 @@ import StartPage from '@/components/startPage'
 import Login from '@/components/config/login'
 import AppIndex from '@/components/appIndex'
 import News from '@/components/news/news'
-import HeaderLine from '@/components/config/headerLine'
-import Bottom from '@/components/config/bottom'
 import Menu from '@/components/config/menu'
+import Headers from '@/components/config/headers'
+import Footers from '@/components/config/footers'
 
 // post请求：this.$post(url, param, success, fail, load, error, http)
 // get请求：this.$get(url, success, fail, load, error, http)
@@ -17,6 +17,18 @@ export default new Router({
   routes: [
     {
       path: '/',
+      name: 'StartPage', // 启动页
+      component: StartPage,
+      meta: {
+        title: '欢迎', // 标题名称
+        header: 'StartPage',
+        keepAlive: false, // 是否缓存页面
+        scrollToTop: true, // 是否滚动到顶部
+        isReload: false // 控制是否刷新页面
+      }
+    },
+    {
+      path: '/startPage',
       name: 'StartPage', // 启动页
       component: StartPage,
       meta: {
@@ -40,6 +52,20 @@ export default new Router({
       }
     },
     {
+      path: '/headers',
+      name: 'Headers', // 顶部header
+      component: Headers,
+      meta: {
+      }
+    },
+    {
+      path: '/footers',
+      name: 'Footers', // 底部导航
+      component: Footers,
+      meta: {
+      }
+    },
+    {
       path: '/login',
       name: 'Login', // 登录页
       component: Login,
@@ -59,22 +85,6 @@ export default new Router({
         keepAlive: false, // 是否缓存页面
         scrollToTop: true, // 是否滚动到顶部
         isReload: false // 控制是否刷新页面
-      }
-    },
-    {
-      path: '/headerLine',
-      name: 'HeaderLine', // 新闻页
-      component: HeaderLine,
-      meta: {
-        title: '首页' // 标题名称
-      }
-    },
-    {
-      path: '/bottom',
-      name: 'Bottom', // 新闻页
-      component: Bottom,
-      meta: {
-        title: '底部导航' // 标题名称
       }
     },
     {

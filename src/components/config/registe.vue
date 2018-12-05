@@ -14,7 +14,6 @@ export default {
     }
   },
   mounted () {
-    this.start()
   },
   methods: {
     start () {

@@ -21,3 +21,8 @@ vue.js项目安装插件列表：
 6. PDF文档阅读：
   npm isntall --save pdfjs-dist
 
+7.安装vuex
+  Vuex 是 store（仓库）
+
+8. vuex-router-sync
+  把vue-router的状态放进vuex的state中

@@ -14,7 +14,6 @@
       }
     },
     mounted () {
-      this.start()
     },
     methods: {
       start () {

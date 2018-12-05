@@ -4,7 +4,6 @@
 
     </div>
 </template>
-
 <script>
   export default {
     name: 'name',
@@ -14,7 +13,6 @@
       }
     },
     mounted () {
-      this.start()
     },
     methods: {
       start () {

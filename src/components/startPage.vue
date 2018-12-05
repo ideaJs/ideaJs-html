@@ -1,7 +1,7 @@
 <!--启动页 Created by macmzon on 2018/11/2-->
 <template>
   <div class="startPage">
-    <h1>{{ msg }}</h1>
+    <el-button type="success" round @click.active="start()">登录</el-button>
   </div>
 </template>
 
@@ -15,21 +15,18 @@ export default {
     }
   },
   mounted () {
-//    this.start()
   },
   methods: {
     start () {
 //      this.$post('welcome', {name: 'welcome'}, (res) => {
 //        console.log(res)
 //      })
-      setTimeout(() => {
-        this.$push({
-          path: '/login',
-          query: {
-            type: '3'
-          }
-        })
-      }, 300000)
+      this.$push({
+        path: '/login',
+        query: {
+          type: '3'
+        }
+      })
     }
   },
   components: {
