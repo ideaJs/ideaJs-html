@@ -13,7 +13,7 @@ export default new Vuex.Store({
   // 类似 vue 的 data
   state: {
     route: {},
-    direction: 'forward',
+    direction: 'slide-left',
     userinfo: {},
     count: 0
   },

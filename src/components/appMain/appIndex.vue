@@ -1,35 +1,39 @@
 <!-- Created by macmzon on 2018/11/29-->
 <template>
-    <div class="appIndex">
-      <Headers :headerData="headerData"></Headers>
+  <div class="appIndex">
+    <appHeader :headerInfo="headerInfo"></appHeader>
+    <div class="">
       <el-button type="success" round @click.active="back()">上一页</el-button>
       <el-button type="success" round @click.active="start()">下一页</el-button>
     </div>
+  </div>
 </template>
 <script>
-  import Headers from'@/components/config/headers.vue'
-
+  import appHeader from'@/components/appConfig/appHeader.vue'
   export default {
     name: 'appIndex',
     data () {
       return {
-        headerData: 'appIndex'
+        headerInfo: this.$route.meta
       }
     },
     mounted () {
+      this.$route.meta.header.leftFuc = this.back
     },
     methods: {
       start () {
+        this.$route.meta.isBack = false
         this.$push({
-          path: '/',
+          path: '/appMenu',
           query: {
             type: '3'
           }
         })
       },
       back () {
-        this.$push({
-          path: '/login',
+        this.$route.meta.isBack = true
+        this.$back({
+          path: '/appLogin',
           query: {
             type: '3'
           }
@@ -37,7 +41,7 @@
       }
     },
     components: {
-      Headers
+      appHeader
     }
   }
 </script>

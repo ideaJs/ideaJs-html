@@ -11,7 +11,6 @@
     name: 'Welcome',
     data () {
       return {
-        msg: 'Welcome'
       }
     },
     mounted () {

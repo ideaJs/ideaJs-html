@@ -85,45 +85,7 @@ a:link
 table
   border-collapse: collapse
   border-spacing: 0
-/* 可以设置不同的进入和离开动画 */
-/* 设置持续时间和动画函数 */
-.app
-  height: 100vh!important
-  width: 100%!important
-  .router-view
-    position: absolute
-    height: 110vh!important
-    width: 100%
-    background: #fff
-    padding-top: 2.5rem
-    z-index: 666
-  /*页面跳转动画*/
-  .slide-forward-enter-active
-    transition: all 1000ms
-    transform: translate3d(0%, 0, 0)
-  .slide-forward-leave-active
-    transition: all 1000ms
-    transform: translate3d(-100%, 0, 0)
-  .slide-forward-enter
-    transition: all 1000ms
-    transform: translate3d(100%, 0, 0)
-  .slide-forward-leave
-    transition: all 1000ms
-    transform: translate3d(0%, 0, 0)
-  /*页面返回动画*/
-  .slide-back-enter-active
-    transition: all 1000ms
-    transform: translate3d(0%, 0, 0)
-  .slide-back-leave-active
-    transition: all 1000ms
-    transform: translate3d(100%, 0, 0)
-  .slide-back-enter
-    transition: all 1000ms
-    transform: translate3d(-100%, 0, 0)
-  .slide-back-leave
-    transition: all 1000ms
-    transform: translate3d(0%, 0, 0)
-
+  
 /*重置element-message样式*/
 .el-message
   width: 70%!important

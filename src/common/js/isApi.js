@@ -27,6 +27,10 @@ export function goURL (url) {
 export function goPush (param) {
   router.push(param)
 }
+// 项目内页面返回方法：back
+export function goBack (param) {
+  router.push(param)
+}
 // 项目内页面跳转方法：replace
 export function goReplace (param) {
   router.push(param)

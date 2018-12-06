@@ -1,17 +1,16 @@
 <!--启动页 Created by macmzon on 2018/11/2-->
 <template>
-  <div class="startPage">
-    <el-button type="success" round @click.active="start()">登录</el-button>
+  <div class="appStart">
+    <el-button type="success" round @click.active="start()">开始</el-button>
   </div>
 </template>
 
 <script>
 import {Loading} from 'element-ui'
 export default {
-  name: 'startPage',
+  name: 'appStart',
   data () {
     return {
-      msg: 'startPage'
     }
   },
   mounted () {
@@ -21,8 +20,9 @@ export default {
 //      this.$post('welcome', {name: 'welcome'}, (res) => {
 //        console.log(res)
 //      })
+      this.$route.meta.isBack = false
       this.$push({
-        path: '/login',
+        path: '/appLogin',
         query: {
           type: '3'
         }
@@ -35,5 +35,5 @@ export default {
 }
 </script>
 <style lang="stylus">
-  @import "stylus/startPage.styl"
+  @import "appStylus/appStart.styl"
 </style>
