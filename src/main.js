@@ -12,12 +12,14 @@ import VueResource from 'vue-resource' // http请求插件
 import {HTTP_POST, HTTP_GET} from './common/js/isPost'
 import {goURL, goPush, goBack, goReplace} from './common/js/isApi'
 import {sync} from 'vuex-router-sync'
+import VueTouch from 'vue-touch'
 
 Vue.use(ElementUI, { size: 'small', zIndex: 3000 })
 Vue.use(VueResource)
 Vue.use(Vuex)
 Vue.use(store)
 sync(store, router)
+Vue.use(VueTouch, {name: 'v-touch'})
 
 Vue.config.productionTip = false
 Vue.prototype.$post = HTTP_POST // post请求：this.$post(url, param, success, fail, load, error, http)
@@ -53,7 +55,12 @@ function pushHistory() {
     url: "#"
   }, document.title, "#")
 }
-
+VueTouch.config.swipe = {
+  threshold: 50 //手指左右滑动距离
+}
+VueTouch.config.pan = {
+  direction: 'horizontal'
+}
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

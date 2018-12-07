@@ -1,0 +1,66 @@
+<!-- Created by macmzon on 2018/11/29-->
+<!--vue页面初始化模板-->
+<template>
+    <div class="appMenu">
+        <appHeader :headerInfo="headerInfo"></appHeader>
+        <div class="">
+            <el-button type="success" round @click.active="back()">上一页</el-button>
+            <el-button type="success" round @click.active="start()">下一页</el-button>
+        </div>
+    </div>
+</template>
+
+<script>
+  import appHeader from'@/components/appConfig/appHeader.vue'
+  export default {
+    name: 'appMenu',
+    data () {
+      return {
+        headerInfo: this.$route.meta
+      }
+    },
+    mounted () {
+      /*自定义顶部header两侧按钮事件+页面左右滑动事件*/
+      this.$route.meta.header.leftFuc = this.back                 // header左侧返回按钮事件
+      this.$route.meta.header.rightFuc = this.getMenu             // header右侧菜单按钮事件
+      this.$route.meta.touch.leftFuc = this.start                 // 页面向左滑动事件
+      this.$route.meta.touch.rightFuc = this.back                 // 页面向右滑动事件
+    },
+    methods: {
+      start () {
+        this.$route.meta.isBack = false
+        this.$push({
+          path: '/appSet',
+          query: {
+            type: '3'
+          }
+        })
+      },
+      back () {
+        this.$route.meta.isBack = true
+        this.$back({
+          path: '/appIndex',
+          query: {
+            type: '3'
+          }
+        })
+      },
+      getMenu () {
+        this.$route.meta.isBack = false
+        this.$push({
+          path: '/appMenu',
+          query: {
+            type: '3'
+          }
+        })
+      }
+    },
+    components: {
+      appHeader
+    }
+  }
+</script>
+
+<style lang="stylus" rel="stylesheet/stylus">
+
+</style>

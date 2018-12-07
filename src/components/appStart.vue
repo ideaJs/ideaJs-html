@@ -14,6 +14,8 @@ export default {
     }
   },
   mounted () {
+    this.$route.meta.touch.leftFuc = this.start // 页面向左滑动事件
+//    this.$route.meta.touch.rightFuc = this.back // 页面向右滑动事件
   },
   methods: {
     start () {

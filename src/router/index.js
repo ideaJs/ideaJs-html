@@ -35,6 +35,10 @@ export default new Router({
         right: '',                                   // header右边按钮
         rightFuc: (fuc) => {fuc && fuc()}            // header右边按钮点击事件
       },
+      touch: {
+        leftFuc: (fuc) => {fuc && fuc()},            // vue-touch左滑页面事件-下一页
+        rightFuc: (fuc) => {fuc && fuc()}            // vue-touch右滑页面事件-上一页
+      },
       isBack: false                                  // 判断是否返回上一页
     }
   }, {
@@ -48,6 +52,10 @@ export default new Router({
         leftFuc: (fuc) => {fuc && fuc()},            // header左边按钮点击事件
         right: '',                                   // header右边按钮
         rightFuc: (fuc) => {fuc && fuc()}            // header右边按钮点击事件
+      },
+      touch: {
+        leftFuc: (fuc) => {fuc && fuc()},            // vue-touch左滑页面事件-下一页
+        rightFuc: (fuc) => {fuc && fuc()}            // vue-touch右滑页面事件-上一页
       },
       isBack: false                                  // 判断是否返回上一页
     }
@@ -63,6 +71,10 @@ export default new Router({
         right: '',                                    // header右边按钮
         rightFuc: (fuc) => {fuc && fuc()}             // header右边按钮点击事件
       },
+      touch: {
+        leftFuc: (fuc) => {fuc && fuc()},             // vue-touch左滑页面事件-下一页
+        rightFuc: (fuc) => {fuc && fuc()}             // vue-touch右滑页面事件-上一页
+      },
       isBack: false                                   // 判断是否返回上一页
     }
   }, {
@@ -76,6 +88,10 @@ export default new Router({
         leftFuc: (fuc) => {fuc && fuc()},             // header左边按钮点击事件
         right: '',                                    // header右边按钮
         rightFuc: (fuc) => {fuc && fuc()}             // header右边按钮点击事件
+      },
+      touch: {
+        leftFuc: (fuc) => {fuc && fuc()},              // vue-touch左滑页面事件-下一页
+        rightFuc: (fuc) => {fuc && fuc()}              // vue-touch右滑页面事件-上一页
       },
       isBack: false                                   // 判断是否返回上一页
     }
@@ -95,6 +111,10 @@ export default new Router({
           fuc && fuc()
         }                                              // header右边按钮点击事件
       },
+      touch: {
+        leftFuc: (fuc) => {fuc && fuc()},              // vue-touch左滑页面事件-下一页
+        rightFuc: (fuc) => {fuc && fuc()}              // vue-touch右滑页面事件-上一页
+      },
       isBack: false,                                   // 判断是否返回上一页
       scrollToTop: true,                               // 是否滚动到顶部
       isReload: false,                                 // 控制是否刷新页面
@@ -112,6 +132,10 @@ export default new Router({
         right: 'menu',                                 // header右边按钮
         rightFuc: (fuc) => {fuc && fuc()}              // header右边按钮点击事件
       },
+      touch: {
+        leftFuc: (fuc) => {fuc && fuc()},              // vue-touch左滑页面事件-下一页
+        rightFuc: (fuc) => {fuc && fuc()}              // vue-touch右滑页面事件-上一页
+      },
       isBack: false,                                   // 判断是否返回上一页
       scrollToTop: true,                               // 是否滚动到顶部
       isReload: false,                                 // 控制是否刷新页面
@@ -128,6 +152,10 @@ export default new Router({
         leftFuc: (fuc) => {fuc && fuc()},              // header左边按钮点击事件
         right: 'menu',                                 // header右边按钮
         rightFuc: (fuc) => {fuc && fuc()}              // header右边按钮点击事件
+      },
+      touch: {
+        leftFuc: (fuc) => {fuc && fuc()},              // vue-touch左滑页面事件-下一页
+        rightFuc: (fuc) => {fuc && fuc()}              // vue-touch右滑页面事件-上一页
       },
       isBack: false,                                   // 判断是否返回上一页
       scrollToTop: true,                               // 是否滚动到顶部

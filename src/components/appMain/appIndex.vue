@@ -18,7 +18,11 @@
       }
     },
     mounted () {
-      this.$route.meta.header.leftFuc = this.back
+      /*自定义顶部header两侧按钮事件+页面左右滑动事件*/
+      this.$route.meta.header.leftFuc = this.back                 // header左侧返回按钮事件
+      this.$route.meta.header.rightFuc = this.getMenu             // header右侧菜单按钮事件
+      this.$route.meta.touch.leftFuc = this.start                 // 页面向左滑动事件
+      this.$route.meta.touch.rightFuc = this.back                 // 页面向右滑动事件
     },
     methods: {
       start () {
@@ -34,6 +38,15 @@
         this.$route.meta.isBack = true
         this.$back({
           path: '/appLogin',
+          query: {
+            type: '3'
+          }
+        })
+      },
+      getMenu () {
+        this.$route.meta.isBack = false
+        this.$push({
+          path: '/appMenu',
           query: {
             type: '3'
           }
