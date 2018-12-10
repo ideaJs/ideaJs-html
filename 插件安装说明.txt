@@ -24,7 +24,7 @@ vue.js项目安装插件列表：
 7.安装vuex：Vuex 是 store（仓库）
   npm install vuex --save
 
-8. vuex-router-sync：把vue-router的状态放进vuex的state中
+8. vuex-router-sync：把vue-router的数据状态同步到vuex的state中
   npm install vuex-router-sync --save
 
 9. vue-touch 是手机端左右滑屏插件

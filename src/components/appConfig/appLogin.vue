@@ -25,7 +25,7 @@ export default {
     start () {
       this.$route.meta.isBack = false
       this.$push({
-        path: '/appIndex',
+        path: '/appCaptcha',
         query: {
           type: '3'
         }
