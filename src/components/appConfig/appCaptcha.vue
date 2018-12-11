@@ -137,7 +137,7 @@ export default {
       drawCaptcha.init({
         el: document.getElementById('captcha'),
         onSuccess: () => {
-          document.getElementById('msg').innerHTML = '登录成功'
+          document.getElementById('msg').innerHTML = '验证成功'
         },
         onFail: () => {
           this.data.captchaImg = this.data.imgLists[Math.floor(Math.random()*this.data.imgLists.length)]
