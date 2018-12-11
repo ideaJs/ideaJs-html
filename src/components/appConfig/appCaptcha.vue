@@ -2,12 +2,12 @@
 <template>
   <div class="appCaptcha">
     <div class="container">
-      <img width="100px" height="100px" class="headerFace" :src="headerFace" />
+      <img width="100px" height="100px" class="headerFace" :src="data.headerFace" />
       <input value="" placeholder="请输入用户名"/>
       <input type="password" value="" placeholder="请输入密码"/>
       <div id="captcha"></div>
       <div id="msg"></div>
-      <img id="captchaImg" style="display:none;" width="100px" height="40px" :src="captchaImg" />
+      <img id="captchaImg" style="display:none;" width="100px" height="40px" :src="data.captchaImg" />
     </div>
   </div>
 </template>
@@ -68,59 +68,61 @@ export default {
   name: 'appCaptcha',
   data () {
     return {
-      headerFace: headerFace001,
-      captchaImg: captcha001,
-      imgLists: [
-        captcha001,
-        captcha002,
-        captcha003,
-        captcha004,
-        captcha005,
-        captcha006,
-        captcha007,
-        captcha008,
-        captcha009,
-        captcha010,
-        captcha011,
-        captcha012,
-        captcha013,
-        captcha014,
-        captcha015,
-        captcha016,
-        captcha017,
-        captcha018,
-        captcha019,
-        captcha020,
-        captcha021,
-        captcha022,
-        captcha023,
-        captcha024,
-        captcha025,
-        captcha026,
-        captcha027,
-        captcha028,
-        captcha029,
-        captcha030,
-        captcha031,
-        captcha032,
-        captcha033,
-        captcha034,
-        captcha035,
-        captcha036,
-        captcha037,
-        captcha038,
-        captcha039,
-        captcha040,
-        captcha041,
-        captcha042,
-        captcha043,
-        captcha044,
-        captcha045,
-        captcha046,
-        captcha047,
-        captcha048,
-        captcha049
-      ]
+      data: {
+        headerFace: headerFace001,
+        captchaImg: captcha001,
+        imgLists: [
+          captcha001,
+          captcha002,
+          captcha003,
+          captcha004,
+          captcha005,
+          captcha006,
+          captcha007,
+          captcha008,
+          captcha009,
+          captcha010,
+          captcha011,
+          captcha012,
+          captcha013,
+          captcha014,
+          captcha015,
+          captcha016,
+          captcha017,
+          captcha018,
+          captcha019,
+          captcha020,
+          captcha021,
+          captcha022,
+          captcha023,
+          captcha024,
+          captcha025,
+          captcha026,
+          captcha027,
+          captcha028,
+          captcha029,
+          captcha030,
+          captcha031,
+          captcha032,
+          captcha033,
+          captcha034,
+          captcha035,
+          captcha036,
+          captcha037,
+          captcha038,
+          captcha039,
+          captcha040,
+          captcha041,
+          captcha042,
+          captcha043,
+          captcha044,
+          captcha045,
+          captcha046,
+          captcha047,
+          captcha048,
+          captcha049
+        ]
+      }
     }
   },
   mounted () {
@@ -131,21 +133,21 @@ export default {
 
     },
     draw () {
-      this.captchaImg = this.imgLists[Math.floor(Math.random()*this.imgLists.length)]
+      this.data.captchaImg = this.data.imgLists[Math.floor(Math.random()*this.data.imgLists.length)]
       drawCaptcha.init({
         el: document.getElementById('captcha'),
         onSuccess: () => {
           document.getElementById('msg').innerHTML = '登录成功'
         },
         onFail: () => {
-          this.captchaImg = this.imgLists[Math.floor(Math.random()*this.imgLists.length)]
+          this.data.captchaImg = this.data.imgLists[Math.floor(Math.random()*this.data.imgLists.length)]
           document.getElementById('msg').innerHTML = '拼图错误，请重试'
           setTimeout(() => {
             document.getElementById('msg').innerHTML = ''
           }, 1000)
         },
         onRefresh: () => {
-          this.captchaImg = this.imgLists[Math.floor(Math.random()*this.imgLists.length)]
+          this.data.captchaImg = this.data.imgLists[Math.floor(Math.random()*this.data.imgLists.length)]
           document.getElementById('msg').innerHTML = ''
         }
       })

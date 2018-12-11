@@ -1,7 +1,7 @@
 <!-- Created by macmzon on 2018/11/29-->
 <template>
   <div class="appIndex">
-    <appHeader :headerInfo="headerInfo"></appHeader>
+    <appHeader :headerInfo="data.headerInfo"></appHeader>
     <div class="">
       <el-button type="success" round @click.active="back()">上一页</el-button>
       <el-button type="success" round @click.active="start()">下一页</el-button>
@@ -14,7 +14,9 @@
     name: 'appIndex',
     data () {
       return {
-        headerInfo: this.$route.meta
+        data: {
+          headerInfo: this.$route.meta
+        }
       }
     },
     mounted () {

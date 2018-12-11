@@ -11,6 +11,9 @@
     name: 'Welcome',
     data () {
       return {
+        data: {
+
+        }
       }
     },
     mounted () {

@@ -11,6 +11,9 @@ export default {
   name: 'appStart',
   data () {
     return {
+      data: {
+
+      }
     }
   },
   mounted () {
