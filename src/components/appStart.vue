@@ -10,6 +10,7 @@
 </template>
 
 <script>
+  import { Group, Cell } from 'vux'
 export default {
   name: 'appStart',
   data () {
@@ -29,16 +30,18 @@ export default {
 //        console.log(res)
 //      })
       this.data.loading = true
-//      this.$route.meta.isBack = false
-//      this.$push({
-//        path: '/appLogin',
-//        query: {
-//          type: '3'
-//        }
-//      })
+      this.$route.meta.isBack = false
+      this.$push({
+        path: '/appLogin',
+        query: {
+          type: '3'
+        }
+      })
     }
   },
   components: {
+    Group,
+    Cell
   }
 }
 </script>
