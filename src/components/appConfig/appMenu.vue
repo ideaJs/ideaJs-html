@@ -3,8 +3,8 @@
   <div class="appMenu">
     <appHeader :headerInfo="data.headerInfo"></appHeader>
     <div class="">
-      <el-button type="success" round @click.active="back()">上一页</el-button>
-      <el-button type="success" round @click.active="start()">下一页</el-button>
+      <button type="success" round @click.active="back()">上一页</button>
+      <button type="success" round @click.active="start()">下一页</button>
     </div>
   </div>
 </template>

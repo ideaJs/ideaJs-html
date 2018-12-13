@@ -1,12 +1,11 @@
 <!--启动页 Created by macmzon on 2018/11/2-->
 <template>
   <div class="appStart">
-    <el-button type="success" round @click.active="start()">开始</el-button>
+    <button type="success" round @click.active="start()">开始</button>
   </div>
 </template>
 
 <script>
-import {Loading} from 'element-ui'
 export default {
   name: 'appStart',
   data () {
@@ -35,7 +34,6 @@ export default {
     }
   },
   components: {
-    Loading
   }
 }
 </script>

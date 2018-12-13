@@ -6,15 +6,12 @@ import App from './App'
 import router from './router'
 import store from './store'
 import {routerSlide} from './router/routerSlide'
-import ElementUI from 'element-ui'
-import 'element-ui/lib/theme-chalk/index.css'
 import VueResource from 'vue-resource' // http请求插件
 import {HTTP_POST, HTTP_GET} from './common/js/isPost'
 import {goURL, goPush, goBack, goReplace} from './common/js/isApi'
 import {sync} from 'vuex-router-sync'
 import VueTouch from 'vue-touch'
 
-Vue.use(ElementUI, { size: 'small', zIndex: 3000 })
 Vue.use(VueResource)
 Vue.use(Vuex)
 Vue.use(store)

@@ -6,7 +6,6 @@
 </template>
 
 <script>
-  import {Loading} from 'element-ui'
   export default {
     name: 'Welcome',
     data () {
@@ -34,7 +33,6 @@
       }
     },
     components: {
-      Loading
     }
   }
 </script>

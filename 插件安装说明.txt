@@ -2,30 +2,33 @@
 
 vue.js项目安装插件列表：
 
-1. ElementUi：HTML5前端插件库
-  npm install --save element-ui
+1. iView：HTML5前端-PC客户端插件库
+  npm install iview --save
 
-2. vue-resource：http请求方法：post/get及跨域请求支持
+2. VUX：HTML5前端-移动客户端插件库
+  npm install vux --save
+
+3. vue-resource：http请求方法：post/get及跨域请求支持
   npm install --save vue-resource
 
-3. stylus：css样式预处理器
+4. stylus：css样式预处理器
   npm install stylus --save-dev
 
-4. base64 + md5：数据加密
+5. base64 + md5：数据加密
   npm install --save js-base64
   npm install --save js-md5
 
-5. Echarts图表：
+6. Echarts图表：
   npm install echarts -S
 
-6. PDF文档阅读：
+7. PDF文档阅读：
   npm isntall --save pdfjs-dist
 
-7.安装vuex：Vuex 是 store（仓库）
+8.安装vuex：Vuex 是 store（仓库）
   npm install vuex --save
 
-8. vuex-router-sync：把vue-router的数据状态同步到vuex的state中
+9. vuex-router-sync：把vue-router的数据状态同步到vuex的state中
   npm install vuex-router-sync --save
 
-9. vue-touch 是手机端左右滑屏插件
+10. vue-touch 是手机端左右滑屏插件
   npm install vue-touch@next --save
