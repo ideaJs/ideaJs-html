@@ -8,7 +8,9 @@ vue.js项目安装插件列表：
 2. VUX：HTML5前端-移动客户端插件库
   npm install vux --save-dev
   npm install vux-loader --save-dev
+  npm install module --save-dev
   npm install less less-loader --save-dev
+
 
 3. vue-resource：http请求方法：post/get及跨域请求支持
   npm install --save vue-resource
