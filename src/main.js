@@ -11,12 +11,17 @@ import {HTTP_POST, HTTP_GET} from './common/js/isPost'
 import {goURL, goPush, goBack, goReplace} from './common/js/isApi'
 import {sync} from 'vuex-router-sync'
 import VueTouch from 'vue-touch'
+import iView from 'iview'
+// import vux from 'vux'
+import 'iview/dist/styles/iview.css'
 
 Vue.use(VueResource)
 Vue.use(Vuex)
 Vue.use(store)
 sync(store, router)
 Vue.use(VueTouch, {name: 'v-touch'})
+Vue.use(iView)
+// Vue.use(vux)
 
 Vue.config.productionTip = false
 Vue.prototype.$post = HTTP_POST // post请求：this.$post(url, param, success, fail, load, error, http)
@@ -24,6 +29,12 @@ Vue.prototype.$get = HTTP_GET // get请求：this.$get(url, success, fail, load,
 Vue.prototype.$goURL = goURL // 项目外页面跳转：this.$goURL(url)
 Vue.prototype.$push = goPush // 项目内页面跳转push：this.$push(param)
 Vue.prototype.$back = goBack // 项目内页面返回back：this.$back(param)
+
+const vuxLoader = require('vux-loader')
+const webpackConfig = originalConfig // 原来的 module.exports 代码赋值给变量 webpackConfig
+module.exports = vuxLoader.merge(webpackConfig, {
+  plugins: ['vux-ui']
+})
 
 router.beforeEach((to, from, next) => { // 在页面跳转之前处理事件：to即将进入的路由页面，from当前即将离开的路由页面
   if (to) {
