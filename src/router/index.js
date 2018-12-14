@@ -17,7 +17,7 @@ const AppIndex = () => import('@/components/appMain/appIndex')
 
 /*
 header参数说明：
-setting设置按钮，menu菜单按钮，arrow-left左侧返回按钮，
+ios-contact会员按钮，md-menu菜单按钮，ios-arrow-back左侧返回按钮，
 */
 
 export default new Router({
@@ -103,11 +103,11 @@ export default new Router({
     meta: {
       title: '首页',                                   // 页面标题
       header: {
-        left: 'menu',                                  // header左边按钮
+        left: 'md-menu',                                  // header左边按钮
         leftFuc: (fuc) => {
           fuc && fuc()
         },                                             // header左边按钮点击事件
-        right: 'setting',                              // header右边按钮
+        right: 'ios-contact',                              // header右边按钮
         rightFuc: (fuc) => {
           fuc && fuc()
         }                                              // header右边按钮点击事件
@@ -128,9 +128,9 @@ export default new Router({
     meta: {
       title: '菜单',                                   // 页面标题
       header: {
-        left: 'arrow-left',                            // header左边按钮
+        left: 'ios-arrow-back',                            // header左边按钮
         leftFuc: (fuc) => {fuc && fuc()},              // header左边按钮点击事件
-        right: 'menu',                                 // header右边按钮
+        right: 'md-menu',                                 // header右边按钮
         rightFuc: (fuc) => {fuc && fuc()}              // header右边按钮点击事件
       },
       touch: {
@@ -149,9 +149,9 @@ export default new Router({
     meta: {
       title: '设置',                                   // 页面标题
       header: {
-        left: 'arrow-left',                            // header左边按钮
+        left: 'ios-arrow-back',                            // header左边按钮
         leftFuc: (fuc) => {fuc && fuc()},              // header左边按钮点击事件
-        right: 'menu',                                 // header右边按钮
+        right: 'md-menu',                                 // header右边按钮
         rightFuc: (fuc) => {fuc && fuc()}              // header右边按钮点击事件
       },
       touch: {
@@ -170,9 +170,9 @@ export default new Router({
     meta: {
       title: '验证',                                   // 页面标题
       header: {
-        left: 'arrow-left',                            // header左边按钮
+        left: 'ios-arrow-back',                            // header左边按钮
         leftFuc: (fuc) => {fuc && fuc()},              // header左边按钮点击事件
-        right: 'menu',                                 // header右边按钮
+        right: 'md-menu',                                 // header右边按钮
         rightFuc: (fuc) => {fuc && fuc()}              // header右边按钮点击事件
       },
       touch: {

@@ -3,13 +3,14 @@
   <div class="appShop">
     <appHeader :headerInfo="data.headerInfo"></appHeader>
     <div class="">
-      <button type="success" round @click.active="back()">上一页</button>
-      <button type="success" round @click.active="start()">下一页</button>
+      <Button type="success" round @click.active="back()">上一页</Button>
+      <Button type="success" round @click.active="start()">下一页</Button>
     </div>
   </div>
 </template>
 
 <script>
+  import { Button } from 'iview'
   import appHeader from'@/components/appConfig/appHeader.vue'
 export default {
   name: 'appShop',
@@ -56,7 +57,9 @@ export default {
       })
     }
   },
-  components: {}
+  components: {
+    Button
+  }
 }
 </script>
 

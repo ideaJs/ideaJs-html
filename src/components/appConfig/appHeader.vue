@@ -3,16 +3,21 @@
   <div class="appHeader">
     <div>
       <!--header左侧按钮left-->
-      <div><i :class="'el-icon-' + headerInfo.header.left" @click="headerInfo.header.leftFuc()"></i></div>
+      <div>
+        <Icon :type="headerInfo.header.left" size="24" @click="headerInfo.header.leftFuc()" />
+      </div>
       <!--header标题title-->
       <div><span>{{headerInfo.title}}</span></div>
       <!--header右侧按钮right-->
-      <div><i :class="'el-icon-' + headerInfo.header.right" @click="headerInfo.header.rightFuc()"></i></div>
+      <div>
+        <Icon :type="headerInfo.header.right" size="24" @click="headerInfo.header.rightFuc()" />
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+  import { Icon } from 'iview'
   export default {
     name: 'appHeader',
     props: {
@@ -29,7 +34,9 @@
         console.log('start')
       }
     },
-    components: {}
+    components: {
+      Icon
+    }
   }
 </script>
 

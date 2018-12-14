@@ -2,12 +2,13 @@
 <template>
   <div class="appLogin">
     <div class="">
-      <button type="success" round @click.active="back()">上一页</button>
-      <button type="success" round @click.active="start()">下一页</button>
+      <Button type="primary" round @click.active="back()">上一页</Button>
+      <Button type="success" round @click.active="start()">下一页</Button>
     </div>
   </div>
 </template>
 <script>
+  import { Button } from 'iview'
 export default {
   name: 'appLogin',
   data () {
@@ -51,6 +52,7 @@ export default {
     }
   },
   components: {
+    Button
   }
 }
 </script>

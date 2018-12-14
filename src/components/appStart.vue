@@ -1,16 +1,15 @@
 <!--启动页 Created by macmzon on 2018/11/2-->
 <template>
   <div class="appStart">
-    <Button type="primary" :loading="data.loading" @click="start">
+    <Button type="primary" shape="circle" :loading="data.loading" @click="start">
       <span v-if="!data.loading">开始</span>
-      <!--<span v-else>Loading...</span>-->
     </Button>
-    <!--<button type="success" round @click.active="start()">开始</button>-->
   </div>
 </template>
 
 <script>
   import { Group, Cell } from 'vux'
+  import { Button } from 'iview'
 export default {
   name: 'appStart',
   data () {
@@ -41,7 +40,8 @@ export default {
   },
   components: {
     Group,
-    Cell
+    Cell,
+    Button
   }
 }
 </script>

@@ -6,6 +6,8 @@
 </template>
 
 <script>
+  import { Group, Cell } from 'vux'
+  import { Button } from 'iview'
   export default {
     name: 'Welcome',
     data () {
@@ -33,6 +35,9 @@
       }
     },
     components: {
+      Group,
+      Cell,
+      Button
     }
   }
 </script>

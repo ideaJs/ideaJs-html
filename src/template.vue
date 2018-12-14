@@ -1,16 +1,17 @@
 <!-- Created by macmzon on 2018/11/29-->
 <!--vue页面初始化模板-->
 <template>
-    <div class="appMenu">
-        <appHeader :headerInfo="data.headerInfo"></appHeader>
-        <div class="">
-            <button type="success" round @click.active="back()">上一页</button>
-            <button type="success" round @click.active="start()">下一页</button>
-        </div>
+  <div class="appMenu">
+    <appHeader :headerInfo="data.headerInfo"></appHeader>
+    <div class="">
+      <Button type="primary" round @click.active="back()">上一页</Button>
+      <Button type="success" round @click.active="start()">下一页</Button>
     </div>
+  </div>
 </template>
 
 <script>
+  import { Button } from 'iview'
   import appHeader from'@/components/appConfig/appHeader.vue'
   export default {
     name: 'appMenu',
@@ -58,7 +59,8 @@
       }
     },
     components: {
-      appHeader
+      appHeader,
+      Button
     }
   }
 </script>

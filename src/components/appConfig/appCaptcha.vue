@@ -13,6 +13,7 @@
 </template>
 
 <script>
+  import { Button } from 'iview'
   import captcha001 from '../../common/images/captcha/captcha001.jpg'
   import captcha002 from '../../common/images/captcha/captcha002.jpg'
   import captcha003 from '../../common/images/captcha/captcha003.jpg'
@@ -138,10 +139,17 @@ export default {
         el: document.getElementById('captcha'),
         onSuccess: () => {
           document.getElementById('msg').innerHTML = '验证成功'
+          this.$route.meta.isBack = false
+          this.$push({
+            path: '/appIndex',
+            query: {
+              type: '3'
+            }
+          })
         },
         onFail: () => {
           this.data.captchaImg = this.data.imgLists[Math.floor(Math.random()*this.data.imgLists.length)]
-          document.getElementById('msg').innerHTML = '拼图错误，请重试'
+          document.getElementById('msg').innerHTML = '验证失败，请重试'
           setTimeout(() => {
             document.getElementById('msg').innerHTML = ''
           }, 1000)
@@ -154,7 +162,7 @@ export default {
     },
   },
   components: {
-
+    Button
   }
 }
 </script>

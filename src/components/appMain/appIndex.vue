@@ -3,12 +3,13 @@
   <div class="appIndex">
     <appHeader :headerInfo="data.headerInfo"></appHeader>
     <div class="">
-      <button type="success" round @click.active="back()">上一页</button>
-      <button type="success" round @click.active="start()">下一页</button>
+      <Button type="primary" round @click.active="back()">上一页</Button>
+      <Button type="success" round @click.active="start()">下一页</Button>
     </div>
   </div>
 </template>
 <script>
+  import { Button } from 'iview'
   import appHeader from'@/components/appConfig/appHeader.vue'
   export default {
     name: 'appIndex',
@@ -22,7 +23,7 @@
     mounted () {
       /*自定义顶部header两侧按钮事件+页面左右滑动事件*/
       this.$route.meta.header.leftFuc = this.back                 // header左侧返回按钮事件
-      this.$route.meta.header.rightFuc = this.getMenu             // header右侧菜单按钮事件
+      this.$route.meta.header.rightFuc = this.getMember             // header右侧菜单按钮事件
       this.$route.meta.touch.leftFuc = this.start                 // 页面向左滑动事件
       this.$route.meta.touch.rightFuc = this.back                 // 页面向右滑动事件
     },
@@ -45,10 +46,10 @@
           }
         })
       },
-      getMenu () {
+      getMember () {
         this.$route.meta.isBack = false
         this.$push({
-          path: '/appMenu',
+          path: '/appMember',
           query: {
             type: '3'
           }
@@ -56,7 +57,8 @@
       }
     },
     components: {
-      appHeader
+      appHeader,
+      Button
     }
   }
 </script>

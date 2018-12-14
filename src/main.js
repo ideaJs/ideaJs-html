@@ -11,7 +11,6 @@ import {HTTP_POST, HTTP_GET} from './common/js/isPost'
 import {goURL, goPush, goBack, goReplace} from './common/js/isApi'
 import {sync} from 'vuex-router-sync'
 import VueTouch from 'vue-touch'
-import iView from 'iview'
 import 'iview/dist/styles/iview.css'
 
 Vue.use(VueResource)
@@ -19,7 +18,6 @@ Vue.use(Vuex)
 Vue.use(store)
 sync(store, router)
 Vue.use(VueTouch, {name: 'v-touch'})
-Vue.use(iView)
 
 Vue.config.productionTip = false
 Vue.prototype.$post = HTTP_POST // post请求：this.$post(url, param, success, fail, load, error, http)
