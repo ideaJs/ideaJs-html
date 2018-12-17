@@ -1,9 +1,11 @@
 <!--启动页 Created by macmzon on 2018/11/2-->
 <template>
   <div class="appStart">
-    <Button type="primary" shape="circle" :loading="data.loading" @click="start">
-      <span v-if="!data.loading">开始</span>
-    </Button>
+    <div>
+      <Button type="primary" shape="circle" :loading="data.loading" @click="start">
+        <span v-if="!data.loading">开始</span>
+      </Button>
+    </div>
   </div>
 </template>
 
