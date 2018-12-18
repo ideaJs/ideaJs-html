@@ -5,7 +5,7 @@
       <router-view v-if="!$route.meta.isReload"></router-view>
     </transition>
 -->
-    <v-touch v-on:swipeleft="onSwipeLeft" v-on:swiperight="onSwipeRight">
+    <v-touch ref="touch" v-on:swipeleft="onSwipeLeft" v-on:swiperight="onSwipeRight">
       <transition :name="direction" keep-alive>
         <router-view v-if="!$route.meta.isReload"></router-view>
       </transition>
@@ -25,7 +25,6 @@ export default {
   data () {
     return {
       data: {
-
       }
     }
   },

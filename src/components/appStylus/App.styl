@@ -2,18 +2,20 @@
   width: 100%
   height: 100vh
   background: #fff
-  >div>div
-    width: 100%
-    height: 100vh
-    background: #fff
-    padding: 2.5rem 0.5rem
-    margin: 0
+  >div
+    touch-action: pan-y!important
+    >div
+      width: 100%
+      height: 100vh
+      background: #fff
+      padding: 2.5rem 0.5rem
+      margin: 0
   .slide-out-enter-active,
   .slide-out-leave-active,
   .slide-in-enter-active,
   .slide-in-leave-active
     will-change: transform
-    transition: all 1000ms
+    transition: all 500ms
     position: absolute
     height: 100%
     width: 100%

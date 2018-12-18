@@ -1,12 +1,15 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
+const AppHello = () => import('@/components/appStart')
 const AppStart = () => import('@/components/appStart')
 const AppRegiste = () => import('@/components/appConfig/appRegiste')
 const AppLogin = () => import('@/components/appConfig/appLogin')
 const AppMenu = () => import('@/components/appConfig/appMenu')
 const AppSet = () => import('@/components/appConfig/appSet')
 const AppCaptcha = () => import('@/components/appConfig/appCaptcha')
+const AppScan = () => import('@/components/appConfig/appScan')
+
 const AppIndex = () => import('@/components/appMain/appIndex')
 
 // post请求：this.$post(url, param, success, fail, load, error, http)
@@ -26,8 +29,8 @@ export default new Router({
   transitionOnLoad:true,
   routes: [{
     path: '/',
-    name: 'AppStart',
-    component: AppStart,
+    name: 'AppHello',
+    component: AppHello,
     meta: {
       title: '欢迎',                                 // 页面标题
       header: {
@@ -169,6 +172,27 @@ export default new Router({
     component: AppCaptcha,
     meta: {
       title: '验证',                                   // 页面标题
+      header: {
+        left: 'ios-arrow-back',                            // header左边按钮
+        leftFuc: (fuc) => {fuc && fuc()},              // header左边按钮点击事件
+        right: 'md-menu',                                 // header右边按钮
+        rightFuc: (fuc) => {fuc && fuc()}              // header右边按钮点击事件
+      },
+      touch: {
+        leftFuc: (fuc) => {fuc && fuc()},              // vue-touch左滑页面事件-下一页
+        rightFuc: (fuc) => {fuc && fuc()}              // vue-touch右滑页面事件-上一页
+      },
+      isBack: false,                                   // 判断是否返回上一页
+      scrollToTop: true,                               // 是否滚动到顶部
+      isReload: false,                                 // 控制是否刷新页面
+      needLogin: true                                  // 进入页面需要登录
+    }
+  }, {
+    path: '/appScan',
+    name: 'AppScan',
+    component: AppScan,
+    meta: {
+      title: '扫描',                                   // 页面标题
       header: {
         left: 'ios-arrow-back',                            // header左边按钮
         leftFuc: (fuc) => {fuc && fuc()},              // header左边按钮点击事件

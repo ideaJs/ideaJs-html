@@ -17,6 +17,12 @@
         let scale = 1 / window.devicePixelRatio
         let viewport = '<meta name="viewport" content="initial-scale=' + scale + ', maximum-scale=' + scale +', minimum-scale=' + scale + ', width=device-width, user-scalable=no" />';
         document.head.append(viewport);
+        document.addEventListener( "plusready", onPlusReady, false );
+        // 扩展API加载完毕，现在可以正常调用扩展API
+        function onPlusReady() {
+          let e = document.getElementById("scan");
+          e.removeAttribute( "disabled" );
+        }
       })();
     </script>
   </body>
