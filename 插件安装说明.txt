@@ -35,3 +35,6 @@ vue.js项目安装插件列表：
 
 10. vue-touch 是手机端左右滑屏插件
   npm install vue-touch@next --save
+
+11. vue-qr生成中间带图片的二维码
+  npm install vue-qr --save

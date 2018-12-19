@@ -127,7 +127,9 @@ export default {
     }
   },
   mounted () {
-    this.draw()
+    setTimeout(() => {
+      this.draw()
+    }, 200)
   },
   methods: {
     start () {

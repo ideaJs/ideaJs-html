@@ -26,6 +26,10 @@ Vue.prototype.$goURL = goURL // 项目外页面跳转：this.$goURL(url)
 Vue.prototype.$push = goPush // 项目内页面跳转push：this.$push(param)
 Vue.prototype.$back = goBack // 项目内页面返回back：this.$back(param)
 
+// 禁用浏览器返回历史页功能，可以让用户一直停留在当前页面
+window.onpopstate = () => {
+  history.go(1)
+}
 router.beforeEach((to, from, next) => { // 在页面跳转之前处理事件：to即将进入的路由页面，from当前即将离开的路由页面
   if (to) {
     document.title = to.meta.title
@@ -42,17 +46,7 @@ router.afterEach((to, from, next) => { // 在页面跳转之后处理事件
     }
   }
 })
-// 禁用浏览器返回历史页功能，可以让用户一直停留在当前页面
-pushHistory()
-window.addEventListener("popstate", function (e) {
-  pushHistory() //注，此处调用，可以用户一直停留着这个页面
-}, false)
-function pushHistory() {
-  window.history.pushState({
-    title: document.title,
-    url: "#"
-  }, document.title, "#")
-}
+
 VueTouch.config.swipe = {
   threshold: 50 //手指左右滑动距离
 }
