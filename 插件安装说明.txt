@@ -38,3 +38,6 @@ vue.js项目安装插件列表：
 
 11. vue-qr生成中间带图片的二维码
   npm install vue-qr --save
+
+12. vue-cropper组件实现手机端头像图片裁切上传
+  npm install vue-cropper
