@@ -71,7 +71,7 @@
               </Col>
               <Col span="12">
                 <Button type="error" @click="finish('')">
-                  <input type="button" class="operate" value="设置头像">
+                  设置头像
                 </Button>
               </Col>
             </Row>
