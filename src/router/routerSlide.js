@@ -1,6 +1,4 @@
-/**
- * Created by macmzon on 2018/12/5.
- */
+/*Created by macmzon@163.com*/
 
 // router路由，页面切换动画：in进入新页面，out返回上一页
 // 视图切换动画逻辑

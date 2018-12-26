@@ -1,6 +1,4 @@
-/**
- * Created by macmzon on 2018/11/27.
- */
+/*Created by macmzon@163.com*/
 
 // 测试环境配置参数
 export function PARAM_TEST () {

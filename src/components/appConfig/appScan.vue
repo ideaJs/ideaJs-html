@@ -1,4 +1,4 @@
-<!-- Created by macmzon on 2018/11/29-->
+<!-- Created by macmzon@163.com-->
 <template>
   <div class="appScan">
     <appHeader :headerInfo="data.headerInfo"></appHeader>

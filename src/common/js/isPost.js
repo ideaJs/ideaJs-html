@@ -1,6 +1,4 @@
-/**
- * Created by macmzon on 2018/11/27.
- */
+/*Created by macmzon@163.com*/
 import {IS_URL} from '../../common/js/isUrl'
 import {IS_PARAM} from '../../common/js/isParam'
 import Vue from 'vue'

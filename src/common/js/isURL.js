@@ -1,6 +1,4 @@
-/**
- * Created by macmzon on 2018/11/26.
- */
+/*Created by macmzon@163.com*/
 // 测试环境URL地址
 export const IS_URL_TEST = {
   XML: '', // 登录地址

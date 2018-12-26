@@ -1,4 +1,4 @@
-<!--启动页 Created by macmzon on 2018/11/2-->
+<!--Created by macmzon@163.com-->
 <template>
   <div class="appStart">
     <div>

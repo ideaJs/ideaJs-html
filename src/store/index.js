@@ -1,6 +1,4 @@
-/**
- * Created by macmzon on 2018/12/4.
- */
+/*Created by macmzon@163.com*/
 
 // 引入vue 和 vuex
 import Vue from 'vue'

@@ -1,6 +1,4 @@
-/**
- * Created by macmzon on 2018/11/29.
- */
+/*Created by macmzon@163.com*/
 // 公共方法库
 
 let Base64 = require('js-base64').Base64

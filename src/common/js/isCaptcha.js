@@ -1,6 +1,4 @@
-/**
- * Created by macmzon on 2018/12/10.
- */
+/*Created by macmzon@163.com*/
 
 (function (window) {
   const l = 40, // 滑块边长
