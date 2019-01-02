@@ -130,7 +130,7 @@ export default {
   mounted () {
     setTimeout(() => {
       this.draw()
-    }, 800)
+    }, 8)
   },
   methods: {
     start () {
