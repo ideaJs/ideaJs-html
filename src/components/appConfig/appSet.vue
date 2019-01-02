@@ -1,6 +1,9 @@
 <!-- Created by macmzon@163.com-->
 <template>
   <div class="appSet">
+    <div v-transfer-dom>
+      <popup v-model="show"></popup>
+    </div>
     <appHeader :headerInfo="data.headerInfo"></appHeader>
     <div class="">
       <Button type="success" round @click.active="back()">上一页</Button>
@@ -10,11 +13,13 @@
 
 <script>
   import { Button } from 'iview'
+  import { Popup } from 'vux'
   import appHeader from'@/components/appConfig/appHeader.vue'
   export default {
     name: 'appSet',
     data () {
       return {
+        show: false,
         data: {
           headerInfo: this.$route.meta
         }
@@ -48,8 +53,7 @@
       }
     },
     components: {
-      appHeader,
-      Button
+      appHeader, Button, Popup
     }
   }
 </script>

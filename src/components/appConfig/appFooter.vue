@@ -5,6 +5,7 @@
   </div>
 </template>
 <script>
+  import { Popup } from 'vux'
   export default {
     appFooter: 'appFooter',
     props: {
@@ -20,7 +21,8 @@
       start () {
       }
     },
-    components: {}
+    components: {
+    }
   }
 </script>
 

@@ -1,6 +1,9 @@
 <!-- Created by macmzon@163.com-->
 <template>
   <div class="appBarCode">
+    <div v-transfer-dom>
+      <popup v-model="show"></popup>
+    </div>
     <appHeader :headerInfo="data.headerInfo"></appHeader>
     <div class="">
       <div>
@@ -15,6 +18,7 @@
 <script>
   import VueQr from 'vue-qr'
   import {Button} from 'iview'
+  import { Popup } from 'vux'
   import appHeader from'@/components/appConfig/appHeader.vue'
   import logoSrc from'@/common/images/small-icon/appBarCode001.png'
   import bgSrc from'@/common/images/small-icon/appBarCode014.jpg'
@@ -23,6 +27,7 @@
     name: 'appBarCode',
     data () {
       return {
+        show: false,
         data: {
           headerInfo: this.$route.meta,
           logoSrc: logoSrc, // 默认二维码中间图片
@@ -75,9 +80,7 @@
       }
     },
     components: {
-      VueQr,
-      appHeader,
-      Button
+      VueQr, appHeader, Button, Popup
     }
   }
 </script>

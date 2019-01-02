@@ -1,4 +1,4 @@
-<!--Created by macmzon@163.com-->
+<!-- Created by macmzon@163.com-->
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
@@ -12,6 +12,7 @@
     name: 'Welcome',
     data () {
       return {
+        show: false,
         data: {
 
         }
@@ -35,9 +36,7 @@
       }
     },
     components: {
-      Group,
-      Cell,
-      Button
+      Group, Cell, Button
     }
   }
 </script>

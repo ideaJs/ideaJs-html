@@ -12,12 +12,14 @@ import {goURL, goPush, goBack, goReplace} from './common/js/isApi'
 import {sync} from 'vuex-router-sync'
 import VueTouch from 'vue-touch'
 import 'iview/dist/styles/iview.css'
+import { TransferDom } from 'vux'
 
 Vue.use(VueResource)
 Vue.use(Vuex)
 Vue.use(store)
 sync(store, router)
 Vue.use(VueTouch, {name: 'v-touch'})
+Vue.directive('transfer-dom', TransferDom)
 
 Vue.config.productionTip = false
 Vue.prototype.$post = HTTP_POST // post请求：this.$post(url, param, success, fail, load, error, http)

@@ -1,12 +1,12 @@
 /*Created by macmzon@163.com*/
 
 (function (window) {
-  const l = 40, // 滑块边长
-    r = 9, // 滑块半径
-    w = 300, // canvas宽度
-    h = 150, // canvas高度
+  const l = 40,                   // 滑块边长
+    r = 9,                        // 滑块半径
+    w = 300,                      // canvas宽度
+    h = 150,                      // canvas高度
     PI = Math.PI
-  const L = l + r * 2 + 3 // 滑块实际边长
+  const L = l + r * 2 + 3         // 滑块实际边长
 
   function getRandomNumberByRange (start, end) {
     return Math.round(Math.random() * (end - start) + start)
@@ -59,7 +59,7 @@
     ctx.arc(x + r - 2, y + l / 2, r + 0.4, 2.76 * PI, 1.24 * PI, true)
     ctx.lineTo(x, y)
     ctx.lineWidth = 2
-    ctx.fillStyle = 'rgba(255, 255, 255, 0.5)'
+    ctx.fillStyle = 'rgba(255, 255, 255, 0.6)'
     ctx.strokeStyle = 'rgba(255, 255, 255, 0.6)'
     ctx.stroke()
     ctx[operation]()
@@ -90,8 +90,8 @@
     }
 
     initDOM () {
-      const canvas = createCanvas(w, h) // 画布
-      const block = canvas.cloneNode(true) // 滑块
+      const canvas = createCanvas(w, h)                // 画布
+      const block = canvas.cloneNode(true)             // 滑块
       const sliderContainer = createElement('div', 'sliderContainer')
       const refreshIcon = createElement('div', 'refreshIcon')
       const sliderMask = createElement('div', 'sliderMask')
@@ -218,14 +218,14 @@
     }
 
     verify () {
-      const arr = this.trail // 拖动时y轴的移动距离
+      const arr = this.trail                    // 拖动时y轴的移动距离
       const average = arr.reduce(sum) / arr.length
       const deviations = arr.map(x => x - average)
       const stddev = Math.sqrt(deviations.map(square).reduce(sum) / arr.length)
       const left = parseInt(this.block.style.left)
       return {
         spliced: Math.abs(left - this.x) < 10,
-        verified: stddev !== 0, // 简单验证下拖动轨迹，为零时表示Y轴上下没有波动，可能非人为操作
+        verified: stddev !== 0,                 // 简单验证下拖动轨迹，为零时表示Y轴上下没有波动，可能非人为操作
       }
     }
 

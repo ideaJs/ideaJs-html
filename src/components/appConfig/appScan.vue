@@ -1,11 +1,14 @@
 <!-- Created by macmzon@163.com-->
 <template>
   <div class="appScan">
+    <div v-transfer-dom>
+      <popup v-model="show"></popup>
+    </div>
     <appHeader :headerInfo="data.headerInfo"></appHeader>
     <div class="">
       <div class="scan">
         <div id="bcid">
-          <div style="height:40%;margin-top:2.5rem"></div>
+          <div style="height:40%;margin-top:2.3rem"></div>
           <div class="tip">...载入中...</div>
         </div>
         <div class="footer">
@@ -21,6 +24,7 @@
 
 <script>
   import { Button } from 'iview'
+  import { Popup } from 'vux'
   import appHeader from'@/components/appConfig/appHeader.vue'
 
   let scan = null
@@ -28,6 +32,7 @@
     name: 'appScan',
     data () {
       return {
+        show: false,
         data: {
           headerInfo: this.$route.meta,
           codeUrl: '',
@@ -112,8 +117,7 @@
       }
     },
     components: {
-      appHeader,
-      Button
+      appHeader, Button, Popup
     }
   }
 </script>

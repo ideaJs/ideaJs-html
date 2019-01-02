@@ -2,6 +2,9 @@
 <!--vue页面初始化模板-->
 <template>
   <div class="appMenu">
+    <div v-transfer-dom>
+      <popup v-model="show"></popup>
+    </div>
     <appHeader :headerInfo="data.headerInfo"></appHeader>
     <div class="">
       <Button type="primary" round @click.active="back()">上一页</Button>
@@ -12,11 +15,13 @@
 
 <script>
   import { Button } from 'iview'
+  import { Popup } from 'vux'
   import appHeader from'@/components/appConfig/appHeader.vue'
   export default {
     name: 'appMenu',
     data () {
       return {
+        show: false,
         data: {
           headerInfo: this.$route.meta
         }
@@ -59,8 +64,7 @@
       }
     },
     components: {
-      appHeader,
-      Button
+      appHeader, Button, Popup
     }
   }
 </script>

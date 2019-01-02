@@ -1,6 +1,9 @@
 <!-- Created by macmzon@163.com-->
 <template>
   <div class="appHeadPhoto">
+    <div v-transfer-dom>
+      <popup v-model="show"></popup>
+    </div>
     <appHeader :headerInfo="data.headerInfo"></appHeader>
     <div class="">
       <div>
@@ -85,12 +88,14 @@
 <script>
   import {VueCropper} from 'vue-cropper'
   import {Button, Card, Row, Col, Icon} from 'iview'
+  import { Popup } from 'vux'
   import appHeader from'@/components/appConfig/appHeader.vue'
   import headerFace001 from '../../common/images/small-icon/headerFace001.png'
   export default {
     name: 'appHeadPhoto',
     data () {
       return {
+        show: false,
         data: {
           headerInfo: this.$route.meta,
           headImg: headerFace001,                // 默认头像图片地址
@@ -265,13 +270,7 @@
       }
     },
     components: {
-      appHeader,
-      Button,
-      Card,
-      Row,
-      Col,
-      Icon,
-      VueCropper
+      appHeader, Button, Card, Row, Col, Icon, VueCropper, Popup
     }
   }
 </script>

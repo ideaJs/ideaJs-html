@@ -2,9 +2,6 @@
 <template>
   <div class="appCaptcha">
     <div class="container">
-      <img width="100px" height="100px" class="headerFace" :src="data.headerFace" />
-      <input value="" placeholder="请输入用户名"/>
-      <input type="password" value="" placeholder="请输入密码"/>
       <div id="captcha"></div>
       <div id="msg"></div>
       <img id="captchaImg" style="display:none;" width="100px" height="40px" :src="data.captchaImg" />
@@ -13,7 +10,7 @@
 </template>
 
 <script>
-  import { Button } from 'iview'
+  import { Button, Input, Form, FormItem, Icon } from 'iview'
   import captcha001 from '../../common/images/captcha/captcha001.jpg'
   import captcha002 from '../../common/images/captcha/captcha002.jpg'
   import captcha003 from '../../common/images/captcha/captcha003.jpg'
@@ -67,8 +64,12 @@
   require('../../common/js/isCaptcha.js')
 export default {
   name: 'appCaptcha',
+  props: {
+    appCaptchaInfo: {}
+  },
   data () {
     return {
+      show: false,
       data: {
         headerFace: headerFace001,
         captchaImg: captcha001,
@@ -129,42 +130,55 @@ export default {
   mounted () {
     setTimeout(() => {
       this.draw()
-    }, 200)
+    }, 800)
   },
   methods: {
     start () {
-
+      this.$route.meta.isBack = false
+      this.$push({
+        path: '/appIndex',
+        query: {
+          type: '3'
+        }
+      })
     },
     draw () {
       this.data.captchaImg = this.data.imgLists[Math.floor(Math.random()*this.data.imgLists.length)]
       drawCaptcha.init({
         el: document.getElementById('captcha'),
         onSuccess: () => {
-          document.getElementById('msg').innerHTML = '验证成功'
-          this.$route.meta.isBack = false
-          this.$push({
-            path: '/appIndex',
-            query: {
-              type: '3'
-            }
-          })
+//          document.getElementById('msg').innerHTML = '验证成功'
+//          this.start()
+          this.appCaptchaInfo.start && this.appCaptchaInfo.start()
         },
         onFail: () => {
-          this.data.captchaImg = this.data.imgLists[Math.floor(Math.random()*this.data.imgLists.length)]
+          for (let i = 0; i < 100; i++) {
+            let img = this.data.imgLists[Math.floor(Math.random()*this.data.imgLists.length)]
+            if (this.data.captchaImg !== img) {
+              this.data.captchaImg = img
+              break
+            }
+          }
           document.getElementById('msg').innerHTML = '验证失败，请重试'
           setTimeout(() => {
             document.getElementById('msg').innerHTML = ''
           }, 1000)
         },
         onRefresh: () => {
-          this.data.captchaImg = this.data.imgLists[Math.floor(Math.random()*this.data.imgLists.length)]
+          for (let i = 0; i < 100; i++) {
+            let img = this.data.imgLists[Math.floor(Math.random()*this.data.imgLists.length)]
+            if (this.data.captchaImg !== img) {
+              this.data.captchaImg = img
+              break
+            }
+          }
           document.getElementById('msg').innerHTML = ''
         }
       })
     },
   },
   components: {
-    Button
+    Button, Input, Form, FormItem, Icon
   }
 }
 </script>

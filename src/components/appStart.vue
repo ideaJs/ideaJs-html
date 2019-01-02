@@ -1,4 +1,4 @@
-<!--Created by macmzon@163.com-->
+<!-- Created by macmzon@163.com-->
 <template>
   <div class="appStart">
     <div>
@@ -16,6 +16,7 @@ export default {
   name: 'appStart',
   data () {
     return {
+      show: false,
       data: {
         loading: false
       }
@@ -41,9 +42,7 @@ export default {
     }
   },
   components: {
-    Group,
-    Cell,
-    Button
+    Group, Cell, Button
   }
 }
 </script>

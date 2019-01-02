@@ -1,6 +1,9 @@
 <!-- Created by macmzon@163.com-->
 <template>
   <div class="appIndex">
+    <div v-transfer-dom>
+      <popup v-model="show"></popup>
+    </div>
     <appHeader :headerInfo="data.headerInfo"></appHeader>
     <div class="">
       <Button type="primary" round @click.active="back()">上一页</Button>
@@ -10,11 +13,13 @@
 </template>
 <script>
   import { Button } from 'iview'
+  import { Popup } from 'vux'
   import appHeader from'@/components/appConfig/appHeader.vue'
   export default {
     name: 'appIndex',
     data () {
       return {
+        show: false,
         data: {
           headerInfo: this.$route.meta
         }
@@ -57,8 +62,7 @@
       }
     },
     components: {
-      appHeader,
-      Button
+      appHeader, Button, Popup
     }
   }
 </script>
