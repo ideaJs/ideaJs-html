@@ -11,6 +11,7 @@
 
 <script>
   import { Button, Input, Form, FormItem, Icon } from 'iview'
+  import {drawCaptcha} from '../../common/js/isCaptcha.js'
   import captcha001 from '../../common/images/captcha/captcha001.jpg'
   import captcha002 from '../../common/images/captcha/captcha002.jpg'
   import captcha003 from '../../common/images/captcha/captcha003.jpg'
@@ -61,7 +62,6 @@
   import captcha048 from '../../common/images/captcha/captcha048.jpg'
   import captcha049 from '../../common/images/captcha/captcha049.jpg'
   import headerFace001 from '../../common/images/small-icon/headerFace001.png'
-  require('../../common/js/isCaptcha.js')
 export default {
   name: 'appCaptcha',
   props: {
@@ -127,10 +127,10 @@ export default {
       }
     }
   },
-  mounted () {
+  created () {
     setTimeout(() => {
       this.draw()
-    }, 8)
+    }, 600)
   },
   methods: {
     start () {
@@ -144,7 +144,7 @@ export default {
     },
     draw () {
       this.data.captchaImg = this.data.imgLists[Math.floor(Math.random()*this.data.imgLists.length)]
-      drawCaptcha.init({
+      drawCaptcha({
         el: document.getElementById('captcha'),
         onSuccess: () => {
 //          document.getElementById('msg').innerHTML = '验证成功'
