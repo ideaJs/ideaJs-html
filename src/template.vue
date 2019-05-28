@@ -6,7 +6,7 @@
       <popup v-model="show"></popup>
     </div>
     <appHeader :headerInfo="data.headerInfo"></appHeader>
-    <div class="">
+    <div class="container">
       <Button type="primary" round @click.active="back()">上一页</Button>
       <Button type="success" round @click.active="start()">下一页</Button>
     </div>

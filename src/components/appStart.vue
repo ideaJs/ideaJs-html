@@ -1,9 +1,9 @@
 <!-- Created by macmzon@163.com-->
 <template>
   <div class="appStart">
-    <div>
+    <div class="container">
       <div class="appName">日 记 本</div>
-      <img :src='data.startPage001' />
+      <img class="startPage" :src='data.startPage001' />
       <div class="appTips">
         朝着你心中的方向，
         把握每一分每一秒，<br>
@@ -24,6 +24,10 @@
           </div>
         </div>
       </div>
+      <div class="qrcode">
+        <img :src="data.qrcode" />
+        关注公众号
+      </div>
       <Button type="primary" shape="circle" :loading="data.loading" @click="start">
         <span v-if="!data.loading">开始</span>
       </Button>
@@ -35,6 +39,7 @@
   import { Group, Cell } from 'vux'
   import { Button } from 'iview'
 	import startPage001 from '../common/images/startPage/startPage001.png'
+	import qrcode from '../common/images/small-icon/qrcode.jpg'
 export default {
   name: 'appStart',
   data () {
@@ -48,7 +53,8 @@ export default {
           date: '',
           week: ''
         },
-				startPage001: startPage001
+				startPage001: startPage001,
+        qrcode: qrcode
       }
     }
   },

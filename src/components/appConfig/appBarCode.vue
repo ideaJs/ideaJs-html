@@ -5,7 +5,7 @@
       <popup v-model="show"></popup>
     </div>
     <appHeader :headerInfo="data.headerInfo"></appHeader>
-    <div class="">
+    <div class="container">
       <div>
         <vue-qr :autoColor="false" :logoMargin="data.logoMargin" :colorDark="data.colorDark" :bgSrc="data.bgSrc" :logoSrc="data.logoSrc" :margin="0" :callback="getCodeInfo" :text="data.codeValue" :logoScale="data.logoScale" :size="data.codeSize"></vue-qr>
       </div>

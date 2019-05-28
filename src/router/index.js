@@ -108,13 +108,9 @@ export default new Router({
       title: '首页',                                   // 页面标题
       header: {
         left: 'md-menu',                                  // header左边按钮
-        leftFuc: (fuc) => {
-          fuc && fuc()
-        },                                             // header左边按钮点击事件
+        leftFuc: (fuc) => {fuc && fuc()},             // header左边按钮点击事件
         right: 'ios-contact',                              // header右边按钮
-        rightFuc: (fuc) => {
-          fuc && fuc()
-        }                                              // header右边按钮点击事件
+        rightFuc: (fuc) => {fuc && fuc()}             // header右边按钮点击事件
       },
       touch: {
         leftFuc: (fuc) => {fuc && fuc()},              // vue-touch左滑页面事件-下一页
@@ -134,7 +130,7 @@ export default new Router({
       header: {
         left: 'ios-arrow-back',                            // header左边按钮
         leftFuc: (fuc) => {fuc && fuc()},              // header左边按钮点击事件
-        right: 'md-menu',                                 // header右边按钮
+        right: '',                                 // header右边按钮
         rightFuc: (fuc) => {fuc && fuc()}              // header右边按钮点击事件
       },
       touch: {

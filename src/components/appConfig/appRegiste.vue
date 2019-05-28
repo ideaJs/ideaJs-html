@@ -1,9 +1,7 @@
 <!-- Created by macmzon@163.com-->
 <template>
   <div class="appRegiste">
-    <div v-transfer-dom>
-      <popup v-model="show"></popup>
-    </div>
+    <div class="appName">注册</div>
     <div class="container">
       <Form ref="formInline" :model="data.formInline" :rules="data.ruleInline" inline>
         <FormItem prop="user">
@@ -12,7 +10,7 @@
           </Input>
         </FormItem>
         <FormItem prop="phone">
-          <Input class="phone" type="text" :maxlength="11" size="large" v-model.trim="data.formInline.phone" clearable placeholder="手机号 (必填)">
+          <Input class="phone" number :maxlength="11" size="large" v-model.trim="data.formInline.phone" clearable placeholder="手机号 (必填)">
           <Icon type="md-phone-portrait" slot="prepend"></Icon>
           </Input>
           <!-- <Button class="phoneCode" type="primary" @click="postCode()">发送验证码</Button> -->
@@ -45,7 +43,7 @@ export default {
   name: 'appRegiste',
   data () {
     return {
-      show: false,
+      showPopup: false,
       data: {
         headerFace: headerFace001,
         formInline: {
@@ -60,8 +58,8 @@ export default {
             { pattern: /^\w{6,18}$/, message: '用户名应为6-18位英文、数字和_', trigger: 'blur' }
           ],
           phone: [
-            { required: true, message: '手机号错误', trigger: 'blur' },
-            { pattern: /^1[34578]\d{9}$/, message: '手机号应为11位数字', trigger: 'blur' }
+            { required: true, type:'number', message: '手机号错误', trigger: 'blur' },
+            { pattern: /^1[123456789]\d{9}$/, message: '手机号应为11位数字', trigger: 'blur' }
           ],
           email: [
             { required: true, message: '邮箱错误', trigger: 'blur' },

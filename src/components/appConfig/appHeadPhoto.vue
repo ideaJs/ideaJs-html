@@ -5,7 +5,7 @@
       <popup v-model="show"></popup>
     </div>
     <appHeader :headerInfo="data.headerInfo"></appHeader>
-    <div class="">
+    <div class="container">
       <div>
         <div class="editImgs">
           <Card class="infoHeadPhoto" :bordered="true">

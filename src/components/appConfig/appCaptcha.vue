@@ -69,8 +69,7 @@ export default {
       drawCaptcha({
         el: document.getElementById('captcha'),
         onSuccess: () => {
-//          document.getElementById('msg').innerHTML = '验证成功'
-//          this.start()
+          document.getElementById('msg').innerHTML = ''
           this.appCaptchaInfo.start && this.appCaptchaInfo.start()
         },
         onFail: () => {

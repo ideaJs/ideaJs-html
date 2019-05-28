@@ -5,7 +5,7 @@
       <popup v-model="show"></popup>
     </div>
     <appHeader :headerInfo="data.headerInfo"></appHeader>
-    <div class="">
+    <div class="container">
       <div class="scan">
         <div id="bcid">
           <div style="height:40%;margin-top:2.3rem"></div>
