@@ -2,11 +2,13 @@
 <template>
   <div class="appMenu">
     <div v-transfer-dom>
-      <popup v-model="show"></popup>
+      <popup v-model="showBack"></popup>
     </div>
     <appHeader :headerInfo="data.headerInfo"></appHeader>
     <div class="tabMain container">
-      <div v-for="item in data.tabList" class="tabList" @click="tabGo(item)">{{item.title}}</div>
+      <div v-for="dat in data.tabList">
+        <div v-for="item in dat.list" class="tabList" @click="tabGo(item)">{{item.title}}</div>
+      </div>
     </div>
     <div class="">
       <!-- <Button type="primary" round @click.active="back()">上一页</Button>
@@ -18,12 +20,14 @@
 <script>
   import { Button } from 'iview'
   import { Popup } from 'vux'
+  import { getUsers } from '../../common/user/getUsers.js'
+  import { getMenu } from '../../common/js/getMenu.js'
   import appHeader from'@/components/appConfig/appHeader.vue'
   export default {
     name: 'appMenu',
     data () {
       return {
-        show: false,
+        showBack: false,
         data: {
           headerInfo: this.$route.meta,
           tabShow: false,
@@ -31,68 +35,14 @@
             title: '英语',
             list: []
           },
-          tabList: [
-            {
-              title: '商务',
-              id: 'business'
-            },
-            {
-              title: '英语',
-              id: 'english'
-            },
-            {
-              title: '数学',
-              id: 'math'
-            },
-            {
-              title: '文学',
-              id: 'literature'
-            },
-            {
-              title: '计算机',
-              id: 'computer'
-            },
-            {
-              title: '美术',
-              id: 'art'
-            },
-            {
-              title: '美妆',
-              id: 'cosmetic'
-            },
-            {
-              title: '摄影',
-              id: 'shoot'
-            },
-            {
-              title: '舞蹈',
-              id: 'dance'
-            },
-            {
-              title: '理财',
-              id: 'money'
-            },
-            {
-              title: '健身',
-              id: 'fitness'
-            },
-            {
-              title: '健康',
-              id: 'health'
-            },
-            {
-              title: '美食',
-              id: 'food'
-            },
-            {
-              title: '思维',
-              id: 'thinking'
-            }
-          ]
+          tabList: []
         }
       }
     },
     mounted () {
+      let phone = localStorage.getItem('userPhone')               // 获取客户手机号
+      this.data.user = getUsers(phone)                            // 获取客户信息
+      this.data.tabList = getMenu() 
       /*自定义顶部header两侧按钮事件+页面左右滑动事件*/
       this.$route.meta.header.leftFuc = this.back                 // header左侧返回按钮事件
       // this.$route.meta.header.rightFuc = this.getMember             // header右侧菜单按钮事件

@@ -1,13 +1,21 @@
 <!-- Created by macmzon@163.com-->
 <template>
-  <div class="appNews">
+  <div class="appWriteDetail">
     <div v-transfer-dom>
       <popup v-model="showBack"></popup>
     </div>
     <appHeader :headerInfo="data.headerInfo"></appHeader>
     <div class="container">
+      <div class="">
+        <div class="">111111111111
+        </div>
+        <div class="">
+        </div>
+      </div>
+     <!-- 
       <Button type="success" round @click.active="back()">上一页</Button>
       <Button type="success" round @click.active="start()">下一页</Button>
+      -->
     </div>
   </div>
 </template>
@@ -17,11 +25,12 @@
   import { Popup } from 'vux'
   import appHeader from'@/components/appConfig/appHeader.vue'
 export default {
-  name: 'appNews',
+  name: 'appWriteDetail',
   data () {
     return {
       showBack: false,
       data: {
+        title: '课程-词汇',
         headerInfo: this.$route.meta
       }
     }
@@ -69,4 +78,5 @@ export default {
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus">
+  @import "stylus/appWriteDetail.styl"
 </style>

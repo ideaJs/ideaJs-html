@@ -1,9 +1,11 @@
-/* 大学英语1-1     course：课程代码 EN_daxue
+/*Created by macmzon@163.com*/
+/* 大学-英语-词汇-课1     课程代码 large_word_1
 name：单词名称
 phonetic：音标
 meaning：释义
 example：例句
  */
+// 获取课程内容
 {
   "entertainment": {
     "name": "entertainment",

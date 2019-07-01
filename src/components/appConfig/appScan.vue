@@ -2,7 +2,7 @@
 <template>
   <div class="appScan">
     <div v-transfer-dom>
-      <popup v-model="show"></popup>
+      <popup v-model="showBack"></popup>
     </div>
     <appHeader :headerInfo="data.headerInfo"></appHeader>
     <div class="container">
@@ -32,7 +32,7 @@
     name: 'appScan',
     data () {
       return {
-        show: false,
+        showBack: false,
         data: {
           headerInfo: this.$route.meta,
           codeUrl: '',

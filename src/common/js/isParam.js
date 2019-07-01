@@ -14,7 +14,7 @@ export function PARAM_TEST () {
     },
     http: { // http请求参数设置
       headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
+        'Content-Type': 'application/json;charset=UTF-8',
         'appid': 'FI03-0861',
         'apptoken': '$2a$21$zW6nZAMh6dZd9xh13xVea6CcqehvW.Xv/GFKWo9kHT0QiRv./Qhye'
       },
@@ -38,7 +38,7 @@ export function PARAM_PRODUCT () {
     },
     http: { // http请求参数设置
       headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
+        'Content-Type': 'application/json;charset=UTF-8',
         'appid': 'FI03-0861',
         'apptoken': '$2a$21$zW6nZAMh6dZd9xh13xVea6CcqehvW.Xv/GFKWo9kHT0QiRv./Qhye'
       },

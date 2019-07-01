@@ -2,7 +2,7 @@
 <template>
   <div class="appHeadPhoto">
     <div v-transfer-dom>
-      <popup v-model="show"></popup>
+      <popup v-model="showBack"></popup>
     </div>
     <appHeader :headerInfo="data.headerInfo"></appHeader>
     <div class="container">
@@ -95,7 +95,7 @@
     name: 'appHeadPhoto',
     data () {
       return {
-        show: false,
+        showBack: false,
         data: {
           headerInfo: this.$route.meta,
           headImg: headerFace001,                // 默认头像图片地址

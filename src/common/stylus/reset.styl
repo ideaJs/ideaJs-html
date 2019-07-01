@@ -53,6 +53,8 @@ input, textarea
   -moz-user-select: auto                        /*火狐*/
   -ms-user-select: auto                         /*IE10*/
   user-select: auto                             /*禁止选中文本*/
+  resize: none
+  border: 1px solid #F0C579
 button, a, input, select, img, textarea, *
 button:hover, a:hover, input:hover, select:hover, img:hover, textarea:hover, *:hover
 button:focus, a:focus, input:focus, select:focus, img:focus, textarea:focus, *:focus
@@ -118,8 +120,10 @@ button:hover,
 button[disabled],
 input[type=button]:hover,
 input[type=button][disabled]
-  background: linear-gradient(rgb(155,155,155), rgb(236,236,236))
-
+  background: linear-gradient(#666, #ccc)
+  
+.ivu-btn-text
+  background: linear-gradient(#666, #ccc)
 .ivu-btn-primary
   background: linear-gradient(rgb(29, 98, 240), rgb(25, 213, 253))
 .ivu-btn-success
@@ -137,6 +141,22 @@ input[type=button][disabled]
 .ivu-card-bordered
   box-shadow: 0 1px 6px rgba(0,0,0,0.2) !important
 
+.ivu-modal
+  top: 26vh
+.ivu-modal-confirm-head
+  text-align: center
+  padding: 0
+.ivu-modal-confirm-body
+  padding-left: 0
+  text-align: center
+  word-wrap: break-word
+  word-break: break-all
+.ivu-modal-confirm-footer
+  text-align: center
+  >button
+    width: 40%
+.ivu-icon-ios-help-circle:before
+  content: "\F108"
 .ivu-input,
 .ivu-input-group-append, 
 .ivu-input-group-prepend, 
@@ -154,46 +174,47 @@ input[type=button][disabled]
   font-size: 2rem
   text-align: center
 .ivu-drawer-body
-  .tabList
-    display: inline-block
-    width: 40%
-    height: 35px
-    line-height: 35px
-    box-shadow: 0px 0px 5px 2px #ebebeb
-    margin: 10px 5%
-    text-align: center
-    border-radius: 5px
-    color: #f4f4f4
-  .tabList:nth-child(1)
-    background: #E8692F
-  .tabList:nth-child(2)
-    background: #E83A30
-  .tabList:nth-child(3)
-    background: #E72F8C
-  .tabList:nth-child(4)
-    background: #892FE8
-  .tabList:nth-child(5)
-    background: #795A98
-  .tabList:nth-child(6)
-    background: #2DE8BD
-  .tabList:nth-child(7)
-    background: #31E749
-  .tabList:nth-child(8)
-    background: #A4E82F
-  .tabList:nth-child(9)
-    background: #AF5A5A
-  .tabList:nth-child(10)
-    background: #E7B72F
-  .tabList:nth-child(11)
-    background: #E88C30
-  .tabList:nth-child(12)
-    background: #6AA205
-  .tabList:nth-child(13)
-    background: #FFA4A4
-  .tabList:nth-child(14)
-    background: #31C9E8
-  .tabList:nth-child(15)
-    background: #F8BB00
+  padding: 5px
+.tabList
+  display: inline-block
+  width: 48%
+  height: 35px
+  line-height: 35px
+  box-shadow: 0px 0px 5px 2px #ebebeb
+  margin: 10px 1%
+  text-align: center
+  border-radius: 5px
+  color: #f4f4f4
+.tabList:nth-child(1)
+  background: #E8692F
+.tabList:nth-child(2)
+  background: #E83A30
+.tabList:nth-child(3)
+  background: #E72F8C
+.tabList:nth-child(4)
+  background: #892FE8
+.tabList:nth-child(5)
+  background: #795A98
+.tabList:nth-child(6)
+  background: #2DE8BD
+.tabList:nth-child(7)
+  background: #31E749
+.tabList:nth-child(8)
+  background: #A4E82F
+.tabList:nth-child(9)
+  background: #AF5A5A
+.tabList:nth-child(10)
+  background: #E7B72F
+.tabList:nth-child(11)
+  background: #E88C30
+.tabList:nth-child(12)
+  background: #6AA205
+.tabList:nth-child(13)
+  background: #FFA4A4
+.tabList:nth-child(14)
+  background: #31C9E8
+.tabList:nth-child(15)
+  background: #F8BB00
 .ivu-carousel
   background: #ccc
   height: 25vh!important

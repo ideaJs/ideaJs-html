@@ -27,7 +27,18 @@ Vue.prototype.$get = HTTP_GET // get请求：this.$get(url, success, fail, load,
 Vue.prototype.$goURL = goURL // 项目外页面跳转：this.$goURL(url)
 Vue.prototype.$push = goPush // 项目内页面跳转push：this.$push(param)
 Vue.prototype.$back = goBack // 项目内页面返回back：this.$back(param)
-
+/*  提示框
+Modal.confirm({
+  title: '信息提示',
+  content: '尊敬的客户，您好！由于系统问题，暂时无法在线购买课程，请联系QQ客服：1993239039',
+  okText: '确定',
+  cancelText: '取消',
+  onOk: () => {
+  },
+  onCancel: () => {
+  }
+})
+ */
 // 禁用浏览器返回历史页功能，可以让用户一直停留在当前页面
 window.onpopstate = () => {
   history.go(1)

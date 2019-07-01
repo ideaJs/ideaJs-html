@@ -17,8 +17,18 @@ let Base64 = require('js-base64').Base64
  load,       是否禁用loading动画：是true,否false
  error       报错提示
 */
+/* 
+vue-resource语法-使用$http对象
+
+// 基于全局Vue对象使用http
+Vue.http.get('/someUrl',[options]).then(successCallback, errorCallback);
+Vue.http.post('/someUrl',[body],[options]).then(successCallback, errorCallback);
+// 在一个Vue实例内使用$http
+this.$http.get('/someUrl',[options]).then(sucessCallback, errorCallback);
+this.$http.post('/someUrl',[body],[options]).then(successCallback, errorCallback);
+ */
 // 封装vue-resource 的post请求
-export function HTTP_POST (url, param, success, fail, load, error, http) {
+export function HTTP_POST (url, param, success, fail, http, load, error) {
   if (!load) { // 是否禁用loading动画：是true,否false
     // var loading = Loading.service({background: 'rgba(0,0,0,0.6)'}) // 开启loading动画
   }
@@ -26,8 +36,8 @@ export function HTTP_POST (url, param, success, fail, load, error, http) {
   let _param = IS_PARAM().param
   let _http = IS_PARAM().http
   param = Base64.encode(JSON.stringify(Object.assign(param, _param)))
-  Vue.http.options = Object.assign(Vue.http.options, _http, http)
-  Vue.http.post(url, {param: param}).then((res) => {
+  let options = Object.assign(_http, http)
+  Vue.http.post(url, {param: param}, options).then((res) => {
     // loading.close()
     success && success(res)
   }, (res) => {
@@ -39,14 +49,14 @@ export function HTTP_POST (url, param, success, fail, load, error, http) {
 }
 
 // 封装vue-resource 的get请求
-export function HTTP_GET (url, success, fail, load, error, http) {
+export function HTTP_GET (url, success, fail, http, load, error) {
   if (!load) { // 是否禁用loading动画：是true,否false
     // var loading = Loading.service({background: 'rgba(0,0,0,0.6)'}) // 开启loading动画
   }
   url = url === '' ? IS_URL.XML : url
   let _http = IS_PARAM().http
-  Vue.http.options = Object.assign(Vue.http.options, _http, http)
-  Vue.http.get(url).then((res) => {
+  let options = Object.assign(_http, http)
+  Vue.http.get(url, options).then((res) => {
     // loading.close()
     success && success(res)
   }, (res) => {

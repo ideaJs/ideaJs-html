@@ -30,7 +30,7 @@ export default {
   },
   data () {
     return {
-      show: false,
+      showBack: false,
       data: {
         headerFace: headerFace001,
         captchaImg: captcha001,

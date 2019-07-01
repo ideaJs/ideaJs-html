@@ -2,7 +2,7 @@
 <template>
   <div class="appStart">
     <div class="container">
-      <div class="appName">日 记 本</div>
+      <div class="appName">英语日记</div>
       <img class="startPage" :src='data.startPage001' />
       <div class="appTips">
         朝着你心中的方向，
@@ -71,7 +71,7 @@ export default {
       this.data.loading = true
       this.$route.meta.isBack = false
       this.$push({
-        path: '/appLogin',
+        path: '/appIndex',
         query: {
           type: '3'
         }
