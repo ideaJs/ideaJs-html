@@ -132,7 +132,7 @@ export default {
         okText: '确定',
         cancelText: '取消',
         onOk: () => {
-          if (Base64.encode(this.data.id) === this.data.activeCode) {
+          if (Base64.encode(this.data.id) === this.data.activeCode.slice(2)) {
             this.data.user = JSON.parse(localStorage.getItem(this.data.userLogin))       // 获取客户信息
             this.data.user.course[Base64.encode(this.data.id)] = true
             localStorage.setItem(this.data.userLogin, JSON.stringify(this.data.user))

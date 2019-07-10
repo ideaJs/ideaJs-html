@@ -5,23 +5,20 @@
       <popup v-model="showBack"></popup>
     </div>
     <appHeader :headerInfo="data.headerInfo"></appHeader>
-    <div class="tabMain container">
-      <div v-for="dat in data.tabList">
-        <div v-for="item in dat.list" class="tabList" @click="tabGo(item)">{{item.title}}</div>
+    <div class="menuMain container">
+      <div class="">
+        <div v-for="item in data.Menu" class="menuList" @click="menuGo(item)">{{item.title}}</div>
       </div>
-    </div>
-    <div class="">
-      <!-- <Button type="primary" round @click.active="back()">上一页</Button>
-      <Button type="success" round @click.active="start()">下一页</Button> -->
+      <div class="">
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+  let Base64 = require('js-base64').Base64
   import { Button } from 'iview'
   import { Popup } from 'vux'
-  import { getUsers } from '../../common/user/getUsers.js'
-  import { getMenu } from '../../common/js/getMenu.js'
   import appHeader from'@/components/appConfig/appHeader.vue'
   export default {
     name: 'appMenu',
@@ -29,23 +26,25 @@
       return {
         showBack: false,
         data: {
+          user: {},
           headerInfo: this.$route.meta,
-          tabShow: false,
-          curTab: {
+          menuShow: false,
+          curMenu: {
             title: '英语',
             list: []
           },
-          tabList: []
+          Menu: []
         }
       }
     },
     mounted () {
-      let phone = localStorage.getItem('userPhone')               // 获取客户手机号
-      this.data.user = getUsers(phone)                            // 获取客户信息
-      this.data.tabList = getMenu() 
+      this.data.userLogin = localStorage.getItem('userLogin') || ''     // 获取客户登录状态
+      if (this.data.userLogin) {
+        this.data.user = JSON.parse(localStorage.getItem(this.data.userLogin))       // 获取客户信息
+      }
+      this.getEnMenu()
       /*自定义顶部header两侧按钮事件+页面左右滑动事件*/
       this.$route.meta.header.leftFuc = this.back                 // header左侧返回按钮事件
-      // this.$route.meta.header.rightFuc = this.getMember             // header右侧菜单按钮事件
       this.$route.meta.touch.leftFuc = this.start                 // 页面向左滑动事件
       this.$route.meta.touch.rightFuc = this.back                 // 页面向右滑动事件
     },
@@ -68,25 +67,35 @@
           }
         })
       },
-      tabGo (data) {
-        console.log(data)
+      menuGo (data) {
         this.$route.meta.isBack = false
-        this.$push({
-          path: '/appTab',
-          query: {
-            title: data.title,
-            tabId: data.id
-          }
-        })
+        if (this.getCourseFlag(data.id) === 'learning') {
+          // 学习课程
+          this.$push({
+            path: '/appEnDetail',
+            query: {
+              title: data.title,
+              id: data.id
+            }
+          })
+        } else {
+          // 报名课程
+          this.$push({
+            path: '/appSign',
+            query: {
+              id: data.id,
+              money: data.money
+            }
+          })
+        }
       },
-      getMember () {
-        this.$route.meta.isBack = false
-        this.$push({
-          path: '/appMember',
-          query: {
-            type: '3'
-          }
-        })
+      getEnMenu () {
+        let data = require('../json/english/course.json')
+        this.data.Menu = data.course
+      },
+      getCourseFlag (flag) {
+        flag = Base64.encode(flag)
+        return !this.data.user.course[flag] ? 'unlearn' : 'learning'
       }
     },
     components: {

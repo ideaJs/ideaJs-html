@@ -42,7 +42,7 @@
   import { Popup } from 'vux'
   import appHeader from'@/components/appConfig/appHeader.vue'
   import appCaptcha from'@/components/appConfig/appCaptcha.vue'
-  import headerFace001 from '../../common/images/small-icon/headerFace001.png'
+  import headerFace001 from '../common/images/small-icon/headerFace001.png'
 export default {
   name: 'appRegiste',
   data () {
@@ -64,7 +64,7 @@ export default {
           ],
           phone: [
             { required: true, type:'number', message: '手机号应为11位数字', trigger: 'blur' },
-            { pattern: /^1[123456789]\d{9}$/, message: '手机号应为11位数字', trigger: 'blur' }
+            { pattern: /^1[1-9]\d{9}$/, message: '手机号应为11位数字', trigger: 'blur' }
           ],
           email: [
             { required: true, message: '邮箱格式应为xx@xx.com等', trigger: 'blur' },
@@ -87,10 +87,10 @@ export default {
   },
   methods: {
     start () {
-      if (!/\S{2,12}/.test(this.data.formData.user)) return
-      if (!/^1[123456789]\d{9}$/.test(this.data.formData.phone)) return
+      if (!/^[a-zA-Z0-9\u4E00-\u9FA5]{2,12}$/.test(this.data.formData.user)) return
+      if (!/^1[1-9]\d{9}$/.test(this.data.formData.phone)) return
       if (!/^([a-zA-Z0-9]+[_|\-|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\-|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,4}$/.test(this.data.formData.email)) return
-      if (!/^\w{6,12}$/.test(this.data.formData.pass)) return
+      if (!/^[a-zA-Z0-9]{6,12}$/.test(this.data.formData.pass)) return
       if (localStorage.getItem(this.data.formData.phone)) {
         Modal.confirm({
           title: '信息提示',
@@ -111,12 +111,13 @@ export default {
         })
         return
       }
-      this.data.formData.course = {}
-      this.data.formData.learn = {}
-      this.data.formData.jifen = 0
+      this.data.formData.course = {}         // 已激活课程
+      this.data.formData.collectEnWords = {} // 英语词汇收藏
+      this.data.formData.learn = {}          // 在学小课程
+      this.data.formData.jifen = 0           // 积分
       localStorage.setItem(this.data.formData.phone, JSON.stringify(this.data.formData))
       localStorage.setItem('userLogin', this.data.formData.phone)
-      Modal.success({
+      Modal.warning({
         title: '信息提示',
         content: '用户注册成功！',
         okText: '确定',

@@ -15,13 +15,13 @@ const AppHeadPhoto = () => import('@/components/appConfig/appHeadPhoto')
 const AppIndex = () => import('@/components/appMain/appIndex')
 const AppMember = () => import('@/components/appMain/appMember')
 const AppSign = () => import('@/components/appMain/appSign')
-const AppDetail = () => import('@/components/appMain/appDetail')
-const AppWord = () => import('@/components/appMain/appWord')
-const AppPhrase = () => import('@/components/appMain/appPhrase')
-const AppWrite = () => import('@/components/appMain/appWrite')
-const AppWordDetail = () => import('@/components/appMain/appWordDetail')
-const AppPhraseDetail = () => import('@/components/appMain/appPhraseDetail')
-const AppWriteDetail = () => import('@/components/appMain/appWriteDetail')
+const AppEnDetail = () => import('@/components/appEnglish/appEnDetail')
+const AppEnWord = () => import('@/components/appEnglish/appEnWord')
+const AppEnPhrase = () => import('@/components/appEnglish/appEnPhrase')
+const AppEnWrite = () => import('@/components/appEnglish/appEnWrite')
+const AppEnWordDetail = () => import('@/components/appEnglish/appEnWordDetail')
+const AppEnPhraseDetail = () => import('@/components/appEnglish/appEnPhraseDetail')
+const AppEnWriteDetail = () => import('@/components/appEnglish/appEnWriteDetail')
 
 /*
 title 页面标题，
@@ -187,9 +187,9 @@ export default new Router({
       needLogin: true
     }
   }, {
-    path: '/appDetail',
-    name: 'AppDetail',
-    component: AppDetail,
+    path: '/appEnDetail',
+    name: 'AppEnDetail',
+    component: AppEnDetail,
     meta: {
       title: '课程列表',
       header: {
@@ -208,9 +208,9 @@ export default new Router({
       needLogin: true
     }
   }, {
-    path: '/appWord',
-    name: 'AppWord',
-    component: AppWord,
+    path: '/appEnWord',
+    name: 'AppEnWord',
+    component: AppEnWord,
     meta: {
       title: '英语-词汇列表',
       header: {
@@ -229,9 +229,9 @@ export default new Router({
       needLogin: true
     }
   }, {
-    path: '/appWordDetail',
-    name: 'AppWordDetail',
-    component: AppWordDetail,
+    path: '/appEnWordDetail',
+    name: 'AppEnWordDetail',
+    component: AppEnWordDetail,
     meta: {
       title: '英语-单词卡片',
       header: {
@@ -250,9 +250,9 @@ export default new Router({
       needLogin: true
     }
   }, {
-    path: '/appPhrase',
-    name: 'AppPhrase',
-    component: AppPhrase,
+    path: '/appEnPhrase',
+    name: 'AppEnPhrase',
+    component: AppEnPhrase,
     meta: {
       title: '英语-短语列表',
       header: {
@@ -271,9 +271,9 @@ export default new Router({
       needLogin: true
     }
   }, {
-    path: '/appPhraseDetail',
-    name: 'AppPhraseDetail',
-    component: AppPhraseDetail,
+    path: '/appEnPhraseDetail',
+    name: 'AppEnPhraseDetail',
+    component: AppEnPhraseDetail,
     meta: {
       title: '英语-短语详情',
       header: {
@@ -292,9 +292,9 @@ export default new Router({
       needLogin: true
     }
   }, {
-    path: '/appWrite',
-    name: 'AppWrite',
-    component: AppWrite,
+    path: '/appEnWrite',
+    name: 'AppEnWrite',
+    component: AppEnWrite,
     meta: {
       title: '英语-写作列表',
       header: {
@@ -313,9 +313,9 @@ export default new Router({
       needLogin: true
     }
   }, {
-    path: '/appWriteDetail',
-    name: 'AppWriteDetail',
-    component: AppWriteDetail,
+    path: '/appEnWriteDetail',
+    name: 'AppEnWriteDetail',
+    component: AppEnWriteDetail,
     meta: {
       title: '英语-写作详情',
       header: {

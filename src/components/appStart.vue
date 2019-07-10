@@ -24,7 +24,7 @@
           </div>
         </div>
       </div>
-      <div class="qrcode">
+      <div v-if="false" class="qrcode">
         <img :src="data.qrcode" />
         关注公众号
       </div>
@@ -38,8 +38,8 @@
 <script>
   import { Group, Cell } from 'vux'
   import { Button } from 'iview'
-	import startPage001 from '../common/images/startPage/startPage001.png'
-	import qrcode from '../common/images/small-icon/qrcode.jpg'
+	import startPage001 from './common/images/startPage/startPage001.png'
+	import qrcode from './common/images/small-icon/qrcode.jpg'
 export default {
   name: 'appStart',
   data () {

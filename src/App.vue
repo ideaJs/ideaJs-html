@@ -44,6 +44,6 @@ export default {
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus">
-  @import "./common/stylus/reset.styl"
+  @import "components/common/stylus/reset.styl"
   @import "components/appStylus/App.styl"
 </style>

@@ -38,7 +38,7 @@
   import { Popup } from 'vux'
   import appHeader from'@/components/appConfig/appHeader.vue'
   import appCaptcha from'@/components/appConfig/appCaptcha.vue'
-  import headerFace001 from '../../common/images/small-icon/headerFace001.png'
+  import headerFace001 from '../common/images/small-icon/headerFace001.png'
 export default {
   name: 'appLogin',
   data () {
@@ -59,7 +59,7 @@ export default {
           ],
           phone: [
             { required: true, type:'number', message: '手机号应为11位数字', trigger: 'blur' },
-            { pattern: /^1[123456789]\d{9}$/, message: '手机号应为11位数字', trigger: 'blur' }
+            { pattern: /^1[1-9]\d{9}$/, message: '手机号应为11位数字', trigger: 'blur' }
           ],
           pass: [
             { required: true, message: '密码应为6-12位英文、数字和_', trigger: 'blur' },
@@ -78,9 +78,9 @@ export default {
   },
   methods: {
     start () {
-      // if (!/\S{2,12}/.test(this.data.formData.user)) return
-      if (!/^1[123456789]\d{9}$/.test(this.data.formData.phone)) return
-      if (!/^\w{6,12}$/.test(this.data.formData.pass)) return
+      // if (!/^[a-zA-Z0-9\u4E00-\u9FA5]{2,12}$/.test(this.data.formData.user)) return
+      if (!/^1[1-9]\d{9}$/.test(this.data.formData.phone)) return
+      if (!/^[a-zA-Z0-9]{6,12}$/.test(this.data.formData.pass)) return
       let usermsg = JSON.parse(localStorage.getItem(this.data.formData.phone))
       if (usermsg) {
         if (usermsg.pass === this.data.formData.pass) {

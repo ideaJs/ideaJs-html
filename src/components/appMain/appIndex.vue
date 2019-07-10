@@ -6,11 +6,9 @@
     </div>
     <appHeader :headerInfo="data.headerInfo"></appHeader>
     <div class="container">
-      <div class="tabMain">
+      <div class="menuMain">
         <Drawer title="菜单" placement="left" :closable="false" v-model="showMenu">
-          <div v-for="dat in data.tabList">
-            <div v-for="item in dat.list" class="tabList" @click="tabGo(item)">{{item.title}}
-            </div>
+          <div v-for="item in data.menuList" class="tabList" @click="menuGo(item)">{{item.title}}
           </div>
         </Drawer>
       </div>
@@ -21,11 +19,11 @@
           </CarouselItem>
         </Carousel>
       </div>
-      <div class="tabBtns">
-        <Tabs v-model="data.tabName">
-          <TabPane name="commend" label="推荐课程" icon="ios-book">
-            <div class="commend">
-              <div v-for="item in data.unlearn" :key="item.id" class="commend-list">
+      <div class="menuBtns">
+        <Tabs v-model="data.menuName">
+          <TabPane name="course" label="推荐课程" icon="ios-book">
+            <div class="course">
+              <div v-for="item in data.unlearn" :key="item.id" class="course-list">
                 <Row>
                   <Col span="6">
                     <div class="newMsg-flag unlearn">未学
@@ -43,16 +41,16 @@
                   <Col span="6" style="text-align:right;">
                     <div class="newMsg-money">{{item.money}}
                     </div>
-                    <div @click="tabGo(item)" class="newMsg-button unlearn">报名课程
+                    <div @click="menuGo(item)" class="newMsg-button unlearn">报名课程
                     </div>
                   </Col>
                 </Row>
               </div>
             </div>
           </TabPane>
-          <TabPane name="learn" label="在学课程" icon="logo-octocat">
+          <TabPane name="learn" label="在学课程" icon="ios-bookmarks">
             <div class="learn">
-              <div v-for="item in data.learn" :key="item.id" class="commend-list learn-list">
+              <div v-for="item in data.learn" :key="item.id" class="course-list learn-list">
                 <Row>
                   <Col span="6">
                     <div class="newMsg-flag learning">在学
@@ -70,7 +68,7 @@
                   <Col span="6" style="text-align:right;">
                     <div class="newMsg-money">{{item.money}}
                     </div>
-                    <div @click="tabGo(item)" class="newMsg-button learning">学习课程
+                    <div @click="menuGo(item)" class="newMsg-button learning">学习课程
                     </div>
                   </Col>
                 </Row>
@@ -84,21 +82,15 @@
         </Tabs>
       </div>
     </div>
-    <div class="">
-      <!-- <Button type="primary" round @click.active="back()">上一页</Button>
-      <Button type="success" round @click.active="start()">下一页</Button> -->
-    </div>
   </div>
 </template>
 <script>
   let Base64 = require('js-base64').Base64
   import { Row, Col, Button, Drawer, Carousel, CarouselItem, Tabs, TabPane, Icon } from 'iview'
   import { Popup } from 'vux'
-  import { getMenu } from '../../common/js/getMenu.js'
-  import { getCommend } from '../../common/js/getCommend.js'
   import appHeader from '@/components/appConfig/appHeader.vue'
-	import loopImg01 from '../../common/images/banner/study01.png'
-	import loopImg03 from '../../common/images/banner/english01.png'
+	import loopImg01 from '../common/images/banner/study01.png'
+	import loopImg03 from '../common/images/banner/english01.png'
   export default {
     name: 'appIndex',
     data () {
@@ -121,29 +113,21 @@
               link: '3'
             }
           ],
-          tabName: 'commend',
-          tabList: [],
-          commend: [],
+          menuName: 'course',
+          menuList: [],
+          course: [],
           unlearn: [],
           learn: []
         }
       }
     },
     created () {
-      this.data.tabName = this.$route.query.tabName || 'commend'
+      this.data.menuName = this.$route.query.menuName || 'course'
       this.data.userLogin = localStorage.getItem('userLogin') || ''     // 获取客户登录状态
       if (this.data.userLogin) {
         this.data.user = JSON.parse(localStorage.getItem(this.data.userLogin))       // 获取客户信息
       }
-      this.data.tabList = getMenu() 
-      this.data.commend = getCommend()
-      this.data.commend.forEach((val, idex) => {
-        if (this.getCommendFlag(val.id) === 'learning') {
-          this.data.learn.push(val)
-        } else {
-          this.data.unlearn.push(val)
-        }
-      })
+      this.getCourse()
     },
     mounted () {
       /*自定义顶部header两侧按钮事件+页面左右滑动事件*/
@@ -173,17 +157,31 @@
       },
       getMenu () {
         this.$route.meta.isBack = false
+        let data = require('../json/english/course.json')
+        this.data.menuList = data.course
         this.showMenu = true
       },
-      tabGo (data) {
+      getCourse () {
+        let data = require('../json/english/course.json')
+        this.data.course = data.course
+        this.data.course.forEach((val, idex) => {
+          if (this.getCourseFlag(val.id) === 'learning') {
+            this.data.learn.push(val)
+          } else {
+            this.data.unlearn.push(val)
+          }
+        })
+      },
+      menuGo (data) {
         this.$route.meta.isBack = false
-        if (this.getCommendFlag(data.id) === 'learning') {
+        if (this.getCourseFlag(data.id) === 'learning') {
           // 学习课程
           this.$push({
-            path: '/appDetail',
+            path: '/appEnDetail',
             query: {
               title: data.title,
-              id: data.id
+              type: data.type,
+              page: data.page
             }
           })
         } else {
@@ -209,7 +207,7 @@
           }
         })
       },
-      getCommendFlag (flag) {
+      getCourseFlag (flag) {
         flag = Base64.encode(flag)
         return !this.data.user.course[flag] ? 'unlearn' : 'learning'
       }
