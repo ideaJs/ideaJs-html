@@ -1,24 +1,46 @@
 .appSet
   background: #fff
+  overflow-y: auto
+  padding-bottom: 5rem
   .p-main
     margin: 3px
-    padding: 10px 10px
     border-radius: 4px
     background: #fff
     box-shadow: 0 0 5px 0 #dbdbdb
-    .ivu-form-inline .ivu-form-item
-      width: 100%
-      margin: 1rem 0 2rem
+    .ivu-cell-group
+      border-top: 1.5px solid #f2fcf0
+    .ivu-cell
+      border-bottom: 1.5px solid #f2fcf0
+      position: relative
+    .ivu-icon
+      color: #C3683A
+      vertical-align: top
+      margin-top: 2px
+    .ivu-cell-footer
+      margin-right: 10px
+    .ivu-icon-ios-arrow-forward
+      position: absolute
+      right: 10px
+      top: 11px
   .p-bottom
     width: 100%
     text-align: center
     position: fixed
     left: 0
     bottom: 5px
+    z-index: 2222
     button
       color: #f4f4f4
       width: 80%
-  .p-address
+  .vux-datetime-value
+    height: 36px
+    float: right
+    position: relative
+    z-index: 666
+    margin-top: -36px
+    width: 100%
+    opacity: 0
+  .x-address
     >div
       >span
         width: 54.5px
@@ -26,14 +48,7 @@
         display: inline-block
         vertical-align: top
         line-height: 2.2
-        background: #f8f8f9
-        border: 1px solid #e3e3ee
-        border-radius: 4px 0 0 4px
-        border-right: none
       >div
         display: inline-block
         width: calc(100% - 56px)
         margin-left: -4px
-       textarea
-        border-radius: 0 4px 4px 0
-        

@@ -28,7 +28,7 @@ export default {
       }
     }
   },
-  mounted () {
+  created () {
   },
   methods: {
     onSwipeLeft () { // 页面左滑-下一页
@@ -44,6 +44,6 @@ export default {
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus">
-  @import "components/common/stylus/reset.styl"
+  @import "common/stylus/reset.styl"
   @import "components/appStylus/App.styl"
 </style>

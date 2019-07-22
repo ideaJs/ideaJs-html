@@ -11,10 +11,19 @@ const AppCaptcha = () => import('@/components/appConfig/appCaptcha')
 const AppScan = () => import('@/components/appConfig/appScan')
 const AppBarCode = () => import('@/components/appConfig/appBarCode')
 const AppHeadPhoto = () => import('@/components/appConfig/appHeadPhoto')
+const AppResetPass = () => import('@/components/appConfig/appResetPass')
+const AppAbout = () => import('@/components/appConfig/appAbout')
+const AppService = () => import('@/components/appConfig/appService')
+const AppAddress = () => import('@/components/appConfig/appAddress')
+const AppMoney = () => import('@/components/appConfig/appMoney')
 
 const AppIndex = () => import('@/components/appMain/appIndex')
 const AppMember = () => import('@/components/appMain/appMember')
 const AppSign = () => import('@/components/appMain/appSign')
+const AppFriends = () => import('@/components/appMain/appFriends')
+const AppSeeInfo = () => import('@/components/appMain/appSeeInfo')
+const AppEditInfo = () => import('@/components/appMain/appEditInfo')
+
 const AppEnDetail = () => import('@/components/appEnglish/appEnDetail')
 const AppEnWord = () => import('@/components/appEnglish/appEnWord')
 const AppEnPhrase = () => import('@/components/appEnglish/appEnPhrase')
@@ -171,6 +180,69 @@ export default new Router({
     component: AppSign,
     meta: {
       title: '报名课程',
+      header: {
+        left: 'ios-arrow-back',
+        leftFuc: (fuc) => {fuc && fuc()},
+        right: '',
+        rightFuc: (fuc) => {fuc && fuc()}
+      },
+      touch: {
+        leftFuc: (fuc) => {fuc && fuc()},
+        rightFuc: (fuc) => {fuc && fuc()}
+      },
+      isBack: false,
+      scrollToTop: true,
+      isReload: false,
+      needLogin: true
+    }
+  }, {
+    path: '/appFriends',
+    name: 'AppFriends',
+    component: AppFriends,
+    meta: {
+      title: '朋友圈',
+      header: {
+        left: 'ios-arrow-back',
+        leftFuc: (fuc) => {fuc && fuc()},
+        right: '',
+        rightFuc: (fuc) => {fuc && fuc()}
+      },
+      touch: {
+        leftFuc: (fuc) => {fuc && fuc()},
+        rightFuc: (fuc) => {fuc && fuc()}
+      },
+      isBack: false,
+      scrollToTop: true,
+      isReload: false,
+      needLogin: true
+    }
+  }, {
+    path: '/appSeeInfo',
+    name: 'AppSeeInfo',
+    component: AppSeeInfo,
+    meta: {
+      title: '详细信息',
+      header: {
+        left: 'ios-arrow-back',
+        leftFuc: (fuc) => {fuc && fuc()},
+        right: '',
+        rightFuc: (fuc) => {fuc && fuc()}
+      },
+      touch: {
+        leftFuc: (fuc) => {fuc && fuc()},
+        rightFuc: (fuc) => {fuc && fuc()}
+      },
+      isBack: false,
+      scrollToTop: true,
+      isReload: false,
+      needLogin: true
+    }
+  }, {
+    path: '/appEditInfo',
+    name: 'AppEditInfo',
+    component: AppEditInfo,
+    meta: {
+      title: '信息设置',
       header: {
         left: 'ios-arrow-back',
         leftFuc: (fuc) => {fuc && fuc()},
@@ -376,6 +448,111 @@ export default new Router({
       needLogin: true
     }
   }, {
+    path: '/appMoney',
+    name: 'AppMoney',
+    component: AppMoney,
+    meta: {
+      title: '钱包',
+      header: {
+        left: 'ios-arrow-back',
+        leftFuc: (fuc) => {fuc && fuc()},
+        right: 'ios-card',
+        rightFuc: (fuc) => {fuc && fuc()}
+      },
+      touch: {
+        leftFuc: (fuc) => {fuc && fuc()},
+        rightFuc: (fuc) => {fuc && fuc()}
+      },
+      isBack: false,
+      scrollToTop: true,
+      isReload: false,
+      needLogin: true
+    }
+  }, {
+    path: '/appAddress',
+    name: 'AppAddress',
+    component: AppAddress,
+    meta: {
+      title: '收货地址',
+      header: {
+        left: 'ios-arrow-back',
+        leftFuc: (fuc) => {fuc && fuc()},
+        right: '',
+        rightFuc: (fuc) => {fuc && fuc()}
+      },
+      touch: {
+        leftFuc: (fuc) => {fuc && fuc()},
+        rightFuc: (fuc) => {fuc && fuc()}
+      },
+      isBack: false,
+      scrollToTop: true,
+      isReload: false,
+      needLogin: true
+    }
+  }, {
+    path: '/appService',
+    name: 'AppService',
+    component: AppService,
+    meta: {
+      title: '在线客服',
+      header: {
+        left: 'ios-arrow-back',
+        leftFuc: (fuc) => {fuc && fuc()},
+        right: '',
+        rightFuc: (fuc) => {fuc && fuc()}
+      },
+      touch: {
+        leftFuc: (fuc) => {fuc && fuc()},
+        rightFuc: (fuc) => {fuc && fuc()}
+      },
+      isBack: false,
+      scrollToTop: true,
+      isReload: false,
+      needLogin: true
+    }
+  }, {
+    path: '/appAbout',
+    name: 'AppAbout',
+    component: AppAbout,
+    meta: {
+      title: '关于我们',
+      header: {
+        left: 'ios-arrow-back',
+        leftFuc: (fuc) => {fuc && fuc()},
+        right: '',
+        rightFuc: (fuc) => {fuc && fuc()}
+      },
+      touch: {
+        leftFuc: (fuc) => {fuc && fuc()},
+        rightFuc: (fuc) => {fuc && fuc()}
+      },
+      isBack: false,
+      scrollToTop: true,
+      isReload: false,
+      needLogin: true
+    }
+  }, {
+    path: '/appResetPass',
+    name: 'AppResetPass',
+    component: AppResetPass,
+    meta: {
+      title: '密码重置',
+      header: {
+        left: 'ios-arrow-back',
+        leftFuc: (fuc) => {fuc && fuc()},
+        right: '',
+        rightFuc: (fuc) => {fuc && fuc()}
+      },
+      touch: {
+        leftFuc: (fuc) => {fuc && fuc()},
+        rightFuc: (fuc) => {fuc && fuc()}
+      },
+      isBack: false,
+      scrollToTop: true,
+      isReload: false,
+      needLogin: true
+    }
+  }, {
     path: '/appCaptcha',
     name: 'AppCaptcha',
     component: AppCaptcha,
@@ -447,7 +624,7 @@ export default new Router({
       header: {
         left: 'ios-arrow-back',
         leftFuc: (fuc) => {fuc && fuc()},
-        right: 'md-menu',
+        right: '',
         rightFuc: (fuc) => {fuc && fuc()}
       },
       touch: {

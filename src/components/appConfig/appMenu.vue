@@ -37,7 +37,7 @@
         }
       }
     },
-    mounted () {
+    created () {
       this.data.userLogin = localStorage.getItem('userLogin') || ''     // 获取客户登录状态
       if (this.data.userLogin) {
         this.data.user = JSON.parse(localStorage.getItem(this.data.userLogin))       // 获取客户信息
@@ -45,19 +45,9 @@
       this.getEnMenu()
       /*自定义顶部header两侧按钮事件+页面左右滑动事件*/
       this.$route.meta.header.leftFuc = this.back                 // header左侧返回按钮事件
-      this.$route.meta.touch.leftFuc = this.start                 // 页面向左滑动事件
       this.$route.meta.touch.rightFuc = this.back                 // 页面向右滑动事件
     },
     methods: {
-      start () {
-        this.$route.meta.isBack = false
-        this.$push({
-          path: '/appSet',
-          query: {
-            type: '3'
-          }
-        })
-      },
       back () {
         this.$route.meta.isBack = true
         this.$back({

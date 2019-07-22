@@ -42,6 +42,10 @@
                   </Row>
                 </div>
               </div>
+              <div class="x-unData" v-if="data.course.length === 0">
+                <Icon type="md-walk" />
+                <div>暂无数据</div>
+              </div>
             </div>
           </TabPane>
         </Tabs>
@@ -50,11 +54,11 @@
   </div>
 </template>
 <script>
-  import { Row, Col, Button, Drawer, Carousel, CarouselItem, Tabs, TabPane } from 'iview'
+  import { Row, Col, Button, Drawer, Carousel, CarouselItem, Tabs, TabPane, Icon } from 'iview'
   import { Popup } from 'vux'
   import appHeader from '@/components/appConfig/appHeader.vue'
-	import loopImg01 from '../common/images/banner/study01.png'
-	import loopImg03 from '../common/images/banner/english01.png'
+	import loopImg01 from '../../common/images/banner/study01.png'
+	import loopImg03 from '../../common/images/banner/english01.png'
   export default {
     name: 'appEnDetail',
     data () {
@@ -89,8 +93,6 @@
       this.data.userLogin = localStorage.getItem('userLogin') || ''     // 获取客户登录状态
       this.data.user = JSON.parse(localStorage.getItem(this.data.userLogin))       // 获取客户信息
       this.getCourse()
-    },
-    mounted () {
       /*自定义顶部header两侧按钮事件+页面左右滑动事件*/
       this.$route.meta.header.leftFuc = this.back                 // header左侧返回按钮事件
       this.$route.meta.touch.rightFuc = this.back                 // 页面向右滑动事件
@@ -106,8 +108,12 @@
         })
       },
       getCourse () {
-        let data = require('../json/english/' + this.data.type + '/' + this.data.page + '/list.json')
-        this.data.course = data.list
+        try {
+          let data = require('../json/english/' + this.data.type + '/' + this.data.page + '/list.json')
+          this.data.course = data.list
+        } catch (err) {
+          this.data.course = []
+        }
       },
       tabGo (data, idex) {
         this.data.user.learn[data.id] = true
@@ -131,7 +137,7 @@
     filters: {
     },
     components: {
-      appHeader, Row, Col, Button, Popup, Drawer, Carousel, CarouselItem, Tabs, TabPane
+      appHeader, Row, Col, Button, Popup, Drawer, Carousel, CarouselItem, Tabs, TabPane, Icon
     }
   }
 </script>

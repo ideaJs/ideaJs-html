@@ -7,21 +7,14 @@
     <appHeader :headerInfo="data.headerInfo"></appHeader>
     <div class="container">
       <img width="100px" height="100px" class="headerFace" :src="data.headerFace" />
-      <Form ref="formData" :model="data.formData" :rules="data.formRule" inline>
-        <!-- 
-        <FormItem prop="user">
-          <Input type="text" size="large" v-model.trim="data.formData.user" clearable placeholder="用户名 (2-12位英文、数字、中文等)">
-          <Icon type="ios-person" slot="prepend"></Icon>
-          </Input>
-        </FormItem>
-        -->
+      <Form ref="formData" :model="data.formData" inline>
         <FormItem prop="phone">
-          <Input number :maxlength="11" size="large" v-model="data.formData.phone" clearable placeholder="手机号">
+          <Input number :maxlength="11" size="large" v-model="data.formData.phone" clearable placeholder="请输入手机号(必填)">
           <Icon type="md-phone-portrait" slot="prepend"></Icon>
           </Input>
         </FormItem>
         <FormItem prop="pass">
-          <Input type="password" size="large" v-model="data.formData.pass" clearable placeholder="密码 (6-12位英文、数字)">
+          <Input type="password" :maxlength="12" size="large" v-model="data.formData.pass" clearable placeholder="密码(6-12位英文、数字)">
           <Icon type="ios-lock" slot="prepend"></Icon>
           </Input>
         </FormItem>
@@ -34,11 +27,11 @@
   </div>
 </template>
 <script>
-  import { Button, Input, Form, FormItem, Icon, Modal } from 'iview'
+  import { Button, Input, Form, FormItem, Icon, Modal, Message } from 'iview'
   import { Popup } from 'vux'
   import appHeader from'@/components/appConfig/appHeader.vue'
   import appCaptcha from'@/components/appConfig/appCaptcha.vue'
-  import headerFace001 from '../common/images/small-icon/headerFace001.png'
+  import headerFace001 from '../../common/images/small-icon/headerFace001.png'
 export default {
   name: 'appLogin',
   data () {
@@ -53,96 +46,117 @@ export default {
           pass: ''
         },
         formRule: {
-          user: [
-            { required: true, message: '用户名应为2-12位英文、数字、中文等', trigger: 'blur' },
-            { pattern: /^[a-zA-Z0-9\u4E00-\u9FA5]{2,12}$/, message: '用户名应为2-12位英文、数字、中文等', trigger: 'blur' }
-          ],
-          phone: [
-            { required: true, type:'number', message: '手机号应为11位数字', trigger: 'blur' },
-            { pattern: /^1[1-9]\d{9}$/, message: '手机号应为11位数字', trigger: 'blur' }
-          ],
-          pass: [
-            { required: true, message: '密码应为6-12位英文、数字和_', trigger: 'blur' },
-            { pattern: /^[a-zA-Z0-9]{6,12}$/, message: '密码应为6-12位英文、数字等', trigger: 'blur' }
-          ]
+          user: {
+            pattern: /^[a-zA-Z0-9\u4E00-\u9FA5]{2,30}$/,
+            message: '姓名应为2-30位英文、数字、中文等'
+          },
+          phone: {
+            pattern: /^1[1-9]\d{9}$/,
+            message: '手机号应为11位数字'
+          },
+          pass: {
+            pattern: /^[a-zA-Z0-9]{6,12}$/,
+            message: '密码应为6-12位英文、数字'
+          }
         },
         appCaptchaInfo: {
         }
       }
     }
   },
-  mounted () {
-    this.data.url = this.$route.query.url || '/appMember'
+  created () {
+    this.data.fromUrl = this.$route.query.fromUrl || '/appMember'
+    this.data.toUrl = this.$route.query.toUrl
     this.data.appCaptchaInfo.start = this.start
     this.$route.meta.header.leftFuc = this.back                 // header左侧返回按钮事件
   },
   methods: {
+    back () {
+      Message.destroy()
+      this.$route.meta.isBack = true
+      this.$back({
+        path: this.data.fromUrl,
+        query: {
+          type: '3'
+        }
+      })
+    },
     start () {
-      // if (!/^[a-zA-Z0-9\u4E00-\u9FA5]{2,12}$/.test(this.data.formData.user)) return
-      if (!/^1[1-9]\d{9}$/.test(this.data.formData.phone)) return
-      if (!/^[a-zA-Z0-9]{6,12}$/.test(this.data.formData.pass)) return
+      Message.destroy()
+      let rule = this.data.formRule
+      // if (!rule.user.pattern.test(this.data.formData.user)) {
+      //   Message.info({
+      //     content: rule.user.message + '，请重新输入！',
+      //     duration: 6,
+      //     closable: true
+      //   })
+      //   return
+      // }
+      if (!rule.phone.pattern.test(this.data.formData.phone)) {
+        Message.info({
+          content: rule.phone.message + '，请重新输入！',
+          duration: 6,
+          closable: true
+        })
+        return
+      }
+      if (!rule.pass.pattern.test(this.data.formData.pass)) {
+        Message.info({
+          content: rule.pass.message + '，请重新输入！',
+          duration: 6,
+          closable: true
+        })
+        return
+      }
       let usermsg = JSON.parse(localStorage.getItem(this.data.formData.phone))
       if (usermsg) {
-        if (usermsg.pass === this.data.formData.pass) {
+        if (usermsg.userInfo.pass === this.data.formData.pass) {
           localStorage.setItem('userLogin', this.data.formData.phone)
           document.getElementById('msg').innerHTML = ''
-          this.$route.meta.isBack = false
-          this.$push({
-            path: this.data.url,
-            query: {
-              type: '3'
-            }
-          })
+          if (this.data.toUrl) {
+            this.forward()
+          } else {
+            this.back()
+          }
         } else {
-          Modal.confirm({
-            title: '信息提示',
+          Message.info({
             content: '密码错误，请重试',
-            okText: '确定',
-            cancelText: '取消',
-            onOk: () => {
-              this.$router.go(0)
-            },
-            onCancel: () => {
-              this.$router.go(0)
-            }
+            duration: 6,
+            closable: true
           })
         }
       } else {
-        Modal.confirm({
-          title: '信息提示',
-          content: '手机号错误，请重试',
-          okText: '确定',
-          cancelText: '取消',
-          onOk: () => {
-            this.$router.go(0)
-          },
-          onCancel: () => {
-            this.$router.go(0)
-          }
+        Message.info({
+          content: '手机号：' + this.data.formData.phone + '错误，请重试！',
+          duration: 6,
+          closable: true
         })
       }
     },
-    back () {
-      this.$route.meta.isBack = true
+    forward () {
+      Message.destroy()
+      this.$route.meta.isBack = false
       this.$back({
-        path: this.data.url,
+        path: this.data.toUrl,
         query: {
           type: '3'
         }
       })
     },
     onRegiste () {
+      Message.destroy()
       this.$route.meta.isBack = false
       this.$push({
         path: '/appRegiste',
         query: {
-          type: '3'
+          fromUrl: this.data.fromUrl,
+          toUrl: this.data.toUrl
         }
       })
     }
   },
   components: {
-    appHeader, appCaptcha, Button, Input, Form, FormItem, Icon, Popup, Modal
+    appHeader, appCaptcha, Button, Input, Form, FormItem, Icon, Popup, Modal, Message
   }
 }
 </script>

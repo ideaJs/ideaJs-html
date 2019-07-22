@@ -8,7 +8,7 @@
     <div class="container">
       <div v-if="data.wordsArr.length > 0" class="">
         <div @click="goPage(0)" class="p-title col-list">
-          词汇 <span class="p-num">{{data.wordsArr.length}}</span> 个 
+          词汇 <span class="p-num">{{data.wordsArr.length}}</span> 个
           <span class="rightBtn">看卡片<Icon type="ios-arrow-forward" /></span>
         </div>
         <div class="">
@@ -30,9 +30,9 @@
           </div>
         </div>
       </div>
-      <div class="uncourse" v-if="data.wordsArr.length === 0">
+      <div class="x-unData" v-if="data.wordsArr.length === 0">
         <Icon type="md-walk" />
-        <div>暂无数据！</div>
+        <div>暂无数据</div>
       </div>
       <audio style="display:none" id="appAudio" src=""></audio>
     </div>
@@ -59,7 +59,7 @@ export default {
       }
     }
   },
-  mounted () {
+  created () {
     this.$route.meta.title = this.$route.query.title2
     this.data.type = this.$route.query.type
     this.data.page = this.$route.query.page

@@ -58,7 +58,7 @@ export default {
       }
     }
   },
-  mounted () {
+  created () {
     this.data.idex = parseInt(this.$route.query.idex)
     this.data.total = parseInt(this.$route.query.total)
     this.$route.meta.title = this.data.title + ' ' + (this.data.idex + 1) + '/' + this.data.total

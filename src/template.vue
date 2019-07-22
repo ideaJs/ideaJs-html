@@ -27,7 +27,7 @@
         }
       }
     },
-    mounted () {
+    created () {
       /*自定义顶部header两侧按钮事件+页面左右滑动事件*/
       this.$route.meta.header.leftFuc = this.back                 // header左侧返回按钮事件
       this.$route.meta.header.rightFuc = this.getMenu             // header右侧菜单按钮事件

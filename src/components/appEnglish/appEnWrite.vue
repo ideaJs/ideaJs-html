@@ -6,9 +6,9 @@
     </div>
     <appHeader :headerInfo="data.headerInfo"></appHeader>
     <div class="container">
-      <div v-if="data.wordsArr.length > 0" class="">
+      <div v-if="data.writeArr.length > 0" class="">
         <div @click="goPage(0)" class="p-title col-list">
-          词汇 <span class="p-num">{{data.writeArr.length}}</span> 个 
+          词汇 <span class="p-num">{{data.writeArr.length}}</span> 个
           <span class="rightBtn">看卡片<Icon type="ios-arrow-forward" /></span>
         </div>
         <div class="">
@@ -23,6 +23,10 @@
             </div>
           </div>
         </div>
+      </div>
+      <div class="x-unData" v-if="data.writeArr.length === 0">
+        <Icon type="md-walk" />
+        <div>暂无数据</div>
       </div>
     </div>
   </div>
@@ -46,7 +50,7 @@ export default {
       }
     }
   },
-  mounted () {
+  created () {
     this.$route.meta.title = this.$route.query.title2
     this.data.type = this.$route.query.type
     this.data.page = this.$route.query.page

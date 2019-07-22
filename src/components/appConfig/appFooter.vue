@@ -15,7 +15,7 @@
       return {
       }
     },
-    mounted () {
+    created () {
     },
     methods: {
       start () {

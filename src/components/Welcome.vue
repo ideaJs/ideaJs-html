@@ -19,7 +19,7 @@
         }
       }
     },
-    mounted () {
+    created () {
     },
     methods: {
       start () {

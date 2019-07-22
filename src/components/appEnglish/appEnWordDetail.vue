@@ -75,7 +75,7 @@ export default {
       }
     }
   },
-  mounted () {
+  created () {
     this.$route.meta.title = this.data.title + ' ' + (this.data.idex + 1) + '/' + this.data.total
     this.data.type = this.$route.query.type
     this.data.page = this.$route.query.page
