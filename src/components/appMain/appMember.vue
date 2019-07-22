@@ -63,7 +63,7 @@
           </Row>
           <Row class="p-main-b">
             <Col span="6">
-              <div @click="goMessage()" class="p-message">
+              <div @click="goNews()" class="p-news">
                 <Icon type="md-chatboxes" />
                 <div class="">消息
                 </div>
@@ -249,7 +249,7 @@ export default {
     goWxcode () {
       this.$route.meta.isBack = false
       this.$push({
-        path: '/appService',
+        path: '/appWxcode',
         query: {
           type: '3'
         }
@@ -303,17 +303,17 @@ export default {
         this.userLogin('/appEnword?type=collectEnWords')
       }
     },
-    goMessage () {
+    goNews () {
       if (this.data.userLogin) {
         this.$route.meta.isBack = false
         this.$push({
-          path: '/appMessage',
+          path: '/appNews',
           query: {
             type: '3'
           }
         })
       } else {
-        this.userLogin('/appMessage?type=3')
+        this.userLogin('/appNews?type=3')
       }
     },
     goProve () {

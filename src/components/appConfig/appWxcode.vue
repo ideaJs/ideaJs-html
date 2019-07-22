@@ -1,6 +1,6 @@
 <!-- Created by macmzon@163.com-->
 <template>
-  <div class="appService">
+  <div class="appWxcode">
     <div v-transfer-dom>
       <popup v-model="showBack"></popup>
     </div>
@@ -8,13 +8,7 @@
     <div class="container">
       <div class="p-main">
         <div class="p-service">
-          <div class="">
-            在线客服：
-          </div>
-          <div class="">关注“英语日记”公众号，发送留言信息，客服会尽快回复您。
-          </div>
           <div class="qrcode">
-            <br><br><br><br>
             “英语日记”公众号：快来扫码关注我们吧！
           </div>
           <div class="qrImg">
@@ -43,7 +37,7 @@
   import appHeader from'@/components/appConfig/appHeader.vue'
   import qrcode from '../../common/images/small-icon/qrcode.jpg'
 export default {
-  name: 'appService',
+  name: 'appWxcode',
   data () {
     return {
       showBack: false,
@@ -76,5 +70,5 @@ export default {
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus">
-  @import "stylus/appService.styl"
+  @import "stylus/appWxcode.styl"
 </style>

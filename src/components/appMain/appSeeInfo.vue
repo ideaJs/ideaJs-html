@@ -11,6 +11,8 @@
           <img :src="data.friends.headImg || data.headImg" />
         </div>
         <div class="active-user">
+          <Icon v-if="data.friends.sex[0] === '男'" type="ios-man" />
+          <Icon v-if="data.friends.sex[0] === '女'" type="ios-woman" />
           {{data.friends.user}}
           <span v-if="data.friends.label">({{data.friends.label}})</span>
         </div>
@@ -40,6 +42,13 @@
           </Col>
           <Col class="p-right" span="18">
             <span>{{data.friends.qq || '--'}}</span>
+          </Col>
+        </Row>
+        <Row class="p-list">
+          <Col span="6">公司：
+          </Col>
+          <Col class="p-right" span="18">
+            <span>{{data.friends.company || '--'}}</span>
           </Col>
         </Row>
         <Row class="p-list">
@@ -111,20 +120,23 @@
             'ios-home', 'ios-contacts', 'ios-football', 'ios-cafe', 'md-aperture', 'ios-school', 'ios-paw'
           ],
           friends: {
-            type: ['家人'],
-            id: new Date().getTime(),
-            headImg: '',
-            user: '',
-            birthday: '',
-            label: '',
-            phone: '',
-            weixin: '',
-            qq: '',
-            work: '',
-            title: '',
-            email: '',
-            address: '',
-            sign: ''
+            type: ['家人'],           // 朋友圈类型
+            id: new Date().getTime(), // 学号
+            headImg: '',              // 头像
+            user: '',                 // 用户名
+            sex: ['男'],              // 性别
+            birthday: '',             // 生日
+            label: '',                // 标签
+            phone: '',                // 手机号
+            weixin: '',               // 微信
+            qq: '',                   // QQ
+            pass: '',                 // 通行证
+            company: '',              // 公司
+            work: '',                 // 职业
+            title: '',                // 职称
+            email: '',                // 邮箱
+            address: '',              // 地址
+            sign: ''                  // 签名
           }
         }
       }

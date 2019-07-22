@@ -30,7 +30,7 @@
                     <Col span="12">
                       <div class="newMsg-title">{{item.title}}
                       </div>
-                      <div class="newMsg-intruction">{{item.introduction}}
+                      <div class="newMsg-brief">{{item.brief}}
                       </div>
                     </Col>
                     <Col span="6" style="text-align:right;">

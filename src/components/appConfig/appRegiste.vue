@@ -49,21 +49,23 @@ export default {
         headerInfo: this.$route.meta,
         formData: {
           userInfo: {
-            type: ['家人'],            // 朋友圈类型
+            type: ['家人'],           // 朋友圈类型
             id: new Date().getTime(), // 学号
             headImg: '',              // 头像
             user: '',                 // 用户名
+            sex: ['男'],              // 性别
             birthday: '',             // 生日
             label: '',                // 标签
             phone: '',                // 手机号
             weixin: '',               // 微信
             qq: '',                   // QQ
-            pass: '',                 //
+            pass: '',                 // 通行证
+            company: '',              // 公司
             work: '',                 // 职业
             title: '',                // 职称
             email: '',                // 邮箱
             address: '',              // 地址
-            sign: ''                 // 签名
+            sign: ''                  // 签名
           },
           course: {},               // 已激活课程
           collectEnWords: {},       // 英语词汇收藏

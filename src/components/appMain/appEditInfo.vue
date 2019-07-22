@@ -25,6 +25,18 @@
               <span slot="prepend" class="p-red">姓&nbsp;&nbsp;&nbsp;名</span>
             </Input>
           </FormItem>
+          <FormItem prop="type">
+            <Input class="p-types" type="text" :maxlength="30" size="large" v-model.trim="data.formData.sex[0]" clearable placeholder="请选择性别(必选)">
+              <span slot="prepend">性&nbsp;&nbsp;&nbsp;别</span>
+            </Input>
+            <popup-picker
+              :show.sync="data.sexShow"
+              :data="[['男', '女']]"
+              v-model="data.formData.sex"
+              confirm-text="确定"
+              cancel-text="取消"
+              @on-change="changeSex"></popup-picker>
+          </FormItem>
           <FormItem prop="birthday">
             <Input class="p-birthday" type="text" :maxlength="30" size="large" v-model.trim="data.formData.birthday" clearable placeholder="请选择出生日期">
               <span slot="prepend">生&nbsp;&nbsp;&nbsp;日</span>
@@ -55,6 +67,11 @@
           <FormItem prop="qq">
             <Input type="text" :maxlength="12" size="large" v-model.trim="data.formData.qq" clearable placeholder="请输入QQ号">
               <span slot="prepend">&nbsp;Q&nbsp;&nbsp;Q&nbsp;</span>
+            </Input>
+          </FormItem>
+          <FormItem prop="company">
+            <Input type="text" :maxlength="30" size="large" v-model.trim="data.formData.company" clearable placeholder="请输入公司">
+              <span slot="prepend">公&nbsp;&nbsp;&nbsp;司</span>
             </Input>
           </FormItem>
           <FormItem prop="work">
@@ -111,27 +128,34 @@
           idex: '',
           type: '',
           typeShow: false,
+          sexShow: false,
           typeName: [
             '家人', '朋友', '同事', '客户', '同乡', '校友', '其他'
+          ],
+          sexName: [
+            '男', '女'
           ],
           typeImg: [
             'ios-home', 'ios-contacts', 'ios-football', 'ios-cafe', 'md-aperture', 'ios-school', 'ios-paw'
           ],
           formData: {
-            type: ['家人'],
-            id: new Date().getTime(),
-            headImg: '',
-            user: '',
-            birthday: '',
-            label: '',
-            phone: '',
-            weixin: '',
-            qq: '',
-            work: '',
-            title: '',
-            email: '',
-            address: '',
-            sign: ''
+            type: ['家人'],           // 朋友圈类型
+            id: new Date().getTime(), // 学号
+            headImg: '',              // 头像
+            user: '',                 // 用户名
+            sex: ['男'],              // 性别
+            birthday: '',             // 生日
+            label: '',                // 标签
+            phone: '',                // 手机号
+            weixin: '',               // 微信
+            qq: '',                   // QQ
+            pass: '',                 // 通行证
+            company: '',              // 公司
+            work: '',                 // 职业
+            title: '',                // 职称
+            email: '',                // 邮箱
+            address: '',              // 地址
+            sign: ''                  // 签名
           },
           formRule: {
             user: {
@@ -153,6 +177,10 @@
             qq: {
               pattern: /^[1-9][0-9]{4,11}$/,
               message: 'QQ应为5-12位数字'
+            },
+            company: {
+              pattern: /^[a-zA-Z0-9\u4E00-\u9FA5]{2,30}$/,
+              message: '公司应为2-30位英文、数字、中文等'
             },
             work: {
               pattern: /^[a-zA-Z0-9\u4E00-\u9FA5]{2,30}$/,
@@ -186,7 +214,7 @@
       if (this.data.userLogin) {
         this.data.user = JSON.parse(localStorage.getItem(this.data.userLogin))       // 获取客户信息
         if (this.data.idex === -1) {
-          this.data.formData = this.data.user.userInfo // 获取客户信息
+          this.data.formData = Object.assign(this.data.formData, this.data.user.userInfo) // 获取客户信息
         } else {
           this.data.formData = Object.assign(this.data.formData, this.data.user.friends[this.data.idex]) // 获取朋友信息
         }
@@ -223,6 +251,8 @@
         }
       },
       changeType () {
+      },
+      changeSex () {
       },
       saveFriends () {
         Message.destroy()
@@ -262,6 +292,14 @@
         if (!rule.qq.pattern.test(this.data.formData.qq) && this.data.formData.qq !== '') {
           Message.info({
             content: rule.qq.message + '，请重新输入！',
+            duration: 6,
+            closable: true
+          })
+          return
+        }
+        if (!rule.company.pattern.test(this.data.formData.company) && this.data.formData.company !== '') {
+          Message.info({
+            content: rule.company.message + '，请重新输入！',
             duration: 6,
             closable: true
           })

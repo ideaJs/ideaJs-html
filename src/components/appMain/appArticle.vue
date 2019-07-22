@@ -1,0 +1,102 @@
+<!-- Created by macmzon@163.com-->
+<template>
+  <div class="appArticle">
+    <div v-transfer-dom>
+      <popup v-model="showBack"></popup>
+    </div>
+    <appHeader :headerInfo="data.headerInfo"></appHeader>
+    <div class="container">
+      <div class="p-main">
+        <div class="p-header">
+          <div class="p-title">
+            {{data.title}}
+          </div>
+          <div class="">
+            <Row>
+              <Col span="12">
+                <div class="p-date">
+                  {{data.news.date}}
+                </div>
+              </Col>
+              <Col span="12">
+                <div class="p-author">
+                  <span>作者：{{data.news.author}}</span>
+                </div>
+              </Col>
+            </Row>
+          </div>
+        </div>
+        <div class="p-article">
+          <img class="p-img" :src="data.news.largeImg" />
+          <div class="p-text">
+            {{data.news.article}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+<script>
+  import { Button, Icon, Row, Col } from 'iview'
+  import { Popup } from 'vux'
+  import appHeader from'@/components/appConfig/appHeader.vue'
+  import qrcode from '../../common/images/small-icon/qrcode.jpg'
+export default {
+  name: 'appArticle',
+  data () {
+    return {
+      showBack: false,
+      data: {
+        headerInfo: this.$route.meta,
+        title: '',
+        type: '',
+        id: '',
+        fromUrl: '',
+        news: {}
+      }
+    }
+  },
+  created () {
+    this.data.type = this.$route.query.type
+    this.data.id = this.$route.query.id
+    this.data.title = this.$route.query.title
+    this.data.fromUrl = this.$route.query.fromUrl || '/appNews'
+    this.getNews(this.data.type)
+    this.$route.meta.header.leftFuc = this.back                 // header左侧返回按钮事件
+    this.$route.meta.touch.rightFuc = this.back                 // 页面向右滑动事件
+  },
+  methods: {
+    back () {
+      this.$route.meta.isBack = true
+      this.$back({
+        path: this.data.fromUrl,
+        query: {
+          type: '3'
+        }
+      })
+    },
+    getNews (item) {
+      let news = []
+      if (item === 'history') {    // 历史消息
+        let data = require('../json/news/historyNews.json')
+        news = data.news
+      } else {                    // 最新消息
+        let data = require('../json/news/newNews.json')
+        news = data.news
+      }
+      news.forEach((val, ix) => {
+        if (val.id === this.data.id) {
+          this.data.news = val
+        }
+      })
+    }
+  },
+  components: {
+    Button, Icon, Popup, appHeader, Row, Col
+  }
+}
+</script>
+
+<style lang="stylus" rel="stylesheet/stylus">
+  @import "stylus/appArticle.styl"
+</style>

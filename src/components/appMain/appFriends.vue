@@ -13,7 +13,8 @@
         <Row>
           <Col span="15" style="text-align:right;">
             <div class="active-user">
-              <Icon type="ios-contact" />
+              <Icon v-if="data.user.userInfo.sex[0] === '男'" type="ios-man" />
+              <Icon v-if="data.user.userInfo.sex[0] === '女'" type="ios-woman" />
               <span >{{data.user.userInfo.user}}</span>
             </div>
           </Col>
@@ -34,36 +35,47 @@
           <TabPane v-for="(dat, ind) in data.typeName" :key="dat" :label="dat" :icon="data.typeImg[ind]">
             <div class="friends">
               <div v-if="item.type[0] === dat" @click="seeFriends(idex)" class="p-list" v-for="(item, idex) in data.friends" :key="idex">
-                <Row>
-                  <Col span="22">
-                    <div class="p-user">
+
+                <Row type="flex" align="middle">
+                  <Col class="p-head" span="4">
+                    <div>
                       <img :src="item.headImg || data.headImg" />
-                      {{item.user}}
                     </div>
                   </Col>
-                  <Col span="2" style="text-align:right;">
-                    <div class="p-more">
-                      <Icon type="ios-arrow-forward" />
+                  <Col span="20">
+                    <Row>
+                      <Col span="22">
+                        <div class="p-user">
+                          <Icon v-if="data.user.userInfo.sex[0] === '男'" type="ios-man" />
+                          <Icon v-if="data.user.userInfo.sex[0] === '女'" type="ios-woman" />
+                          {{item.user}}
+                        </div>
+                      </Col>
+                      <Col span="2" style="text-align:right;">
+                        <div class="p-more">
+                          <Icon type="ios-arrow-forward" />
+                        </div>
+                      </Col>
+                    </Row>
+                    <div class="p-friends">
+                      <Icon type="ios-pin" />
+                      {{item.address}}
+                    </div>
+                    <div class="p-manage">
+                      <Col span="16">
+                        <div @click="(e) => {e.stopPropagation()}">
+                          <Icon class="p-phone" type="ios-call" />
+                          <a :href="'tel:' + item.phone"><span>{{item.phone}}</span></a>
+                        </div>
+                      </Col>
+                      <Col span="8" style="text-align: right;">
+                        <Button class="p-delete" type="warning" shape="circle" @click="delFriends(item, idex)">
+                          <Icon type="ios-trash" />
+                        </Button>
+                      </Col>
                     </div>
                   </Col>
                 </Row>
-                <div class="p-friends">
-                  <Icon type="ios-pin" />
-                  {{item.address}}
-                </div>
-                <div class="p-manage">
-                  <Col span="16">
-                    <div @click="(e) => {e.stopPropagation()}">
-                      <Icon class="p-phone" type="ios-call" />
-                      <a :href="'tel:' + item.phone"><span>{{item.phone}}</span></a>
-                    </div>
-                  </Col>
-                  <Col span="8" style="text-align: right;">
-                    <Button class="p-delete" type="warning" shape="circle" @click="delFriends(item, idex)">
-                      <Icon type="ios-trash" />
-                    </Button>
-                  </Col>
-                </div>
               </div>
               <div v-if="!data.hasFriends" class="x-unData">
                 <Icon type="md-walk" />

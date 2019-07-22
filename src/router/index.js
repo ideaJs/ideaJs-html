@@ -14,6 +14,7 @@ const AppHeadPhoto = () => import('@/components/appConfig/appHeadPhoto')
 const AppResetPass = () => import('@/components/appConfig/appResetPass')
 const AppAbout = () => import('@/components/appConfig/appAbout')
 const AppService = () => import('@/components/appConfig/appService')
+const AppWxcode = () => import('@/components/appConfig/appWxcode')
 const AppAddress = () => import('@/components/appConfig/appAddress')
 const AppMoney = () => import('@/components/appConfig/appMoney')
 
@@ -23,6 +24,8 @@ const AppSign = () => import('@/components/appMain/appSign')
 const AppFriends = () => import('@/components/appMain/appFriends')
 const AppSeeInfo = () => import('@/components/appMain/appSeeInfo')
 const AppEditInfo = () => import('@/components/appMain/appEditInfo')
+const AppNews = () => import('@/components/appMain/appNews')
+const AppArticle = () => import('@/components/appMain/appArticle')
 
 const AppEnDetail = () => import('@/components/appEnglish/appEnDetail')
 const AppEnWord = () => import('@/components/appEnglish/appEnWord')
@@ -259,6 +262,48 @@ export default new Router({
       needLogin: true
     }
   }, {
+    path: '/appNews',
+    name: 'AppNews',
+    component: AppNews,
+    meta: {
+      title: '消息',
+      header: {
+        left: 'ios-arrow-back',
+        leftFuc: (fuc) => {fuc && fuc()},
+        right: '',
+        rightFuc: (fuc) => {fuc && fuc()}
+      },
+      touch: {
+        leftFuc: (fuc) => {fuc && fuc()},
+        rightFuc: (fuc) => {fuc && fuc()}
+      },
+      isBack: false,
+      scrollToTop: true,
+      isReload: false,
+      needLogin: true
+    }
+  }, {
+    path: '/appArticle',
+    name: 'AppArticle',
+    component: AppArticle,
+    meta: {
+      title: '文章',
+      header: {
+        left: 'ios-arrow-back',
+        leftFuc: (fuc) => {fuc && fuc()},
+        right: '',
+        rightFuc: (fuc) => {fuc && fuc()}
+      },
+      touch: {
+        leftFuc: (fuc) => {fuc && fuc()},
+        rightFuc: (fuc) => {fuc && fuc()}
+      },
+      isBack: false,
+      scrollToTop: true,
+      isReload: false,
+      needLogin: true
+    }
+  }, {
     path: '/appEnDetail',
     name: 'AppEnDetail',
     component: AppEnDetail,
@@ -474,6 +519,27 @@ export default new Router({
     component: AppAddress,
     meta: {
       title: '收货地址',
+      header: {
+        left: 'ios-arrow-back',
+        leftFuc: (fuc) => {fuc && fuc()},
+        right: '',
+        rightFuc: (fuc) => {fuc && fuc()}
+      },
+      touch: {
+        leftFuc: (fuc) => {fuc && fuc()},
+        rightFuc: (fuc) => {fuc && fuc()}
+      },
+      isBack: false,
+      scrollToTop: true,
+      isReload: false,
+      needLogin: true
+    }
+  }, {
+    path: '/appWxcode',
+    name: 'AppWxcode',
+    component: AppWxcode,
+    meta: {
+      title: '公众号',
       header: {
         left: 'ios-arrow-back',
         leftFuc: (fuc) => {fuc && fuc()},
