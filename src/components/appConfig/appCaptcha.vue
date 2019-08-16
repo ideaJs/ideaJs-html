@@ -10,19 +10,19 @@
 </template>
 
 <script>
-  import { Button, Input, Form, FormItem, Icon } from 'iview'
-  import {drawCaptcha} from '../../common/js/isCaptcha.js'
-  import captcha001 from '../../common/images/captcha/captcha001.jpg'
-  import captcha002 from '../../common/images/captcha/captcha002.jpg'
-  import captcha003 from '../../common/images/captcha/captcha003.jpg'
-  import captcha004 from '../../common/images/captcha/captcha004.jpg'
-  import captcha005 from '../../common/images/captcha/captcha005.jpg'
-  import captcha006 from '../../common/images/captcha/captcha006.jpg'
-  import captcha007 from '../../common/images/captcha/captcha007.jpg'
-  import captcha008 from '../../common/images/captcha/captcha008.jpg'
-  import captcha009 from '../../common/images/captcha/captcha009.jpg'
-  import captcha010 from '../../common/images/captcha/captcha010.jpg'
-  import headerFace001 from '../../common/images/small-icon/headerFace001.png'
+import { Button, Input, Form, FormItem, Icon } from 'iview'
+import {drawCaptcha} from '@/common/js/isCaptcha.js'
+import captcha001 from '@/common/images/captcha/captcha001.jpg'
+import captcha002 from '@/common/images/captcha/captcha002.jpg'
+import captcha003 from '@/common/images/captcha/captcha003.jpg'
+import captcha004 from '@/common/images/captcha/captcha004.jpg'
+import captcha005 from '@/common/images/captcha/captcha005.jpg'
+import captcha006 from '@/common/images/captcha/captcha006.jpg'
+import captcha007 from '@/common/images/captcha/captcha007.jpg'
+import captcha008 from '@/common/images/captcha/captcha008.jpg'
+import captcha009 from '@/common/images/captcha/captcha009.jpg'
+import captcha010 from '@/common/images/captcha/captcha010.jpg'
+import headerFace001 from '@/common/images/small-icon/headerFace001.png'
 export default {
   name: 'appCaptcha',
   props: {

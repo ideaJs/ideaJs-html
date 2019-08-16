@@ -40,9 +40,10 @@
 </template>
 
 <script>
-  import { Button, Icon, Modal } from 'iview'
-  import { Popup } from 'vux'
-  import appHeader from'@/components/appConfig/appHeader.vue'
+import { Button, Icon, Modal } from 'iview'
+import { Popup } from 'vux'
+import { _getWords } from '@/common/js/appEnglish/function'
+import appHeader from '@/components/appConfig/appHeader.vue'
 export default {
   name: 'appEnWord',
   data () {
@@ -100,13 +101,20 @@ export default {
       }
     },
     getWords () {
-      try {
-        this.data.words = require('../json/english/' + this.data.type + '/' + this.data.page + '/' + this.data.id2 + '.json')
-        this.data.wordsArr = Object.keys(this.data.words)
-      } catch (err) {
-        this.data.words = {}
-        this.data.wordsArr = []
+      let param = {
+        type: this.data.type,
+        page: this.data.page,
+        id2: this.data.id2
       }
+      _getWords(param, (res) => {
+        try {
+          this.data.words = res
+          this.data.wordsArr = Object.keys(res)
+        } catch (err) {
+          this.data.words = {}
+          this.data.wordsArr = []
+        }
+      })
     },
     collectEnWords () {
       try {
@@ -161,7 +169,7 @@ export default {
     playAudio (name) {
       if (name) {
         event.stopPropagation()
-        let audio = document.getElementById("appAudio")
+        let audio = document.getElementById('appAudio')
         audio.src = 'http://dict.youdao.com/speech?audio=' + name
         audio.play()
       }

@@ -20,7 +20,7 @@
 </template>
 
 <script>
-  import { Icon } from 'iview'
+import { Icon, Message } from 'iview'
 export default {
   name: 'appHeader',
   props: {
@@ -31,6 +31,7 @@ export default {
     }
   },
   created () {
+    Message.destroy()
   },
   methods: {
     goIndex () {
@@ -44,7 +45,7 @@ export default {
     }
   },
   components: {
-    Icon
+    Icon, Message
   }
 }
 </script>

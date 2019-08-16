@@ -74,82 +74,82 @@
   </div>
 </template>
 <script>
-  import { Row, Col, Button, Tabs, TabPane, Icon, Modal } from 'iview'
-  import { Popup } from 'vux'
-  import appHeader from '@/components/appConfig/appHeader.vue'
-  export default {
-    name: 'appMoney',
-    data () {
-      return {
-        showBack: false,
-        data: {
-          showModel: false,
-          user: {},
-          userLogin: '',
-          headerInfo: this.$route.meta,
-          courseLen: 0,
-          money: {
-            total: '297.00',
-            balance: '0.00',
-            list: [
-              {
-                date: '2019-4-3 12:21',
-                money: '99.00',
-                info: '购买小学英语课程'
-              },
-              {
-                date: '2019-5-3 13:15',
-                money: '99.00',
-                info: '购买高中英语课程'
-              },
-              {
-                date: '2019-6-3 14:08',
-                money: '99.00',
-                info: '购买大学英语课程'
-              }
-            ]
-          }
+import { Row, Col, Button, Tabs, TabPane, Icon, Modal } from 'iview'
+import { Popup } from 'vux'
+import appHeader from '@/components/appConfig/appHeader.vue'
+export default {
+  name: 'appMoney',
+  data () {
+    return {
+      showBack: false,
+      data: {
+        showModel: false,
+        user: {},
+        userLogin: '',
+        headerInfo: this.$route.meta,
+        courseLen: 0,
+        money: {
+          total: '297.00',
+          balance: '0.00',
+          list: [
+            {
+              date: '2019-4-3 12:21',
+              money: '99.00',
+              info: '购买小学英语课程'
+            },
+            {
+              date: '2019-5-3 13:15',
+              money: '99.00',
+              info: '购买高中英语课程'
+            },
+            {
+              date: '2019-6-3 14:08',
+              money: '99.00',
+              info: '购买大学英语课程'
+            }
+          ]
         }
       }
-    },
-    created () {
-      this.data.userLogin = localStorage.getItem('userLogin') || ''     // 获取客户登录状态
-      if (this.data.userLogin) {
-        this.data.user = JSON.parse(localStorage.getItem(this.data.userLogin))       // 获取客户信息
-        this.data.money = this.data.user.money
-        this.data.courseLen = Object.keys(this.data.user.course).length
-      }
-      /*自定义顶部header两侧按钮事件+页面左右滑动事件*/
-      this.$route.meta.header.leftFuc = this.back                 // header左侧返回按钮事件
-      this.$route.meta.header.rightFuc = this.recharge            // header右侧返回按钮事件
-      this.$route.meta.touch.rightFuc = this.back                 // 页面向右滑动事件
-    },
-    methods: {
-      back () {
-        this.$route.meta.isBack = true
-        this.$back({
-          path: '/appMember',
-          query: {
-            type: '3'
-          }
-        })
-      },
-      recharge () {
-        Modal.warning({
-          title: '信息提示',
-          content: '在线充值功能暂未开放，详情请联系在线客服！',
-          okText: '确定',
-          onOk: () => {
-          }
-        })
-      }
-    },
-    filters: {
-    },
-    components: {
-      appHeader, Row, Col, Button, Popup, Tabs, TabPane, Icon, Modal
     }
+  },
+  created () {
+    this.data.userLogin = localStorage.getItem('userLogin') || ''     // 获取客户登录状态
+    if (this.data.userLogin) {
+      this.data.user = JSON.parse(localStorage.getItem(this.data.userLogin))       // 获取客户信息
+      this.data.money = this.data.user.money
+      this.data.courseLen = Object.keys(this.data.user.course).length
+    }
+    /*自定义顶部header两侧按钮事件+页面左右滑动事件*/
+    this.$route.meta.header.leftFuc = this.back                 // header左侧返回按钮事件
+    this.$route.meta.header.rightFuc = this.recharge            // header右侧返回按钮事件
+    this.$route.meta.touch.rightFuc = this.back                 // 页面向右滑动事件
+  },
+  methods: {
+    back () {
+      this.$route.meta.isBack = true
+      this.$back({
+        path: '/appMember',
+        query: {
+          type: '3'
+        }
+      })
+    },
+    recharge () {
+      Modal.warning({
+        title: '信息提示',
+        content: '在线充值功能暂未开放，详情请联系在线客服！',
+        okText: '确定',
+        onOk: () => {
+        }
+      })
+    }
+  },
+  filters: {
+  },
+  components: {
+    appHeader, Row, Col, Button, Popup, Tabs, TabPane, Icon, Modal
   }
+}
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus">

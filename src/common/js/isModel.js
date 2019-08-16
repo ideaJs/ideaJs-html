@@ -56,7 +56,7 @@ export function showAlert (oMsg) {
 export function showToast (oMsg) {
   vm.$vux.toast.show({
     text: oMsg.text,
-    position: oMsg.position || 'top',
+    position: oMsg.position || '100px',
     type: oMsg.type || 'text',
     width: oMsg.width || '13em',
     onShow () {},

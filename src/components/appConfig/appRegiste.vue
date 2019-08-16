@@ -33,11 +33,11 @@
 </template>
 
 <script>
-  import { Button, Input, Form, FormItem, Icon, Modal, Message } from 'iview'
-  import { Popup } from 'vux'
-  import appHeader from'@/components/appConfig/appHeader.vue'
-  import appCaptcha from'@/components/appConfig/appCaptcha.vue'
-  import headerFace001 from '../../common/images/small-icon/headerFace001.png'
+import { Button, Input, Form, FormItem, Icon, Modal, Message } from 'iview'
+import { Popup } from 'vux'
+import appHeader from'@/components/appConfig/appHeader.vue'
+import appCaptcha from'@/components/appConfig/appCaptcha.vue'
+import headerFace001 from '@/common/images/small-icon/headerFace001.png'
 export default {
   name: 'appRegiste',
   data () {
@@ -83,9 +83,9 @@ export default {
           },
           prove: {                 // 认证
             name: '',              // 姓名
-            idCode: '',            // 身份证
-            idCardA: '',           // 身份证正面照片
-            idCardB: '',           // 身份证背面照片
+            idCode: '',            // 身份证号码
+            idPhotoA: '',           // 身份证正面照片
+            idPhotoB: '',           // 身份证背面照片
             status: '0',           // 认证状态，0 未认证，1 认证失败，2 认证成功
             error: '',             // 认证失败原因
             date: ''               // 认证成功日期

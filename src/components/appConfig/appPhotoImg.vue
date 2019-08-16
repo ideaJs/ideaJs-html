@@ -1,6 +1,6 @@
 <!-- Created by macmzon@163.com-->
 <template>
-  <div class="appHeadPhoto">
+  <div class="appPhotoImg">
     <div v-transfer-dom>
       <popup v-model="showBack"></popup>
     </div>
@@ -8,25 +8,14 @@
     <div class="container">
       <div>
         <div class="editImgs">
-          <Card class="infoHeadPhoto" :bordered="true">
-            <div slot="title">
-              <Row type="flex" justify="space-around" class="headType">
-                <Col span="12">当前头像</Col>
-                <Col span="12">预览头像</Col>
-              </Row>
+          <Card class="infoPhotoPhoto" :bordered="true">
+            <div slot="title" class="PhotoTitle">预览图片
             </div>
-            <div>
-              <Row type="flex" justify="space-around" class="headType">
-                <Col span="12" class="curHeadPhoto">
-                  <img v-if="data.headImg" :src="data.headImg" alt="头像">
-                </Col>
-                <Col span="12" class="newHeadPhoto">
-                  <img v-if="data.previews.url" :src="data.previews.url" :style="data.previews.img">
-                </Col>
-              </Row>
+            <div class="PhotoType">
+              <img v-if="data.PhotoImg" :src="data.PhotoImg">
             </div>
           </Card>
-          <div class="setHeadPhoto">
+          <div class="setPhotoPhoto">
             <div class="setDiv">
               <Button class="setBtn" type="info" @click="changeScale(1)">
                 <Icon type="md-add" title="放大" />
@@ -74,7 +63,7 @@
               </Col>
               <Col span="12">
                 <Button type="error" @click="finish('')">
-                  设置头像
+                  上传图片
                 </Button>
               </Col>
             </Row>
@@ -91,13 +80,13 @@ import {Button, Card, Row, Col, Icon, Modal} from 'iview'
 import { Popup } from 'vux'
 import appHeader from '@/components/appConfig/appHeader.vue'
 export default {
-  name: 'appHeadPhoto',
+  name: 'appPhotoImg',
   data () {
     return {
       showBack: false,
       data: {
         headerInfo: this.$route.meta,
-        headImg: ' ',                           // 默认头像图片地址
+        PhotoImg: ' ',                           // 默认头像图片地址
         previews: {},                          // 预览图片参数
         option: {                              // VueCropper配置参数
           img: '',                             // 图片地址
@@ -109,8 +98,8 @@ export default {
           canMoveBox: true,                    // 截图框能否拖动
           fixedBox: false,                     // 固定截图框大小 不允许改变
           autoCrop: true,                      // 是否默认生成截图框
-          autoCropWidth: 100,                  // 预览截图宽度
-          autoCropHeight: 100                  // 预览截图高度
+          autoCropWidth: 225,                  // 预览截图宽度
+          autoCropHeight: 150                  // 预览截图高度
         },
         fileUrl: '',                            // 本机文件地址
         imgFile: '',                            // 上传本地图片文件地址
@@ -121,18 +110,8 @@ export default {
   },
   created () {
     this.data.type = this.$route.query.type
-    this.data.idex = parseInt(this.$route.query.idex)
     this.data.toUrl = this.$route.query.toUrl
     this.data.fromUrl = this.$route.query.fromUrl
-    this.data.userLogin = localStorage.getItem('userLogin') || ''     // 获取客户登录状态
-    if (this.data.userLogin) {
-      this.data.user = JSON.parse(localStorage.getItem(this.data.userLogin))       // 获取客户信息
-      if (this.data.idex === -1) {
-        this.data.headImg = this.data.user.userInfo.headImg || ''           // 头像
-      } else {
-        this.data.headImg = this.data.user.friends[this.data.idex].headImg || ''           // 头像
-      }
-    }
     /*自定义顶部header两侧按钮事件+页面左右滑动事件*/
     this.$route.meta.header.leftFuc = this.back                 // header左侧返回按钮事件
     this.$route.meta.touch.rightFuc = this.back                 // 页面向右滑动事件
@@ -143,7 +122,8 @@ export default {
       this.$push({
         path: this.data.fromUrl,
         query: {
-          url: this.data.toUrl
+          type: this.data.type,
+          toUrl: this.data.toUrl
         }
       })
     },
@@ -167,16 +147,11 @@ export default {
       if (type === 'blob') {
         this.$refs.cropper.getCropBlob((data) => {
           let img = window.URL.createObjectURL(data)
-          this.data.headImg = img
-          if (this.data.idex === -1) {
-            this.data.user.userInfo.headImg = img
-          } else {
-            this.data.user.friends[this.data.idex].headImg = img
-          }
-          localStorage.setItem(this.data.userLogin, JSON.stringify(this.data.user))
+          this.data.PhotoImg = img
+          localStorage.setItem(this.data.type, img)
           Modal.warning({
             title: '信息提示',
-            content: '头像设置成功！',
+            content: '图片上传成功！',
             okText: '确定',
             onOk: () => {
             }
@@ -190,25 +165,20 @@ export default {
           //     var res = response.data
           //     if(res.success == 1){
           //       this.data.imgFile = ''
-          //       this.data.headImg = res.realPathList[0]  //完整路径
+          //       this.data.PhotoImg = res.realPathList[0]  //完整路径
           //       this.data.uploadImgRelaPath = res.relaPathList[0]  //非完整路径
-          //       console.log('上传成功')
+          //       console.log('图片上传成功')
           //     }
           //   })
           // }
         })
       } else {
         this.$refs.cropper.getCropData((data) => {
-          this.data.headImg = data
-          if (this.data.idex === -1) {
-            this.data.user.userInfo.headImg = data
-          } else {
-            this.data.user.friends[this.data.idex].headImg = data
-          }
-          localStorage.setItem(this.data.userLogin, JSON.stringify(this.data.user))
+          this.data.PhotoImg = data
+          localStorage.setItem(this.data.type, data)
           Modal.warning({
             title: '信息提示',
-            content: '头像设置成功！',
+            content: '图片上传成功！',
             okText: '确定',
             onOk: () => {
             }
@@ -222,9 +192,9 @@ export default {
           //     var res = response.data
           //     if(res.success == 1){
           //       this.data.imgFile = ''
-          //       this.data.headImg = res.realPathList[0]  //完整路径
+          //       this.data.PhotoImg = res.realPathList[0]  //完整路径
           //       this.data.uploadImgRelaPath = res.relaPathList[0]  //非完整路径
-          //       console.log('上传成功')
+          //       console.log('图片上传成功')
           //     }
           //   })
           // }
@@ -280,7 +250,7 @@ export default {
         if (num === 1) {
           this.data.option.img = data
         } else if (num === 2) {
-          this.headPhoto.img = data
+          this.PhotoPhoto.img = data
         }
       }
       // 转化为base64
@@ -304,5 +274,5 @@ export default {
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus">
-  @import 'stylus/appHeadPhoto.styl'
+  @import 'stylus/appPhotoImg.styl'
 </style>

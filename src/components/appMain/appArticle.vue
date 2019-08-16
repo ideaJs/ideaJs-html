@@ -37,10 +37,11 @@
   </div>
 </template>
 <script>
-  import { Button, Icon, Row, Col } from 'iview'
-  import { Popup } from 'vux'
-  import appHeader from'@/components/appConfig/appHeader.vue'
-  import qrcode from '../../common/images/small-icon/qrcode.jpg'
+import { Button, Icon, Row, Col } from 'iview'
+import { Popup } from 'vux'
+import { _getNews } from '@/common/js/appMain/function'
+import appHeader from'@/components/appConfig/appHeader.vue'
+import qrcode from '@/common/images/small-icon/qrcode.jpg'
 export default {
   name: 'appArticle',
   data () {
@@ -76,18 +77,12 @@ export default {
       })
     },
     getNews (item) {
-      let news = []
-      if (item === 'history') {    // 历史消息
-        let data = require('../json/news/historyNews.json')
-        news = data.news
-      } else {                    // 最新消息
-        let data = require('../json/news/newNews.json')
-        news = data.news
-      }
-      news.forEach((val, ix) => {
-        if (val.id === this.data.id) {
-          this.data.news = val
-        }
+      _getNews(item, (res) => {
+        res.forEach((val, ix) => {
+          if (val.id === this.data.id) {
+            this.data.news = val
+          }
+        })
       })
     }
   },

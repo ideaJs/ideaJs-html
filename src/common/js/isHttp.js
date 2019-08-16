@@ -1,6 +1,6 @@
-/*Created by macmzon@163.com*/
-import {CONFIG} from '../../common/js/isConfig'
-import {showLoading, hideLoading, showToast} from '../../common/js/isModel'
+// Created by macmzon@163.com
+import {CONFIG} from './isConfig'
+import {showLoading, hideLoading, showToast} from './isModel'
 import Vue from 'vue'
 // import md5 from 'js-md5'
 let Base64 = require('js-base64').Base64

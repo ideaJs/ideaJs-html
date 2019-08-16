@@ -5,25 +5,25 @@
   </div>
 </template>
 <script>
-  import { Popup } from 'vux'
-  export default {
-    appFooter: 'appFooter',
-    props: {
-      footerInfo: {}
-    },
-    data () {
-      return {
-      }
-    },
-    created () {
-    },
-    methods: {
-      start () {
-      }
-    },
-    components: {
+import { Popup } from 'vux'
+export default {
+  appFooter: 'appFooter',
+  props: {
+    footerInfo: {}
+  },
+  data () {
+    return {
     }
+  },
+  created () {
+  },
+  methods: {
+    start () {
+    }
+  },
+  components: {
   }
+}
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus">

@@ -27,9 +27,9 @@
 </template>
 
 <script>
-  import { Button, Input, Form, FormItem, Icon, Modal, CellGroup, Cell } from 'iview'
-  import { Popup, Datetime } from 'vux'
-  import appHeader from'@/components/appConfig/appHeader.vue'
+import { Button, Input, Form, FormItem, Icon, Modal, CellGroup, Cell } from 'iview'
+import { Popup, Datetime } from 'vux'
+import appHeader from '@/components/appConfig/appHeader.vue'
 
 export default {
   name: 'appSet',

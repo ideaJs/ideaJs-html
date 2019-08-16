@@ -19,11 +19,11 @@
 </template>
 
 <script>
-  let Base64 = require('js-base64').Base64
-  import { Button, Modal, Icon, Input, Message } from 'iview'
-  import { Popup } from 'vux'
-  import appHeader from'@/components/appConfig/appHeader.vue'
-	import bkImg from './images/bk123_01.png'
+let Base64 = require('js-base64').Base64
+import { Button, Modal, Icon, Input, Message } from 'iview'
+import { Popup } from 'vux'
+import appHeader from'@/components/appConfig/appHeader.vue'
+import bkImg from './images/bk123_01.png'
 export default {
   name: 'appSign',
   data () {
@@ -55,7 +55,6 @@ export default {
   },
   methods: {
     back () {
-      Message.destroy()
       this.$route.meta.isBack = true
       this.$back({
         path: '/appIndex',
@@ -84,7 +83,7 @@ export default {
     errorActive () {
       Message.info({
         content: '激活码错误，请重新激活！',
-        duration: 6,
+        duration: 60,
         closable: true
       })
     },

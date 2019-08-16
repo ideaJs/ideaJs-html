@@ -17,6 +17,7 @@ const AppService = () => import('@/components/appConfig/appService')
 const AppWxcode = () => import('@/components/appConfig/appWxcode')
 const AppAddress = () => import('@/components/appConfig/appAddress')
 const AppMoney = () => import('@/components/appConfig/appMoney')
+const AppPhotoImg = () => import('@/components/appConfig/appPhotoImg')
 
 const AppIndex = () => import('@/components/appMain/appIndex')
 const AppMember = () => import('@/components/appMain/appMember')
@@ -26,6 +27,9 @@ const AppSeeInfo = () => import('@/components/appMain/appSeeInfo')
 const AppEditInfo = () => import('@/components/appMain/appEditInfo')
 const AppNews = () => import('@/components/appMain/appNews')
 const AppArticle = () => import('@/components/appMain/appArticle')
+const AppProve = () => import('@/components/appMain/appProve')
+const AppIdCard = () => import('@/components/appMain/appIdCard')
+const AppProveResult = () => import('@/components/appMain/appProveResult')
 
 const AppEnDetail = () => import('@/components/appEnglish/appEnDetail')
 const AppEnWord = () => import('@/components/appEnglish/appEnWord')
@@ -50,7 +54,7 @@ isBack 判断是否返回上一页，scrollToTop 是否滚动到顶部，isReloa
 
 export default new Router({
   base: '',
-  transitionOnLoad:true,
+  transitionOnLoad: true,
   routes: [{
     path: '',
     name: 'AppHello',
@@ -59,13 +63,13 @@ export default new Router({
       title: '欢迎',
       header: {
         left: '',
-        leftFuc: (fuc) => {fuc && fuc()},
+        leftFuc: (fuc) => { fuc && fuc() },
         right: '',
-        rightFuc: (fuc) => {fuc && fuc()}
+        rightFuc: (fuc) => { fuc && fuc() }
       },
       touch: {
-        leftFuc: (fuc) => {fuc && fuc()},
-        rightFuc: (fuc) => {fuc && fuc()}
+        leftFuc: (fuc) => { fuc && fuc() },
+        rightFuc: (fuc) => { fuc && fuc() }
       },
       isBack: false,
       scrollToTop: true,
@@ -80,13 +84,13 @@ export default new Router({
       title: '欢迎',
       header: {
         left: '',
-        leftFuc: (fuc) => {fuc && fuc()},
+        leftFuc: (fuc) => { fuc && fuc() },
         right: '',
-        rightFuc: (fuc) => {fuc && fuc()}
+        rightFuc: (fuc) => { fuc && fuc() }
       },
       touch: {
-        leftFuc: (fuc) => {fuc && fuc()},
-        rightFuc: (fuc) => {fuc && fuc()}
+        leftFuc: (fuc) => { fuc && fuc() },
+        rightFuc: (fuc) => { fuc && fuc() }
       },
       isBack: false,
       scrollToTop: true,
@@ -101,13 +105,13 @@ export default new Router({
       title: '注册',
       header: {
         left: 'ios-arrow-back',
-        leftFuc: (fuc) => {fuc && fuc()},
+        leftFuc: (fuc) => { fuc && fuc() },
         right: '',
-        rightFuc: (fuc) => {fuc && fuc()}
+        rightFuc: (fuc) => { fuc && fuc() }
       },
       touch: {
-        leftFuc: (fuc) => {fuc && fuc()},
-        rightFuc: (fuc) => {fuc && fuc()}
+        leftFuc: (fuc) => { fuc && fuc() },
+        rightFuc: (fuc) => { fuc && fuc() }
       },
       isBack: false,
       scrollToTop: true,
@@ -122,13 +126,13 @@ export default new Router({
       title: '登录',
       header: {
         left: 'ios-arrow-back',
-        leftFuc: (fuc) => {fuc && fuc()},
+        leftFuc: (fuc) => { fuc && fuc() },
         right: '',
-        rightFuc: (fuc) => {fuc && fuc()}
+        rightFuc: (fuc) => { fuc && fuc() }
       },
       touch: {
-        leftFuc: (fuc) => {fuc && fuc()},
-        rightFuc: (fuc) => {fuc && fuc()}
+        leftFuc: (fuc) => { fuc && fuc() },
+        rightFuc: (fuc) => { fuc && fuc() }
       },
       isBack: false,
       scrollToTop: true,
@@ -143,13 +147,13 @@ export default new Router({
       title: '首页',
       header: {
         left: 'md-menu',
-        leftFuc: (fuc) => {fuc && fuc()},
+        leftFuc: (fuc) => { fuc && fuc() },
         right: 'ios-contact',
-        rightFuc: (fuc) => {fuc && fuc()}
+        rightFuc: (fuc) => { fuc && fuc() }
       },
       touch: {
-        leftFuc: (fuc) => {fuc && fuc()},
-        rightFuc: (fuc) => {fuc && fuc()}
+        leftFuc: (fuc) => { fuc && fuc() },
+        rightFuc: (fuc) => { fuc && fuc() }
       },
       isBack: false,
       scrollToTop: true,
@@ -164,13 +168,13 @@ export default new Router({
       title: '会员',
       header: {
         left: 'ios-arrow-back',
-        leftFuc: (fuc) => {fuc && fuc()},
+        leftFuc: (fuc) => { fuc && fuc() },
         right: 'ios-settings',
-        rightFuc: (fuc) => {fuc && fuc()}
+        rightFuc: (fuc) => { fuc && fuc() }
       },
       touch: {
-        leftFuc: (fuc) => {fuc && fuc()},
-        rightFuc: (fuc) => {fuc && fuc()}
+        leftFuc: (fuc) => { fuc && fuc() },
+        rightFuc: (fuc) => { fuc && fuc() }
       },
       isBack: false,
       scrollToTop: true,
@@ -185,13 +189,13 @@ export default new Router({
       title: '报名课程',
       header: {
         left: 'ios-arrow-back',
-        leftFuc: (fuc) => {fuc && fuc()},
+        leftFuc: (fuc) => { fuc && fuc() },
         right: '',
-        rightFuc: (fuc) => {fuc && fuc()}
+        rightFuc: (fuc) => { fuc && fuc() }
       },
       touch: {
-        leftFuc: (fuc) => {fuc && fuc()},
-        rightFuc: (fuc) => {fuc && fuc()}
+        leftFuc: (fuc) => { fuc && fuc() },
+        rightFuc: (fuc) => { fuc && fuc() }
       },
       isBack: false,
       scrollToTop: true,
@@ -206,13 +210,13 @@ export default new Router({
       title: '朋友圈',
       header: {
         left: 'ios-arrow-back',
-        leftFuc: (fuc) => {fuc && fuc()},
+        leftFuc: (fuc) => { fuc && fuc() },
         right: '',
-        rightFuc: (fuc) => {fuc && fuc()}
+        rightFuc: (fuc) => { fuc && fuc() }
       },
       touch: {
-        leftFuc: (fuc) => {fuc && fuc()},
-        rightFuc: (fuc) => {fuc && fuc()}
+        leftFuc: (fuc) => { fuc && fuc() },
+        rightFuc: (fuc) => { fuc && fuc() }
       },
       isBack: false,
       scrollToTop: true,
@@ -227,13 +231,13 @@ export default new Router({
       title: '详细信息',
       header: {
         left: 'ios-arrow-back',
-        leftFuc: (fuc) => {fuc && fuc()},
+        leftFuc: (fuc) => { fuc && fuc() },
         right: '',
-        rightFuc: (fuc) => {fuc && fuc()}
+        rightFuc: (fuc) => { fuc && fuc() }
       },
       touch: {
-        leftFuc: (fuc) => {fuc && fuc()},
-        rightFuc: (fuc) => {fuc && fuc()}
+        leftFuc: (fuc) => { fuc && fuc() },
+        rightFuc: (fuc) => { fuc && fuc() }
       },
       isBack: false,
       scrollToTop: true,
@@ -248,13 +252,13 @@ export default new Router({
       title: '信息设置',
       header: {
         left: 'ios-arrow-back',
-        leftFuc: (fuc) => {fuc && fuc()},
+        leftFuc: (fuc) => { fuc && fuc() },
         right: '',
-        rightFuc: (fuc) => {fuc && fuc()}
+        rightFuc: (fuc) => { fuc && fuc() }
       },
       touch: {
-        leftFuc: (fuc) => {fuc && fuc()},
-        rightFuc: (fuc) => {fuc && fuc()}
+        leftFuc: (fuc) => { fuc && fuc() },
+        rightFuc: (fuc) => { fuc && fuc() }
       },
       isBack: false,
       scrollToTop: true,
@@ -269,13 +273,13 @@ export default new Router({
       title: '消息',
       header: {
         left: 'ios-arrow-back',
-        leftFuc: (fuc) => {fuc && fuc()},
+        leftFuc: (fuc) => { fuc && fuc() },
         right: '',
-        rightFuc: (fuc) => {fuc && fuc()}
+        rightFuc: (fuc) => { fuc && fuc() }
       },
       touch: {
-        leftFuc: (fuc) => {fuc && fuc()},
-        rightFuc: (fuc) => {fuc && fuc()}
+        leftFuc: (fuc) => { fuc && fuc() },
+        rightFuc: (fuc) => { fuc && fuc() }
       },
       isBack: false,
       scrollToTop: true,
@@ -290,13 +294,76 @@ export default new Router({
       title: '文章',
       header: {
         left: 'ios-arrow-back',
-        leftFuc: (fuc) => {fuc && fuc()},
+        leftFuc: (fuc) => { fuc && fuc() },
         right: '',
-        rightFuc: (fuc) => {fuc && fuc()}
+        rightFuc: (fuc) => { fuc && fuc() }
       },
       touch: {
-        leftFuc: (fuc) => {fuc && fuc()},
-        rightFuc: (fuc) => {fuc && fuc()}
+        leftFuc: (fuc) => { fuc && fuc() },
+        rightFuc: (fuc) => { fuc && fuc() }
+      },
+      isBack: false,
+      scrollToTop: true,
+      isReload: false,
+      needLogin: true
+    }
+  }, {
+    path: '/appProve',
+    name: 'AppProve',
+    component: AppProve,
+    meta: {
+      title: '认证',
+      header: {
+        left: 'ios-arrow-back',
+        leftFuc: (fuc) => { fuc && fuc() },
+        right: '',
+        rightFuc: (fuc) => { fuc && fuc() }
+      },
+      touch: {
+        leftFuc: (fuc) => { fuc && fuc() },
+        rightFuc: (fuc) => { fuc && fuc() }
+      },
+      isBack: false,
+      scrollToTop: true,
+      isReload: false,
+      needLogin: true
+    }
+  }, {
+    path: '/appIdCard',
+    name: 'AppIdCard',
+    component: AppIdCard,
+    meta: {
+      title: '身份证照片',
+      header: {
+        left: 'ios-arrow-back',
+        leftFuc: (fuc) => { fuc && fuc() },
+        right: '',
+        rightFuc: (fuc) => { fuc && fuc() }
+      },
+      touch: {
+        leftFuc: (fuc) => { fuc && fuc() },
+        rightFuc: (fuc) => { fuc && fuc() }
+      },
+      isBack: false,
+      scrollToTop: true,
+      isReload: false,
+      needLogin: true
+    }
+  }, {
+    path: '/appProveResult',
+    name: 'AppProveResult',
+    component: AppProveResult,
+    meta: {
+      title: '认证结果',
+      header: {
+        left: 'ios-arrow-back',
+        leftFuc: (fuc) => { fuc && fuc() },
+        right: '',
+        rightFuc: (fuc) => { fuc && fuc() }
+      },
+      touch: {
+        leftFuc: (fuc) => { fuc && fuc() },
+        rightFuc: (fuc) => { fuc && fuc() }
       },
       isBack: false,
       scrollToTop: true,
@@ -311,13 +378,13 @@ export default new Router({
       title: '课程列表',
       header: {
         left: 'ios-arrow-back',
-        leftFuc: (fuc) => {fuc && fuc()},
+        leftFuc: (fuc) => { fuc && fuc() },
         right: '',
-        rightFuc: (fuc) => {fuc && fuc()}
+        rightFuc: (fuc) => { fuc && fuc() }
       },
       touch: {
-        leftFuc: (fuc) => {fuc && fuc()},
-        rightFuc: (fuc) => {fuc && fuc()}
+        leftFuc: (fuc) => { fuc && fuc() },
+        rightFuc: (fuc) => { fuc && fuc() }
       },
       isBack: false,
       scrollToTop: true,
@@ -332,13 +399,13 @@ export default new Router({
       title: '英语-词汇列表',
       header: {
         left: 'ios-arrow-back',
-        leftFuc: (fuc) => {fuc && fuc()},
+        leftFuc: (fuc) => { fuc && fuc() },
         right: '',
-        rightFuc: (fuc) => {fuc && fuc()}
+        rightFuc: (fuc) => { fuc && fuc() }
       },
       touch: {
-        leftFuc: (fuc) => {fuc && fuc()},
-        rightFuc: (fuc) => {fuc && fuc()}
+        leftFuc: (fuc) => { fuc && fuc() },
+        rightFuc: (fuc) => { fuc && fuc() }
       },
       isBack: false,
       scrollToTop: true,
@@ -353,13 +420,13 @@ export default new Router({
       title: '英语-单词卡片',
       header: {
         left: 'ios-arrow-back',
-        leftFuc: (fuc) => {fuc && fuc()},
+        leftFuc: (fuc) => { fuc && fuc() },
         right: '',
-        rightFuc: (fuc) => {fuc && fuc()}
+        rightFuc: (fuc) => { fuc && fuc() }
       },
       touch: {
-        leftFuc: (fuc) => {fuc && fuc()},
-        rightFuc: (fuc) => {fuc && fuc()}
+        leftFuc: (fuc) => { fuc && fuc() },
+        rightFuc: (fuc) => { fuc && fuc() }
       },
       isBack: false,
       scrollToTop: true,
@@ -374,13 +441,13 @@ export default new Router({
       title: '英语-短语列表',
       header: {
         left: 'ios-arrow-back',
-        leftFuc: (fuc) => {fuc && fuc()},
+        leftFuc: (fuc) => { fuc && fuc() },
         right: '',
-        rightFuc: (fuc) => {fuc && fuc()}
+        rightFuc: (fuc) => { fuc && fuc() }
       },
       touch: {
-        leftFuc: (fuc) => {fuc && fuc()},
-        rightFuc: (fuc) => {fuc && fuc()}
+        leftFuc: (fuc) => { fuc && fuc() },
+        rightFuc: (fuc) => { fuc && fuc() }
       },
       isBack: false,
       scrollToTop: true,
@@ -395,13 +462,13 @@ export default new Router({
       title: '英语-短语详情',
       header: {
         left: 'ios-arrow-back',
-        leftFuc: (fuc) => {fuc && fuc()},
+        leftFuc: (fuc) => { fuc && fuc() },
         right: '',
-        rightFuc: (fuc) => {fuc && fuc()}
+        rightFuc: (fuc) => { fuc && fuc() }
       },
       touch: {
-        leftFuc: (fuc) => {fuc && fuc()},
-        rightFuc: (fuc) => {fuc && fuc()}
+        leftFuc: (fuc) => { fuc && fuc() },
+        rightFuc: (fuc) => { fuc && fuc() }
       },
       isBack: false,
       scrollToTop: true,
@@ -416,13 +483,13 @@ export default new Router({
       title: '英语-写作列表',
       header: {
         left: 'ios-arrow-back',
-        leftFuc: (fuc) => {fuc && fuc()},
+        leftFuc: (fuc) => { fuc && fuc() },
         right: '',
-        rightFuc: (fuc) => {fuc && fuc()}
+        rightFuc: (fuc) => { fuc && fuc() }
       },
       touch: {
-        leftFuc: (fuc) => {fuc && fuc()},
-        rightFuc: (fuc) => {fuc && fuc()}
+        leftFuc: (fuc) => { fuc && fuc() },
+        rightFuc: (fuc) => { fuc && fuc() }
       },
       isBack: false,
       scrollToTop: true,
@@ -437,13 +504,13 @@ export default new Router({
       title: '英语-写作详情',
       header: {
         left: 'ios-arrow-back',
-        leftFuc: (fuc) => {fuc && fuc()},
+        leftFuc: (fuc) => { fuc && fuc() },
         right: '',
-        rightFuc: (fuc) => {fuc && fuc()}
+        rightFuc: (fuc) => { fuc && fuc() }
       },
       touch: {
-        leftFuc: (fuc) => {fuc && fuc()},
-        rightFuc: (fuc) => {fuc && fuc()}
+        leftFuc: (fuc) => { fuc && fuc() },
+        rightFuc: (fuc) => { fuc && fuc() }
       },
       isBack: false,
       scrollToTop: true,
@@ -458,13 +525,13 @@ export default new Router({
       title: '菜单',
       header: {
         left: 'ios-arrow-back',
-        leftFuc: (fuc) => {fuc && fuc()},
+        leftFuc: (fuc) => { fuc && fuc() },
         right: '',
-        rightFuc: (fuc) => {fuc && fuc()}
+        rightFuc: (fuc) => { fuc && fuc() }
       },
       touch: {
-        leftFuc: (fuc) => {fuc && fuc()},
-        rightFuc: (fuc) => {fuc && fuc()}
+        leftFuc: (fuc) => { fuc && fuc() },
+        rightFuc: (fuc) => { fuc && fuc() }
       },
       isBack: false,
       scrollToTop: true,
@@ -479,13 +546,13 @@ export default new Router({
       title: '设置',
       header: {
         left: 'ios-arrow-back',
-        leftFuc: (fuc) => {fuc && fuc()},
+        leftFuc: (fuc) => { fuc && fuc() },
         right: '',
-        rightFuc: (fuc) => {fuc && fuc()}
+        rightFuc: (fuc) => { fuc && fuc() }
       },
       touch: {
-        leftFuc: (fuc) => {fuc && fuc()},
-        rightFuc: (fuc) => {fuc && fuc()}
+        leftFuc: (fuc) => { fuc && fuc() },
+        rightFuc: (fuc) => { fuc && fuc() }
       },
       isBack: false,
       scrollToTop: true,
@@ -500,13 +567,34 @@ export default new Router({
       title: '钱包',
       header: {
         left: 'ios-arrow-back',
-        leftFuc: (fuc) => {fuc && fuc()},
+        leftFuc: (fuc) => { fuc && fuc() },
         right: 'ios-card',
-        rightFuc: (fuc) => {fuc && fuc()}
+        rightFuc: (fuc) => { fuc && fuc() }
       },
       touch: {
-        leftFuc: (fuc) => {fuc && fuc()},
-        rightFuc: (fuc) => {fuc && fuc()}
+        leftFuc: (fuc) => { fuc && fuc() },
+        rightFuc: (fuc) => { fuc && fuc() }
+      },
+      isBack: false,
+      scrollToTop: true,
+      isReload: false,
+      needLogin: true
+    }
+  }, {
+    path: '/appPhotoImg',
+    name: 'AppPhotoImg',
+    component: AppPhotoImg,
+    meta: {
+      title: '图片上传',
+      header: {
+        left: 'ios-arrow-back',
+        leftFuc: (fuc) => { fuc && fuc() },
+        right: '',
+        rightFuc: (fuc) => { fuc && fuc() }
+      },
+      touch: {
+        leftFuc: (fuc) => { fuc && fuc() },
+        rightFuc: (fuc) => { fuc && fuc() }
       },
       isBack: false,
       scrollToTop: true,
@@ -521,13 +609,13 @@ export default new Router({
       title: '收货地址',
       header: {
         left: 'ios-arrow-back',
-        leftFuc: (fuc) => {fuc && fuc()},
+        leftFuc: (fuc) => { fuc && fuc() },
         right: '',
-        rightFuc: (fuc) => {fuc && fuc()}
+        rightFuc: (fuc) => { fuc && fuc() }
       },
       touch: {
-        leftFuc: (fuc) => {fuc && fuc()},
-        rightFuc: (fuc) => {fuc && fuc()}
+        leftFuc: (fuc) => { fuc && fuc() },
+        rightFuc: (fuc) => { fuc && fuc() }
       },
       isBack: false,
       scrollToTop: true,
@@ -542,13 +630,13 @@ export default new Router({
       title: '公众号',
       header: {
         left: 'ios-arrow-back',
-        leftFuc: (fuc) => {fuc && fuc()},
+        leftFuc: (fuc) => { fuc && fuc() },
         right: '',
-        rightFuc: (fuc) => {fuc && fuc()}
+        rightFuc: (fuc) => { fuc && fuc() }
       },
       touch: {
-        leftFuc: (fuc) => {fuc && fuc()},
-        rightFuc: (fuc) => {fuc && fuc()}
+        leftFuc: (fuc) => { fuc && fuc() },
+        rightFuc: (fuc) => { fuc && fuc() }
       },
       isBack: false,
       scrollToTop: true,
@@ -563,13 +651,13 @@ export default new Router({
       title: '在线客服',
       header: {
         left: 'ios-arrow-back',
-        leftFuc: (fuc) => {fuc && fuc()},
+        leftFuc: (fuc) => { fuc && fuc() },
         right: '',
-        rightFuc: (fuc) => {fuc && fuc()}
+        rightFuc: (fuc) => { fuc && fuc() }
       },
       touch: {
-        leftFuc: (fuc) => {fuc && fuc()},
-        rightFuc: (fuc) => {fuc && fuc()}
+        leftFuc: (fuc) => { fuc && fuc() },
+        rightFuc: (fuc) => { fuc && fuc() }
       },
       isBack: false,
       scrollToTop: true,
@@ -584,13 +672,13 @@ export default new Router({
       title: '关于我们',
       header: {
         left: 'ios-arrow-back',
-        leftFuc: (fuc) => {fuc && fuc()},
+        leftFuc: (fuc) => { fuc && fuc() },
         right: '',
-        rightFuc: (fuc) => {fuc && fuc()}
+        rightFuc: (fuc) => { fuc && fuc() }
       },
       touch: {
-        leftFuc: (fuc) => {fuc && fuc()},
-        rightFuc: (fuc) => {fuc && fuc()}
+        leftFuc: (fuc) => { fuc && fuc() },
+        rightFuc: (fuc) => { fuc && fuc() }
       },
       isBack: false,
       scrollToTop: true,
@@ -605,13 +693,13 @@ export default new Router({
       title: '密码重置',
       header: {
         left: 'ios-arrow-back',
-        leftFuc: (fuc) => {fuc && fuc()},
+        leftFuc: (fuc) => { fuc && fuc() },
         right: '',
-        rightFuc: (fuc) => {fuc && fuc()}
+        rightFuc: (fuc) => { fuc && fuc() }
       },
       touch: {
-        leftFuc: (fuc) => {fuc && fuc()},
-        rightFuc: (fuc) => {fuc && fuc()}
+        leftFuc: (fuc) => { fuc && fuc() },
+        rightFuc: (fuc) => { fuc && fuc() }
       },
       isBack: false,
       scrollToTop: true,
@@ -626,13 +714,13 @@ export default new Router({
       title: '验证',
       header: {
         left: 'ios-arrow-back',
-        leftFuc: (fuc) => {fuc && fuc()},
+        leftFuc: (fuc) => { fuc && fuc() },
         right: 'md-menu',
-        rightFuc: (fuc) => {fuc && fuc()}
+        rightFuc: (fuc) => { fuc && fuc() }
       },
       touch: {
-        leftFuc: (fuc) => {fuc && fuc()},
-        rightFuc: (fuc) => {fuc && fuc()}
+        leftFuc: (fuc) => { fuc && fuc() },
+        rightFuc: (fuc) => { fuc && fuc() }
       },
       isBack: false,
       scrollToTop: true,
@@ -647,13 +735,13 @@ export default new Router({
       title: '扫描',
       header: {
         left: 'ios-arrow-back',
-        leftFuc: (fuc) => {fuc && fuc()},
+        leftFuc: (fuc) => { fuc && fuc() },
         right: 'md-menu',
-        rightFuc: (fuc) => {fuc && fuc()}
+        rightFuc: (fuc) => { fuc && fuc() }
       },
       touch: {
-        leftFuc: (fuc) => {fuc && fuc()},
-        rightFuc: (fuc) => {fuc && fuc()}
+        leftFuc: (fuc) => { fuc && fuc() },
+        rightFuc: (fuc) => { fuc && fuc() }
       },
       isBack: false,
       scrollToTop: true,
@@ -668,13 +756,13 @@ export default new Router({
       title: '二维码',
       header: {
         left: 'ios-arrow-back',
-        leftFuc: (fuc) => {fuc && fuc()},
+        leftFuc: (fuc) => { fuc && fuc() },
         right: 'md-menu',
-        rightFuc: (fuc) => {fuc && fuc()}
+        rightFuc: (fuc) => { fuc && fuc() }
       },
       touch: {
-        leftFuc: (fuc) => {fuc && fuc()},
-        rightFuc: (fuc) => {fuc && fuc()}
+        leftFuc: (fuc) => { fuc && fuc() },
+        rightFuc: (fuc) => { fuc && fuc() }
       },
       isBack: false,
       scrollToTop: true,
@@ -689,13 +777,13 @@ export default new Router({
       title: '头像',
       header: {
         left: 'ios-arrow-back',
-        leftFuc: (fuc) => {fuc && fuc()},
+        leftFuc: (fuc) => { fuc && fuc() },
         right: '',
-        rightFuc: (fuc) => {fuc && fuc()}
+        rightFuc: (fuc) => { fuc && fuc() }
       },
       touch: {
-        leftFuc: (fuc) => {fuc && fuc()},
-        rightFuc: (fuc) => {fuc && fuc()}
+        leftFuc: (fuc) => { fuc && fuc() },
+        rightFuc: (fuc) => { fuc && fuc() }
       },
       isBack: false,
       scrollToTop: true,

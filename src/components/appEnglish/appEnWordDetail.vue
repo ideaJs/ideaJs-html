@@ -53,9 +53,10 @@
 </template>
 
 <script>
-  import { Button, Icon, Modal } from 'iview'
-  import { Popup } from 'vux'
-  import appHeader from'@/components/appConfig/appHeader.vue'
+import { Button, Icon, Modal } from 'iview'
+import { Popup } from 'vux'
+import { _getWords } from '@/common/js/appEnglish/function'
+import appHeader from '@/components/appConfig/appHeader.vue'
 export default {
   name: 'appEnWordDetail',
   data () {
@@ -186,10 +187,24 @@ export default {
       }
     },
     getWords () {
-      this.data.words = require('../json/english/' + this.data.type + '/' + this.data.page + '/' + this.data.id2 + '.json')
-      this.data.wordsArr = Object.keys(this.data.words)
-      this.data.name = this.data.wordsArr[this.data.idex]
-      this.data.showMain = true
+      let param = {
+        type: this.data.type,
+        page: this.data.page,
+        id2: this.data.id2
+      }
+      _getWords(param, (res) => {
+        try {
+          this.data.words = res
+          this.data.wordsArr = Object.keys(res)
+          this.data.name = this.data.wordsArr[this.data.idex]
+          this.data.showMain = true
+        } catch (err) {
+          this.data.words = {}
+          this.data.wordsArr = []
+          this.data.name = ''
+          this.data.showMain = false
+        }
+      })
     }
   },
   components: {

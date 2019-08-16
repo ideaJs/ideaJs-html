@@ -131,10 +131,11 @@
 </template>
 
 <script>
-  let Base64 = require('js-base64').Base64
-  import { Button, Row, Col, Modal, Icon, CellGroup, Cell } from 'iview'
-  import { Popup } from 'vux'
-  import appHeader from'@/components/appConfig/appHeader.vue'
+let Base64 = require('js-base64').Base64
+import { Button, Row, Col, Modal, Icon, CellGroup, Cell } from 'iview'
+import { Popup } from 'vux'
+import { _getCourse } from '@/common/js/appMain/function'
+import appHeader from'@/components/appConfig/appHeader.vue'
 export default {
   name: 'appMember',
   data () {
@@ -179,9 +180,10 @@ export default {
       })
     },
     getCourse () {
-      let data = require('../json/english/course.json')
-      this.data.course = data.course
-      this.data.courseLen = Object.keys(this.data.user.course).length
+      _getCourse((res) => {
+        this.data.course = res.course
+        this.data.courseLen = Object.keys(this.data.user.course).length
+      })
     },
     getNewDate () {
       let weeks = ['周日', '周一', '周二', '周三', '周四', '周五', '周六']
@@ -320,7 +322,7 @@ export default {
       if (this.data.userLogin) {
         this.$route.meta.isBack = false
         this.$push({
-          path: '/appProve',
+          path: '/appProveResult',
           query: {
             type: '3'
           }
