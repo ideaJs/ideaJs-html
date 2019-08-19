@@ -1,35 +1,39 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-const AppHello = () => import('@/components/appStart')
 const AppStart = () => import('@/components/appStart')
-const AppRegiste = () => import('@/components/appConfig/appRegiste')
-const AppLogin = () => import('@/components/appConfig/appLogin')
-const AppMenu = () => import('@/components/appConfig/appMenu')
-const AppSet = () => import('@/components/appConfig/appSet')
+
+const AppRegiste = () => import('@/components/appMember/appRegiste')
+const AppLogin = () => import('@/components/appMember/appLogin')
+const AppMember = () => import('@/components/appMember/appMember')
+
+const AppSet = () => import('@/components/appSet/appSet')
+const AppResetPass = () => import('@/components/appSet/appResetPass')
+const AppSeeInfo = () => import('@/components/appSet/appSeeInfo')
+const AppEditInfo = () => import('@/components/appSet/appEditInfo')
+const AppAddress = () => import('@/components/appSet/appAddress')
+
 const AppCaptcha = () => import('@/components/appConfig/appCaptcha')
 const AppScan = () => import('@/components/appConfig/appScan')
 const AppBarCode = () => import('@/components/appConfig/appBarCode')
 const AppHeadPhoto = () => import('@/components/appConfig/appHeadPhoto')
-const AppResetPass = () => import('@/components/appConfig/appResetPass')
-const AppAbout = () => import('@/components/appConfig/appAbout')
-const AppService = () => import('@/components/appConfig/appService')
-const AppWxcode = () => import('@/components/appConfig/appWxcode')
-const AppAddress = () => import('@/components/appConfig/appAddress')
-const AppMoney = () => import('@/components/appConfig/appMoney')
 const AppPhotoImg = () => import('@/components/appConfig/appPhotoImg')
+const AppIdCard = () => import('@/components/appConfig/appIdCard')
 
 const AppIndex = () => import('@/components/appMain/appIndex')
-const AppMember = () => import('@/components/appMain/appMember')
 const AppSign = () => import('@/components/appMain/appSign')
-const AppFriends = () => import('@/components/appMain/appFriends')
-const AppSeeInfo = () => import('@/components/appMain/appSeeInfo')
-const AppEditInfo = () => import('@/components/appMain/appEditInfo')
+const AppMenu = () => import('@/components/appMain/appMenu')
+const AppAbout = () => import('@/components/appMain/appAbout')
+const AppService = () => import('@/components/appMain/appService')
+const AppWxcode = () => import('@/components/appMain/appWxcode')
+const AppMoney = () => import('@/components/appMain/appMoney')
 const AppNews = () => import('@/components/appMain/appNews')
 const AppArticle = () => import('@/components/appMain/appArticle')
-const AppProve = () => import('@/components/appMain/appProve')
-const AppIdCard = () => import('@/components/appMain/appIdCard')
-const AppProveResult = () => import('@/components/appMain/appProveResult')
+
+const AppFriends = () => import('@/components/appFriends/appFriends')
+
+const AppProve = () => import('@/components/appProve/appProve')
+const AppProveResult = () => import('@/components/appProve/appProveResult')
 
 const AppEnDetail = () => import('@/components/appEnglish/appEnDetail')
 const AppEnWord = () => import('@/components/appEnglish/appEnWord')
@@ -57,8 +61,8 @@ export default new Router({
   transitionOnLoad: true,
   routes: [{
     path: '',
-    name: 'AppHello',
-    component: AppHello,
+    name: 'AppStart',
+    component: AppStart,
     meta: {
       title: '欢迎',
       header: {
