@@ -60,27 +60,6 @@ export default new Router({
   base: '',
   transitionOnLoad: true,
   routes: [{
-    path: '',
-    name: 'AppStart',
-    component: AppStart,
-    meta: {
-      title: '欢迎',
-      header: {
-        left: '',
-        leftFuc: (fuc) => { fuc && fuc() },
-        right: '',
-        rightFuc: (fuc) => { fuc && fuc() }
-      },
-      touch: {
-        leftFuc: (fuc) => { fuc && fuc() },
-        rightFuc: (fuc) => { fuc && fuc() }
-      },
-      isBack: false,
-      scrollToTop: true,
-      isReload: false,
-      needLogin: true
-    }
-  }, {
     path: '/appStart',
     name: 'AppStart',
     component: AppStart,
@@ -316,7 +295,7 @@ export default new Router({
     name: 'AppProve',
     component: AppProve,
     meta: {
-      title: '认证',
+      title: '身份认证',
       header: {
         left: 'ios-arrow-back',
         leftFuc: (fuc) => { fuc && fuc() },

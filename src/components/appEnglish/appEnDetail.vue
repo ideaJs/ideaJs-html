@@ -137,7 +137,6 @@ export default {
       })
     },
     goImgLink (data) {
-      console.log(data)
     }
   },
   filters: {

@@ -86,7 +86,7 @@
         </Tabs>
       </div>
       <div class="p-addFriends">
-        <Button type="error" size="large" @click="addFriends()">添加好友</Button>
+        <Button class="x-button" type="error" size="large" @click="addFriends()">添加好友</Button>
       </div>
     </div>
   </div>

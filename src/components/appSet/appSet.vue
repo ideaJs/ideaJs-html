@@ -27,7 +27,7 @@
 </template>
 
 <script>
-import { Button, Input, Form, FormItem, Icon, Modal, CellGroup, Cell } from 'iview'
+import { Button, Icon, Modal, CellGroup, Cell } from 'iview'
 import { Popup, Datetime } from 'vux'
 import appHeader from '@/components/appConfig/appHeader.vue'
 
@@ -96,7 +96,7 @@ export default {
     },
   },
   components: {
-    Datetime, appHeader, Button, Popup, Input, Form, FormItem, Icon, Modal, CellGroup, Cell
+    Datetime, appHeader, Button, Popup, Icon, Modal, CellGroup, Cell
   }
 }
 </script>

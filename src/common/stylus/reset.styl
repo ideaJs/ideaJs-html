@@ -164,7 +164,7 @@ input[type=button][disabled]
 .ivu-form-item-error .ivu-input,
 .ivu-form-item-error .ivu-input-group-append,
 .ivu-form-item-error .ivu-input-group-prepend
-  border: 1px solid #E3E3EE
+  border: none
 .ivu-input-group-prepend,
 .ivu-form-item-error .ivu-input-group-prepend
   border-right: 0px solid #fff!important
@@ -176,6 +176,12 @@ input[type=button][disabled]
   text-align: center
 .ivu-drawer-body
   padding: 5px
+.ivu-input-wrapper
+  vertical-align: bottom
+.ivu-modal-content
+  background: #FCFCFC
+.ivu-form-item-content
+  box-shadow: 0px 0px 5px 1px #ebebeb
 .tabList
   display: inline-block
   width: 45%
@@ -321,8 +327,6 @@ input[type=button][disabled]
 button
   .ivu-icon
     color: #fff
-.ivu-input-group
-  border-bottom: 1px solid #e3e3e3!important
 .ivu-modal-body
   min-height: 200px
   position: relative
@@ -360,3 +364,5 @@ button
     border-radius: 100%
     padding: 10px
     margin: 10px
+.vux-cell-box:not(:first-child):before
+  border: none!important

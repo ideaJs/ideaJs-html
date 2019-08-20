@@ -6,33 +6,40 @@
     </div>
     <appHeader :headerInfo="data.headerInfo"></appHeader>
     <div class="container">
+      <div class="x-title">——请拍摄并上传身份证照片——</div>
       <Form ref="formData" :model="data.formData" inline>
         <FormItem prop="idPhotoA">
-          <div class="x-title">身份证照片：正面</div>
+          <div class="x-title">身份证正面</div>
           <div @click="changePhoto('idPhotoA')" class="idPhoto idPhotoA">
-            <Icon type="md-add" />
-            <img class="x-img" :src="data.formData.idPhotoA || ' '" />
+            <Icon type="ios-camera" />
+            <img class="x-img" :src="data.formData.idPhotoA || data.idPhotoA" />
           </div>
         </FormItem>
         <FormItem prop="idPhotoB">
-          <div class="x-title">身份证照片：背面</div>
+          <div class="x-title">身份证背面</div>
           <div @click="changePhoto('idPhotoB')" class="idPhoto idPhotoB">
-            <Icon type="md-add" />
-            <img class="x-img" :src="data.formData.idPhotoB || ' '" />
+            <Icon type="ios-camera" />
+            <img class="x-img" :src="data.formData.idPhotoB || data.idPhotoB" />
           </div>
         </FormItem>
       </Form>
+      <div class="x-title">——拍摄身份证要求——</div>
+      <div class="x-msg">要求持有的身份证真实有效，拍摄时</div>
+      <div class="x-msg">确保身份证<span>边框完整、字体清晰、亮度均匀。</span></div>
       <div class="x-prove">
-        <Button type="error" size="large" @click="submit()">提交</Button>
+        <Button class="x-button" type="error" size="large" @click="submit()">提交</Button>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+let Base64 = require('js-base64').Base64
 import { Button, Input, Form, FormItem, Icon, Modal, Message } from 'iview'
 import { Popup } from 'vux'
 import appHeader from '@/components/appConfig/appHeader.vue'
+import idPhotoA from './images/idcard01_03.png'
+import idPhotoB from './images/idcard01_06.png'
 export default {
   name: 'appIdCard',
   data () {
@@ -40,12 +47,16 @@ export default {
       showBack: false,
       data: {
         user: {},
+        email: '',
         headerInfo: this.$route.meta,
+        idPhotoA: idPhotoA,           // 默认，身份证正面照片
+        idPhotoB: idPhotoB,           // 默认，身份证背面照片
         formData: {
           name: '',              // 姓名
           idCode: '',            // 身份证号码
-          idPhotoA: ' ',           // 身份证正面照片
-          idPhotoB: ' ',           // 身份证背面照片
+          phone: '',             // 手机号
+          idPhotoA: '',           // 身份证正面照片
+          idPhotoB: '',           // 身份证背面照片
           status: '0',           // 认证状态，0 未认证，1 认证失败，2 认证成功 3 认证中
           error: '',             // 认证失败原因
           date: ''               // 认证成功日期
@@ -95,29 +106,29 @@ export default {
     },
     submit () {
       Message.destroy()
-      console.log(this.data.formData)
       if (!this.data.formData.idPhotoA.replace(/\s/g, '')) {
         Message.info({
-          content: '请上传身份证照片：正面！',
-          duration: 6,
+          content: '请上传身份证照片(正面)',
+          duration: 3,
           closable: true
         })
         return
       }
       if (!this.data.formData.idPhotoB.replace(/\s/g, '')) {
         Message.info({
-          content: '请上传身份证照片：背面！',
-          duration: 6,
+          content: '请上传身份证照片(背面)',
+          duration: 3,
           closable: true
         })
         return
       }
       this.data.formData.date = new Date().getTime()
       this.data.formData.status = '2'
-      this.data.user.prove =  this.data.formData          // 客户信息
+      this.data.user.prove = this.data.formData          // 客户信息
       localStorage.setItem(this.data.userLogin, JSON.stringify(this.data.user))
       localStorage.removeItem('idPhotoA')
       localStorage.removeItem('idPhotoB')
+      this.data.email = 'mailto:macmzon@163.com?subject=身份信息认证&body=' + Base64.encode(JSON.stringify(this.data.user))
       this.nextStep()
     },
     nextStep () {

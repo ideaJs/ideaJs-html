@@ -15,7 +15,7 @@
         <div class="proveMsg">您的身份信息还未认证，赶快去认证吧。
         </div>
         <div class="proveBtn">
-          <Button type="error" size="large" @click="goProve()">去认证</Button>
+          <Button class="x-button" type="error" size="large" @click="goProve()">去认证</Button>
         </div>
       </div>
       <div v-if="data.formData.status === '1'" class="proveFail">
@@ -27,7 +27,7 @@
         <div class="proveMsg" v-html="data.formData.error || '您的身份信息认证失败，请重新进行认证。'">
         </div>
         <div class="proveBtn">
-          <Button type="error" size="large" @click="goProve()">重新认证</Button>
+          <Button class="x-button" type="error" size="large" @click="goProve()">重新认证</Button>
         </div>
       </div>
       <div v-if="data.formData.status === '2'" class="proveSuccess">
@@ -53,7 +53,7 @@
 </template>
 
 <script>
-import { Button, Input, Form, FormItem, Icon, Modal, Message } from 'iview'
+import { Button, Icon } from 'iview'
 import { Popup } from 'vux'
 import appHeader from '@/components/appConfig/appHeader.vue'
 export default {
@@ -67,6 +67,7 @@ export default {
         formData: {
           name: '',              // 姓名
           idCode: '',            // 身份证号码
+          phone: '',             // 手机号
           idPhotoA: ' ',           // 身份证正面照片
           idPhotoB: ' ',           // 身份证背面照片
           status: '0',           // 认证状态，0 未认证，1 认证失败，2 认证成功 3 认证中
@@ -105,7 +106,7 @@ export default {
     }
   },
   components: {
-    appHeader, Button, Input, Form, FormItem, Icon, Popup, Modal, Message
+    appHeader, Button,Icon, Popup
   }
 }
 </script>

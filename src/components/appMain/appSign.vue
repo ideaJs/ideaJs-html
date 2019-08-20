@@ -76,7 +76,7 @@ export default {
     successActive () {
       Message.info({
         content: '课程激活成功！',
-        duration: 6,
+        duration: 3,
         closable: true
       })
     },

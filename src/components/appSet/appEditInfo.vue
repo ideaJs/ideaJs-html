@@ -103,7 +103,7 @@
         <div class="p-error">{{data.error}}</div>
       </div>
       <div class="p-addFriends">
-        <Button type="error" size="large" @click="saveFriends()">保存</Button>
+        <Button class="x-button" type="error" size="large" @click="saveFriends()">保存</Button>
       </div>
     </div>
   </div>
@@ -259,7 +259,7 @@ export default {
       if (!rule.user.pattern.test(this.data.formData.user)) {
         Message.info({
           content: rule.user.message + '，请重新输入！',
-          duration: 6,
+          duration: 3,
           closable: true
         })
         return
@@ -267,7 +267,7 @@ export default {
       if (!rule.label.pattern.test(this.data.formData.label) && this.data.formData.label !== '') {
         Message.info({
           content: rule.label.message + '，请重新输入！',
-          duration: 6,
+          duration: 3,
           closable: true
         })
         return
@@ -275,7 +275,7 @@ export default {
       if (!rule.phone.pattern.test(this.data.formData.phone)) {
         Message.info({
           content: rule.phone.message + '，请重新输入！',
-          duration: 6,
+          duration: 3,
           closable: true
         })
         return
@@ -283,7 +283,7 @@ export default {
       if (!rule.weixin.pattern.test(this.data.formData.weixin) && this.data.formData.weixin !== '') {
         Message.info({
           content: rule.weixin.message + '，请重新输入！',
-          duration: 6,
+          duration: 3,
           closable: true
         })
         return
@@ -291,7 +291,7 @@ export default {
       if (!rule.qq.pattern.test(this.data.formData.qq) && this.data.formData.qq !== '') {
         Message.info({
           content: rule.qq.message + '，请重新输入！',
-          duration: 6,
+          duration: 3,
           closable: true
         })
         return
@@ -299,7 +299,7 @@ export default {
       if (!rule.company.pattern.test(this.data.formData.company) && this.data.formData.company !== '') {
         Message.info({
           content: rule.company.message + '，请重新输入！',
-          duration: 6,
+          duration: 3,
           closable: true
         })
         return
@@ -307,7 +307,7 @@ export default {
       if (!rule.work.pattern.test(this.data.formData.work) && this.data.formData.work !== '') {
         Message.info({
           content: rule.work.message + '，请重新输入！',
-          duration: 6,
+          duration: 3,
           closable: true
         })
         return
@@ -315,7 +315,7 @@ export default {
       if (!rule.title.pattern.test(this.data.formData.title) && this.data.formData.title !== '') {
         Message.info({
           content: rule.title.message + '，请重新输入！',
-          duration: 6,
+          duration: 3,
           closable: true
         })
         return
@@ -323,7 +323,7 @@ export default {
       if (!rule.email.pattern.test(this.data.formData.email) && this.data.formData.email !== '') {
         Message.info({
           content: rule.email.message + '，请重新输入！',
-          duration: 6,
+          duration: 3,
           closable: true
         })
         return
@@ -331,7 +331,7 @@ export default {
       if (!rule.address.pattern.test(this.data.formData.address)) {
         Message.info({
           content: rule.address.message + '，请重新输入！',
-          duration: 6,
+          duration: 3,
           closable: true
         })
         return
@@ -339,7 +339,7 @@ export default {
       if (!rule.sign.pattern.test(this.data.formData.sign) && this.data.formData.sign !== '') {
         Message.info({
           content: rule.sign.message + '，请重新输入！',
-          duration: 6,
+          duration: 3,
           closable: true
         })
         return

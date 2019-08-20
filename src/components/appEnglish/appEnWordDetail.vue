@@ -150,7 +150,6 @@ export default {
       this.data.showMain = true
     },
     setCollect (item) {
-      console.log(item)
       event.stopPropagation()
       this.data.user = JSON.parse(localStorage.getItem(this.data.userLogin))    // 获取客户信息
       if (this.data.user.collectEnWords[item.name]) {

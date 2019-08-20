@@ -36,7 +36,7 @@
         </Form>
       </div>
       <div class="p-bottom">
-        <Button type="warning" round @click="confirmBtn()">保存</Button>
+        <Button class="x-button" type="error" size="large" @click="confirmBtn()">保存</Button>
       </div>
     </div>
   </div>
@@ -112,7 +112,7 @@ export default {
       if (!rule.user.pattern.test(this.data.formData.user)) {
         Message.info({
           content: rule.user.message + '，请重新输入！',
-          duration: 6,
+          duration: 3,
           closable: true
         })
         return
@@ -120,7 +120,7 @@ export default {
       if (!rule.phone.pattern.test(this.data.formData.phone)) {
         Message.info({
           content: rule.phone.message + '，请重新输入！',
-          duration: 6,
+          duration: 3,
           closable: true
         })
         return
@@ -128,7 +128,7 @@ export default {
       if (!rule.pass.pattern.test(this.data.formData.pass)) {
         Message.info({
           content: rule.pass.message + '，请重新输入！',
-          duration: 6,
+          duration: 3,
           closable: true
         })
         return
@@ -136,7 +136,7 @@ export default {
       if (this.data.formData.pass !== this.data.formData.copyPass) {
         Message.info({
           content: '两次输入的密码不一致，请重新输入！',
-          duration: 6,
+          duration: 3,
           closable: true
         })
         return
@@ -158,14 +158,14 @@ export default {
         } else {
           Message.info({
             content: '用户名：' + this.data.formData.user + '错误，请重新输入！',
-            duration: 6,
+            duration: 3,
             closable: true
           })
         }
       } else {
         Message.info({
           content: '手机号：' + this.data.formData.phone + '错误，请重新输入！',
-          duration: 6,
+          duration: 3,
           closable: true
         })
       }

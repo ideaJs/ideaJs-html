@@ -88,13 +88,13 @@
         </Row>
       </div>
       <div class="p-addFriends">
-        <Button type="error" size="large" @click="editFriends()">编辑</Button>
+        <Button class="x-button" type="error" size="large" @click="editFriends()">编辑</Button>
       </div>
     </div>
   </div>
 </template>
 <script>
-import { Row, Col, Button, Tabs, TabPane, Icon, Modal, Input, Form, FormItem } from 'iview'
+import { Row, Col, Button, Icon, Modal } from 'iview'
 import { Popup } from 'vux'
 import appHeader from '@/components/appConfig/appHeader.vue'
 import loopImg01 from '@/common/images/banner/study01.png'
@@ -193,7 +193,7 @@ export default {
   filters: {
   },
   components: {
-    appHeader, Row, Col, Button, Popup, Tabs, TabPane, Icon, Modal, Input, Form, FormItem
+    appHeader, Row, Col, Button, Popup, Icon, Modal
   }
 }
 </script>

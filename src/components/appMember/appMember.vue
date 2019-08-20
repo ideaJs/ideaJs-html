@@ -121,9 +121,7 @@
           </CellGroup>
         </div>
         <div class="p-quit">
-          <Button type="error" @click="quit()">
-            退出登录
-          </Button>
+          <Button class="x-button" type="error" size="large" @click="quit()">退出登录</Button>
         </div>
       </div>
     </div>

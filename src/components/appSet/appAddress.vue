@@ -107,7 +107,7 @@
         </div>
       </Modal>
       <div class="p-addAdress">
-        <Button type="error" size="large" @click="addAddress()">添加地址</Button>
+        <Button class="x-button" type="error" size="large" @click="addAddress()">添加地址</Button>
       </div>
     </div>
   </div>
@@ -190,7 +190,7 @@ export default {
       if (!rule.user.pattern.test(this.data.formData.user)) {
         Message.info({
           content: rule.user.message + '，请重新输入！',
-          duration: 6,
+          duration: 3,
           closable: true
         })
         return
@@ -198,7 +198,7 @@ export default {
       if (!rule.phone.pattern.test(this.data.formData.phone)) {
         Message.info({
           content: rule.phone.message + '，请重新输入！',
-          duration: 6,
+          duration: 3,
           closable: true
         })
         return
@@ -206,7 +206,7 @@ export default {
       if (!rule.address.pattern.test(this.data.formData.address)) {
         Message.info({
           content: rule.address.message + '，请重新输入！',
-          duration: 6,
+          duration: 3,
           closable: true
         })
         return

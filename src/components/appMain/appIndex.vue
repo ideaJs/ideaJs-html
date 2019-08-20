@@ -197,7 +197,6 @@ export default {
       })
     },
     goImgLink (data) {
-      console.log(data)
     },
     getMember () {
       this.$route.meta.isBack = false
