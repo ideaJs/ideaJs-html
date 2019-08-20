@@ -22,6 +22,7 @@
 let Base64 = require('js-base64').Base64
 import { Button, Modal, Icon, Input, Message } from 'iview'
 import { Popup } from 'vux'
+import { _getCourse } from '@/common/js/appMain/function'
 import appHeader from'@/components/appConfig/appHeader.vue'
 import bkImg from './images/bk123_01.png'
 export default {
@@ -33,6 +34,7 @@ export default {
         user: {},
         userLogin: '',                  // 客户登录状态
         title: '报名课程',
+        course: '',
         id: '',
         money: '',
         bkImg: bkImg,
@@ -48,6 +50,7 @@ export default {
     this.data.userLogin = localStorage.getItem('userLogin') || ''     // 获取客户登录状态
     if (this.data.userLogin) {
       this.data.user = JSON.parse(localStorage.getItem(this.data.userLogin))       // 获取客户信息
+      this.getCourse()
     }
     /*自定义顶部header两侧按钮事件+页面左右滑动事件*/
     this.$route.meta.header.leftFuc = this.back                 // header左侧返回按钮事件
@@ -87,6 +90,28 @@ export default {
         closable: true
       })
     },
+    getCourse () {
+      _getCourse((res) => {
+        res.course.forEach((val, idex) => {
+          if (val.id === this.data.id) {
+            this.data.course = val
+          }
+        })
+      })
+    },
+    forDate () {
+      let date = new Date()
+      let year = date.getFullYear()
+      let month = date.getMonth() + 1
+      month = month > 9 ? month : '0' + month
+      let day = date.getDate()
+      day = day > 9 ? day : '0' + day
+      let hour = date.getHours()
+      hour = hour > 9 ? hour : '0' + hour
+      let minute = date.getMinutes()
+      minute = minute > 9 ? minute : '0' + minute
+      return year + '-' + month + '-' + day + ' ' + hour + ':' + minute
+    },
     activation () {
       Message.destroy()
       Modal.confirm({
@@ -112,6 +137,8 @@ export default {
             this.data.user = JSON.parse(localStorage.getItem(this.data.userLogin))       // 获取客户信息
             this.data.user.course[Base64.encode(this.data.id)] = true
             this.data.user.jifen = this.data.user.jifen + parseFloat(this.data.money)
+            this.data.user.order.push(this.data.course)
+            this.data.course.date = this.forDate()
             localStorage.setItem(this.data.userLogin, JSON.stringify(this.data.user))
             setTimeout(() => {
               this.successActive()

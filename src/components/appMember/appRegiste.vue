@@ -76,11 +76,7 @@ export default {
             list: []                // 充值历史记录
           },
           jifen: 0,                 // 课程积分(1元兑换1积分)
-          order: {                 // 订单
-            new: [],               // 新订单
-            hisroty: [],           // 历史订单
-            question: []           // 问题订单
-          },
+          order: [],                // 订单
           prove: {                 // 认证
             name: '',              // 姓名
             idCode: '',            // 身份证号码

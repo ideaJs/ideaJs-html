@@ -84,7 +84,7 @@
               </div>
             </Col>
             <Col span="6">
-              <div @click="goCoupon()" class="p-order">
+              <div @click="goOrder()" class="p-order">
                 <Icon type="md-cart" />
                 <div class="">订单
                 </div>
@@ -382,17 +382,17 @@ export default {
         this.userLogin('/appSet?type=3')
       }
     },
-    goCoupon () {
+    goOrder () {
       if (this.data.userLogin) {
         this.$route.meta.isBack = false
         this.$push({
-          path: '/appCoupon',
+          path: '/appOrder',
           query: {
             type: '3'
           }
         })
       } else {
-        this.userLogin('/appCoupon?type=3')
+        this.userLogin('/appOrder?type=3')
       }
     },
     quit () {

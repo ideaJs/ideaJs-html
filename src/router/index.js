@@ -29,6 +29,7 @@ const AppWxcode = () => import('@/components/appMain/appWxcode')
 const AppMoney = () => import('@/components/appMain/appMoney')
 const AppNews = () => import('@/components/appMain/appNews')
 const AppArticle = () => import('@/components/appMain/appArticle')
+const AppOrder = () => import('@/components/appMain/appOrder')
 
 const AppFriends = () => import('@/components/appFriends/appFriends')
 
@@ -275,6 +276,27 @@ export default new Router({
     component: AppArticle,
     meta: {
       title: '文章',
+      header: {
+        left: 'ios-arrow-back',
+        leftFuc: (fuc) => { fuc && fuc() },
+        right: '',
+        rightFuc: (fuc) => { fuc && fuc() }
+      },
+      touch: {
+        leftFuc: (fuc) => { fuc && fuc() },
+        rightFuc: (fuc) => { fuc && fuc() }
+      },
+      isBack: false,
+      scrollToTop: true,
+      isReload: false,
+      needLogin: true
+    }
+  }, {
+    path: '/appOrder',
+    name: 'AppOrder',
+    component: AppOrder,
+    meta: {
+      title: '订单',
       header: {
         left: 'ios-arrow-back',
         leftFuc: (fuc) => { fuc && fuc() },
