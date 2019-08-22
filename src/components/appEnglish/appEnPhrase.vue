@@ -15,12 +15,6 @@
           <div @click="goPage(data.PhrasesArr.indexOf(idex))" class="col-list" v-for="(item, idex) in data.Phrases">
             <div class="">
               <span class="p-name">{{item.name}}</span>
-              <span class="p-phonetic">{{item.phonetic}}</span>
-              <span @click="playAudio(item.name)" class="p-audio"><Icon type="md-volume-up" /></span>
-              <div v-if="data.user" @click="setCollect(item)" class="p-collect">
-                <span v-if="data.user.collectEnPhrases[item.name]"><Icon type="md-star" /></span>
-                <span v-if="!data.user.collectEnPhrases[item.name]"><Icon type="md-star-outline" /></span>
-              </div>
             </div>
             <div class="p-meaning">
               <div class="">
@@ -70,35 +64,19 @@ export default {
     /*自定义顶部header两侧按钮事件+页面左右滑动事件*/
     this.$route.meta.header.leftFuc = this.back                 // header左侧返回按钮事件
     this.$route.meta.touch.rightFuc = this.back                 // 页面向右滑动事件
-    if (this.data.type === 'collectEnPhrases') {
-      this.$route.meta.title = '生词本'
-      this.$route.meta.header.right = 'ios-trash'                    // header右侧按钮
-      this.$route.meta.header.rightFuc = this.clearPhrases                    // header右侧按钮事件
-      this.collectEnPhrases()
-    } else {
-      this.getPhrases()
-    }
+    this.getPhrases()
   },
   methods: {
     back () {
       this.$route.meta.isBack = true
-      if (this.data.type === 'collectEnPhrases') {
-        this.$back({
-          path: '/appMember',
-          query: {
-            type: 3
-          }
-        })
-      } else {
-        this.$back({
-          path: '/appEnDetail',
-          query: {
-            title: this.$route.query.title,
-            page: this.$route.query.page,
-            type: this.$route.query.type
-          }
-        })
-      }
+      this.$back({
+        path: '/appEnDetail',
+        query: {
+          title: this.$route.query.title,
+          page: this.$route.query.page,
+          type: this.$route.query.type
+        }
+      })
     },
     getPhrases () {
       let param = {
@@ -115,64 +93,6 @@ export default {
           this.data.PhrasesArr = []
         }
       })
-    },
-    collectEnPhrases () {
-      try {
-        this.data.user = JSON.parse(localStorage.getItem(this.data.userLogin))    // 获取客户信息
-        this.data.Phrases = this.data.user.collectEnPhrases
-        this.data.PhrasesArr = Object.keys(this.data.Phrases)
-      } catch (err) {
-        this.data.Phrases = {}
-        this.data.PhrasesArr = []
-      }
-    },
-    setCollect (item) {
-      event.stopPropagation()
-      this.data.user = JSON.parse(localStorage.getItem(this.data.userLogin))    // 获取客户信息
-      if (this.data.user.collectEnPhrases[item.name]) {
-        delete this.data.user.collectEnPhrases[item.name]
-        localStorage.setItem(this.data.userLogin, JSON.stringify(this.data.user))
-        if (this.data.type === 'collectEnPhrases') {
-          this.collectEnPhrases()
-        }
-      } else {
-        if (Object.keys(this.data.user.collectEnPhrases).length === 100) {
-          Modal.warning({
-            title: '信息提示',
-            content: '生词收藏不可超过100个，请删除部分内容后，再进行收藏！',
-            okText: '确定',
-            onOk: () => {
-            }
-          })
-          return
-        }
-        item.sort = new Date().getTime()
-        this.data.user.collectEnPhrases[item.name] = item
-        localStorage.setItem(this.data.userLogin, JSON.stringify(this.data.user))
-      }
-    },
-    clearPhrases () {
-      Modal.confirm({
-        title: '信息提示',
-        content: '确定要清空生词本吗？',
-        okText: '确定',
-        cancelText: '取消',
-        onOk: () => {
-          this.data.user.collectEnPhrases = {}
-          localStorage.setItem(this.data.userLogin, JSON.stringify(this.data.user))
-          this.collectEnPhrases()
-        },
-        onCancel: () => {
-        }
-      })
-    },
-    playAudio (name) {
-      if (name) {
-        event.stopPropagation()
-        let audio = document.getElementById('appAudio')
-        audio.src = 'http://dict.youdao.com/speech?audio=' + name
-        audio.play()
-      }
     },
     goPage (idex) {
       this.$route.meta.isBack = false

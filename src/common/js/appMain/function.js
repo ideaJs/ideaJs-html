@@ -8,21 +8,23 @@
 export function _getNews (param, func) {
   let news = []
   if (param === 'history') { // 历史消息
-    let data = require('@/components/json/news/historyNews.json')
+    let data = require('@/common/data/news/historyNews.js')
     news = data.news
   } else { // 最新消息
-    let data = require('@/components/json/news/newNews.json')
+    let data = require('@/common/data/news/newNews.js')
     news = data.news
   }
   func && func(news)
 }
 // 获取菜单按钮
 export function _getMenu (func) {
-  let data = require('@/components/json/english/course.json')
+  let data = require('@/common/data/english/course.js')
+  data = data.course
   func && func(data)
 }
 // 获取首页课程
 export function _getCourse (func) {
-  let data = require('@/components/json/english/course.json')
+  let data = require('@/common/data/english/course.js')
+  data = data.course
   func && func(data)
 }

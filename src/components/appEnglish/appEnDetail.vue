@@ -24,7 +24,7 @@
                       <div :class="'newMsg-flag ' + (data.user.learn[item.id] ? 'learning' : 'unlearn')">{{data.user.learn[item.id] ? '在学' : '未学'}}
                       </div>
                       <div class="newMsg-img">
-                        <img :src="item.img" />
+                        <img :src="item.img || data.courseImg" />
                       </div>
                     </Col>
                     <Col span="12">
@@ -60,6 +60,7 @@ import { _getCourse } from '@/common/js/appEnglish/function'
 import appHeader from '@/components/appConfig/appHeader.vue'
 import loopImg01 from '@/common/images/banner/study01.png'
 import loopImg03 from '@/common/images/banner/english01.png'
+import courseImg01 from './images/course_01.png'
 export default {
   name: 'appEnDetail',
   data () {
@@ -72,6 +73,7 @@ export default {
         userLogin: '',
         headerInfo: this.$route.meta,
         loopVal: 0,
+        courseImg: courseImg01,
         course: [],
         loopHeight: '20vh',
         loopImg: [

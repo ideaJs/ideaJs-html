@@ -29,7 +29,7 @@
                     <div class="newMsg-flag unlearn">未学
                     </div>
                     <div class="newMsg-img">
-                      <img :src="item.img" />
+                      <img :src="item.img || data.courseImg" />
                     </div>
                   </Col>
                   <Col span="12">
@@ -60,7 +60,7 @@
                     <div class="newMsg-flag learning">在学
                     </div>
                     <div class="newMsg-img">
-                      <img :src="item.img" />
+                      <img :src="item.img || data.courseImg" />
                     </div>
                   </Col>
                   <Col span="12">
@@ -96,6 +96,7 @@ import { _getMenu, _getCourse } from '@/common/js/appMain/function'
 import appHeader from '@/components/appConfig/appHeader.vue'
 import loopImg01 from '@/common/images/banner/study01.png'
 import loopImg03 from '@/common/images/banner/english01.png'
+import courseImg01 from './images/course_01.png'
 export default {
   name: 'appIndex',
   data () {
@@ -106,6 +107,7 @@ export default {
         user: {},
         headerInfo: this.$route.meta,
         loopVal: 0,
+        courseImg: courseImg01,
         userLogin: '',
         loopHeight: '20vh',
         loopImg: [

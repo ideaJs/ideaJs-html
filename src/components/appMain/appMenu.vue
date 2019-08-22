@@ -19,6 +19,7 @@
 let Base64 = require('js-base64').Base64
 import { Button } from 'iview'
 import { Popup } from 'vux'
+import { _getMenu } from '@/common/js/appMain/function'
 import appHeader from'@/components/appConfig/appHeader.vue'
 export default {
   name: 'appMenu',
@@ -80,8 +81,9 @@ export default {
       }
     },
     getEnMenu () {
-      let data = require('../json/english/course.json')
-      this.data.Menu = data.course
+      _getMenu((res) => {
+        this.data.Menu = res.course
+      })
     },
     getCourseFlag (flag) {
       flag = Base64.encode(flag)

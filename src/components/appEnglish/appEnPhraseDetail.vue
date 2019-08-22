@@ -10,10 +10,6 @@
         <div class="p-header">
           <div class="p-name">{{data.Phrases[data.PhrasesArr[data.idex]].name}}
           </div>
-          <div>
-            {{data.Phrases[data.PhrasesArr[data.idex]].phonetic}}
-            <span @click="playAudio(data.Phrases[data.PhrasesArr[data.idex]].name)" class="p-audio"><Icon type="md-volume-up" /></span>
-          </div>
         </div>
         <div class="p-meaning">
           <div class="">释义：</div>
@@ -35,16 +31,6 @@
       </div>
       <div class="p-bottom">
         <Button type="info" round @click.active="goUp()">上一个</Button>
-        <div v-if="this.data.PhrasesArr.length > 0" @click="setCollect(data.Phrases[data.PhrasesArr[data.idex]])" class="p-collect">
-          <span v-if="data.user.collectEnPhrases[data.Phrases[data.PhrasesArr[data.idex]].name]">
-            <Icon type="md-star" />
-            <div>收藏</div>
-          </span>
-          <span v-if="!data.user.collectEnPhrases[data.Phrases[data.PhrasesArr[data.idex]].name]">
-            <Icon type="md-star-outline" />
-            <div>收藏</div>
-          </span>
-        </div>
         <Button type="error" round @click.active="goNext()">下一个</Button>
       </div>
       <audio style="display:none" id="appAudio" src=""></audio>
@@ -65,7 +51,7 @@ export default {
       data: {
         userLogin: '',
         user: {},
-        title: '英语-单词卡片',
+        title: '卡片',
         headerInfo: this.$route.meta,
         showMain: false,
         idex: 0,
@@ -89,12 +75,8 @@ export default {
     this.$route.meta.touch.rightFuc = this.goUp                 // 页面向右滑动事件
     this.data.idex = parseInt(this.$route.query.idex)
     this.data.total = parseInt(this.$route.query.total)
-    if (this.data.type === 'collectEnPhrases') {
-      this.collectEnPhrases()
-    } else {
-      this.getPhrases()
-    }
-    this.$route.meta.title = '生词本 ' + (this.data.idex + 1) + '/' + this.data.total
+    this.getPhrases()
+    this.$route.meta.title = '卡片 ' + (this.data.idex + 1) + '/' + this.data.total
   },
   methods: {
     back () {
@@ -122,67 +104,6 @@ export default {
         this.data.idex++
         this.data.name = this.data.PhrasesArr[this.data.idex]
         this.$route.meta.title = this.data.title + ' ' + (this.data.idex + 1) + '/' + this.data.total
-      }
-    },
-    collectEnPhrases () {
-      try {
-        this.data.user = JSON.parse(localStorage.getItem(this.data.userLogin))    // 获取客户信息
-        let arr = []
-        for (var i in this.data.user.collectEnPhrases) {
-          arr.push(this.data.user.collectEnPhrases[i])
-        }
-        this.data.Phrases = arr.sort((a, b) => { return parseInt(a.order) - parseInt(b.order) })
-        this.data.PhrasesArr = Object.keys(this.data.Phrases)
-        this.data.total = this.data.PhrasesArr.length
-        if (this.data.total === 0) {
-          this.$route.meta.isBack = true
-          this.$push({
-            path: '/appEnPhrase',
-            query: {
-              type: 'collectEnPhrases'
-            }
-          })
-        }
-      } catch (err) {
-        this.data.Phrases = {}
-        this.data.PhrasesArr = []
-      }
-      this.data.showMain = true
-    },
-    setCollect (item) {
-      event.stopPropagation()
-      this.data.user = JSON.parse(localStorage.getItem(this.data.userLogin))    // 获取客户信息
-      if (this.data.user.collectEnPhrases[item.name]) {
-        delete this.data.user.collectEnPhrases[item.name]
-        localStorage.setItem(this.data.userLogin, JSON.stringify(this.data.user))
-        if (this.data.type === 'collectEnPhrases') {
-          this.data.idex--
-          this.data.total--
-          this.$route.meta.title = this.data.title + ' ' + (this.data.idex + 1) + '/' + this.data.total
-          this.collectEnPhrases()
-        }
-      } else {
-        if (Object.keys(this.data.user.collectEnPhrases).length === 100) {
-          Modal.warning({
-            title: '信息提示',
-            content: '生词收藏不可超过100个，请删除部分内容后，再进行收藏！',
-            okText: '确定',
-            onOk: () => {
-            }
-          })
-          return
-        }
-        item.sort = new Date().getTime()
-        this.data.user.collectEnPhrases[item.name] = item
-        localStorage.setItem(this.data.userLogin, JSON.stringify(this.data.user))
-      }
-    },
-    playAudio (name) {
-      if (name) {
-        event.stopPropagation()
-        let audio = document.getElementById("appAudio")
-        audio.src = 'http://dict.youdao.com/speech?audio=' + name
-        audio.play()
       }
     },
     getPhrases () {

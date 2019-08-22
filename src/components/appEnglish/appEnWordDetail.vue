@@ -94,7 +94,7 @@ export default {
     } else {
       this.getWords()
     }
-    this.$route.meta.title = '生词本 ' + (this.data.idex + 1) + '/' + this.data.total
+    this.$route.meta.title = '卡片 ' + (this.data.idex + 1) + '/' + this.data.total
   },
   methods: {
     back () {
@@ -180,7 +180,7 @@ export default {
     playAudio (name) {
       if (name) {
         event.stopPropagation()
-        let audio = document.getElementById("appAudio")
+        let audio = document.getElementById('appAudio')
         audio.src = 'http://dict.youdao.com/speech?audio=' + name
         audio.play()
       }
