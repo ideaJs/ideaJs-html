@@ -15,7 +15,7 @@
             “英语日记”全部课程都可以在线激活后进行学习，而且APP中还有朋友圈功能，朋友们可以将自己的好友们加进来，后期还会开放朋友圈聊天，信息分享等功能，让学员们在学习的同时，交到志同道合的朋友，和朋友们一起学习进步。
           </div>
           <div class="qrcode">
-            <br><br><br><br>
+            <br><br>
             “英语日记”公众号：快来扫码关注我们吧！
           </div>
           <div class="qrImg">
@@ -26,15 +26,28 @@
             免费课程
           </div>
         </div>
+        <div class="x-cellgroup">
+          <CellGroup>
+            <Cell class="x-cell" title="工作日" extra="周一 - 周五 9:00 - 18:00">
+              <Icon type="ios-cafe" slot="icon" />
+            </Cell>
+            <Cell class="x-cell" title="客服QQ" extra="1993239039">
+              <Icon type="ios-call" slot="icon" />
+            </Cell>
+          </CellGroup>
+        </div>
+      </div>
+      <div class="x-copyright">
+        最终解释权归“英语日记”
       </div>
     </div>
   </div>
 </template>
 <script>
-  import { Button, Icon } from 'iview'
-  import { Popup } from 'vux'
-  import appHeader from'@/components/appConfig/appHeader.vue'
-  import qrcode from '@/common/images/small-icon/qrcode.jpg'
+import { Button, Icon, CellGroup, Cell } from 'iview'
+import { Popup } from 'vux'
+import appHeader from '@/components/appConfig/appHeader.vue'
+import qrcode from '@/common/images/small-icon/qrcode.jpg'
 export default {
   name: 'appAbout',
   data () {
@@ -63,7 +76,7 @@ export default {
     }
   },
   components: {
-    Button, Icon, Popup, appHeader
+    Button, Icon, Popup, appHeader, CellGroup, Cell
   }
 }
 </script>

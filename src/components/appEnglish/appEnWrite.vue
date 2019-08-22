@@ -6,20 +6,20 @@
     </div>
     <appHeader :headerInfo="data.headerInfo"></appHeader>
     <div class="container">
-      <div v-if="data.wordsArr.length > 0" class="">
+      <div v-if="data.WritesArr.length > 0" class="">
         <div @click="goPage(0)" class="p-title col-list">
-          词汇 <span class="p-num">{{data.wordsArr.length}}</span> 个
+          总计 <span class="p-num">{{data.WritesArr.length}}</span>
           <span class="rightBtn">看卡片<Icon type="ios-arrow-forward" /></span>
         </div>
         <div class="">
-          <div @click="goPage(data.wordsArr.indexOf(idex))" class="col-list" v-for="(item, idex) in data.words">
+          <div @click="goPage(data.WritesArr.indexOf(idex))" class="col-list" v-for="(item, idex) in data.Writes">
             <div class="">
               <span class="p-name">{{item.name}}</span>
               <span class="p-phonetic">{{item.phonetic}}</span>
               <span @click="playAudio(item.name)" class="p-audio"><Icon type="md-volume-up" /></span>
               <div v-if="data.user" @click="setCollect(item)" class="p-collect">
-                <span v-if="data.user.collectEnWords[item.name]"><Icon type="md-star" /></span>
-                <span v-if="!data.user.collectEnWords[item.name]"><Icon type="md-star-outline" /></span>
+                <span v-if="data.user.collectEnWrites[item.name]"><Icon type="md-star" /></span>
+                <span v-if="!data.user.collectEnWrites[item.name]"><Icon type="md-star-outline" /></span>
               </div>
             </div>
             <div class="p-meaning">
@@ -30,7 +30,7 @@
           </div>
         </div>
       </div>
-      <div class="x-unData" v-if="data.wordsArr.length === 0">
+      <div class="x-unData" v-if="data.WritesArr.length === 0">
         <Icon type="md-walk" />
         <div>暂无数据</div>
       </div>
@@ -42,7 +42,7 @@
 <script>
 import { Button, Icon, Modal } from 'iview'
 import { Popup } from 'vux'
-import { _getWords } from '@/common/js/appEnglish/function'
+import { _getWrites } from '@/common/js/appEnglish/function'
 import appHeader from '@/components/appConfig/appHeader.vue'
 export default {
   name: 'appEnWrite',
@@ -55,8 +55,8 @@ export default {
         title2: '课程-词汇',
         id2: '',
         headerInfo: this.$route.meta,
-        wordsArr: [],
-        words: {}
+        WritesArr: [],
+        Writes: {}
       }
     }
   },
@@ -70,19 +70,19 @@ export default {
     /*自定义顶部header两侧按钮事件+页面左右滑动事件*/
     this.$route.meta.header.leftFuc = this.back                 // header左侧返回按钮事件
     this.$route.meta.touch.rightFuc = this.back                 // 页面向右滑动事件
-    if (this.data.type === 'collectEnWords') {
+    if (this.data.type === 'collectEnWrites') {
       this.$route.meta.title = '生词本'
       this.$route.meta.header.right = 'ios-trash'                    // header右侧按钮
-      this.$route.meta.header.rightFuc = this.clearWords                    // header右侧按钮事件
-      this.collectEnWords()
+      this.$route.meta.header.rightFuc = this.clearWrites                    // header右侧按钮事件
+      this.collectEnWrites()
     } else {
-      this.getWords()
+      this.getWrites()
     }
   },
   methods: {
     back () {
       this.$route.meta.isBack = true
-      if (this.data.type === 'collectEnWords') {
+      if (this.data.type === 'collectEnWrites') {
         this.$back({
           path: '/appMember',
           query: {
@@ -100,43 +100,43 @@ export default {
         })
       }
     },
-    getWords () {
+    getWrites () {
       let param = {
         type: this.data.type,
         page: this.data.page,
         id2: this.data.id2
       }
-      _getWords(param, (res) => {
+      _getWrites(param, (res) => {
         try {
-          this.data.words = res
-          this.data.wordsArr = Object.keys(res)
+          this.data.Writes = res
+          this.data.WritesArr = Object.keys(res)
         } catch (err) {
-          this.data.words = {}
-          this.data.wordsArr = []
+          this.data.Writes = {}
+          this.data.WritesArr = []
         }
       })
     },
-    collectEnWords () {
+    collectEnWrites () {
       try {
         this.data.user = JSON.parse(localStorage.getItem(this.data.userLogin))    // 获取客户信息
-        this.data.words = this.data.user.collectEnWords
-        this.data.wordsArr = Object.keys(this.data.words)
+        this.data.Writes = this.data.user.collectEnWrites
+        this.data.WritesArr = Object.keys(this.data.Writes)
       } catch (err) {
-        this.data.words = {}
-        this.data.wordsArr = []
+        this.data.Writes = {}
+        this.data.WritesArr = []
       }
     },
     setCollect (item) {
       event.stopPropagation()
       this.data.user = JSON.parse(localStorage.getItem(this.data.userLogin))    // 获取客户信息
-      if (this.data.user.collectEnWords[item.name]) {
-        delete this.data.user.collectEnWords[item.name]
+      if (this.data.user.collectEnWrites[item.name]) {
+        delete this.data.user.collectEnWrites[item.name]
         localStorage.setItem(this.data.userLogin, JSON.stringify(this.data.user))
-        if (this.data.type === 'collectEnWords') {
-          this.collectEnWords()
+        if (this.data.type === 'collectEnWrites') {
+          this.collectEnWrites()
         }
       } else {
-        if (Object.keys(this.data.user.collectEnWords).length === 100) {
+        if (Object.keys(this.data.user.collectEnWrites).length === 100) {
           Modal.warning({
             title: '信息提示',
             content: '生词收藏不可超过100个，请删除部分内容后，再进行收藏！',
@@ -147,20 +147,20 @@ export default {
           return
         }
         item.sort = new Date().getTime()
-        this.data.user.collectEnWords[item.name] = item
+        this.data.user.collectEnWrites[item.name] = item
         localStorage.setItem(this.data.userLogin, JSON.stringify(this.data.user))
       }
     },
-    clearWords () {
+    clearWrites () {
       Modal.confirm({
         title: '信息提示',
         content: '确定要清空生词本吗？',
         okText: '确定',
         cancelText: '取消',
         onOk: () => {
-          this.data.user.collectEnWords = {}
+          this.data.user.collectEnWrites = {}
           localStorage.setItem(this.data.userLogin, JSON.stringify(this.data.user))
-          this.collectEnWords()
+          this.collectEnWrites()
         },
         onCancel: () => {
         }
@@ -185,7 +185,7 @@ export default {
           title2: this.$route.query.title2,
           id2: this.$route.query.id2,
           idex: idex,
-          total: this.data.wordsArr.length
+          total: this.data.WritesArr.length
         }
       })
     }

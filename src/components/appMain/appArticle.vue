@@ -8,9 +8,6 @@
     <div class="container">
       <div class="p-main">
         <div class="p-header">
-          <div class="p-title">
-            {{data.title}}
-          </div>
           <div class="">
             <Row>
               <Col span="12">
@@ -40,7 +37,7 @@
 import { Button, Icon, Row, Col } from 'iview'
 import { Popup } from 'vux'
 import { _getNews } from '@/common/js/appMain/function'
-import appHeader from'@/components/appConfig/appHeader.vue'
+import appHeader from '@/components/appConfig/appHeader.vue'
 import qrcode from '@/common/images/small-icon/qrcode.jpg'
 export default {
   name: 'appArticle',
@@ -49,7 +46,6 @@ export default {
       showBack: false,
       data: {
         headerInfo: this.$route.meta,
-        title: '',
         type: '',
         id: '',
         fromUrl: '',
@@ -60,7 +56,7 @@ export default {
   created () {
     this.data.type = this.$route.query.type
     this.data.id = this.$route.query.id
-    this.data.title = this.$route.query.title
+    this.$route.meta.title = this.$route.query.title
     this.data.fromUrl = this.$route.query.fromUrl || '/appNews'
     this.getNews(this.data.type)
     this.$route.meta.header.leftFuc = this.back                 // header左侧返回按钮事件

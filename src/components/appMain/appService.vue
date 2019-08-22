@@ -11,7 +11,7 @@
           <div class="">
             在线客服：
           </div>
-          <div class="">关注“英语日记”公众号，发送留言信息，客服会尽快回复您。
+          <div class="">QQ：1993239039。
           </div>
           <div class="qrcode">
             <br><br><br><br>
@@ -23,12 +23,6 @@
           <div class="activeCode">
             关注“英语日记”公众号，发送“激活码”三个字，领取<br>
             免费课程
-          </div>
-          <div class="">
-          </div>
-          <div class="">
-          </div>
-          <div class="">
           </div>
           <div class="">
           </div>

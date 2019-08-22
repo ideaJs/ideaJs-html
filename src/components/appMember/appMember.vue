@@ -106,14 +106,14 @@
               <Icon type="md-bookmarks" slot="icon" />
               <Icon type="ios-arrow-forward" slot="icon" />
             </Cell>
-            <Cell @click.native="goWxcode()" class="p-wxcode" title="公众号" :extra="data.wxcode">
+            <!-- <Cell @click.native="goWxcode()" class="p-wxcode" title="公众号" :extra="data.wxcode">
               <Icon type="md-aperture" slot="icon" />
               <Icon type="ios-arrow-forward" slot="icon" />
             </Cell>
             <Cell @click.native="goService()" class="p-service" title="在线客服" :extra="data.service">
               <Icon type="ios-ionitron" slot="icon" />
               <Icon type="ios-arrow-forward" slot="icon" />
-            </Cell>
+            </Cell> -->
             <Cell @click.native="goAbout()" class="p-about" title="关于我们" :extra="data.about">
               <Icon type="ios-contacts" slot="icon" />
               <Icon type="ios-arrow-forward" slot="icon" />

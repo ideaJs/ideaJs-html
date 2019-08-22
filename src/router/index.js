@@ -40,9 +40,15 @@ const AppEnDetail = () => import('@/components/appEnglish/appEnDetail')
 const AppEnWord = () => import('@/components/appEnglish/appEnWord')
 const AppEnPhrase = () => import('@/components/appEnglish/appEnPhrase')
 const AppEnWrite = () => import('@/components/appEnglish/appEnWrite')
+const AppEnGrammar = () => import('@/components/appEnglish/appEnGrammar')
+const AppEnOral = () => import('@/components/appEnglish/appEnOral')
+const AppEnRead = () => import('@/components/appEnglish/appEnRead')
 const AppEnWordDetail = () => import('@/components/appEnglish/appEnWordDetail')
 const AppEnPhraseDetail = () => import('@/components/appEnglish/appEnPhraseDetail')
 const AppEnWriteDetail = () => import('@/components/appEnglish/appEnWriteDetail')
+const AppEnGrammarDetail = () => import('@/components/appEnglish/appEnGrammarDetail')
+const AppEnOralDetail = () => import('@/components/appEnglish/appEnOralDetail')
+const AppEnReadDetail = () => import('@/components/appEnglish/appEnReadDetail')
 
 /*
 title 页面标题，
@@ -61,7 +67,7 @@ export default new Router({
   base: '',
   transitionOnLoad: true,
   routes: [{
-    path: '/appStart',
+    path: '/',
     name: 'AppStart',
     component: AppStart,
     meta: {
@@ -465,6 +471,132 @@ export default new Router({
     component: AppEnPhraseDetail,
     meta: {
       title: '英语-短语详情',
+      header: {
+        left: 'ios-arrow-back',
+        leftFuc: (fuc) => { fuc && fuc() },
+        right: '',
+        rightFuc: (fuc) => { fuc && fuc() }
+      },
+      touch: {
+        leftFuc: (fuc) => { fuc && fuc() },
+        rightFuc: (fuc) => { fuc && fuc() }
+      },
+      isBack: false,
+      scrollToTop: true,
+      isReload: false,
+      needLogin: true
+    }
+  }, {
+    path: '/appEnOral',
+    name: 'AppEnOral',
+    component: AppEnOral,
+    meta: {
+      title: '英语-口语列表',
+      header: {
+        left: 'ios-arrow-back',
+        leftFuc: (fuc) => { fuc && fuc() },
+        right: '',
+        rightFuc: (fuc) => { fuc && fuc() }
+      },
+      touch: {
+        leftFuc: (fuc) => { fuc && fuc() },
+        rightFuc: (fuc) => { fuc && fuc() }
+      },
+      isBack: false,
+      scrollToTop: true,
+      isReload: false,
+      needLogin: true
+    }
+  }, {
+    path: '/appEnOralDetail',
+    name: 'AppEnOralDetail',
+    component: AppEnOralDetail,
+    meta: {
+      title: '英语-口语详情',
+      header: {
+        left: 'ios-arrow-back',
+        leftFuc: (fuc) => { fuc && fuc() },
+        right: '',
+        rightFuc: (fuc) => { fuc && fuc() }
+      },
+      touch: {
+        leftFuc: (fuc) => { fuc && fuc() },
+        rightFuc: (fuc) => { fuc && fuc() }
+      },
+      isBack: false,
+      scrollToTop: true,
+      isReload: false,
+      needLogin: true
+    }
+  }, {
+    path: '/appEnRead',
+    name: 'AppEnRead',
+    component: AppEnRead,
+    meta: {
+      title: '英语-阅读列表',
+      header: {
+        left: 'ios-arrow-back',
+        leftFuc: (fuc) => { fuc && fuc() },
+        right: '',
+        rightFuc: (fuc) => { fuc && fuc() }
+      },
+      touch: {
+        leftFuc: (fuc) => { fuc && fuc() },
+        rightFuc: (fuc) => { fuc && fuc() }
+      },
+      isBack: false,
+      scrollToTop: true,
+      isReload: false,
+      needLogin: true
+    }
+  }, {
+    path: '/appEnReadDetail',
+    name: 'AppEnReadDetail',
+    component: AppEnReadDetail,
+    meta: {
+      title: '英语-阅读详情',
+      header: {
+        left: 'ios-arrow-back',
+        leftFuc: (fuc) => { fuc && fuc() },
+        right: '',
+        rightFuc: (fuc) => { fuc && fuc() }
+      },
+      touch: {
+        leftFuc: (fuc) => { fuc && fuc() },
+        rightFuc: (fuc) => { fuc && fuc() }
+      },
+      isBack: false,
+      scrollToTop: true,
+      isReload: false,
+      needLogin: true
+    }
+  }, {
+    path: '/appEnGrammar',
+    name: 'AppEnGrammar',
+    component: AppEnGrammar,
+    meta: {
+      title: '英语-语法列表',
+      header: {
+        left: 'ios-arrow-back',
+        leftFuc: (fuc) => { fuc && fuc() },
+        right: '',
+        rightFuc: (fuc) => { fuc && fuc() }
+      },
+      touch: {
+        leftFuc: (fuc) => { fuc && fuc() },
+        rightFuc: (fuc) => { fuc && fuc() }
+      },
+      isBack: false,
+      scrollToTop: true,
+      isReload: false,
+      needLogin: true
+    }
+  }, {
+    path: '/appEnGrammarDetail',
+    name: 'AppEnGrammarDetail',
+    component: AppEnGrammarDetail,
+    meta: {
+      title: '英语-语法详情',
       header: {
         left: 'ios-arrow-back',
         leftFuc: (fuc) => { fuc && fuc() },

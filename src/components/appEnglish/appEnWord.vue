@@ -8,7 +8,7 @@
     <div class="container">
       <div v-if="data.wordsArr.length > 0" class="">
         <div @click="goPage(0)" class="p-title col-list">
-          词汇 <span class="p-num">{{data.wordsArr.length}}</span> 个
+          总计 <span class="p-num">{{data.wordsArr.length}}</span>
           <span class="rightBtn">看卡片<Icon type="ios-arrow-forward" /></span>
         </div>
         <div class="">
