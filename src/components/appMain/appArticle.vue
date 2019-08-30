@@ -24,7 +24,7 @@
           </div>
         </div>
         <div class="p-article">
-          <img class="p-img" :src="data.news.largeImg" />
+          <img class="p-img" :src="data.news.largeImg || data.largeImg" />
           <div class="p-text">
             {{data.news.article}}
           </div>
@@ -39,6 +39,7 @@ import { Popup } from 'vux'
 import { _getNews } from '@/common/js/appMain/function'
 import appHeader from '@/components/appConfig/appHeader.vue'
 import qrcode from '@/common/images/small-icon/qrcode.jpg'
+import largeImg from '@/common/images/banner/study01.png'
 export default {
   name: 'appArticle',
   data () {
@@ -46,6 +47,7 @@ export default {
       showBack: false,
       data: {
         headerInfo: this.$route.meta,
+        largeImg: largeImg,
         type: '',
         id: '',
         fromUrl: '',

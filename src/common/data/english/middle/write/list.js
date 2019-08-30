@@ -16,7 +16,7 @@ export const course = {
     "id": "middle_write_2",
     "title": "英语-初中-写作-第2课",
     "type": "middle",
-    "page": "write",
+    "page": "write", 
     "brief": "",
     "img": "",
     "link": "3",

@@ -11,7 +11,7 @@ export const course = {
         "她的手圈住了那束光亮."
       ]
     ],
-    "sort": "1",
+    "sort": "1", 
     "learn": "已学",
     "collect": "未收藏"
   },

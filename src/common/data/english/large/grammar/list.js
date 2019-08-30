@@ -12,7 +12,7 @@ export const course = {
     "money": "1.99"
   },
   {
-    "menu": "english",
+    "menu": "english", 
     "id": "large_grammar_2",
     "title": "英语-大学-语法-第2课",
     "type": "large",

@@ -15,7 +15,7 @@ export const course = {
     "menu": "english",
     "id": "high_word_2",
     "title": "英语-高中-词汇-第2课",
-    "type": "high",
+    "type": "high", 
     "page": "word",
     "brief": "",
     "img": "",

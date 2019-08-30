@@ -19,7 +19,7 @@ export const course = {
     "page": "read",
     "brief": "",
     "img": "",
-    "link": "3",
+    "link": "3", 
     "size": "5",
     "money": "1.99"
   },

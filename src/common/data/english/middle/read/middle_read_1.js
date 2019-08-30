@@ -11,7 +11,7 @@ export const course = {
         "你对于到西班牙去度假这个主意感兴趣吗?"
       ]
     ],
-    "sort": "1",
+    "sort": "1", 
     "learn": "已学",
     "collect": "未收藏"
   },

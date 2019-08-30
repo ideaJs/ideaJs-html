@@ -13,7 +13,7 @@ export const course = {
       [
         "One day he wants to make fun of the farmers. So he shouts out , “Wolf! Wolf! Wolf is coming!”",
         "有一天，他想捉弄村民。所以他大喊：“狼来了！狼来了！”"
-      ],
+      ], 
       [
         "The kind farmers are working on the land. They hear the yelling, and hurry up to help the boy.",
         "善良的村民们正在地里干活。他们听到了喊声，赶紧去救助那个男孩。"

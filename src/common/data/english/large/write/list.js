@@ -12,7 +12,7 @@ export const course = {
     "money": "1.99"
   },
   {
-    "menu": "english",
+    "menu": "english", 
     "id": "large_write_2",
     "title": "英语-大学-写作-第2课",
     "type": "large",

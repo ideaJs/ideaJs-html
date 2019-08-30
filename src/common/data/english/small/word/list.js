@@ -15,7 +15,7 @@ export const course = {
     "menu": "english",
     "id": "small_word_2",
     "title": "英语-小学-词汇-第2课",
-    "type": "small",
+    "type": "small", 
     "page": "word",
     "brief": "",
     "img": "",

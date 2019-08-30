@@ -11,7 +11,7 @@ export const course = {
     "size": "100",
     "money": "99"
   },
-  {
+  { 
     "menu": "english",
     "title": "英语-小学-短语",
     "type": "small",

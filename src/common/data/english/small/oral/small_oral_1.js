@@ -9,7 +9,7 @@ export const course = {
       [
         "Hello, I'm your new friend Lily.",
         "你好，我是你的新朋友莉莉。"
-      ],
+      ], 
       [
         "what's you name, please?",
         "请问你叫什么名字？"

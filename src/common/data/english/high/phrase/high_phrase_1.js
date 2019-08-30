@@ -13,7 +13,7 @@ export const course = {
     ],
     "sort": "1",
     "learn": "已学",
-    "collect": "未收藏"
+    "collect": "未收藏" 
   },
   "act": {
     "name": "act",

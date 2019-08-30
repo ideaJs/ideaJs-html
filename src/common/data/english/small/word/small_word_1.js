@@ -15,7 +15,7 @@ export const course = {
     "learn": "已学",
     "collect": "未收藏"
   },
-  "act": {
+  "act": { 
     "name": "act",
     "phonetic": "[ækt]",
     "meaning": [

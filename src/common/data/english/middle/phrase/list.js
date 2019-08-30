@@ -11,7 +11,7 @@ export const course = {
     "size": "5",
     "money": "1.99"
   },
-  {
+  { 
     "menu": "english",
     "id": "middle_phrase_2",
     "title": "英语-初中-短语-第2课",

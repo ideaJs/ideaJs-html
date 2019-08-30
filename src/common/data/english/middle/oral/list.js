@@ -9,7 +9,7 @@ export const course = {
     "img": "",
     "link": "3",
     "size": "5",
-    "money": "1.99"
+    "money": "1.99" 
   },
   {
     "menu": "english",

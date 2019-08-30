@@ -18,7 +18,7 @@ export const course = {
   "act": {
     "name": "act",
     "phonetic": "[ækt]",
-    "meaning": [
+    "meaning": [ 
       "v. 行动; 做动作",
       "vt. 扮演",
       "vi. 行动; 做; 做事; 表演",

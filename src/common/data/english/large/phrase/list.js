@@ -15,7 +15,7 @@ export const course = {
     "menu": "english",
     "id": "large_phrase_2",
     "title": "英语-大学-短语-第2课",
-    "type": "large",
+    "type": "large", 
     "page": "phrase",
     "brief": "",
     "img": "",

@@ -9,7 +9,7 @@ export const course = {
       [
         "There is a naughty boy in a village. He likes telling lies.",
         "村里有个淘气的男孩。他喜欢说谎。"
-      ],
+      ], 
       [
         "One day he wants to make fun of the farmers. So he shouts out , “Wolf! Wolf! Wolf is coming!”",
         "有一天，他想捉弄村民。所以他大喊：“狼来了！狼来了！”"

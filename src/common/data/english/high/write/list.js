@@ -13,7 +13,7 @@ export const course = {
   },
   {
     "menu": "english",
-    "id": "high_write_2",
+    "id": "high_write_2", 
     "title": "英语-高中-写作-第2课",
     "type": "high",
     "page": "write",

@@ -11,7 +11,7 @@ export const course = {
     "size": "5",
     "money": "1.99"
   },
-  {
+  { 
     "menu": "english",
     "id": "high_oral_2",
     "title": "英语-高中-口语-第2课",

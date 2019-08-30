@@ -14,7 +14,7 @@ export const course = {
   {
     "menu": "english",
     "id": "high_phrase_2",
-    "title": "英语-高中-短语-第2课",
+    "title": "英语-高中-短语-第2课", 
     "type": "high",
     "page": "phrase",
     "brief": "",

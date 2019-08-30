@@ -7,7 +7,7 @@ export const course = {
       "1. 专有名词：特定的人、地方、机构等专有的名称。 第一个字母通常要大写。<br>例：Monday星期一",
       "2. 普通名词：表示一类人或物或抽象概念的名称。普通名词又可以分为四类：个体名词、集体名词、物质名词、抽象名词。<br>例：water水，air空气",
       ""
-    ],
+    ], 
     "example": [
       [
         "Tomorrow is Saturday. My family is going to travel together.",

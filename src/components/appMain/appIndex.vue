@@ -8,7 +8,17 @@
     <div class="container">
       <div class="menuMain">
         <Drawer title="菜单" placement="left" :closable="false" v-model="showMenu">
-          <div v-for="item in data.menuList" class="tabList" @click="menuGo(item)">{{item.title}}
+          <div class="menuList">
+            <div class="menuTitle">英语</div>
+            <Tabs v-model="data.tabName">
+              <TabPane v-for="lev in data.tabLevel" :name="lev.type" :label="lev.name" :key="lev.type">
+                <div v-for="tabC in data.tabCourse" class="tabList">
+                  <div v-if="item.type === lev.type && item.page === tabC.type" @click="menuGo(item)" v-for="item in data.menuList">
+                    {{tabC.name}}
+                  </div>
+                </div>
+              </TabPane>
+            </Tabs>
           </div>
         </Drawer>
       </div>
@@ -109,6 +119,20 @@ export default {
         loopVal: 0,
         courseImg: courseImg01,
         userLogin: '',
+        tabLevel: [
+          { type: 'small', name: '小学' },
+          { type: 'middle', name: '初中' },
+          { type: 'high', name: '高中' },
+          { type: 'large', name: '大学' }
+        ],
+        tabCourse: [
+          { type: 'word', name: '词汇' },
+          { type: 'phrase', name: '短语' },
+          { type: 'oral', name: '口语' },
+          { type: 'read', name: '阅读' },
+          { type: 'write', name: '写作' },
+          { type: 'grammar', name: '语法' }
+        ],
         loopHeight: '20vh',
         loopImg: [
           {
@@ -120,6 +144,7 @@ export default {
             link: '3'
           }
         ],
+        tabName: 'small',
         menuName: 'course',
         menuList: [],
         course: [],

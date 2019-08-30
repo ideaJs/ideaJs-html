@@ -37,7 +37,7 @@
                 <Row>
                   <Col span="6">
                     <div class="newMsg-img">
-                      <img :src="item.smallImg" />
+                      <img :src="item.smallImg || data.smallImg" />
                     </div>
                   </Col>
                   <Col span="18">
@@ -75,7 +75,7 @@
                 <Row>
                   <Col span="6">
                     <div class="newMsg-img">
-                      <img :src="item.smallImg" />
+                      <img :src="item.smallImg || data.smallImg" />
                     </div>
                   </Col>
                   <Col span="18">
@@ -103,6 +103,7 @@ import { _getNews } from '@/common/js/appMain/function'
 import appHeader from '@/components/appConfig/appHeader.vue'
 import loopImg01 from '@/common/images/banner/study01.png'
 import loopImg03 from '@/common/images/banner/english01.png'
+import smallImg from '@/common/images/banner/study01.png'
 export default {
   name: 'appNews',
   data () {
@@ -118,6 +119,7 @@ export default {
         news: [],
         newNews: [],
         historyNews: [],
+        smallImg: smallImg,
         loopHeight: '20vh',
         loopImg: [
           {

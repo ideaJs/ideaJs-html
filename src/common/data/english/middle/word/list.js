@@ -13,7 +13,7 @@ export const course = {
   },
   {
     "menu": "english",
-    "id": "middle_word_2",
+    "id": "middle_word_2", 
     "title": "英语-初中-词汇-第2课",
     "type": "middle",
     "page": "word",

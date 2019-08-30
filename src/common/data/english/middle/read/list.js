@@ -12,7 +12,7 @@ export const course = {
     "money": "1.99"
   },
   {
-    "menu": "english",
+    "menu": "english", 
     "id": "middle_read_2",
     "title": "英语-初中-阅读-第2课",
     "type": "middle",

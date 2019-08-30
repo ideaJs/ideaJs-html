@@ -16,7 +16,7 @@ export const course = {
     "id": "small_write_2",
     "title": "英语-小学-写作-第2课",
     "type": "small",
-    "page": "write",
+    "page": "write", 
     "brief": "",
     "img": "",
     "link": "3",

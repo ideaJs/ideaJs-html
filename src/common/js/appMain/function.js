@@ -9,10 +9,10 @@ export function _getNews (param, func) {
   let news = []
   if (param === 'history') { // 历史消息
     let data = require('@/common/data/news/historyNews.js')
-    news = data.news
+    news = data.historyNews.news
   } else { // 最新消息
     let data = require('@/common/data/news/newNews.js')
-    news = data.news
+    news = data.newNews.news
   }
   func && func(news)
 }

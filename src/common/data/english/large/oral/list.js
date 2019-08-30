@@ -13,7 +13,7 @@ export const course = {
   },
   {
     "menu": "english",
-    "id": "large_oral_2",
+    "id": "large_oral_2", 
     "title": "英语-大学-口语-第2课",
     "type": "large",
     "page": "oral",
