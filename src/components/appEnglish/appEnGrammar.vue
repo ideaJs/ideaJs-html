@@ -14,12 +14,8 @@
         <div class="">
           <div @click="goPage(data.GrammarsArr.indexOf(idex))" class="col-list" v-for="(item, idex) in data.Grammars">
             <div class="">
-              <span class="p-name">{{item.name}}</span>
-            </div>
-            <div class="p-meaning">
-              <div class="">
-                <span class="" v-for="dat in item.meaning">{{dat}}</span>
-              </div>
+              <span class="p-name">{{item.sort + '. ' + item.name}}</span>
+              <span class="rightBtn"><Icon type="ios-arrow-forward" /></span>
             </div>
           </div>
         </div>
@@ -93,6 +89,14 @@ export default {
           this.data.GrammarsArr = []
         }
       })
+    },
+    playAudio (name) {
+      if (name) {
+        event.stopPropagation()
+        let audio = document.getElementById('appAudio')
+        audio.src = 'http://dict.youdao.com/speech?audio=' + name
+        audio.play()
+      }
     },
     goPage (idex) {
       this.$route.meta.isBack = false

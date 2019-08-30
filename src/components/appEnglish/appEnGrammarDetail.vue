@@ -8,24 +8,24 @@
     <div class="container">
       <div v-if="this.data.GrammarsArr.length > 0" class="p-main">
         <div class="p-header">
-          <div class="p-name">{{data.Grammars[data.GrammarsArr[data.idex]].name}}
-          </div>
+          <div class="p-name" v-html="data.Grammars[data.GrammarsArr[data.idex]].name"></div>
         </div>
         <div class="p-meaning">
           <div class="">释义：</div>
-          <div class="" v-for="item in data.Grammars[data.GrammarsArr[data.idex]].meaning">
-            {{item}}
+          <div class="" v-for="item in data.Grammars[data.GrammarsArr[data.idex]].meaning" v-html="item">
           </div>
         </div>
         <div class="p-example">
           <div class="">例句：</div>
-          <div class="" v-for="item in data.Grammars[data.GrammarsArr[data.idex]].example">
-            <div class="">
-              {{item[0]}}
+          <div class="" v-for="(item, idx) in data.Grammars[data.GrammarsArr[data.idex]].example">
+            <div class="x-sentence">
+              <span class="x-num">{{idx + 1 + '. '}}</span>
+              <span class="" v-html="item[0]"></span>
+              <span @click="playAudio(item[0])" class="p-audio">
+                <Icon type="md-volume-up" />
+              </span>
             </div>
-            <div class="">
-              {{item[1]}}
-            </div>
+            <div class="" v-html="item[1]"></div>
           </div>
         </div>
       </div>
@@ -51,7 +51,7 @@ export default {
       data: {
         userLogin: '',
         user: {},
-        title: '卡片',
+        title: '英语-语法卡片',
         headerInfo: this.$route.meta,
         showMain: false,
         idex: 0,
@@ -76,7 +76,6 @@ export default {
     this.data.idex = parseInt(this.$route.query.idex)
     this.data.total = parseInt(this.$route.query.total)
     this.getGrammars()
-    this.$route.meta.title = '卡片 ' + (this.data.idex + 1) + '/' + this.data.total
   },
   methods: {
     back () {
@@ -104,6 +103,14 @@ export default {
         this.data.idex++
         this.data.name = this.data.GrammarsArr[this.data.idex]
         this.$route.meta.title = this.data.title + ' ' + (this.data.idex + 1) + '/' + this.data.total
+      }
+    },
+    playAudio (name) {
+      if (name) {
+        event.stopPropagation()
+        let audio = document.getElementById('appAudio')
+        audio.src = 'http://dict.youdao.com/speech?audio=' + name
+        audio.play()
       }
     },
     getGrammars () {

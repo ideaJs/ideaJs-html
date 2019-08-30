@@ -428,7 +428,7 @@ export default new Router({
     name: 'AppEnWordDetail',
     component: AppEnWordDetail,
     meta: {
-      title: '英语-单词卡片',
+      title: '英语-单词详情',
       header: {
         left: 'ios-arrow-back',
         leftFuc: (fuc) => { fuc && fuc() },

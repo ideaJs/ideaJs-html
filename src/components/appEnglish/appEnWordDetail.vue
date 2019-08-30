@@ -23,9 +23,13 @@
         </div>
         <div class="p-example">
           <div class="">例句：</div>
-          <div class="" v-for="item in data.words[data.wordsArr[data.idex]].example">
-            <div class="">
-              {{item[0]}}
+          <div class="" v-for="(item, idx) in data.words[data.wordsArr[data.idex]].example">
+            <div class="x-sentence">
+              <span class="x-num">{{idx + 1 + '. '}}</span>
+              <span class="">{{item[0]}}</span>
+              <span @click="playAudio(item[0])" class="p-audio">
+                <Icon type="md-volume-up" />
+              </span>
             </div>
             <div class="">
               {{item[1]}}
@@ -94,7 +98,6 @@ export default {
     } else {
       this.getWords()
     }
-    this.$route.meta.title = '卡片 ' + (this.data.idex + 1) + '/' + this.data.total
   },
   methods: {
     back () {

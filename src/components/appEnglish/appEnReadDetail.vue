@@ -8,20 +8,30 @@
     <div class="container">
       <div v-if="this.data.ReadsArr.length > 0" class="p-main">
         <div class="p-header">
-          <div class="p-name">{{data.Reads[data.ReadsArr[data.idex]].name}}
+          <div class="p-name">
+            {{data.Reads[data.ReadsArr[data.idex]].name}}
+            <span @click="playAudio(data.Reads[data.ReadsArr[data.idex]].name)" class="p-audio">
+              <Icon type="md-volume-up" />
+            </span>
+            <div class="" v-for="item in data.Reads[data.ReadsArr[data.idex]].meaning">
+              {{item}}
+            </div>
           </div>
         </div>
-        <div class="p-meaning">
-          <div class="">释义：</div>
-          <div class="" v-for="item in data.Reads[data.ReadsArr[data.idex]].meaning">
-            {{item}}
-          </div>
+        <div class="p-article">
+          <span class="" v-for="(item, idx) in data.Reads[data.ReadsArr[data.idex]].example">
+            {{item[0]}}
+          </span>
         </div>
         <div class="p-example">
           <div class="">例句：</div>
-          <div class="" v-for="item in data.Reads[data.ReadsArr[data.idex]].example">
-            <div class="">
-              {{item[0]}}
+          <div class="" v-for="(item, idx) in data.Reads[data.ReadsArr[data.idex]].example">
+            <div class="x-sentence">
+              <span class="x-num">{{idx + 1 + '. '}}</span>
+              <span class="">{{item[0]}}</span>
+              <span @click="playAudio(item[0])" class="p-audio">
+                <Icon type="md-volume-up" />
+              </span>
             </div>
             <div class="">
               {{item[1]}}
@@ -51,7 +61,7 @@ export default {
       data: {
         userLogin: '',
         user: {},
-        title: '卡片',
+        title: '英语-阅读卡片',
         headerInfo: this.$route.meta,
         showMain: false,
         idex: 0,
@@ -76,7 +86,6 @@ export default {
     this.data.idex = parseInt(this.$route.query.idex)
     this.data.total = parseInt(this.$route.query.total)
     this.getReads()
-    this.$route.meta.title = '卡片 ' + (this.data.idex + 1) + '/' + this.data.total
   },
   methods: {
     back () {
@@ -104,6 +113,14 @@ export default {
         this.data.idex++
         this.data.name = this.data.ReadsArr[this.data.idex]
         this.$route.meta.title = this.data.title + ' ' + (this.data.idex + 1) + '/' + this.data.total
+      }
+    },
+    playAudio (name) {
+      if (name) {
+        event.stopPropagation()
+        let audio = document.getElementById('appAudio')
+        audio.src = 'http://dict.youdao.com/speech?audio=' + name
+        audio.play()
       }
     },
     getReads () {

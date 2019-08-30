@@ -15,6 +15,9 @@
           <div @click="goPage(data.PhrasesArr.indexOf(idex))" class="col-list" v-for="(item, idex) in data.Phrases">
             <div class="">
               <span class="p-name">{{item.name}}</span>
+              <span class="p-phonetic">{{item.phonetic}}</span>
+              <span @click="playAudio(item.name)" class="p-audio"><Icon type="md-volume-up" /></span>
+              <span class="rightBtn"><Icon type="ios-arrow-forward" /></span>
             </div>
             <div class="p-meaning">
               <div class="">
@@ -93,6 +96,14 @@ export default {
           this.data.PhrasesArr = []
         }
       })
+    },
+    playAudio (name) {
+      if (name) {
+        event.stopPropagation()
+        let audio = document.getElementById('appAudio')
+        audio.src = 'http://dict.youdao.com/speech?audio=' + name
+        audio.play()
+      }
     },
     goPage (idex) {
       this.$route.meta.isBack = false

@@ -1,37 +1,34 @@
 export const course = {
-  'a': {
-    'name': 'a',
-    'phonetic': '[ei, ə]',
-    'meaning': [
-      'art. 一; 一个; 件'
+  "hand around": {
+    "name": "hand around",
+    "phonetic": "[hænd əˈraund]",
+    "meaning": [
+      "传递, 分发"
     ],
-    'example': [
+    "example": [
       [
-        'How does the idea of a holiday in Spain grab you?',
-        '你对于到西班牙去度假这个主意感兴趣吗?'
+        "She's hand around its clump of light.",
+        "她的手圈住了那束光亮."
       ]
     ],
-    'sort': '1',
-    'learn': '已学',
-    'collect': '未收藏'
+    "sort": "1",
+    "learn": "已学",
+    "collect": "未收藏"
   },
-  'act': {
-    'name': 'act',
-    'phonetic': '[ækt]',
-    'meaning': [
-      'v. 行动; 做动作',
-      'vt. 扮演',
-      'vi. 行动; 做; 做事; 表演',
-      'n. 法令; 条例; 行为; 举动'
+  "yearn for": {
+    "name": "yearn for",
+    "phonetic": "[æjə:n fɔ:]",
+    "meaning": [
+      "渴望"
     ],
-    'example': [
+    "example": [
       [
-        'Her five-year-old daughter likes to act up before scores of visitors.',
-        '她那五岁的小女儿喜欢在很多的客人面前逞能.'
+        "I know and I do yearn for wealth.",
+        "我知道,我也渴望财富."
       ]
     ],
-    'sort': '2',
-    'learn': '未学',
-    'collect': '已收藏'
+    "sort": "2",
+    "learn": "未学",
+    "collect": "已收藏"
   }
 }

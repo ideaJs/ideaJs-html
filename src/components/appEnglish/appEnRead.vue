@@ -15,6 +15,7 @@
           <div @click="goPage(data.ReadsArr.indexOf(idex))" class="col-list" v-for="(item, idex) in data.Reads">
             <div class="">
               <span class="p-name">{{item.name}}</span>
+              <span class="rightBtn"><Icon type="ios-arrow-forward" /></span>
             </div>
             <div class="p-meaning">
               <div class="">
@@ -93,6 +94,14 @@ export default {
           this.data.ReadsArr = []
         }
       })
+    },
+    playAudio (name) {
+      if (name) {
+        event.stopPropagation()
+        let audio = document.getElementById('appAudio')
+        audio.src = 'http://dict.youdao.com/speech?audio=' + name
+        audio.play()
+      }
     },
     goPage (idex) {
       this.$route.meta.isBack = false

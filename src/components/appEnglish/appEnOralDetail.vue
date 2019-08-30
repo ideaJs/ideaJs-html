@@ -9,6 +9,9 @@
       <div v-if="this.data.OralsArr.length > 0" class="p-main">
         <div class="p-header">
           <div class="p-name">{{data.Orals[data.OralsArr[data.idex]].name}}
+            <span @click="playAudio(data.Orals[data.OralsArr[data.idex]].name)" class="p-audio">
+              <Icon type="md-volume-up" />
+            </span>
           </div>
         </div>
         <div class="p-meaning">
@@ -19,11 +22,15 @@
         </div>
         <div class="p-example">
           <div class="">例句：</div>
-          <div class="" v-for="item in data.Orals[data.OralsArr[data.idex]].example">
-            <div class="">
-              {{item[0]}}
+          <div class="" v-for="(item, idx) in data.Orals[data.OralsArr[data.idex]].example">
+            <div class="x-sentence">
+              <span class="x-num">{{idx + 1 + '. '}}</span>
+              <span class="">{{item[0]}}</span>
+              <span @click="playAudio(item[0])" class="p-audio">
+                <Icon type="md-volume-up" />
+              </span>
             </div>
-            <div class="">
+            <div class="x-translate">
               {{item[1]}}
             </div>
           </div>
@@ -51,7 +58,7 @@ export default {
       data: {
         userLogin: '',
         user: {},
-        title: '卡片',
+        title: '英语-口语卡片',
         headerInfo: this.$route.meta,
         showMain: false,
         idex: 0,
@@ -76,7 +83,6 @@ export default {
     this.data.idex = parseInt(this.$route.query.idex)
     this.data.total = parseInt(this.$route.query.total)
     this.getOrals()
-    this.$route.meta.title = '卡片 ' + (this.data.idex + 1) + '/' + this.data.total
   },
   methods: {
     back () {
@@ -104,6 +110,14 @@ export default {
         this.data.idex++
         this.data.name = this.data.OralsArr[this.data.idex]
         this.$route.meta.title = this.data.title + ' ' + (this.data.idex + 1) + '/' + this.data.total
+      }
+    },
+    playAudio (name) {
+      if (name) {
+        event.stopPropagation()
+        let audio = document.getElementById('appAudio')
+        audio.src = 'http://dict.youdao.com/speech?audio=' + name
+        audio.play()
       }
     },
     getOrals () {
