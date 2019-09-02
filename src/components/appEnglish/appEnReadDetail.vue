@@ -20,22 +20,24 @@
         </div>
         <div class="p-article">
           <span class="" v-for="(item, idx) in data.Reads[data.ReadsArr[data.idex]].example">
-            {{item[0]}}
+            {{item.sentence}}
           </span>
         </div>
         <div class="p-example">
           <div class="">例句：</div>
           <div class="" v-for="(item, idx) in data.Reads[data.ReadsArr[data.idex]].example">
+            <div class="x-title">
+              <span v-if="item.title" class="x-num">{{idx + 1 + '. '}}</span>
+              <span class="" v-html="item.title"></span>
+            </div>
             <div class="x-sentence">
-              <span class="x-num">{{idx + 1 + '. '}}</span>
-              <span class="">{{item[0]}}</span>
-              <span @click="playAudio(item[0])" class="p-audio">
+              <span v-if="!item.title" class="x-num">{{idx + 1 + '. '}}</span>
+              <span class="" v-html="item.sentence"></span>
+              <span @click="playAudio(item.sentence)" class="p-audio">
                 <Icon type="md-volume-up" />
               </span>
             </div>
-            <div class="">
-              {{item[1]}}
-            </div>
+            <div class="" v-html="item.meaning"></div>
           </div>
         </div>
       </div>
@@ -73,18 +75,18 @@ export default {
     }
   },
   created () {
-    this.$route.meta.title = this.data.title + ' ' + (this.data.idex + 1) + '/' + this.data.total
     this.data.type = this.$route.query.type
     this.data.page = this.$route.query.page
     this.data.id2 = this.$route.query.id2
+    this.data.idex = parseInt(this.$route.query.idex)
+    this.data.total = parseInt(this.$route.query.total)
+    this.$route.meta.title = this.data.title + ' ' + (this.data.idex + 1) + '/' + this.data.total
     this.data.userLogin = localStorage.getItem('userLogin') || ''     // 获取客户登录状态
     this.data.user = JSON.parse(localStorage.getItem(this.data.userLogin))    // 获取客户信息
     /*自定义顶部header两侧按钮事件+页面左右滑动事件*/
     this.$route.meta.header.leftFuc = this.back                 // header左侧返回按钮事件
     this.$route.meta.touch.leftFuc = this.goNext                 // 页面向左滑动事件
     this.$route.meta.touch.rightFuc = this.goUp                 // 页面向右滑动事件
-    this.data.idex = parseInt(this.$route.query.idex)
-    this.data.total = parseInt(this.$route.query.total)
     this.getReads()
   },
   methods: {

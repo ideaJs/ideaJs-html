@@ -6,12 +6,13 @@ export const course = {
       "传递, 分发"
     ],
     "example": [
-      [
-        "She's hand around its clump of light.",
-        "她的手圈住了那束光亮."
-      ]
+      {
+        "title": "",
+        "sentence": "She's hand around its clump of light.",
+        "meaning": "她的手圈住了那束光亮。"
+      }
     ],
-    "sort": "1", 
+    "sort": "1",
     "learn": "已学",
     "collect": "未收藏"
   },
@@ -22,10 +23,11 @@ export const course = {
       "渴望"
     ],
     "example": [
-      [
-        "I know and I do yearn for wealth.",
-        "我知道,我也渴望财富."
-      ]
+      {
+        "title": "",
+        "sentence": "I know and I do yearn for wealth.",
+        "meaning": "我知道，我也渴望财富。"
+      }
     ],
     "sort": "2",
     "learn": "未学",
