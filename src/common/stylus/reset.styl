@@ -20,7 +20,7 @@ frame, dialog, datalist, caption, article, em, aside
   padding: 0
   border: none                                  /*取消边框默认样式*/
   outline: none!important
-  border-radius: none
+  border-radius: 0
   font-size: 1.4rem
   font-weight: normal
   text-decoration: none
@@ -250,9 +250,6 @@ input[type=button][disabled]
     img
       width: 100%
       height: 25vh!important
-.ivu-tabs-nav .ivu-tabs-tab-active,
-.ivu-tabs-nav .ivu-tabs-tab:hover
-  color: rgb(211, 139, 44)
 .ivu-form-item-error .ivu-input-group-append,
 .ivu-form-item-error .ivu-input-group-prepend
   background-color: #f8f8f9
@@ -344,13 +341,29 @@ button
   margin: 0
   padding: 1rem 0
   border-top: 1px solid #f2e8d7
+.ivu-tabs-nav-scroll
+  text-align: center
 .ivu-tabs-nav
-  background: #f0f0f0
+  float: none
+  overflow-y: hidden
+  border-radius: 4px 4px 0 0
   .ivu-tabs-tab
     padding: 5px 10px
     margin-right: 0px
+    background: #fae3c4
+    box-shadow: 0px 0px 2px 0px #fff
     .ivu-icon
       margin-right: 2px
+  .ivu-tabs-tab:nth-child(2)
+    border-radius: 4px 0 0 0
+  .ivu-tabs-tab:last-child
+    border-radius: 0 4px 0 0
+  .ivu-tabs-tab-active,
+  .ivu-tabs-tab:hover
+    color: #FAE3C4
+    background: linear-gradient(rgba(160,13,50,0.9), rgba(211,139,44,0.8));
+    .ivu-icon
+      color: #FAE3C4
 .ivu-modal-confirm-head-title
   margin-left: 2px
 .x-unData
@@ -367,7 +380,6 @@ button
   border: none!important
 .ivu-tabs-tab-active
   background: #FAE3C4
-  border-radius: 4px 4px 0 0
 .ivu-tabs-ink-bar
   display: none!important
 .menuTitle
@@ -376,17 +388,14 @@ button
   width: 66px
   margin: 5px auto 10px
   border-bottom: 2px solid #90C927
-.menuList
-  .ivu-tabs-nav-scroll
-    text-align: center
-  .ivu-tabs-nav
-    float: none
-    display: inline-block
-    border-radius: 4px 4px 0 0
-.ivu-drawer-header,
 .ivu-tabs-bar
-  border-bottom: 1px solid #FAE3C4
+  margin-bottom: 0
+  border-bottom: 1px solid #fff
+  overflow-y: hidden
 .ivu-drawer-header
+  border-bottom: 1px solid #fae3c4
   padding: 10px 10px
 .ivu-drawer-body
   height: calc(100% - 43px)
+.menuList
+  border-bottom: 1px dashed #fae3c4

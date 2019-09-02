@@ -133,7 +133,7 @@ export default {
         okText: '确定',
         cancelText: '取消',
         onOk: () => {
-          if (Base64.encode(this.data.id) === this.data.activeCode.slice(2)) {
+          if (Base64.encode(this.data.id) === this.data.activeCode.slice(4)) { // 4个随机码
             this.data.user = JSON.parse(localStorage.getItem(this.data.userLogin))       // 获取客户信息
             this.data.user.course[Base64.encode(this.data.id)] = true
             this.data.user.jifen = this.data.user.jifen + parseFloat(this.data.money)
