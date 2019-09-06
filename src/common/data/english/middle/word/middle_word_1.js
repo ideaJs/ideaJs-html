@@ -1,3 +1,4 @@
+/* eslint-disable */
 export const course = {
   "a": {
     "name": "a",
@@ -12,9 +13,7 @@ export const course = {
         "meaning": "你对于到西班牙去度假这个主意感兴趣吗？"
       }
     ],
-    "sort": "1",
-    "learn": "已学",
-    "collect": "未收藏"
+    "sort": ""
   },
   "act": {
     "name": "act",
@@ -32,8 +31,6 @@ export const course = {
         "meaning": "她那五岁的小女儿喜欢在很多的客人面前逞能。"
       }
     ],
-    "sort": "2",
-    "learn": "未学",
-    "collect": "已收藏"
+    "sort": ""
   }
 }

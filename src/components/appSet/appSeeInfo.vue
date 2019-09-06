@@ -108,12 +108,13 @@ export default {
       data: {
         showModel: false,
         user: {},
-        userLogin: '',
+        userLogin: localStorage.getItem('userLogin'),     // 获取客户登录状态
         error: '',
         headerInfo: this.$route.meta,
         headImg: headImg,
         type: 0,
-        idex: '',
+        url: this.$route.query.url || '/appFriends?type=3',
+        idex: parseInt(this.$route.query.idex),
         typeName: [
           '家人', '朋友', '同事', '客户', '同乡', '校友', '其他'
         ],
@@ -143,32 +144,32 @@ export default {
     }
   },
   created () {
-    this.data.userLogin = localStorage.getItem('userLogin') || ''     // 获取客户登录状态
-    this.data.url = this.$route.query.url || '/appFriends?type=3'
-    this.data.idex = parseInt(this.$route.query.idex)
+    /*自定义顶部header两侧按钮事件+页面左右滑动事件*/
+    this.$route.meta.header.leftFuc = this.back                 // header左侧返回按钮事件
+    this.$route.meta.touch.rightFuc = this.back                 // 页面向右滑动事件
     if (this.data.userLogin) {
       this.data.user = JSON.parse(localStorage.getItem(this.data.userLogin))       // 获取客户信息
       if (this.data.idex === -1) {
         this.data.friends = this.data.user.userInfo
       } else {
         if (this.data.user.friends.length !== 0) {
-            this.data.friends = Object.assign(this.data.friends, this.data.user.friends[this.data.idex])       // 获取客户信息
+          this.data.friends = Object.assign(this.data.friends, this.data.user.friends[this.data.idex])   // 获取客户信息
         } else {
           this.back()
         }
       }
     }
-    /*自定义顶部header两侧按钮事件+页面左右滑动事件*/
-    this.$route.meta.header.leftFuc = this.back                 // header左侧返回按钮事件
-    this.$route.meta.touch.rightFuc = this.back                 // 页面向右滑动事件
   },
   methods: {
     back () {
-      this.$route.meta.isBack = true
-      this.$back({ path: this.data.url })
+      this.$back({
+        path: this.data.url,
+        query: {
+          type: '3'
+        }
+      }, this)
     },
     editFriends () {
-      this.$route.meta.isBack = false
       this.$push({
         path: '/appEditInfo',
         query: {
@@ -176,10 +177,9 @@ export default {
           url: this.data.url,
           idex: this.data.idex
         }
-      })
+      }, this)
     },
     changeHeadImg () {
-      this.$route.meta.isBack = false
       this.$push({
         path: '/appHeadPhoto',
         query: {
@@ -188,7 +188,7 @@ export default {
           fromUrl: '/appSeeInfo?idex=' + this.data.idex,
           idex: this.data.idex
         }
-      })
+      }, this)
     }
   },
   filters: {

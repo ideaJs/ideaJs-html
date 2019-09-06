@@ -142,7 +142,7 @@ export default {
       showBack: false,
       data: {
         user: {},
-        userLogin: '',                  // 客户登录状态
+        userLogin: localStorage.getItem('userLogin'),     // 客户登录状态
         headerInfo: this.$route.meta,
         headImg: headImg,
         newDate: '-年-月-日',
@@ -156,27 +156,25 @@ export default {
     }
   },
   created () {
-    this.data.userLogin = localStorage.getItem('userLogin') || ''     // 获取客户登录状态
+    /*自定义顶部header两侧按钮事件+页面左右滑动事件*/
+    this.$route.meta.header.leftFuc = this.back                 // header左侧返回按钮事件
+    this.$route.meta.header.rightFuc = this.getSet             // header右侧菜单按钮事件
+    this.$route.meta.touch.rightFuc = this.back                 // 页面向右滑动事件
     if (this.data.userLogin) {
       this.data.user = JSON.parse(localStorage.getItem(this.data.userLogin))       // 获取客户信息
       this.data.money = this.data.user.money.ballance || this.data.money
       this.getCourse()                              // 获取课程信息
     }
     this.getNewDate()
-    /*自定义顶部header两侧按钮事件+页面左右滑动事件*/
-    this.$route.meta.header.leftFuc = this.back                 // header左侧返回按钮事件
-    this.$route.meta.header.rightFuc = this.getSet             // header右侧菜单按钮事件
-    this.$route.meta.touch.rightFuc = this.back                 // 页面向右滑动事件
   },
   methods: {
     back () {
-      this.$route.meta.isBack = true
       this.$back({
         path: '/appIndex',
         query: {
           menuName: 'course'
         }
-      })
+      }, this)
     },
     getCourse () {
       _getCourse((res) => {
@@ -195,137 +193,121 @@ export default {
       this.data.newWeek = weeks[week]
     },
     goLearning () {
-      this.$route.meta.isBack = true
       this.$back({
         path: '/appIndex',
         query: {
           menuName: 'learn'
         }
-      })
+      }, this)
     },
     goUnlearn () {
-      this.$route.meta.isBack = true
       this.$back({
         path: '/appIndex',
         query: {
           menuName: 'course'
         }
-      })
+      }, this)
     },
     goMoney () {
       if (this.data.userLogin) {
-        this.$route.meta.isBack = false
         this.$push({
           path: '/appMoney',
           query: {
             type: '3'
           }
-        })
+        }, this)
       } else {
         this.userLogin('/appMoney?type=3')
       }
     },
     goDate () {
-      this.$route.meta.isBack = false
       this.$push({
         path: '/appDate',
         query: {
           type: '3'
         }
-      })
+      }, this)
     },
     goTexts () {
       if (this.data.userLogin) {
-        this.$route.meta.isBack = false
         this.$push({
           path: '/appTexts',
           query: {
             type: '3'
           }
-        })
+        }, this)
       } else {
         this.userLogin('/appTexts?type=3')
       }
     },
     goWxcode () {
-      this.$route.meta.isBack = false
       this.$push({
         path: '/appWxcode',
         query: {
           type: '3'
         }
-      })
+      }, this)
     },
     goService () {
-      // if (this.data.userLogin) {
-        this.$route.meta.isBack = false
-        this.$push({
-          path: '/appService',
-          query: {
-            type: '3'
-          }
-        })
-      // } else {
-      //   this.userLogin('/appService?type=3')
-      // }
+      this.$push({
+        path: '/appService',
+        query: {
+          type: '3'
+        }
+      }, this)
     },
     goAbout () {
-      this.$route.meta.isBack = false
       this.$push({
         path: '/appAbout',
         query: {
           type: '3'
         }
-      })
+      }, this)
     },
     goFriends () {
       if (this.data.userLogin) {
-        this.$route.meta.isBack = false
         this.$push({
           path: '/appFriends',
           query: {
             type: '3'
           }
-        })
+        }, this)
       } else {
         this.userLogin('/appFriends?type=3')
       }
     },
     goCollectEnWords () {
       if (this.data.userLogin) {
-        this.$route.meta.isBack = false
         this.$push({
           path: '/appEnword',
           query: {
             type: 'collectEnWords'
           }
-        })
+        }, this)
       } else {
         this.userLogin('/appEnword?type=collectEnWords')
       }
     },
     goNews () {
       if (this.data.userLogin) {
-        this.$route.meta.isBack = false
         this.$push({
           path: '/appNews',
           query: {
             type: '3'
           }
-        })
+        }, this)
       } else {
         this.userLogin('/appNews?type=3')
       }
     },
     goProve () {
       if (this.data.userLogin) {
-        this.$route.meta.isBack = false
         this.$push({
           path: '/appProveResult',
           query: {
             type: '3'
           }
-        })
+        }, this)
       } else {
         this.userLogin('/appProve?type=3')
       }
@@ -339,59 +321,54 @@ export default {
         }
       })
       // if (this.data.userLogin) {
-      //   this.$route.meta.isBack = false
       //   this.$push({
       //     path: '/appVideo',
       //     query: {
       //       type: '3'
       //     }
-      //   })
+      //   }, this)
       // } else {
       //   this.userLogin('/appVideo?type=3')
       // }
     },
     seeMyInfo () {
-      this.$route.meta.isBack = false
-      this.$push({
-        path: '/appSeeInfo',
-        query: {
-          idex: '-1',
-          url: '/appMember?type=3'
-        }
-      })
+      if (this.data.userLogin) {
+        this.$push({
+          path: '/appSeeInfo',
+          query: {
+            idex: '-1',
+            url: '/appMember?type=3'
+          }
+        }, this)
+      } else {
+        this.userLogin('/appOrder?idex=-1&url=/appMember?type=3')
+      }
     },
     userLogin (url) {
-      this.$route.meta.isBack = false
       this.$push({
         path: '/appLogin',
         query: {
           fromUrl: '/appMember',
           toUrl: url
         }
-      })
+      }, this)
     },
     getSet () {
-      if (this.data.userLogin) {
-        this.$route.meta.isBack = false
-        this.$push({
-          path: '/appSet',
-          query: {
-            type: '3'
-          }
-        })
-      } else {
-        this.userLogin('/appSet?type=3')
-      }
+      this.$push({
+        path: '/appSet',
+        query: {
+          type: '3'
+        }
+      }, this)
     },
     goOrder () {
       if (this.data.userLogin) {
-        this.$route.meta.isBack = false
         this.$push({
           path: '/appOrder',
           query: {
             type: '3'
           }
-        })
+        }, this)
       } else {
         this.userLogin('/appOrder?type=3')
       }

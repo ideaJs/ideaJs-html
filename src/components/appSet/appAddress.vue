@@ -126,7 +126,7 @@ export default {
       data: {
         showModel: false,
         user: {},
-        userLogin: '',
+        userLogin: localStorage.getItem('userLogin'),     // 获取客户登录状态
         headerInfo: this.$route.meta,
         editIdex: 0,
         address: {
@@ -157,26 +157,23 @@ export default {
     }
   },
   created () {
-    this.data.userLogin = localStorage.getItem('userLogin') || ''     // 获取客户登录状态
+    /*自定义顶部header两侧按钮事件+页面左右滑动事件*/
+    this.$route.meta.header.leftFuc = this.back                 // header左侧返回按钮事件
+    this.$route.meta.touch.rightFuc = this.back                 // 页面向右滑动事件
     if (this.data.userLogin) {
       this.data.user = JSON.parse(localStorage.getItem(this.data.userLogin))       // 获取客户信息
       this.data.user.addressList = this.data.user.addressList || this.data.address
       this.data.address = Object.assign(this.data.address, this.data.user.addressList)       // 获取客户信息
     }
-    /*自定义顶部header两侧按钮事件+页面左右滑动事件*/
-    this.$route.meta.header.leftFuc = this.back                 // header左侧返回按钮事件
-    this.$route.meta.touch.rightFuc = this.back                 // 页面向右滑动事件
   },
   methods: {
     back () {
-      Message.destroy()
-      this.$route.meta.isBack = true
       this.$back({
         path: '/appSet',
         query: {
           type: '3'
         }
-      })
+      }, this)
     },
     setDefault (data, idex) {
       Message.destroy()

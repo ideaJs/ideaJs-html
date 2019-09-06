@@ -43,24 +43,23 @@ export default {
       showBack: false,
       data: {
         headerInfo: this.$route.meta,
+        fromUrl: this.$route.query.fromUrl || '/appMember',
         qrcode: qrcode
       }
     }
   },
   created () {
-    this.data.fromUrl = this.$route.query.fromUrl || '/appMember'
     this.$route.meta.header.leftFuc = this.back                 // header左侧返回按钮事件
     this.$route.meta.touch.rightFuc = this.back                 // 页面向右滑动事件
   },
   methods: {
     back () {
-      this.$route.meta.isBack = true
       this.$back({
         path: this.data.fromUrl,
         query: {
           type: '3'
         }
-      })
+      }, this)
     }
   },
   components: {

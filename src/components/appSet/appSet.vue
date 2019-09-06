@@ -38,61 +38,69 @@ export default {
       showBack: false,
       data: {
         user: {},
-        userLogin: '',
-        headerInfo: this.$route.meta,
-        formData: {
-        },
+        userLogin: localStorage.getItem('userLogin'),     // 获取客户登录状态
+        headerInfo: this.$route.meta
       }
     }
   },
   created () {
-    this.data.userLogin = localStorage.getItem('userLogin') || ''     // 获取客户登录状态
-    this.data.user = JSON.parse(localStorage.getItem(this.data.userLogin))       // 获取客户信息
     /*自定义顶部header两侧按钮事件+页面左右滑动事件*/
     this.$route.meta.header.leftFuc = this.back                 // header左侧返回按钮事件
     this.$route.meta.touch.rightFuc = this.back                 // 页面向右滑动事件
+    if (this.data.userLogin) {
+      this.data.user = JSON.parse(localStorage.getItem(this.data.userLogin))       // 获取客户信息
+    }
   },
   methods: {
     back () {
-      this.$route.meta.isBack = true
       this.$back({
         path: '/appMember',
         query: {
           type: '3'
         }
-      })
+      }, this)
+    },
+    userLogin (url) {
+      this.$push({
+        path: '/appLogin',
+        query: {
+          fromUrl: '/appSet',
+          toUrl: url
+        }
+      }, this)
     },
     goAddress () {
       if (this.data.userLogin) {
-        this.$route.meta.isBack = false
         this.$push({
           path: '/appAddress',
           query: {
             type: '3'
           }
-        })
+        }, this)
       } else {
         this.userLogin('/appAddress?type=3')
       }
     },
     goResetPass () {
-      this.$route.meta.isBack = false
       this.$push({
         path: '/appResetPass',
         query: {
           type: '3'
         }
-      })
+      }, this)
     },
     seeMyInfo () {
-      this.$route.meta.isBack = false
-      this.$push({
-        path: '/appSeeInfo',
-        query: {
-          idex: '-1',
-          url: '/appSet?type=3'
-        }
-      })
+      if (this.data.userLogin) {
+        this.$push({
+          path: '/appSeeInfo',
+          query: {
+            idex: '-1',
+            url: '/appSet?type=3'
+          }
+        }, this)
+      } else {
+        this.userLogin('/appAddress?idex=-1&url=/appSet?type=3')
+      }
     },
   },
   components: {

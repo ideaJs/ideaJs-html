@@ -116,9 +116,9 @@ export default {
       data: {
         user: {},
         headerInfo: this.$route.meta,
+        userLogin: localStorage.getItem('userLogin'),     // 获取客户登录状态
         loopVal: 0,
         courseImg: courseImg01,
-        userLogin: '',
         tabLevel: [
           { type: 'small', name: '小学' },
           { type: 'middle', name: '初中' },
@@ -145,7 +145,7 @@ export default {
           }
         ],
         tabName: 'small',
-        menuName: 'course',
+        menuName: this.$route.query.menuName || 'course',
         menuList: [],
         course: [],
         unlearn: [],
@@ -154,22 +154,19 @@ export default {
     }
   },
   created () {
-    this.data.menuName = this.$route.query.menuName || 'course'
-    this.data.userLogin = localStorage.getItem('userLogin') || ''     // 获取客户登录状态
+    /*自定义顶部header两侧按钮事件+页面左右滑动事件*/
+    this.$route.meta.header.leftFuc = this.getMenu                 // header左侧返回按钮事件
+    this.$route.meta.header.rightFuc = this.getMember             // header右侧菜单按钮事件
     if (this.data.userLogin) {
       this.data.user = JSON.parse(localStorage.getItem(this.data.userLogin))       // 获取客户信息
     } else {
       this.data.user.course = {}
     }
     this.getCourse()
-    /*自定义顶部header两侧按钮事件+页面左右滑动事件*/
-    this.$route.meta.header.leftFuc = this.getMenu                 // header左侧返回按钮事件
-    this.$route.meta.header.rightFuc = this.getMember             // header右侧菜单按钮事件
   },
   methods: {
     getMenu () {
       _getMenu((res) => {
-        this.$route.meta.isBack = false
         this.data.menuList = res.course
         this.showMenu = true
       })
@@ -187,7 +184,6 @@ export default {
       })
     },
     menuGo (data) {
-      this.$route.meta.isBack = false
       if (this.getCourseFlag(data.id) === 'learning') {
         // 学习课程
         this.$push({
@@ -197,7 +193,7 @@ export default {
             type: data.type,
             page: data.page
           }
-        })
+        }, this)
       } else {
         if (!this.data.userLogin) {
           this.userLogin('/appSign?id=' + data.id + '&money=' + data.money)
@@ -210,29 +206,27 @@ export default {
             id: data.id,
             money: data.money
           }
-        })
+        }, this)
       }
     },
     userLogin (url) {
-      this.$route.meta.isBack = false
       this.$push({
         path: '/appLogin',
         query: {
           fromUrl: '/appIndex',
           toUrl: url
         }
-      })
+      }, this)
     },
     goImgLink (data) {
     },
     getMember () {
-      this.$route.meta.isBack = false
       this.$push({
         path: '/appMember',
         query: {
           type: '3'
         }
-      })
+      }, this)
     },
     getCourseFlag (flag) {
       flag = Base64.encode(flag)

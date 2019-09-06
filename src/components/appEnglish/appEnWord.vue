@@ -7,13 +7,9 @@
     <appHeader :headerInfo="data.headerInfo"></appHeader>
     <div class="container">
       <div v-if="data.wordsArr.length > 0" class="">
-        <div @click="goPage(0)" class="p-title col-list">
-          总计 <span class="p-num">{{data.wordsArr.length}}</span>
-          <span class="rightBtn">看卡片<Icon type="ios-arrow-forward" /></span>
-        </div>
         <div class="">
-          <div @click="goPage(data.wordsArr.indexOf(idex))" class="col-list" v-for="(item, idex) in data.words">
-            <div class="">
+          <div @click="goPage(idex)" class="col-list" v-for="(item, idex) in data.wordsArr">
+            <div class="x-name">
               <span class="p-name">{{item.name}}</span>
               <span class="p-phonetic">{{item.phonetic}}</span>
               <span @click="playAudio(item.name)" class="p-audio"><Icon type="md-volume-up" /></span>
@@ -50,45 +46,43 @@ export default {
     return {
       showBack: false,
       data: {
-        userLogin: '',
+        userLogin: localStorage.getItem('userLogin'),     // 获取客户登录状态
         user: {},
-        title2: '课程-词汇',
-        id2: '',
+        title2: '课程-英语-词汇',
+        type: this.$route.query.type,
+        page: this.$route.query.page,
+        id2: this.$route.query.id2,
         headerInfo: this.$route.meta,
-        wordsArr: [],
-        words: {}
+        wordsArr: []
       }
     }
   },
   created () {
-    this.$route.meta.title = this.$route.query.title2
-    this.data.type = this.$route.query.type
-    this.data.page = this.$route.query.page
-    this.data.id2 = this.$route.query.id2
-    this.data.userLogin = localStorage.getItem('userLogin') || ''     // 获取客户登录状态
-    this.data.user = JSON.parse(localStorage.getItem(this.data.userLogin))    // 获取客户信息
     /*自定义顶部header两侧按钮事件+页面左右滑动事件*/
     this.$route.meta.header.leftFuc = this.back                 // header左侧返回按钮事件
     this.$route.meta.touch.rightFuc = this.back                 // 页面向右滑动事件
-    if (this.data.type === 'collectEnWords') {
-      this.$route.meta.title = '生词本'
-      this.$route.meta.header.right = 'ios-trash'                    // header右侧按钮
-      this.$route.meta.header.rightFuc = this.clearWords                    // header右侧按钮事件
-      this.collectEnWords()
-    } else {
-      this.getWords()
+    this.$route.meta.title = this.$route.query.title2
+    if (this.data.userLogin) {
+      this.data.user = JSON.parse(localStorage.getItem(this.data.userLogin))  // 获取客户信息
+      if (this.data.type === 'collectEnWords') {
+        this.$route.meta.title = '生词本'
+        this.$route.meta.header.right = 'ios-trash'                    // header右侧按钮
+        this.$route.meta.header.rightFuc = this.clearWords             // header右侧按钮事件
+        this.collectEnWords()
+      } else {
+        this.getWords()
+      }
     }
   },
   methods: {
     back () {
-      this.$route.meta.isBack = true
       if (this.data.type === 'collectEnWords') {
         this.$back({
           path: '/appMember',
           query: {
             type: 3
           }
-        })
+        }, this)
       } else {
         this.$back({
           path: '/appEnDetail',
@@ -97,7 +91,7 @@ export default {
             page: this.$route.query.page,
             type: this.$route.query.type
           }
-        })
+        }, this)
       }
     },
     getWords () {
@@ -108,10 +102,12 @@ export default {
       }
       _getWords(param, (res) => {
         try {
-          this.data.words = res
-          this.data.wordsArr = Object.keys(res)
+          let arr = []
+          for (var i in res) {
+            arr.push(res[i])
+          }
+          this.data.wordsArr = arr.sort((a, b) => { return parseInt(a.sort) - parseInt(b.sort) })
         } catch (err) {
-          this.data.words = {}
           this.data.wordsArr = []
         }
       })
@@ -119,10 +115,12 @@ export default {
     collectEnWords () {
       try {
         this.data.user = JSON.parse(localStorage.getItem(this.data.userLogin))    // 获取客户信息
-        this.data.words = this.data.user.collectEnWords
-        this.data.wordsArr = Object.keys(this.data.words)
+        let arr = []
+        for (var i in this.data.user.collectEnWords) {
+          arr.push(this.data.user.collectEnWords[i])
+        }
+        this.data.wordsArr = arr.sort((a, b) => { return parseInt(a.sort) - parseInt(b.sort) })
       } catch (err) {
-        this.data.words = {}
         this.data.wordsArr = []
       }
     },
@@ -175,7 +173,6 @@ export default {
       }
     },
     goPage (idex) {
-      this.$route.meta.isBack = false
       this.$push({
         path: '/appEnWordDetail',
         query: {
@@ -187,7 +184,7 @@ export default {
           idex: idex,
           total: this.data.wordsArr.length
         }
-      })
+      }, this)
     }
   },
   components: {

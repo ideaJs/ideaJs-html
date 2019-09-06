@@ -6,26 +6,26 @@
     </div>
     <appHeader :headerInfo="data.headerInfo"></appHeader>
     <div class="container">
-      <div v-if="this.data.ReadsArr.length > 0" class="p-main">
+      <div v-if="this.data.readsArr.length > 0" class="p-main">
         <div class="p-header">
           <div class="p-name">
-            {{data.Reads[data.ReadsArr[data.idex]].name}}
-            <span @click="playAudio(data.Reads[data.ReadsArr[data.idex]].name)" class="p-audio">
+            {{data.readsArr[data.idex].name}}
+            <span @click="playAudio(data.readsArr[data.idex].name)" class="p-audio">
               <Icon type="md-volume-up" />
             </span>
-            <div class="" v-for="item in data.Reads[data.ReadsArr[data.idex]].meaning">
+            <div class="" v-for="item in data.readsArr[data.idex].meaning">
               {{item}}
             </div>
           </div>
         </div>
         <div class="p-article">
-          <span class="" v-for="(item, idx) in data.Reads[data.ReadsArr[data.idex]].example">
+          <span class="" v-for="(item, idx) in data.readsArr[data.idex].example">
             {{item.sentence}}
           </span>
         </div>
         <div class="p-example">
           <div class="">例句：</div>
-          <div class="" v-for="(item, idx) in data.Reads[data.ReadsArr[data.idex]].example">
+          <div class="" v-for="(item, idx) in data.readsArr[data.idex].example">
             <div class="x-title">
               <span v-if="item.title" class="x-num">{{idx + 1 + '. '}}</span>
               <span class="" v-html="item.title"></span>
@@ -61,37 +61,34 @@ export default {
     return {
       showBack: false,
       data: {
-        userLogin: '',
+        userLogin: localStorage.getItem('userLogin'),     // 获取客户登录状态
         user: {},
-        title: '英语-阅读卡片',
+        title: '英语-阅读',
         headerInfo: this.$route.meta,
         showMain: false,
-        idex: 0,
-        total: 1,
         name: '',
-        ReadsArr: [],
-        Reads: {}
+        type: this.$route.query.type,
+        page: this.$route.query.page,
+        id2: this.$route.query.id2,
+        idex: parseInt(this.$route.query.idex) || 0,
+        total: parseInt(this.$route.query.total) || 1,
+        readsArr: []
       }
     }
   },
   created () {
-    this.data.type = this.$route.query.type
-    this.data.page = this.$route.query.page
-    this.data.id2 = this.$route.query.id2
-    this.data.idex = parseInt(this.$route.query.idex)
-    this.data.total = parseInt(this.$route.query.total)
-    this.$route.meta.title = this.data.title + ' ' + (this.data.idex + 1) + '/' + this.data.total
-    this.data.userLogin = localStorage.getItem('userLogin') || ''     // 获取客户登录状态
-    this.data.user = JSON.parse(localStorage.getItem(this.data.userLogin))    // 获取客户信息
     /*自定义顶部header两侧按钮事件+页面左右滑动事件*/
     this.$route.meta.header.leftFuc = this.back                 // header左侧返回按钮事件
     this.$route.meta.touch.leftFuc = this.goNext                 // 页面向左滑动事件
     this.$route.meta.touch.rightFuc = this.goUp                 // 页面向右滑动事件
-    this.getReads()
+    this.$route.meta.title = this.data.title + ' ' + (this.data.idex + 1) + '/' + this.data.total
+    if (this.data.userLogin) {
+      this.data.user = JSON.parse(localStorage.getItem(this.data.userLogin))  // 获取客户信息
+      this.getReads()
+    }
   },
   methods: {
     back () {
-      this.$route.meta.isBack = true
       this.$back({
         path: '/appEnRead',
         query: {
@@ -101,21 +98,23 @@ export default {
           title2: this.$route.query.title2,
           id2: this.$route.query.id2
         }
-      })
+      }, this)
     },
     goUp () {
       if (this.data.idex > 0) {
         this.data.idex--
-        this.data.name = this.data.ReadsArr[this.data.idex]
+        this.data.name = this.data.readsArr[this.data.idex]
         this.$route.meta.title = this.data.title + ' ' + (this.data.idex + 1) + '/' + this.data.total
       }
+      window.scrollApp(0, 0)
     },
     goNext () {
       if (this.data.idex < this.data.total - 1) {
         this.data.idex++
-        this.data.name = this.data.ReadsArr[this.data.idex]
+        this.data.name = this.data.readsArr[this.data.idex]
         this.$route.meta.title = this.data.title + ' ' + (this.data.idex + 1) + '/' + this.data.total
       }
+      window.scrollApp(0, 0)
     },
     playAudio (name) {
       if (name) {
@@ -133,13 +132,15 @@ export default {
       }
       _getReads(param, (res) => {
         try {
-          this.data.Reads = res
-          this.data.ReadsArr = Object.keys(res)
-          this.data.name = this.data.ReadsArr[this.data.idex]
+          let arr = []
+          for (var i in res) {
+            arr.push(res[i])
+          }
+          this.data.readsArr = arr.sort((a, b) => { return parseInt(a.sort) - parseInt(b.sort) })
+          this.data.name = this.data.readsArr[this.data.idex]
           this.data.showMain = true
         } catch (err) {
-          this.data.Reads = {}
-          this.data.ReadsArr = []
+          this.data.readsArr = []
           this.data.name = ''
           this.data.showMain = false
         }

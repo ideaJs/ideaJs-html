@@ -1,3 +1,4 @@
+/* eslint-disable */
 export const course = {
   "Hello, I'm your new friend.": {
     "name": "Hello, I'm your new friend.",
@@ -32,9 +33,7 @@ export const course = {
         "meaning": "你好，莉莉，我也很高兴见到你。"
       }
     ],
-    "sort": "1",
-    "learn": "已学",
-    "collect": "未收藏"
+    "sort": ""
   },
   "How old are you?": {
     "name": "How old are you?",
@@ -84,8 +83,6 @@ export const course = {
         "meaning": "好的，我很高兴和你在一起。"
       }
     ],
-    "sort": "2",
-    "learn": "未学",
-    "collect": "已收藏"
+    "sort": ""
   }
 }

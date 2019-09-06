@@ -64,6 +64,7 @@ export default {
       data: {
         user: {},
         headerInfo: this.$route.meta,
+        userLogin: localStorage.getItem('userLogin'),     // 获取客户登录状态
         formData: {
           name: '',              // 姓名
           idCode: '',            // 身份证号码
@@ -78,31 +79,29 @@ export default {
     }
   },
   created () {
-    this.data.userLogin = localStorage.getItem('userLogin') || ''     // 获取客户登录状态
+    /*自定义顶部header两侧按钮事件+页面左右滑动事件*/
+    this.$route.meta.header.leftFuc = this.back                 // header左侧返回按钮事件
     if (this.data.userLogin) {
       this.data.user = JSON.parse(localStorage.getItem(this.data.userLogin))       // 获取客户信息
       this.data.formData = this.data.user.prove
     }
-    this.$route.meta.header.leftFuc = this.back                 // header左侧返回按钮事件
   },
   methods: {
     back () {
-      this.$route.meta.isBack = true
-      this.$push({
+      this.$back({
         path: '/appMember',
         query: {
           type: '3'
         }
-      })
+      }, this)
     },
     goProve () {
-      this.$route.meta.isBack = false
       this.$push({
         path: '/appProve',
         query: {
           type: '3'
         }
-      })
+      }, this)
     }
   },
   components: {

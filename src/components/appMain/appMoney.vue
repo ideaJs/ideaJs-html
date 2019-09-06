@@ -85,8 +85,8 @@ export default {
       data: {
         showModel: false,
         user: {},
-        userLogin: '',
         headerInfo: this.$route.meta,
+        userLogin: localStorage.getItem('userLogin'),     // 获取客户登录状态
         courseLen: 0,
         money: {
           total: '297.00',
@@ -113,25 +113,23 @@ export default {
     }
   },
   created () {
-    this.data.userLogin = localStorage.getItem('userLogin') || ''     // 获取客户登录状态
+    /*自定义顶部header两侧按钮事件+页面左右滑动事件*/
+    this.$route.meta.header.leftFuc = this.back                 // header左侧返回按钮事件
+    this.$route.meta.header.rightFuc = this.recharge            // header右侧返回按钮事件
     if (this.data.userLogin) {
       this.data.user = JSON.parse(localStorage.getItem(this.data.userLogin))       // 获取客户信息
       this.data.money = this.data.user.money
       this.data.courseLen = Object.keys(this.data.user.course).length
     }
-    /*自定义顶部header两侧按钮事件+页面左右滑动事件*/
-    this.$route.meta.header.leftFuc = this.back                 // header左侧返回按钮事件
-    this.$route.meta.header.rightFuc = this.recharge            // header右侧返回按钮事件
   },
   methods: {
     back () {
-      this.$route.meta.isBack = true
       this.$back({
         path: '/appMember',
         query: {
           type: '3'
         }
-      })
+      }, this)
     },
     recharge () {
       Modal.warning({

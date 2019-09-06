@@ -8,22 +8,22 @@
     <div class="container">
       <div v-if="this.data.wordsArr.length > 0" class="p-main">
         <div class="p-header">
-          <div class="p-name">{{data.words[data.wordsArr[data.idex]].name}}
+          <div class="p-name">{{data.wordsArr[data.idex].name}}
           </div>
           <div>
-            {{data.words[data.wordsArr[data.idex]].phonetic}}
-            <span @click="playAudio(data.words[data.wordsArr[data.idex]].name)" class="p-audio"><Icon type="md-volume-up" /></span>
+            {{data.wordsArr[data.idex].phonetic}}
+            <span @click="playAudio(data.wordsArr[data.idex].name)" class="p-audio"><Icon type="md-volume-up" /></span>
           </div>
         </div>
         <div class="p-meaning">
           <div class="">释义：</div>
-          <div class="" v-for="item in data.words[data.wordsArr[data.idex]].meaning">
+          <div class="" v-for="item in data.wordsArr[data.idex].meaning">
             {{item}}
           </div>
         </div>
         <div class="p-example">
           <div class="">例句：</div>
-          <div class="" v-for="(item, idx) in data.words[data.wordsArr[data.idex]].example">
+          <div class="" v-for="(item, idx) in data.wordsArr[data.idex].example">
             <div class="x-title">
               <span v-if="item.title" class="x-num">{{idx + 1 + '. '}}</span>
               <span class="" v-html="item.title"></span>
@@ -41,12 +41,12 @@
       </div>
       <div class="p-bottom">
         <Button type="info" round @click.active="goUp()">上一个</Button>
-        <div v-if="this.data.wordsArr.length > 0" @click="setCollect(data.words[data.wordsArr[data.idex]])" class="p-collect">
-          <span v-if="data.user.collectEnWords[data.words[data.wordsArr[data.idex]].name]">
+        <div v-if="this.data.wordsArr.length > 0" @click="setCollect(data.wordsArr[data.idex])" class="p-collect">
+          <span v-if="data.user.collectEnWords[data.wordsArr[data.idex].name]">
             <Icon type="md-star" />
             <div>收藏</div>
           </span>
-          <span v-if="!data.user.collectEnWords[data.words[data.wordsArr[data.idex]].name]">
+          <span v-if="!data.user.collectEnWords[data.wordsArr[data.idex].name]">
             <Icon type="md-star-outline" />
             <div>收藏</div>
           </span>
@@ -69,41 +69,38 @@ export default {
     return {
       showBack: false,
       data: {
-        userLogin: '',
+        userLogin: localStorage.getItem('userLogin'),     // 获取客户登录状态
         user: {},
-        title: '英语-单词卡片',
+        title: '英语-单词',
         headerInfo: this.$route.meta,
         showMain: false,
-        idex: 0,
-        total: 1,
         name: '',
-        wordsArr: [],
-        words: {}
+        type: this.$route.query.type,
+        page: this.$route.query.page,
+        id2: this.$route.query.id2,
+        idex: parseInt(this.$route.query.idex) || 0,
+        total: parseInt(this.$route.query.total) || 1,
+        wordsArr: []
       }
     }
   },
   created () {
-    this.data.type = this.$route.query.type
-    this.data.page = this.$route.query.page
-    this.data.id2 = this.$route.query.id2
-    this.data.idex = parseInt(this.$route.query.idex)
-    this.data.total = parseInt(this.$route.query.total)
-    this.$route.meta.title = this.data.title + ' ' + (this.data.idex + 1) + '/' + this.data.total
-    this.data.userLogin = localStorage.getItem('userLogin') || ''     // 获取客户登录状态
-    this.data.user = JSON.parse(localStorage.getItem(this.data.userLogin))    // 获取客户信息
     /*自定义顶部header两侧按钮事件+页面左右滑动事件*/
     this.$route.meta.header.leftFuc = this.back                 // header左侧返回按钮事件
     this.$route.meta.touch.leftFuc = this.goNext                 // 页面向左滑动事件
     this.$route.meta.touch.rightFuc = this.goUp                 // 页面向右滑动事件
-    if (this.data.type === 'collectEnWords') {
-      this.collectEnWords()
-    } else {
-      this.getWords()
+    this.$route.meta.title = this.data.title + ' ' + (this.data.idex + 1) + '/' + this.data.total
+    if (this.data.userLogin) {
+      this.data.user = JSON.parse(localStorage.getItem(this.data.userLogin))  // 获取客户信息
+      if (this.data.type === 'collectEnWords') {
+        this.collectEnWords()
+      } else {
+        this.getWords()
+      }
     }
   },
   methods: {
     back () {
-      this.$route.meta.isBack = true
       this.$back({
         path: '/appEnWord',
         query: {
@@ -113,7 +110,7 @@ export default {
           title2: this.$route.query.title2,
           id2: this.$route.query.id2
         }
-      })
+      }, this)
     },
     goUp () {
       if (this.data.idex > 0) {
@@ -121,6 +118,7 @@ export default {
         this.data.name = this.data.wordsArr[this.data.idex]
         this.$route.meta.title = this.data.title + ' ' + (this.data.idex + 1) + '/' + this.data.total
       }
+      window.scrollApp(0, 0)
     },
     goNext () {
       if (this.data.idex < this.data.total - 1) {
@@ -128,6 +126,7 @@ export default {
         this.data.name = this.data.wordsArr[this.data.idex]
         this.$route.meta.title = this.data.title + ' ' + (this.data.idex + 1) + '/' + this.data.total
       }
+      window.scrollApp(0, 0)
     },
     collectEnWords () {
       try {
@@ -136,20 +135,17 @@ export default {
         for (var i in this.data.user.collectEnWords) {
           arr.push(this.data.user.collectEnWords[i])
         }
-        this.data.words = arr.sort((a, b) => { return parseInt(a.order) - parseInt(b.order) })
-        this.data.wordsArr = Object.keys(this.data.words)
+        this.data.wordsArr = arr.sort((a, b) => { return parseInt(a.sort) - parseInt(b.sort) })
         this.data.total = this.data.wordsArr.length
         if (this.data.total === 0) {
-          this.$route.meta.isBack = true
-          this.$push({
+          this.$back({
             path: '/appEnword',
             query: {
               type: 'collectEnWords'
             }
-          })
+          }, this)
         }
       } catch (err) {
-        this.data.words = {}
         this.data.wordsArr = []
       }
       this.data.showMain = true
@@ -198,12 +194,14 @@ export default {
       }
       _getWords(param, (res) => {
         try {
-          this.data.words = res
-          this.data.wordsArr = Object.keys(res)
+          let arr = []
+          for (var i in res) {
+            arr.push(res[i])
+          }
+          this.data.wordsArr = arr.sort((a, b) => { return parseInt(a.sort) - parseInt(b.sort) })
           this.data.name = this.data.wordsArr[this.data.idex]
           this.data.showMain = true
         } catch (err) {
-          this.data.words = {}
           this.data.wordsArr = []
           this.data.name = ''
           this.data.showMain = false

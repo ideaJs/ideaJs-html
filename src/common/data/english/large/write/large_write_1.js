@@ -1,3 +1,4 @@
+/* eslint-disable */
 export const course = {
   "Wolf Is Coming": {
     "name": "Wolf Is Coming",
@@ -57,9 +58,7 @@ export const course = {
         "meaning": "那男孩大声呼喊，“救命啊！救命！”但是没有人来。结果这个淘气的男孩被狼吃了。"
       }
     ],
-    "sort": "1",
-    "learn": "已学",
-    "collect": "未收藏"
+    "sort": ""
   },
   "Waiting for a rabbit behind the tree": {
     "name": "Waiting for a rabbit behind the tree",
@@ -124,8 +123,6 @@ export const course = {
         "meaning": "没过多久，这个好吃懒做的人就被饿死了。"
       }
     ],
-    "sort": "1",
-    "learn": "已学",
-    "collect": "未收藏"
+    "sort": ""
   }
 }

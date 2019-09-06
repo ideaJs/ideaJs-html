@@ -121,12 +121,13 @@ export default {
       showBack: false,
       data: {
         user: {},
-        userLogin: '',
+        userLogin: localStorage.getItem('userLogin'),     // 获取客户登录状态
         error: '',
         typeError: '',
         headerInfo: this.$route.meta,
-        idex: '',
-        type: '',
+        url: this.$route.query.url,
+        type: this.$route.query.type,
+        idex: parseInt(this.$route.query.idex),
         typeShow: false,
         sexShow: false,
         typeName: [
@@ -207,10 +208,9 @@ export default {
     }
   },
   created () {
-    this.data.userLogin = localStorage.getItem('userLogin') || ''     // 获取客户登录状态
-    this.data.url = this.$route.query.url
-    this.data.type = this.$route.query.type
-    this.data.idex = parseInt(this.$route.query.idex)
+    /*自定义顶部header两侧按钮事件+页面左右滑动事件*/
+    this.$route.meta.header.leftFuc = this.back                 // header左侧返回按钮事件
+    this.$route.meta.touch.rightFuc = this.back                 // 页面向右滑动事件
     if (this.data.userLogin) {
       this.data.user = JSON.parse(localStorage.getItem(this.data.userLogin))       // 获取客户信息
       if (this.data.idex === -1) {
@@ -219,13 +219,9 @@ export default {
         this.data.formData = Object.assign(this.data.formData, this.data.user.friends[this.data.idex]) // 获取朋友信息
       }
     }
-    /*自定义顶部header两侧按钮事件+页面左右滑动事件*/
-    this.$route.meta.header.leftFuc = this.back                 // header左侧返回按钮事件
-    this.$route.meta.touch.rightFuc = this.back                 // 页面向右滑动事件
   },
   methods: {
     back () {
-      this.$route.meta.isBack = true
       let data
       if (this.data.idex === -1) {
         data = this.data.user.userInfo
@@ -239,14 +235,14 @@ export default {
             url: this.data.url,
             idex: this.data.idex
           }
-        })
+        }, this)
       } else {
         this.$back({
           path: '/appFriends',
           query: {
             type: '3'
           }
-        })
+        }, this)
       }
     },
     changeType () {

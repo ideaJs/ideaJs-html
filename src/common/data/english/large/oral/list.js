@@ -1,3 +1,4 @@
+/* eslint-disable */
 export const course = {
   "list": [{
     "menu": "english",

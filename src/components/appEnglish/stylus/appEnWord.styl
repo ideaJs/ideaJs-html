@@ -6,15 +6,17 @@
     border-radius: 4px
     background: #fff
     box-shadow: 0 0 5px 0 #dbdbdb
-  .p-title
-    margin: 0 3px 3px
-    padding: 8px 5px
-    background: #fff
-  .rightBtn
-    font-size: 1.2rem
-    float: right
-    i
-      line-height: 1.5
+  .x-name
+    width: calc(100% - 20px)
+    position: relative
+    text-align: justify
+    .rightBtn
+      font-size: 1.2rem
+      position: absolute
+      right: -18px
+      top: 0
+      i
+        line-height: 1.5
   .p-num
     color: #CB1A0A
   .p-name
@@ -28,20 +30,23 @@
     >div
       color: #5C7627
       text-align: justify
-      display: inline-block
+      overflow: hidden
+      height: 20px
+      width: 100%
+      white-space: nowrap
+      text-overflow: ellipsis
       span
         margin-right: 20px
   .p-collect
+    position: absolute
+    right: -25px
+    top: -5px
     cursor: pointer
-    width: 40px
+    width: 30px
     height: 30px
-    line-height: 30px
+    line-height: 27px
     text-align: center
     vertical-align: top
-    display: inline-block
-    margin-right: -5px
-    margin-top: -5px
-    float: right
     span
       margin-right: 0px
     i

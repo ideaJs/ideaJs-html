@@ -1,3 +1,4 @@
+/* eslint-disable */
 export const course = {
   "hand around": {
     "name": "hand around",
@@ -12,9 +13,7 @@ export const course = {
         "meaning": "她的手圈住了那束光亮。"
       }
     ],
-    "sort": "1",
-    "learn": "已学",
-    "collect": "未收藏"
+    "sort": ""
   },
   "yearn for": {
     "name": "yearn for",
@@ -29,8 +28,6 @@ export const course = {
         "meaning": "我知道，我也渴望财富。"
       }
     ],
-    "sort": "2",
-    "learn": "未学",
-    "collect": "已收藏"
+    "sort": ""
   }
 }

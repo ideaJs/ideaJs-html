@@ -54,7 +54,6 @@ export default {
       showBack: false,
       data: {
         user: {},
-        userLogin: '',
         seePass: false,
         passType: 'password',
         headerInfo: this.$route.meta,
@@ -92,14 +91,12 @@ export default {
   },
   methods: {
     back () {
-      Message.destroy()
-      this.$route.meta.isBack = true
       this.$back({
         path: '/appSet',
         query: {
           type: '3'
         }
-      })
+      }, this)
     },
     seePass () {
       Message.destroy()

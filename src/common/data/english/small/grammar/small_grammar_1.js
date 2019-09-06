@@ -1,3 +1,4 @@
+/* eslint-disable */
 export const course = {
   "名词 noun": {
     "name": "名词 noun",
@@ -15,9 +16,7 @@ export const course = {
         "meaning": "明天是星期六。我的家人要一起去旅行。"
       }
     ],
-    "sort": "1",
-    "learn": "已学",
-    "collect": "未收藏"
+    "sort": ""
   },
   "个体名词": {
     "name": "个体名词",
@@ -33,8 +32,6 @@ export const course = {
         "meaning": "每个周末，莉莉的妈妈都给她买一袋苹果吃。"
       }
     ],
-    "sort": "2",
-    "learn": "未学",
-    "collect": "已收藏"
+    "sort": ""
   }
 }

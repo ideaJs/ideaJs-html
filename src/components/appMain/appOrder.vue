@@ -82,11 +82,11 @@ export default {
       data: {
         showModel: false,
         user: {},
-        userLogin: '',
         headerInfo: this.$route.meta,
+        userLogin: localStorage.getItem('userLogin'),     // 获取客户登录状态
         courseLen: 0,
         order: [                 // 订单
-          {
+          /* {
             date: '2019-08-20 18:09',
             brief: '',
             id: 'small_phrase',
@@ -111,43 +111,28 @@ export default {
             size: '100',
             title: '英语-小学-短语',
             type: 'small'
-          },
-          {
-            date: '2019-08-20 18:09',
-            brief: '',
-            id: 'small_phrase',
-            img: '',
-            link: '3',
-            menu: 'english',
-            money: '99',
-            page: 'phrase',
-            size: '100',
-            title: '英语-小学-短语',
-            type: 'small'
-          }
+          } */
         ]
       }
     }
   },
   created () {
-    this.data.userLogin = localStorage.getItem('userLogin') || ''     // 获取客户登录状态
+    /*自定义顶部header两侧按钮事件+页面左右滑动事件*/
+    this.$route.meta.header.leftFuc = this.back                 // header左侧返回按钮事件
     if (this.data.userLogin) {
       this.data.user = JSON.parse(localStorage.getItem(this.data.userLogin))       // 获取客户信息
       this.data.order = this.data.user.order
       this.data.courseLen = Object.keys(this.data.user.course).length
     }
-    /*自定义顶部header两侧按钮事件+页面左右滑动事件*/
-    this.$route.meta.header.leftFuc = this.back                 // header左侧返回按钮事件
   },
   methods: {
     back () {
-      this.$route.meta.isBack = true
       this.$back({
         path: '/appMember',
         query: {
           type: '3'
         }
-      })
+      }, this)
     }
   },
   filters: {

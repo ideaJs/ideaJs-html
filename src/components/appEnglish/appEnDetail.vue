@@ -70,7 +70,9 @@ export default {
       data: {
         user: {},
         id: '',
-        userLogin: '',
+        type: this.$route.query.type,
+        page: this.$route.query.page,
+        userLogin: localStorage.getItem('userLogin'),     // 获取客户登录状态
         headerInfo: this.$route.meta,
         loopVal: 0,
         courseImg: courseImg01,
@@ -90,25 +92,23 @@ export default {
     }
   },
   created () {
-    this.$route.meta.title = this.$route.query.title
-    this.data.type = this.$route.query.type
-    this.data.page = this.$route.query.page
-    this.data.userLogin = localStorage.getItem('userLogin') || ''     // 获取客户登录状态
-    this.data.user = JSON.parse(localStorage.getItem(this.data.userLogin))       // 获取客户信息
-    this.getCourse()
     /*自定义顶部header两侧按钮事件+页面左右滑动事件*/
     this.$route.meta.header.leftFuc = this.back                 // header左侧返回按钮事件
     this.$route.meta.touch.rightFuc = this.back                 // 页面向右滑动事件
+    this.$route.meta.title = this.$route.query.title
+    if (this.data.userLogin) {
+      this.data.user = JSON.parse(localStorage.getItem(this.data.userLogin))  // 获取客户信息
+      this.getCourse()
+    }
   },
   methods: {
     back () {
-      this.$route.meta.isBack = true
       this.$back({
         path: '/appIndex',
         query: {
           type: '3'
         }
-      })
+      }, this)
     },
     getCourse () {
       let param = {
@@ -126,7 +126,6 @@ export default {
     tabGo (data, idex) {
       this.data.user.learn[data.id] = true
       localStorage.setItem(this.data.userLogin, JSON.stringify(this.data.user))
-      this.$route.meta.isBack = false
       this.$push({
         path: '/appEn' + data.page,
         query: {
@@ -136,7 +135,7 @@ export default {
           title2: data.title,
           id2: data.id
         }
-      })
+      }, this)
     },
     goImgLink (data) {
     }

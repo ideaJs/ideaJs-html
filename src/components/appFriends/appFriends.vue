@@ -106,7 +106,7 @@ export default {
       data: {
         showModel: false,
         user: {},
-        userLogin: '',
+        userLogin: localStorage.getItem('userLogin'),     // 获取客户登录状态
         error: '',
         headImg: headImg,
         headerInfo: this.$route.meta,
@@ -122,25 +122,23 @@ export default {
     }
   },
   created () {
-    this.data.userLogin = localStorage.getItem('userLogin') || ''     // 获取客户登录状态
+    /*自定义顶部header两侧按钮事件+页面左右滑动事件*/
+    this.$route.meta.header.leftFuc = this.back                 // header左侧返回按钮事件
+    this.$route.meta.touch.rightFuc = this.back                 // 页面向右滑动事件
     if (this.data.userLogin) {
       this.data.user = JSON.parse(localStorage.getItem(this.data.userLogin))       // 获取客户信息
       this.data.friends = Object.assign(this.data.friends, this.data.user.friends)       // 获取客户信息
     }
     this.tabToggle(0)
-    /*自定义顶部header两侧按钮事件+页面左右滑动事件*/
-    this.$route.meta.header.leftFuc = this.back                 // header左侧返回按钮事件
-    this.$route.meta.touch.rightFuc = this.back                 // 页面向右滑动事件
   },
   methods: {
     back () {
-      this.$route.meta.isBack = true
       this.$back({
         path: '/appMember',
         query: {
           type: '3'
         }
-      })
+      }, this)
     },
     delFriends (data, idex) {
       event.stopPropagation()
@@ -159,17 +157,15 @@ export default {
       })
     },
     seeFriends (idex) {
-      this.$route.meta.isBack = false
       this.$push({
         path: '/appSeeInfo',
         query: {
           url: '/appFriends?type=3',
           idex: idex
         }
-      })
+      }, this)
     },
     addFriends () {
-      this.$route.meta.isBack = false
       this.$push({
         path: '/appEditInfo',
         query: {
@@ -177,7 +173,7 @@ export default {
           url: '/appFriends?type=3',
           idex: this.data.friends.length
         }
-      })
+      }, this)
     },
     tabToggle (type) {
       let len = 0

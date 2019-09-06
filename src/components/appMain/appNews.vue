@@ -113,7 +113,6 @@ export default {
       data: {
         user: {},
         id: '',
-        userLogin: '',
         headerInfo: this.$route.meta,
         loopVal: 0,
         news: [],
@@ -135,20 +134,19 @@ export default {
     }
   },
   created () {
-    this.getNews()
     /*自定义顶部header两侧按钮事件+页面左右滑动事件*/
     this.$route.meta.header.leftFuc = this.back                 // header左侧返回按钮事件
     this.$route.meta.touch.rightFuc = this.back                 // 页面向右滑动事件
+    this.getNews()
   },
   methods: {
     back () {
-      this.$route.meta.isBack = true
       this.$back({
         path: '/appMember',
         query: {
           type: '3'
         }
-      })
+      }, this)
     },
     getNews (item) {
       _getNews(item, (res) => {
@@ -161,15 +159,13 @@ export default {
     },
     goArticle (data) {
       if (data.link) {
-        this.$route.meta.isBack = false
         this.$push({
           path: data.link,
           query: {
             fromUrl: '/appNews?type=3'
           }
-        })
+        }, this)
       } else {
-        this.$route.meta.isBack = false
         this.$push({
           path: '/appArticle',
           query: {
@@ -177,7 +173,7 @@ export default {
             type: data.type,
             id: data.id
           }
-        })
+        }, this)
       }
     },
     goImgLink (data) {

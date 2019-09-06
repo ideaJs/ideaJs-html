@@ -32,11 +32,11 @@ export default {
       showBack: false,
       data: {
         user: {},
-        userLogin: '',                  // 客户登录状态
+        userLogin: localStorage.getItem('userLogin'),     // 获取客户登录状态
         title: '报名课程',
         course: '',
-        id: '',
-        money: '',
+        id: this.$route.query.id,
+        money: this.$route.query.money,
         bkImg: bkImg,
         showModal: false,
         headerInfo: this.$route.meta,
@@ -45,26 +45,22 @@ export default {
     }
   },
   created () {
-    this.data.id = this.$route.query.id
-    this.data.money = this.$route.query.money
-    this.data.userLogin = localStorage.getItem('userLogin') || ''     // 获取客户登录状态
+    /*自定义顶部header两侧按钮事件+页面左右滑动事件*/
+    this.$route.meta.header.leftFuc = this.back                 // header左侧返回按钮事件
+    this.$route.meta.touch.rightFuc = this.back                 // 页面向右滑动事件
     if (this.data.userLogin) {
       this.data.user = JSON.parse(localStorage.getItem(this.data.userLogin))       // 获取客户信息
       this.getCourse()
     }
-    /*自定义顶部header两侧按钮事件+页面左右滑动事件*/
-    this.$route.meta.header.leftFuc = this.back                 // header左侧返回按钮事件
-    this.$route.meta.touch.rightFuc = this.back                 // 页面向右滑动事件
   },
   methods: {
     back () {
-      this.$route.meta.isBack = true
       this.$back({
         path: '/appIndex',
         query: {
           menuName: 'learn'
         }
-      })
+      }, this)
     },
     buyCourse () {
       Message.destroy()

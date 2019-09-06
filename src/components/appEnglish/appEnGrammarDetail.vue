@@ -6,18 +6,18 @@
     </div>
     <appHeader :headerInfo="data.headerInfo"></appHeader>
     <div class="container">
-      <div v-if="this.data.GrammarsArr.length > 0" class="p-main">
+      <div v-if="this.data.grammarsArr.length > 0" class="p-main">
         <div class="p-header">
-          <div class="p-name" v-html="data.Grammars[data.GrammarsArr[data.idex]].name"></div>
+          <div class="p-name" v-html="data.grammarsArr[data.idex].name"></div>
         </div>
         <div class="p-meaning">
           <div class="">释义：</div>
-          <div class="" v-for="item in data.Grammars[data.GrammarsArr[data.idex]].meaning" v-html="item">
+          <div class="" v-for="item in data.grammarsArr[data.idex].meaning" v-html="item">
           </div>
         </div>
         <div class="p-example">
           <div class="">例句：</div>
-          <div class="" v-for="(item, idx) in data.Grammars[data.GrammarsArr[data.idex]].example">
+          <div class="" v-for="(item, idx) in data.grammarsArr[data.idex].example">
             <div class="x-title">
               <span v-if="item.title" class="x-num">{{idx + 1 + '. '}}</span>
               <span class="" v-html="item.title"></span>
@@ -53,37 +53,34 @@ export default {
     return {
       showBack: false,
       data: {
-        userLogin: '',
+        userLogin: localStorage.getItem('userLogin'),     // 获取客户登录状态
         user: {},
-        title: '英语-语法卡片',
+        title: '英语-语法',
         headerInfo: this.$route.meta,
         showMain: false,
-        idex: 0,
-        total: 1,
         name: '',
-        GrammarsArr: [],
-        Grammars: {}
+        type: this.$route.query.type,
+        page: this.$route.query.page,
+        id2: this.$route.query.id2,
+        idex: parseInt(this.$route.query.idex) || 0,
+        total: parseInt(this.$route.query.total) || 1,
+        grammarsArr: []
       }
     }
   },
   created () {
-    this.data.type = this.$route.query.type
-    this.data.page = this.$route.query.page
-    this.data.id2 = this.$route.query.id2
-    this.data.idex = parseInt(this.$route.query.idex)
-    this.data.total = parseInt(this.$route.query.total)
-    this.$route.meta.title = this.data.title + ' ' + (this.data.idex + 1) + '/' + this.data.total
-    this.data.userLogin = localStorage.getItem('userLogin') || ''     // 获取客户登录状态
-    this.data.user = JSON.parse(localStorage.getItem(this.data.userLogin))    // 获取客户信息
     /*自定义顶部header两侧按钮事件+页面左右滑动事件*/
     this.$route.meta.header.leftFuc = this.back                 // header左侧返回按钮事件
     this.$route.meta.touch.leftFuc = this.goNext                 // 页面向左滑动事件
     this.$route.meta.touch.rightFuc = this.goUp                 // 页面向右滑动事件
-    this.getGrammars()
+    this.$route.meta.title = this.data.title + ' ' + (this.data.idex + 1) + '/' + this.data.total
+    if (this.data.userLogin) {
+      this.data.user = JSON.parse(localStorage.getItem(this.data.userLogin))  // 获取客户信息
+      this.getGrammars()
+    }
   },
   methods: {
     back () {
-      this.$route.meta.isBack = true
       this.$back({
         path: '/appEnGrammar',
         query: {
@@ -93,21 +90,23 @@ export default {
           title2: this.$route.query.title2,
           id2: this.$route.query.id2
         }
-      })
+      }, this)
     },
     goUp () {
       if (this.data.idex > 0) {
         this.data.idex--
-        this.data.name = this.data.GrammarsArr[this.data.idex]
+        this.data.name = this.data.grammarsArr[this.data.idex]
         this.$route.meta.title = this.data.title + ' ' + (this.data.idex + 1) + '/' + this.data.total
       }
+      window.scrollApp(0, 0)
     },
     goNext () {
       if (this.data.idex < this.data.total - 1) {
         this.data.idex++
-        this.data.name = this.data.GrammarsArr[this.data.idex]
+        this.data.name = this.data.grammarsArr[this.data.idex]
         this.$route.meta.title = this.data.title + ' ' + (this.data.idex + 1) + '/' + this.data.total
       }
+      window.scrollApp(0, 0)
     },
     playAudio (name) {
       if (name) {
@@ -125,13 +124,15 @@ export default {
       }
       _getGrammars(param, (res) => {
         try {
-          this.data.Grammars = res
-          this.data.GrammarsArr = Object.keys(res)
-          this.data.name = this.data.GrammarsArr[this.data.idex]
+          let arr = []
+          for (var i in res) {
+            arr.push(res[i])
+          }
+          this.data.grammarsArr = arr.sort((a, b) => { return parseInt(a.sort) - parseInt(b.sort) })
+          this.data.name = this.data.grammarsArr[this.data.idex]
           this.data.showMain = true
         } catch (err) {
-          this.data.Grammars = {}
-          this.data.GrammarsArr = []
+          this.data.grammarsArr = []
           this.data.name = ''
           this.data.showMain = false
         }

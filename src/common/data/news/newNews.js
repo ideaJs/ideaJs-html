@@ -1,3 +1,4 @@
+/* eslint-disable */
 export const newNews = {
   "news": [{
       "title": "英语日记APP",
