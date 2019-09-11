@@ -104,7 +104,7 @@ export default {
         try {
           let arr = []
           for (var i in res) {
-            arr.push(res[i])
+            res[i].name && arr.push(res[i])
           }
           this.data.wordsArr = arr.sort((a, b) => { return parseInt(a.sort) - parseInt(b.sort) })
         } catch (err) {

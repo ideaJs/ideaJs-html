@@ -7,7 +7,7 @@
     <appHeader :headerInfo="data.headerInfo"></appHeader>
     <div class="container">
       <div v-if="this.data.grammarsArr.length > 0" class="p-main">
-        <div class="p-header">
+        <div v-if="data.grammarsArr[data.idex].name" class="p-header">
           <div class="p-name" v-html="data.grammarsArr[data.idex].name"></div>
         </div>
         <div class="p-meaning">
@@ -17,7 +17,7 @@
         </div>
         <div class="p-example">
           <div class="">例句：</div>
-          <div class="" v-for="(item, idx) in data.grammarsArr[data.idex].example">
+          <div class="" v-if="item.sentence" v-for="(item, idx) in data.grammarsArr[data.idex].example">
             <div class="x-title">
               <span v-if="item.title" class="x-num">{{idx + 1 + '. '}}</span>
               <span class="" v-html="item.title"></span>
@@ -126,7 +126,7 @@ export default {
         try {
           let arr = []
           for (var i in res) {
-            arr.push(res[i])
+            res[i].name && arr.push(res[i])
           }
           this.data.grammarsArr = arr.sort((a, b) => { return parseInt(a.sort) - parseInt(b.sort) })
           this.data.name = this.data.grammarsArr[this.data.idex]

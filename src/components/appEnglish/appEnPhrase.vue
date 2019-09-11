@@ -8,7 +8,7 @@
     <div class="container">
       <div v-if="data.phrasesArr.length > 0" class="">
         <div class="">
-          <div @click="goPage(idex)" class="col-list" v-for="(item, idex) in data.phrasesArr">
+          <div v-if="item.name" @click="goPage(idex)" class="col-list" v-for="(item, idex) in data.phrasesArr">
             <div class="x-name">
               <span class="p-name">{{item.name}}</span>
               <span class="p-phonetic">{{item.phonetic}}</span>
@@ -85,7 +85,7 @@ export default {
         try {
           let arr = []
           for (var i in res) {
-            arr.push(res[i])
+            res[i].name && arr.push(res[i])
           }
           this.data.phrasesArr = arr.sort((a, b) => { return parseInt(a.sort) - parseInt(b.sort) })
         } catch (err) {
