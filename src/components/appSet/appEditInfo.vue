@@ -150,7 +150,7 @@ export default {
           phone: '',                // 手机号
           weixin: '',               // 微信
           qq: '',                   // QQ
-          pass: '',                 // 通行证
+          key: '',                  // 通行证
           company: '',              // 公司
           work: '',                 // 职业
           title: '',                // 职称

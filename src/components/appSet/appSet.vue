@@ -16,7 +16,7 @@
               <Icon type="md-globe" slot="icon" />
               <Icon type="ios-arrow-forward" slot="icon" />
             </Cell>
-            <Cell @click.native="goResetPass()" class="p-pass" title="密码重置" :extra="data.pass">
+            <Cell @click.native="goResetkey()" class="p-key" title="密码重置" :extra="data.key">
               <Icon type="ios-lock" slot="icon" />
               <Icon type="ios-arrow-forward" slot="icon" />
             </Cell>
@@ -81,9 +81,9 @@ export default {
         this.userLogin('/appAddress?type=3')
       }
     },
-    goResetPass () {
+    goResetkey () {
       this.$push({
-        path: '/appResetPass',
+        path: '/appResetkey',
         query: {
           type: '3'
         }
