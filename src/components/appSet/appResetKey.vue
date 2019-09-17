@@ -101,7 +101,7 @@ export default {
     seekey () {
       Message.destroy()
       this.data.seekey = !this.data.seekey
-      this.data.keyType = this.data.seekey ? 'text' : 'keyword'
+      this.data.keyType = this.data.seekey ? 'text' : 'password'
     },
     confirmBtn () {
       Message.destroy()
