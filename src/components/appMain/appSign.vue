@@ -40,7 +40,8 @@ export default {
         bkImg: bkImg,
         showModal: false,
         headerInfo: this.$route.meta,
-        activeCode: ''
+        activeCode: '',
+        phone: ''
       }
     }
   },
@@ -50,6 +51,7 @@ export default {
     this.$route.meta.touch.rightFuc = this.back                 // 页面向右滑动事件
     if (this.data.userLogin) {
       this.data.user = JSON.parse(localStorage.getItem(this.data.userLogin))       // 获取客户信息
+      this.data.phone = this.data.user.userInfo.phone
       this.getCourse()
     }
   },
@@ -129,13 +131,14 @@ export default {
         okText: '确定',
         cancelText: '取消',
         onOk: () => {
-          if (Base64.encode(this.data.id) === this.data.activeCode.slice(4)) { // 4个随机码
+          if (Base64.encode(this.data.phone + this.data.id) === this.data.activeCode.slice(4)) { // 4个随机码
             this.data.user = JSON.parse(localStorage.getItem(this.data.userLogin))       // 获取客户信息
             this.data.user.course[Base64.encode(this.data.id)] = true
             this.data.user.jifen = this.data.user.jifen + parseFloat(this.data.money)
             this.data.user.order.push(this.data.course)
             this.data.course.date = this.forDate()
             localStorage.setItem(this.data.userLogin, JSON.stringify(this.data.user))
+            this.data.activeCode = ''
             setTimeout(() => {
               this.successActive()
             }, 500)

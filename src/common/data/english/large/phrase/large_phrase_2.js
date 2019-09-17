@@ -135,12 +135,11 @@ export const course = {
     ],
     "sort": ""
   },
-  "": {
-    "name": "",
-    "phonetic": "",
+  "assembly line": {
+    "name": "assembly line",
+    "phonetic": "[əˈsembli lain]",
     "meaning": [
-      "",
-      ""
+      "(工厂产品的)装配线"
     ],
     "example": [
       {
@@ -151,12 +150,11 @@ export const course = {
     ],
     "sort": ""
   },
-  "": {
-    "name": "",
-    "phonetic": "",
+  "find out": {
+    "name": "find out",
+    "phonetic": "[faind aut]",
     "meaning": [
-      "",
-      ""
+      "v. 找出; 发现; 查明"
     ],
     "example": [
       {
@@ -167,12 +165,11 @@ export const course = {
     ],
     "sort": ""
   },
-  "": {
-    "name": "",
-    "phonetic": "",
+  "work flow": {
+    "name": "work flow",
+    "phonetic": "[wə:k fləu]",
     "meaning": [
-      "",
-      ""
+      "n. 工作流程"
     ],
     "example": [
       {
