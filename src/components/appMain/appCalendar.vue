@@ -18,12 +18,11 @@
                     </tr>
                   </thead>
                   <tbody class="">
-                    <tr class="">
-                      <td v-for="item in date" :data-date="item.formatedDate" :data-current="data.curDay" :data-today="data.today"
-                        :class="(item.formatedDate === data.today ? 'is-today ' : ' ')
-                          + (item.formatedDate === data.curDay ? 'current' : '')
-                          + (parseInt(item.formatedDate.replace(/-/g, '')) > parseInt(data.today.replace(/-/g, '')) ? 'td-disabled' : '')">
-                        <span class="vux-calendar-each-date" @click="changeDate(item)">{{item.day}}</span>
+                    <tr v-if="data.months">
+                      <td v-for="item in date" :data-date="item.formatedDate" :data-current="data.curDay" :data-today="data.today" :class="inlineClass(item, data)">
+                        <span class="vux-calendar-each-date" @click="changeDate(item, data)">
+                          {{item.day}}
+                        </span>
                         <div></div>
                       </td>
                     </tr>
@@ -153,6 +152,7 @@ export default {
         swiperHeight: '250px', // swiper高度
         dateInline: true,
         dateTable: true,
+        months: [],
         showCalendar: true,
         dateArr: [],
         curDay: '',
@@ -245,6 +245,11 @@ export default {
         } else {
           this.data.dayValue = dateData ? dateData.courseDate : calendar.today
         }
+        let months = []
+        for (let i = 0; i < this.data.monthNum; i++) {
+          months.push(this.getCurDate(i + 2))
+        }
+        this.data.months = months
         this.data.curDay = this.data.dayValue
         this.todayInit(this.data.dateArr, this.data.curDay)
         this.changeSwiper()
@@ -266,8 +271,10 @@ export default {
         localStorage.setItem('dateData', JSON.stringify(obj))
       }
     },
-    changeDate (item) {
-      if (parseInt(this.data.today.replace(/-/g, '')) < parseInt(item.formatedDate.replace(/-/g, ''))) {
+    changeDate (item, data) {
+      if (parseInt(this.data.today.replace(/-/g, '')) < parseInt(item.formatedDate.replace(/-/g, ''))
+          || parseInt(item.formatedDate.split('-')[1]) > this.data.months[this.data.swiperIm - 1][1]
+          || parseInt(item.formatedDate.split('-')[1]) < this.data.months[this.data.swiperIm - 1][1]) {
         return
       }
       let month = this.data.curDay.split('-')[1]
@@ -277,6 +284,15 @@ export default {
       this.data.dayValue = item.formatedDate
       this.storageInit(this.data.curDay, this.data.swiperIm)
       this.getMenu()
+    },
+    inlineClass (item, data) {
+      // console.log(item.formatedDate, this.data.months[this.data.swiperIm - 1][1], this.data.swiperIm, this.data.months)
+      let clas = (item.formatedDate === data.today ? 'is-today ' : ' ')
+                 + (item.formatedDate === data.curDay ? 'current' : '')
+                 + (parseInt(item.formatedDate.replace(/-/g, '')) > parseInt(data.today.replace(/-/g, '')) ? 'td-disabled' : '')
+                 + (parseInt(item.formatedDate.split('-')[1]) > this.data.months[this.data.swiperIm - 1][1] ? 'td-disabled' : '')
+                 + (parseInt(item.formatedDate.split('-')[1]) < this.data.months[this.data.swiperIm - 1][1] ? 'td-disabled' : '')
+      return clas
     },
     todayInit (dates, day) {
       if (dates.length > 0) {
