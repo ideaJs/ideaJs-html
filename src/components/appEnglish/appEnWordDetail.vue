@@ -20,6 +20,9 @@
           <div class="" v-for="item in data.wordsArr[data.idex].meaning">
             {{item}}
           </div>
+          <div class="">变形：</div>
+          <div class="" v-html="data.wordsArr[data.idex].transform">
+          </div>
         </div>
         <div class="p-example">
           <div class="">例句：</div>
@@ -75,6 +78,7 @@ export default {
         headerInfo: this.$route.meta,
         showMain: false,
         name: '',
+        fromUrl: this.$route.query.fromUrl,
         type: this.$route.query.type,
         page: this.$route.query.page,
         id2: this.$route.query.id2,
@@ -102,7 +106,7 @@ export default {
   methods: {
     back () {
       this.$back({
-        path: '/appEnWord',
+        path: this.data.fromUrl,
         query: {
           title: this.$route.query.title,
           page: this.$route.query.page,

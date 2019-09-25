@@ -59,6 +59,7 @@ export default {
         headerInfo: this.$route.meta,
         showMain: false,
         name: '',
+        fromUrl: this.$route.query.fromUrl,
         type: this.$route.query.type,
         page: this.$route.query.page,
         id2: this.$route.query.id2,
@@ -82,7 +83,7 @@ export default {
   methods: {
     back () {
       this.$back({
-        path: '/appEnGrammar',
+        path: this.data.fromUrl,
         query: {
           title: this.$route.query.title,
           page: this.$route.query.page,

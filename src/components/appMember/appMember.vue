@@ -98,7 +98,7 @@
               <Icon type="logo-usd" slot="icon" />
               <Icon type="ios-arrow-forward" slot="icon" />
             </Cell>
-            <Cell @click.native="goDate()" v-if="false" class="p-date" title="日历" :extra="data.date">
+            <Cell @click.native="goDate()" class="p-date" title="日历" :extra="data.date">
               <Icon type="ios-calendar" slot="icon" />
               <Icon type="ios-arrow-forward" slot="icon" />
             </Cell>
@@ -133,7 +133,7 @@ let Base64 = require('js-base64').Base64
 import { Button, Row, Col, Modal, Icon, CellGroup, Cell } from 'iview'
 import { Popup } from 'vux'
 import { _getCourse } from '@/common/js/appMain/function'
-import appHeader from'@/components/appConfig/appHeader.vue'
+import appHeader from '@/components/appConfig/appHeader.vue'
 import headImg from './images/headImg.png'
 export default {
   name: 'appMember',
@@ -222,7 +222,7 @@ export default {
     },
     goDate () {
       this.$push({
-        path: '/appDate',
+        path: '/appCalendar',
         query: {
           type: '3'
         }

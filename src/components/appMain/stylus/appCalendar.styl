@@ -1,0 +1,148 @@
+.appCalendar
+  background: #fff
+  .dateMain
+    background: #fff
+  .weekBox
+    width: 600%
+    position: relative
+    .weekBox-item
+      height: 80px
+      width: 16.66%
+      background-color: #fff
+      float: left
+      text-align: center
+      margin: 0
+  .weekdate
+    width: 100%
+  .week
+    font-size: 1.2rem
+  table
+    span
+      font-size: 1.2rem
+    tbody
+      tr:nth-child(1)
+        td
+          padding-top: 10px
+    th
+      background: #FAEAD3!important
+      padding: 5px 0
+    td.is-today
+      > span.vux-calendar-each-date
+        color: #d38b2c!important
+        background: #FAEAD3!important
+    td.current
+      > span.vux-calendar-each-date
+        color: #d38b2c!important
+        background: #fff!important
+        border: 1px solid #d38b2c!important
+  .upOrDown
+    background: #fff
+    border-top: 1px solid #FAEAD3
+    padding: 0 10px
+    text-align: center
+    overflow: hidden
+    span
+      font-size: 1.2rem
+      display: inline-block
+      width: 30%
+      padding: 10px 0px
+      color: #d38b2c
+    span:nth-child(1)
+      float: left
+    span:nth-child(2)
+      padding: 10px 20px
+    span:nth-child(3)
+      float: right
+  .ivu-tabs-tabpane
+    >div
+      height: 63vh
+      overflow-y: auto
+      background: #FCFCFC
+  .ivu-tabs-nav
+    min-width: 100%
+    .ivu-tabs-tab
+      width: 100%
+      text-align: center
+      height: 6.5vh
+      line-height: 6.5vh
+      padding: 0
+  .col-list
+    margin: 3px
+    padding: 6px 5px
+    border-radius: 4px
+    background: #fff
+    box-shadow: 0 0 5px 0 #dbdbdb
+  .x-name
+    width: calc(100% - 20px)
+    position: relative
+    text-align: justify
+    .rightBtn
+      font-size: 1.2rem
+      position: absolute
+      right: -18px
+      top: 0
+      i
+        line-height: 1.5
+  .p-num
+    color: #CB1A0A
+  .p-name
+    color: #CB1A0A
+    font-size: 1.5rem
+  .p-phonetic
+    color: #5C7627
+    padding-left: 5px
+  .p-meaning
+    padding-top: 10px
+    >div
+      color: #5C7627
+      text-align: justify
+      overflow: hidden
+      height: 20px
+      width: 100%
+      white-space: nowrap
+      text-overflow: ellipsis
+      span
+        margin-right: 20px
+  .p-collect
+    position: absolute
+    right: -25px
+    top: -5px
+    cursor: pointer
+    width: 30px
+    height: 30px
+    line-height: 27px
+    text-align: center
+    vertical-align: top
+    span
+      margin-right: 0px
+    i
+      font-size: 2rem
+    .ivu-icon-md-star
+      color: #C6713D
+  .p-audio
+    padding: 3px 10px
+    color: #1A73E8
+    cursor: pointer
+    i
+      font-size: 1.6rem
+  .inline-calendar
+    td.is-disabled
+      position: relative
+      >div
+        display: block!important
+  .dateDisabled
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+    margin: 0
+    padding: 0
+    outline: none
+    border: none
+    display: block
+    z-index: 99
+    background: #fff
+    box-shadow: none
+  .td-disabled
+    color: #c0c0c0

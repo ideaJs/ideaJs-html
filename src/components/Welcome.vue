@@ -1,21 +1,29 @@
 <!-- Created by macmzon@163.com-->
 <template>
-  <div class="hello">
-    <h1>{{ msg }}</h1>
-    <div class="container"></div>
+  <div class="Welcome">
+    <div v-transfer-dom>
+      <popup v-model="showBack"></popup>
+    </div>
+    <appHeader :headerInfo="data.headerInfo"></appHeader>
+    <div class="container">
+
+    </div>
   </div>
 </template>
 
 <script>
-import { Group, Cell } from 'vux'
+import { Group, Cell, Popup } from 'vux'
 import { Button } from 'iview'
+import appHeader from '@/components/appConfig/appHeader.vue'
 export default {
   name: 'Welcome',
   data () {
     return {
-      show: false,
+      showBack: false,
       data: {
-
+        user: {},
+        userLogin: localStorage.getItem('userLogin'),     // 客户登录状态
+        headerInfo: this.$route.meta
       }
     }
   },
@@ -37,11 +45,11 @@ export default {
     }
   },
   components: {
-    Group, Cell, Button
+    Group, Cell, Button, Popup, appHeader
   }
 }
 </script>
 <style lang="stylus" rel="stylesheet/stylus">
-  .hello
+  .Welcome
     background: #fff
 </style>

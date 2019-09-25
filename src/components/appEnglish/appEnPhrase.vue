@@ -105,6 +105,7 @@ export default {
       this.$push({
         path: '/appEnPhraseDetail',
         query: {
+          fromUrl: '/appEnPhrase',
           title: this.$route.query.title,
           type: this.$route.query.type,
           page: this.$route.query.page,

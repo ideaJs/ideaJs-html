@@ -6,8 +6,15 @@
     </transition>
 -->
     <v-touch ref="touch" v-on:swipeleft="onSwipeLeft" v-on:swiperight="onSwipeRight">
-      <transition :name="direction" keep-alive>
-        <router-view v-if="!$route.meta.isReload"></router-view>
+      <!-- 返回此页面不刷新 -->
+      <transition :name="direction">
+        <keep-alive>
+          <router-view v-if="!$route.meta.isReload && $route.meta.keepAlive"></router-view>
+        </keep-alive>
+      </transition>
+      <!-- 返回此页面会刷新 -->
+      <transition :name="direction">
+        <router-view v-if="!$route.meta.isReload && !$route.meta.keepAlive"></router-view>
       </transition>
     </v-touch>
   </div>
@@ -29,7 +36,6 @@ export default {
     }
   },
   created () {
-
   },
   mounted () {
     window.scrollApp = this.scrollApp // app上下滚动

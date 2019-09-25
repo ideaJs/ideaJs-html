@@ -1,18 +1,22 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
+/* 启动页 */
 const AppStart = () => import('@/components/appStart')
 
+/* 会员页 */
 const AppRegiste = () => import('@/components/appMember/appRegiste')
 const AppLogin = () => import('@/components/appMember/appLogin')
 const AppMember = () => import('@/components/appMember/appMember')
 
+/* 设置 */
 const AppSet = () => import('@/components/appSet/appSet')
 const AppResetKey = () => import('@/components/appSet/appResetKey')
 const AppSeeInfo = () => import('@/components/appSet/appSeeInfo')
 const AppEditInfo = () => import('@/components/appSet/appEditInfo')
 const AppAddress = () => import('@/components/appSet/appAddress')
 
+/* 功能页 */
 const AppCaptcha = () => import('@/components/appConfig/appCaptcha')
 const AppScan = () => import('@/components/appConfig/appScan')
 const AppBarCode = () => import('@/components/appConfig/appBarCode')
@@ -20,6 +24,7 @@ const AppHeadPhoto = () => import('@/components/appConfig/appHeadPhoto')
 const AppPhotoImg = () => import('@/components/appConfig/appPhotoImg')
 const AppIdCard = () => import('@/components/appConfig/appIdCard')
 
+/* 主页 */
 const AppIndex = () => import('@/components/appMain/appIndex')
 const AppSign = () => import('@/components/appMain/appSign')
 const AppMenu = () => import('@/components/appMain/appMenu')
@@ -30,12 +35,16 @@ const AppMoney = () => import('@/components/appMain/appMoney')
 const AppNews = () => import('@/components/appMain/appNews')
 const AppArticle = () => import('@/components/appMain/appArticle')
 const AppOrder = () => import('@/components/appMain/appOrder')
+const AppCalendar = () => import('@/components/appMain/appCalendar')
 
+/* 朋友圈 */
 const AppFriends = () => import('@/components/appFriends/appFriends')
 
+/* 个人认证 */
 const AppProve = () => import('@/components/appProve/appProve')
 const AppProveResult = () => import('@/components/appProve/appProveResult')
 
+/* 英语课程 */
 const AppEnDetail = () => import('@/components/appEnglish/appEnDetail')
 const AppEnWord = () => import('@/components/appEnglish/appEnWord')
 const AppEnPhrase = () => import('@/components/appEnglish/appEnPhrase')
@@ -317,6 +326,28 @@ export default new Router({
       scrollToTop: true,
       isReload: false,
       needLogin: true
+    }
+  }, {
+    path: '/appCalendar',
+    name: 'AppCalendar',
+    component: AppCalendar,
+    meta: {
+      title: '日历',
+      header: {
+        left: 'ios-arrow-back',
+        leftFuc: (fuc) => { fuc && fuc() },
+        right: '',
+        rightFuc: (fuc) => { fuc && fuc() }
+      },
+      touch: {
+        leftFuc: (fuc) => { fuc && fuc() },
+        rightFuc: (fuc) => { fuc && fuc() }
+      },
+      isBack: false,
+      scrollToTop: true,
+      isReload: false,
+      needLogin: false,
+      keepAlive: true
     }
   }, {
     path: '/appProve',

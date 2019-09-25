@@ -98,6 +98,7 @@ export default {
       this.$push({
         path: '/appEnGrammarDetail',
         query: {
+          fromUrl: '/appEnGrammar',
           title: this.$route.query.title,
           type: this.$route.query.type,
           page: this.$route.query.page,

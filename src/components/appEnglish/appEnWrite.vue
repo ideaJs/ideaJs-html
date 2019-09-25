@@ -103,6 +103,7 @@ export default {
       this.$push({
         path: '/appEnWriteDetail',
         query: {
+          fromUrl: '/appEnWrite',
           title: this.$route.query.title,
           type: this.$route.query.type,
           page: this.$route.query.page,

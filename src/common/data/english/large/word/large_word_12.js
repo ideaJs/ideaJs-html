@@ -7,6 +7,7 @@ export const course = {
       "",
       ""
     ],
+    "transform": "",
     "example": [
       {
         "title": "",
@@ -23,6 +24,7 @@ export const course = {
       "",
       ""
     ],
+    "transform": "",
     "example": [
       {
         "title": "",
@@ -39,6 +41,7 @@ export const course = {
       "",
       ""
     ],
+    "transform": "",
     "example": [
       {
         "title": "",
@@ -55,6 +58,7 @@ export const course = {
       "",
       ""
     ],
+    "transform": "",
     "example": [
       {
         "title": "",
@@ -71,6 +75,7 @@ export const course = {
       "",
       ""
     ],
+    "transform": "",
     "example": [
       {
         "title": "",
@@ -87,6 +92,7 @@ export const course = {
       "",
       ""
     ],
+    "transform": "",
     "example": [
       {
         "title": "",
@@ -103,6 +109,7 @@ export const course = {
       "",
       ""
     ],
+    "transform": "",
     "example": [
       {
         "title": "",
@@ -119,6 +126,7 @@ export const course = {
       "",
       ""
     ],
+    "transform": "",
     "example": [
       {
         "title": "",
@@ -135,6 +143,7 @@ export const course = {
       "",
       ""
     ],
+    "transform": "",
     "example": [
       {
         "title": "",
@@ -151,6 +160,7 @@ export const course = {
       "",
       ""
     ],
+    "transform": "",
     "example": [
       {
         "title": "",
@@ -167,6 +177,7 @@ export const course = {
       "",
       ""
     ],
+    "transform": "",
     "example": [
       {
         "title": "",
@@ -183,6 +194,7 @@ export const course = {
       "",
       ""
     ],
+    "transform": "",
     "example": [
       {
         "title": "",
@@ -199,6 +211,7 @@ export const course = {
       "",
       ""
     ],
+    "transform": "",
     "example": [
       {
         "title": "",
@@ -215,6 +228,7 @@ export const course = {
       "",
       ""
     ],
+    "transform": "",
     "example": [
       {
         "title": "",
@@ -231,6 +245,7 @@ export const course = {
       "",
       ""
     ],
+    "transform": "",
     "example": [
       {
         "title": "",
@@ -247,6 +262,7 @@ export const course = {
       "",
       ""
     ],
+    "transform": "",
     "example": [
       {
         "title": "",
@@ -263,6 +279,7 @@ export const course = {
       "",
       ""
     ],
+    "transform": "",
     "example": [
       {
         "title": "",
@@ -279,6 +296,7 @@ export const course = {
       "",
       ""
     ],
+    "transform": "",
     "example": [
       {
         "title": "",
@@ -295,6 +313,7 @@ export const course = {
       "",
       ""
     ],
+    "transform": "",
     "example": [
       {
         "title": "",
@@ -311,6 +330,7 @@ export const course = {
       "",
       ""
     ],
+    "transform": "",
     "example": [
       {
         "title": "",
