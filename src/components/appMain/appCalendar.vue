@@ -67,7 +67,7 @@
           </swiper>
         </div>
         <div class="upOrDown">
-          <span class="">{{getCurDate(data.swiperIm + 1)[0] + ' - ' + getCurDate(data.swiperIm + 1)[1]}}</span>
+          <span>{{getCurDate(data.swiperIm + 1)[0] + ' - ' + getCurDate(data.swiperIm + 1)[1]}}</span>
           <span @click="dateUpOrDown()" class="">
             <Icon v-if="data.dateInline" type="ios-arrow-down" />
             <Icon v-if="data.dateTable" type="ios-arrow-up" />
@@ -246,9 +246,10 @@ export default {
           this.data.dayValue = dateData ? dateData.courseDate : calendar.today
         }
         let months = []
-        for (let i = 0; i < this.data.monthNum; i++) {
-          months.push(this.getCurDate(i + 2))
+        for (let i = 0; i < this.data.monthNum + 1; i++) {
+          months.push(this.getCurDate(i + 1))
         }
+        // console.log(months)
         this.data.months = months
         this.data.curDay = this.data.dayValue
         this.todayInit(this.data.dateArr, this.data.curDay)
@@ -272,9 +273,10 @@ export default {
       }
     },
     changeDate (item, data) {
+      let swiperMonth = this.data.months[this.data.swiperIm][1]
       if (parseInt(this.data.today.replace(/-/g, '')) < parseInt(item.formatedDate.replace(/-/g, ''))
-          || parseInt(item.formatedDate.split('-')[1]) > this.data.months[this.data.swiperIm - 1][1]
-          || parseInt(item.formatedDate.split('-')[1]) < this.data.months[this.data.swiperIm - 1][1]) {
+          || parseInt(item.formatedDate.split('-')[1]) > swiperMonth
+          || parseInt(item.formatedDate.split('-')[1]) < swiperMonth) {
         return
       }
       let month = this.data.curDay.split('-')[1]
@@ -286,12 +288,13 @@ export default {
       this.getMenu()
     },
     inlineClass (item, data) {
-      // console.log(item.formatedDate, this.data.months[this.data.swiperIm - 1][1], this.data.swiperIm, this.data.months)
-      let clas = (item.formatedDate === data.today ? 'is-today ' : ' ')
-                 + (item.formatedDate === data.curDay ? 'current' : '')
-                 + (parseInt(item.formatedDate.replace(/-/g, '')) > parseInt(data.today.replace(/-/g, '')) ? 'td-disabled' : '')
-                 + (parseInt(item.formatedDate.split('-')[1]) > this.data.months[this.data.swiperIm - 1][1] ? 'td-disabled' : '')
-                 + (parseInt(item.formatedDate.split('-')[1]) < this.data.months[this.data.swiperIm - 1][1] ? 'td-disabled' : '')
+      let swiperMonth = this.data.months[this.data.swiperIm][1]
+      // console.log(swiperMonth)
+      let clas = (item.formatedDate === data.today ? ' is-today ' : ' ')
+                 + (item.formatedDate === data.curDay ? ' current ' : '')
+                 + (parseInt(item.formatedDate.replace(/-/g, '')) > parseInt(data.today.replace(/-/g, '')) ? ' td-disabled ' : '')
+                 + (parseInt(item.formatedDate.split('-')[1]) > swiperMonth ? ' td-disabled ' : '')
+                 + (parseInt(item.formatedDate.split('-')[1]) < swiperMonth ? ' td-disabled ' : '')
       return clas
     },
     todayInit (dates, day) {
