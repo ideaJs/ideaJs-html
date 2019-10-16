@@ -345,12 +345,11 @@ export const course = {
     ],
     "sort": ""
   },
-  "": {
-    "name": "",
-    "phonetic": "",
+  "lay out": {
+    "name": "lay out",
+    "phonetic": "[leɪ aʊt]",
     "meaning": [
-      "",
-      ""
+      "（整齐地）铺开，展开，摊开;阐述;讲解;说明;规划，布置，设计（场地或建筑）;花（大钱）"
     ],
     "example": [
       {
@@ -361,12 +360,11 @@ export const course = {
     ],
     "sort": ""
   },
-  "": {
-    "name": "",
-    "phonetic": "",
+  "out of place": {
+    "name": "out of place",
+    "phonetic": "[aʊt ɒv pleɪs]",
     "meaning": [
-      "",
-      ""
+      "不在正确的位置;不在通常的位置;格格不入;不相称;不适当;不适时"
     ],
     "example": [
       {
@@ -377,12 +375,11 @@ export const course = {
     ],
     "sort": ""
   },
-  "": {
-    "name": "",
+  "do sb. a favour": {
+    "name": "do sb. a favour",
     "phonetic": "",
     "meaning": [
-      "",
-      ""
+      "帮助某人;帮忙;帮某人个忙;帮某人的忙"
     ],
     "example": [
       {
@@ -393,12 +390,11 @@ export const course = {
     ],
     "sort": ""
   },
-  "": {
-    "name": "",
+  "pull out": {
+    "name": "pull out",
     "phonetic": "",
     "meaning": [
-      "",
-      ""
+      "（车或驾车者）驶离路边，开向路中间;退出，撤出（协议、比赛或组织）;（使）（部队）撤出;（使）摆脱（经济衰退）;（使）恢复"
     ],
     "example": [
       {
@@ -409,12 +405,11 @@ export const course = {
     ],
     "sort": ""
   },
-  "": {
-    "name": "",
-    "phonetic": "",
+  "count out": {
+    "name": "count out",
+    "phonetic": "[kaʊnt aʊt]",
     "meaning": [
-      "",
-      ""
+      "数（钱）;不把…算入;不包括"
     ],
     "example": [
       {
@@ -425,12 +420,11 @@ export const course = {
     ],
     "sort": ""
   },
-  "": {
-    "name": "",
-    "phonetic": "",
+  "long for": {
+    "name": "long for",
+    "phonetic": "[lɒŋ fɔː(r)]",
     "meaning": [
-      "",
-      ""
+      "v. 渴望"
     ],
     "example": [
       {
@@ -441,12 +435,11 @@ export const course = {
     ],
     "sort": ""
   },
-  "": {
-    "name": "",
-    "phonetic": "",
+  "take advantage of": {
+    "name": "take advantage of",
+    "phonetic": "[teɪk ədˈvɑːntɪdʒ ɒv]",
     "meaning": [
-      "",
-      ""
+      "利用;占…的便宜;欺骗;捉弄"
     ],
     "example": [
       {
@@ -457,12 +450,11 @@ export const course = {
     ],
     "sort": ""
   },
-  "": {
-    "name": "",
-    "phonetic": "",
+  "come down": {
+    "name": "come down",
+    "phonetic": "[kʌm daʊn]",
     "meaning": [
-      "",
-      ""
+      "（成本、水平或数量）下降，降低;落下;降落"
     ],
     "example": [
       {
@@ -473,12 +465,11 @@ export const course = {
     ],
     "sort": ""
   },
-  "": {
-    "name": "",
-    "phonetic": "",
+  "come down in the world": {
+    "name": "come down in the world",
+    "phonetic": "[kʌm daʊn ɪn ðə wɜːld]",
     "meaning": [
-      "",
-      ""
+      "家道中落;落魄;失去社会地位;家道败落;失魂落魄"
     ],
     "example": [
       {
@@ -489,12 +480,11 @@ export const course = {
     ],
     "sort": ""
   },
-  "": {
-    "name": "",
-    "phonetic": "",
+  "for instance": {
+    "name": "for instance",
+    "phonetic": "[fɔː(r) ˈɪnstəns]",
     "meaning": [
-      "",
-      ""
+      "例如;譬如"
     ],
     "example": [
       {
@@ -505,12 +495,12 @@ export const course = {
     ],
     "sort": ""
   },
-  "": {
-    "name": "",
-    "phonetic": "",
+  "all right": {
+    "name": "all right",
+    "phonetic": "[ˌɔːl ˈraɪt]",
     "meaning": [
-      "",
-      ""
+      "adj./adv. 可接受(的);满意(的);安全健康(的);平安无恙(的);尚可;还算可以",
+      "int. (确保对方同意或理解)如何，是不是;(表示同意)好，行，可以;(回答对方的感谢或道歉)不要紧，没什么"
     ],
     "example": [
       {
@@ -521,92 +511,11 @@ export const course = {
     ],
     "sort": ""
   },
-  "": {
-    "name": "",
-    "phonetic": "",
+  "break off": {
+    "name": "break off",
+    "phonetic": "[breɪk ɒf]",
     "meaning": [
-      "",
-      ""
-    ],
-    "example": [
-      {
-        "title": "",
-        "sentence": "",
-        "meaning": ""
-      }
-    ],
-    "sort": ""
-  },
-  "": {
-    "name": "",
-    "phonetic": "",
-    "meaning": [
-      "",
-      ""
-    ],
-    "example": [
-      {
-        "title": "",
-        "sentence": "",
-        "meaning": ""
-      }
-    ],
-    "sort": ""
-  },
-  "": {
-    "name": "",
-    "phonetic": "",
-    "meaning": [
-      "",
-      ""
-    ],
-    "example": [
-      {
-        "title": "",
-        "sentence": "",
-        "meaning": ""
-      }
-    ],
-    "sort": ""
-  },
-  "": {
-    "name": "",
-    "phonetic": "",
-    "meaning": [
-      "",
-      ""
-    ],
-    "example": [
-      {
-        "title": "",
-        "sentence": "",
-        "meaning": ""
-      }
-    ],
-    "sort": ""
-  },
-  "": {
-    "name": "",
-    "phonetic": "",
-    "meaning": [
-      "",
-      ""
-    ],
-    "example": [
-      {
-        "title": "",
-        "sentence": "",
-        "meaning": ""
-      }
-    ],
-    "sort": ""
-  },
-  "": {
-    "name": "",
-    "phonetic": "",
-    "meaning": [
-      "",
-      ""
+      "折断;（使）断开;突然中止;突然停顿;终止，结束（关系）"
     ],
     "example": [
       {
