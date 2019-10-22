@@ -8,6 +8,8 @@ const AppStart = () => import('@/components/appStart')
 const AppRegiste = () => import('@/components/appMember/appRegiste')
 const AppLogin = () => import('@/components/appMember/appLogin')
 const AppMember = () => import('@/components/appMember/appMember')
+/* mysql本地服务测试登录功能 */
+const IsTestLogin = () => import('@/components/appMember/isTestLogin')
 
 /* 设置 */
 const AppSet = () => import('@/components/appSet/appSet')
@@ -123,6 +125,27 @@ export default new Router({
     component: AppLogin,
     meta: {
       title: '登录',
+      header: {
+        left: 'ios-arrow-back',
+        leftFuc: (fuc) => { fuc && fuc() },
+        right: '',
+        rightFuc: (fuc) => { fuc && fuc() }
+      },
+      touch: {
+        leftFuc: (fuc) => { fuc && fuc() },
+        rightFuc: (fuc) => { fuc && fuc() }
+      },
+      isBack: false,
+      scrollToTop: true,
+      isReload: false,
+      needLogin: true
+    }
+  }, {
+    path: '/isTestLogin',
+    name: 'IsTestLogin',
+    component: IsTestLogin,
+    meta: {
+      title: 'mysql本地测试登录',
       header: {
         left: 'ios-arrow-back',
         leftFuc: (fuc) => { fuc && fuc() },
